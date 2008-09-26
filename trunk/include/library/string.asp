@@ -15,6 +15,7 @@
 '**********
 '	构建类
 '**********
+
 Class Class_String
 	'**********
     ' 函数名: class_Initialize
@@ -235,6 +236,40 @@ Class Class_String
 		strOutput = Replace(strOutput, ">", "&gt;")
 		stripHTML = strOutput
 		Set objRegExp = Nothing
+	End Function
+
+	'**********
+	' 函数名: regReplace
+	' 参  数: DateTime as the input time
+	' 参  数: format as the formating type
+	' 作  用: formatDate — Format Date
+	'**********
+	Function regReplace(ByVal str,restr,re,isCase)	'内容,正则
+		If Len(str) > 0 Then
+			Dim Obj
+			Set Obj = New Regexp
+			With Obj
+				If isCase Then .IgnoreCase = False Else .IgnoreCase = True 
+				.Global = True
+				.Pattern = re
+				regReplace = .Replace(str,restr)
+			End With
+			Set Obj = Nothing
+		End If
+	End Function
+
+	'**********
+	' 函数名: randStr
+	' 作用: Generate a specific length random string
+	'**********
+	Function randStr(intLength)
+		Dim strSeed,seedLength,i
+		strSeed = "abcdefghijklmnopqrstuvwxyz1234567890"
+		seedLength = len(strSeed)
+		For i=1 to intLength
+			Randomize
+			randStr = randStr & Mid(strSeed,Round((Rnd*(seedLength-1))+1),1)
+		Next
 	End Function
 End Class
 %>

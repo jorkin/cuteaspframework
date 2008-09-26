@@ -17,6 +17,7 @@
 '**********
 '	构建类
 '**********
+
 Class Class_Cookie
 	Public	Mark	'前缀
 

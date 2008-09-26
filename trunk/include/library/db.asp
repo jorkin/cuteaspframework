@@ -15,6 +15,7 @@
 '**********
 '	构建类
 '**********
+
 Class Class_Db
     Private ConnStr, SqlLocalPath
     Public ServerIp		'数据库连接主机名

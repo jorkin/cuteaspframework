@@ -17,6 +17,7 @@
 '**********
 '	ππΩ®¿‡
 '**********
+
 Class Class_Interface
 	Private s_stm
 		

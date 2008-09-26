@@ -13,8 +13,7 @@
 '作  用：显示错误信息
 '**********
 Sub showErr(message)
-    echo "<html><head><title>Exception page</title><meta http-equiv=""Content-Type"" content=""text/html; charset=gbk"" /><style type=""text/css""><!--" & vbNewLine & "* { margin:0; padding:0 }" & vbNewLine & "body { background:#333; color:#0f0; font:14px/1.6em ""宋体"", Verdana, Arial, Helvetica, sans-serif; }" & vbNewLine & "dl { margin:20px 40px; padding:20px; border:3px solid #f63; }" & vbNewLine & "dt { margin:0 0 0.8em 0; font-weight:bold; font-size:1.6em; }" & vbNewLine & "dd { margin-left:2em; margin-top:0.2em; }" & vbNewLine & "--></style></head><body><div id=""container""><dl><dt>Description:</dt><dd><span style=""color:#ff0;font-weight:bold;font-size:1.2em;"">Position:</span> " & message & "</dd></dl></div></body></html>"
-	die()
+    die "<html><head><title>Exception page</title><meta http-equiv=""Content-Type"" content=""text/html; charset=gbk"" /><style type=""text/css""><!--" & vbNewLine & "* { margin:0; padding:0 }" & vbNewLine & "body { background:#333; color:#0f0; font:14px/1.6em ""宋体"", Verdana, Arial, Helvetica, sans-serif; }" & vbNewLine & "dl { margin:20px 40px; padding:20px; border:3px solid #f63; }" & vbNewLine & "dt { margin:0 0 0.8em 0; font-weight:bold; font-size:1.6em; }" & vbNewLine & "dd { margin-left:2em; margin-top:0.2em; }" & vbNewLine & "--></style></head><body><div id=""container""><dl><dt>Description:</dt><dd><span style=""color:#ff0;font-weight:bold;font-size:1.2em;"">Position:</span> " & message & "</dd></dl></div></body></html>"
 End Sub
 
 '**********
@@ -24,7 +23,7 @@ End Sub
 Sub showException()
     echo "<p><span style=""color:#ff0;font-weight:bold;font-size:1.2em;"">Error:</span> " & Err.Number & " " & Err.Description & "</p>"
     Err.Clear
-    die()
+    die("")
 End Sub
 
 '**********
@@ -165,15 +164,15 @@ End function
 Function Form(element)
     On Error Resume Next
     If InStr(LCase(Request.ServerVariables("Content_Type")), "multipart/form-data") Then	'multipart/form-data
-        If IsObject(Tup) = False Then
+        If IsObject(Tpub.Upload) = False Then
     		If Err Then
 				die("no include upload class file")
 			End If
         End If
-		If Tup.Error <> 0 Then
-			Tup.Open
+		If Tpub.Upload.Error <> 0 Then
+			Tpub.Upload.Open
 		End If
-        Form = Tup.Form(element)
+        Form = Tpub.Upload.Form(element)
     Else
         Form = Request.Form(element)
     End If
@@ -265,4 +264,51 @@ Function getSelfName()
     getSelfName = Mid(getSelfName, InstrRev(getSelfName, "\") + 1, Len(getSelfName))
 End Function
 
+'**********
+'函数名：ReturnObj
+'作  用：返回一个对象
+'返回值：对象包含三个参数(Code,Message,AttachObject)
+'**********
+Function returnObj()
+	On Error Resume Next
+	TypeName(New AopResult)
+	If Err Then
+		Set returnObj = New ReAopResult		'重定义的AopResult
+		Err.Clear
+	Else
+		Set returnObj = New AopResult
+	End If
+	On Error Goto 0
+End Function
+
+'**********
+' 函数名: URLDecode
+' 作  用: URLDecode — URL decode
+'**********
+Function URLDecode(ByVal vstrin)
+	Dim i, strreturn, strSpecial, intasc, thischr
+	strSpecial = "!""#$%&'()*+,.-_/:;<=>?@[\]^`{|}~%"
+	strreturn = ""
+	For i = 1 To Len(vstrin)
+		thischr = Mid(vstrin, i, 1)
+		If thischr = "%" Then
+			intasc = Eval("&h" + Mid(vstrin, i + 1, 2))
+			If InStr(strSpecial, Chr(intasc))>0 Then
+				strreturn = strreturn & Chr(intasc)
+				i = i + 2
+			Else
+				intasc = Eval("&h" + Mid(vstrin, i + 1, 2) + Mid(vstrin, i + 4, 2))
+				strreturn = strreturn & Chr(intasc)
+				i = i + 5
+			End If
+		Else
+			If thischr = "+" Then
+				strreturn = strreturn & " "
+			Else
+				strreturn = strreturn & thischr
+			End If
+		End If
+	Next
+	URLDecode = strreturn
+End Function
 %>

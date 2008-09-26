@@ -19,6 +19,7 @@
 '**********
 '	构建类
 '**********
+
 Class Class_Upload
     Private objForm, binForm, binItem, strDate, lngTime,objFormASP
 	Public Error		'出错信息
