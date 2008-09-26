@@ -14,7 +14,6 @@
 '**********
 '	构建类
 '**********
-
 Class Class_File
 	Public FSO			'设置FSO组件名称
 	Public Stream		'设置Stream组件名称

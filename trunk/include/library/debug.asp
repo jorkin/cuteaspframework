@@ -15,7 +15,6 @@
 '**********
 '	ππΩ®¿‡
 '**********
-
 Class Class_Debug
 
     Private blnEnabled

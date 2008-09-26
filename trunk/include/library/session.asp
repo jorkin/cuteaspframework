@@ -17,7 +17,6 @@
 '**********
 '	构建类
 '**********
-
 Class Class_Session
 	Public	Mark	'前缀
 
