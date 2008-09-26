@@ -17,7 +17,6 @@
 '**********
 '	ππΩ®¿‡
 '**********
-
 Class Class_Cache
 
 	Private IExpires

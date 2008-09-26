@@ -17,7 +17,6 @@
 '**********
 '	ππΩ®¿‡
 '**********
-
 Class Class_XML
     Private fNode, fANode
     Private fErrInfo, fFileName, fOpen

@@ -17,7 +17,6 @@
 '**********
 '	ππΩ®¿‡
 '**********
-
 Class Class_Date
 	Public TimeZone
 	
