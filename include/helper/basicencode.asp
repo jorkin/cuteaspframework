@@ -10,7 +10,6 @@
 '	Ê¾Àý
 '**********
 
-
 Class Class_BasicEncode
 	Private arr_en, arr_de
 

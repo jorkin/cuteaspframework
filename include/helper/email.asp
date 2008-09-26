@@ -17,6 +17,7 @@
 '**********
 '	ππΩ®¿‡
 '**********
+
 Class Class_Email
 	Private s_chs, s_svr, s_user, s_pwd
 	

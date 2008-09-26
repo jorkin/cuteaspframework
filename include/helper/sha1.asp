@@ -11,6 +11,7 @@
 '**********
 '	Ê¾Àý
 '**********
+
 %>
 <script language="javascript" runat="server">
 //====== SHA1 Function =======================================
