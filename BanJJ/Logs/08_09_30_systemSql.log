@@ -1,0 +1,129 @@
+
+[ 08-09-30 11:48:29 ]
+ RunTime:0.075310s SQL = SHOW COLUMNS FROM banjj_blog
+[ 08-09-30 11:48:29 ]
+ RunTime:0.003961s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 11:49:10 ]
+ RunTime:0.000651s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 11:57:31 ]
+ RunTime:0.008853s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 12:00:04 ]
+ RunTime:0.000506s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 13:18:53 ]
+ RunTime:0.000478s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 13:19:14 ]
+ RunTime:0.000467s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 13:19:46 ]
+ RunTime:0.000475s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 13:19:47 ]
+ RunTime:0.000482s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 13:20:08 ]
+ RunTime:0.000492s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 13:20:09 ]
+ RunTime:0.000462s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 13:21:23 ]
+ RunTime:0.000465s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 13:21:24 ]
+ RunTime:0.000465s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 13:21:25 ]
+ RunTime:0.000513s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 13:21:25 ]
+ RunTime:0.000479s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 13:21:26 ]
+ RunTime:0.008130s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 13:21:27 ]
+ RunTime:0.000509s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 13:21:27 ]
+ RunTime:0.000503s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 13:21:28 ]
+ RunTime:0.007912s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 13:21:29 ]
+ RunTime:0.000773s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 13:21:30 ]
+ RunTime:0.007905s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 13:21:31 ]
+ RunTime:0.000471s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 13:21:31 ]
+ RunTime:0.000472s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 13:21:32 ]
+ RunTime:0.007909s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 14:57:24 ]
+ RunTime:0.058104s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 14:57:33 ]
+ RunTime:0.000469s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 14:57:34 ]
+ RunTime:0.001008s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 14:58:59 ]
+ RunTime:0.000458s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 16:15:16 ]
+ RunTime:0.044677s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 17:27:50 ]
+ RunTime:0.034130s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 17:27:51 ]
+ RunTime:0.000479s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 17:27:52 ]
+ RunTime:0.000473s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 17:27:58 ]
+ RunTime:0.000464s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 17:27:59 ]
+ RunTime:0.000480s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 17:28:01 ]
+ RunTime:0.000469s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 17:44:20 ]
+ RunTime:0.001992s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 17:44:35 ]
+ RunTime:0.000475s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 17:45:24 ]
+ RunTime:0.000472s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 17:45:25 ]
+ RunTime:0.000476s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 17:45:30 ]
+ RunTime:0.000485s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 17:46:28 ]
+ RunTime:0.000467s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 17:46:31 ]
+ RunTime:0.000468s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 17:48:27 ]
+ RunTime:0.000484s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 17:48:29 ]
+ RunTime:0.000473s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 17:48:37 ]
+ RunTime:0.000495s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 17:49:58 ]
+ RunTime:0.003174s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 17:49:58 ]
+ RunTime:0.000571s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 17:49:59 ]
+ RunTime:0.000481s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 17:49:59 ]
+ RunTime:0.000466s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 17:50:00 ]
+ RunTime:0.000474s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 17:50:01 ]
+ RunTime:0.000467s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 17:50:01 ]
+ RunTime:0.004046s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 17:50:02 ]
+ RunTime:0.000479s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 17:50:02 ]
+ RunTime:0.000474s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 17:50:02 ]
+ RunTime:0.000475s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 17:51:29 ]
+ RunTime:0.000464s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 17:51:30 ]
+ RunTime:0.000476s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 17:51:31 ]
+ RunTime:0.000464s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 17:53:09 ]
+ RunTime:0.000483s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 17:53:10 ]
+ RunTime:0.000483s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 17:56:18 ]
+ RunTime:0.000482s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 17:56:23 ]
+ RunTime:0.000485s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 17:56:24 ]
+ RunTime:0.000598s SQL = SELECT * FROM banjj_blog
+[ 08-09-30 17:56:28 ]
+ RunTime:0.000471s SQL = SELECT * FROM banjj_blog
