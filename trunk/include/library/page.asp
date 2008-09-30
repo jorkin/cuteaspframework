@@ -16,14 +16,11 @@
 'Tpub.page.Conn = Tpub.db.conn
 'Tpub.page.Page = Trim(Request("PageID"))
 'Tpub.page.Size = 10
-'Getdata = Tpub.page.Header_b(sTable,sPK,sFields,sWhere,sSort)
-'If Not IsArray(Getdata) Then
-'	Response.Write "暂无记录"
-'Else
-'	For i=0 to Ubound(Getdata,2)
-'		Response.Write Getdata(0,i)&"<br>"
-'	Next
-'End If
+'Tpub.page.Header_b(rs,sTable,sPK,sFields,sWhere,sSort)
+'Do While Not rs.eof
+'	--------
+'	MoveNext
+'Loop
 'Tpub.page.Footer_a "",""
 
 '**********
@@ -85,7 +82,7 @@ Class Class_Page
 	End Property
 
 	'**********分页模板Top（1）******************
-	'Call Header_a(SQL语句)
+	'Call Header_a(Obj,SQL语句)
 	'**********
 	Sub Header_a(OutRs,sql)
 		Set OutRs = Server.CreateObject("ADODB.Recordset")
@@ -99,7 +96,7 @@ Class Class_Page
 	End Sub
 	
 	'**********分页模板Top（2）******************
-	'Call Header_b(数据表名,主键,查询字段,查询条件,排序)
+	'Call Header_b(Obj,数据表名,主键,查询字段,查询条件,排序)
 	'**********
 	Sub Header_b(OutRs,sTable,sPK,sFields,sWhere,sSort)
 		Dim Cmd, sql,StrOrder, bFlag
