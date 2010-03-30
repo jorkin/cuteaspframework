@@ -1,6 +1,6 @@
 =Functions=
 
-====[echo echo(string)]====
+*[echo echo(string)]* 输出文本
 
 ====[die die(string)]====
 
