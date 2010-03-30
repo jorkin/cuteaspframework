@@ -1,119 +1,119 @@
 =Functions=
 
-*[echo echo(string)]*  _输出文本_
+*[echo echo(string)]* _输出文本_
 
-*[die die(string)]*  _输出文本后结束_
+*[die die(string)]* _输出文本后结束_
 
-*[isset isset(object)]*  _判断对象是否为空_
+*[isset isset(object)]* _判断对象是否为空_
 
-*[isNumber isNumber(object)]*  _判断对象是否为数字_
+*[isNumber isNumber(object)]* _判断对象是否为数字_
 
-*[locationHref locationHref(url)]*  _跳转页面_
+*[locationHref locationHref(url)]* _跳转页面_
 
-*[locationReferer locationReferer()]*  _返回来源页_
+*[locationReferer locationReferer()]* _返回来源页_
 
-*[alertRedirect alertRedirect(string,url)]*  _弹出信息后跳转_
+*[alertRedirect alertRedirect(string,url)]* _弹出信息后跳转_
 
-*[alertBack alertBack(string)]*  _弹出信息后返回_
+*[alertBack alertBack(string)]* _弹出信息后返回_
 
-*[alertClose alertClose(string)]*  _弹出信息后关闭_
+*[alertClose alertClose(string)]* _弹出信息后关闭_
 
-*[IIf IIf(flag,return1,return2)]*  _三元表达式_
+*[IIf IIf(flag,return1,return2)]* _三元表达式_
 
 
 
 =Common=
 
-*[ShowErr ShowErr(string)]*  _显示错误信息_
+*[ShowErr ShowErr(string)]* _显示错误信息_
 
-*[ShowException ShowException()]*  _显示异常_
+*[ShowException ShowException()]* _显示异常_
 
-*[CheckPostSource CheckPostSource()]*  _检验来源地址_
+*[CheckPostSource CheckPostSource()]* _检验来源地址_
 
-*[GetSystem GetSystem()]*  _获取客户端操作系统版本_
+*[GetSystem GetSystem()]* _获取客户端操作系统版本_
 
-*[IsInstall IsInstall(object)]*  _检查组件是否已经安装_
+*[IsInstall IsInstall(object)]* _检查组件是否已经安装_
 
-*[NoBuffer NoBuffer()]*  _禁用页面缓存_
+*[NoBuffer NoBuffer()]* _禁用页面缓存_
 
-*[Rand Rand(min,max)]*  _取随机数_
+*[Rand Rand(min,max)]* _取随机数_
 
-*[RandStr RandStr(length)]*  _取随机字符串_
+*[RandStr RandStr(length)]* _取随机字符串_
 
-*[rq rq(RequestType,Name,dataType,Default)]*  _安全获取参数_
+*[rq rq(RequestType,Name,dataType,Default)]* _安全获取参数_
 
-*[Form Form(element)]*  __
+*[Form Form(element)]* __
 
-*[Safe Safe(string)]*  _过滤非法字符_
+*[Safe Safe(string)]* _过滤非法字符_
 
-*[CurrentURL CurrentURL()]*  _获取当前URL_
+*[CurrentURL CurrentURL()]* _获取当前URL_
 
-*[RefererURL RefererURL()]*  _获取来源URL_
+*[RefererURL RefererURL()]* _获取来源URL_
 
-*[GetIP GetIP()]*  _获取IP_
+*[GetIP GetIP()]* _获取IP_
 
-*[GetSelfName GetSelfName()]*  _获取当前访问文件名_
+*[GetSelfName GetSelfName()]* _获取当前访问文件名_
 
-*[ReturnObj ReturnObj()]*  _返回空对象_
+*[ReturnObj ReturnObj()]* _返回空对象_
 
-*[EncodeJP EncodeJP(string)]*  _转换日文字符_
+*[EncodeJP EncodeJP(string)]* _转换日文字符_
 
-*[HtmlEncode HtmlEncode(string)]*  _HTML编码_
+*[HtmlEncode HtmlEncode(string)]* _HTML编码_
 
-*[HtmlDecode HtmlDecode(string)]*  _HTML解码_
+*[HtmlDecode HtmlDecode(string)]* _HTML解码_
 
-*[UrlDecode UrlDecode(url)]*  _URL解码_
+*[UrlDecode UrlDecode(url)]* _URL解码_
 
-*[SetQueryString SetQueryString(string:RequestQueryString, ParamName, Value)]*  _重置URL参数_
+*[SetQueryString SetQueryString(string:RequestQueryString, ParamName, Value)]* _重置URL参数_
 
-*[GetGUID GetGUID()]*  _生成GUID_
+*[GetGUID GetGUID()]* _生成GUID_
 
 
 =Library=
 
-*[Arrays]*  _数组类_
+*[Arrays]* _数组类_
 
-*[Cache]*  _缓存类_
+*[Cache]* _缓存类_
 
-*[Cookie]*  _Cookie类_
+*[Cookie]* _Cookie类_
 
-*[Session]*  _Session类_
+*[Session]* _Session类_
 
-*[Date]*  _时间类_
+*[Date]* _时间类_
 
-*[Debug]*  _Debug类_
+*[Debug]* _Debug类_
 
-*[String]*  _字符串操作类_
+*[String]* _字符串操作类_
 
-*[Params]*  _字典类_
+*[Params]* _字典类_
 
-*[Page]*  _分页类_
+*[Page]* _分页类_
 
-*[Db]*  _数据库操作类_
+*[Db]* _数据库操作类_
 
-*[File]*  _文件类_
+*[File]* _文件类_
 
-*[Upload]*  _上传类_
+*[Upload]* _上传类_
 
 
 =Helper=
 
-*[SHA1]*  __
+*[Md5]* _MD5加密_
 
-*[Md5]*  __
+*[Json]* _Json操作类_
 
-*[Json]*  __
+*[Xml]* _XML操作类_
 
-*[ValidCode]*  __
+*[ValidCode]* _验证码_
 
-*[Export]*  __
+*[InterFace]* _接口调用类_
 
-*[Email]*  __
+*[SHA1]* _SHA1加解密_
 
-*[InterFace]*  __
+*[Des]* _Des加解密_
 
-*[Des]*  __
+*[BEDcode]* _简单加解密_
 
-*[BEDcode]*  __
+*[Export]* _Excel导出_
 
-*[Xml]*
+*[Email]* _邮件发送_
