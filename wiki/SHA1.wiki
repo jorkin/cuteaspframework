@@ -1,0 +1,5 @@
+#summary One-sentence summary of this page.
+
+_使用方法：Casp.Sha1._
+
+  * *[Encode Encode(str)]* _加密_
