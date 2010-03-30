@@ -1,5 +1,7 @@
 #summary XML操作类
 
+_使用方法：Casp.Xml._
+
   * *[XmlDom]* _XML对象_
 
   * *[Open Open(xmlSourceFile)]* _开打一个已经存在的XML文件,返回打开状态_
