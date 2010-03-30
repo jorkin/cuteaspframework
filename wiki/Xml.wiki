@@ -14,15 +14,15 @@
 
   * *[InsertElement InsertElement(BefelementOBJ,ElementName,ElementText,IsFirst,IsCDATA)]* _插入在BefelementOBJ下面一个名为ElementName，Value为ElementText的子节点。_
 
-  _IsFirst：是否插在第一个位置；IsCDATA：说明节点的值是否属于CDATA类型_
-  _插入成功就返回新插入这个节点_
-  _BefelementOBJ可以是对象也可以是节点名，为空就取当前默认对象_
+    _IsFirst：是否插在第一个位置；IsCDATA：说明节点的值是否属于CDATA类型_
+    _插入成功就返回新插入这个节点_
+    _BefelementOBJ可以是对象也可以是节点名，为空就取当前默认对象_
 
   * *[SetAttributeNode SetAttributeNode(ElementOBJ,AttributeName,AttributeText)]* _在ElementOBJ节点上插入或修改名为AttributeName，值为：AttributeText的属性_
 
-  _如果已经存在名为AttributeName的属性对象，就进行修改。_
-  _返回插入或修改属性的Node_
-  _ElementOBJ可以是Element对象或名，为空就取当前默认对象_
+    _如果已经存在名为AttributeName的属性对象，就进行修改。_
+    _返回插入或修改属性的Node_
+    _ElementOBJ可以是Element对象或名，为空就取当前默认对象_
 
   * *[UpdateNodeText UpdateNodeText(ElementOBJ,NewElementText,IsCDATA)]* _修改ElementOBJ节点的Text值，并返回这个节点_
 
