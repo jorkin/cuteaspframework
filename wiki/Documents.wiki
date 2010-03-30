@@ -1,3 +1,25 @@
+=Functions=
+[echo]
+
+[die]
+
+[isset]
+
+[isNumber]
+
+[locationHref]
+
+[locationReferer]
+
+[alertRedirect]
+
+[alertBack]
+
+[alertClose]
+
+[IIf]
+
+
 =Library=
 [Common]
 
