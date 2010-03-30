@@ -1,0 +1,9 @@
+#summary Email操作
+
+_使用方法：Casp.Email._
+
+  * *[Charset]* _设置字符集_
+
+  * *[MailServer]* _设置邮件服务器IP_
+
+  * *[Send Send(MailtoEmails, Subject, TemplateFile, Params, FromName, FromMail, UserName, Password, Priority)]* _发送邮件_
