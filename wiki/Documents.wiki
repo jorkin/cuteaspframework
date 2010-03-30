@@ -1,3 +1,5 @@
+#summary 帮助文档
+
 =Functions=
 
 _使用方法：(直接使用)_
