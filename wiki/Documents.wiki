@@ -392,8 +392,6 @@ _使用方法：Cas.类名_
 
 *[Des]* _Des加解密_
 
-*[BEDcode]* _简单加解密_
-
 *[Export]* _Excel导出_
 
 *[Email]* _邮件发送_
