@@ -1,5 +1,7 @@
 =Functions=
 
+_使用方法：(直接使用)_
+
 *[echo echo(string)]* _输出文本_
 
 *[die die(string)]* _输出文本后结束_
@@ -23,6 +25,8 @@
 
 
 =Common=
+
+_使用方法：Cas._
 
 *[ShowErr ShowErr(string)]* _显示错误信息_
 
