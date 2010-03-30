@@ -1,24 +1,23 @@
 =Functions=
 [echo echo(string)]
 
-[die]
+[die(string) die]
 
-[isset]
+[isset isset(object)]
 
-[isNumber]
+[isNumber isNumber(object)]
 
-[locationHref]
+[locationHref locationHref(url)]
 
-[locationReferer]
+[locationReferer locationReferer()]
 
-[alertRedirect]
+[alertRedirect alertRedirect(string,url)]
 
-[alertBack]
+[alertBack alertBack(string)]
 
-[alertClose]
+[alertClose alertClose(string)]
 
-[IIf]
-
+[IIf IIf(flag,return1,return2)]
 
 =Library=
 [Common]
