@@ -20,31 +20,78 @@
 
 ====[IIf IIf(flag,return1,return2)]====
 
+
+=[Common]=
+
+====[ShowErr ShowErr(string)]====
+
+====[ShowException ShowException()]====
+
+====[CheckPostSource CheckPostSource()]====
+
+====[GetSystem GetSystem()]====
+
+====[IsInstall IsInstall(object)]====
+
+====[NoBuffer NoBuffer()]====
+
+====[Rand Rand(min,max)]====
+
+====[RandStr RandStr(length)]====
+
+====[rq rq(RequestType,Name,dataType,Default)]====
+
+====[Form Form(element)]====
+
+====[Safe Safe(string)]====
+
+====[CurrentURL CurrentURL()]====
+
+====[RefererURL RefererURL()]====
+
+====[GetIP GetIP()]====
+
+====[GetSelfName GetSelfName()]====
+
+====[ReturnObj ReturnObj()]====
+
+====[EncodeJP EncodeJP(string)]====
+
+====[HtmlEncode HtmlEncode(string)]====
+
+====[HtmlDecode HtmlDecode(string)]====
+
+====[UrlDecode UrlDecode(url)]====
+
+====[SetQueryString SetQueryString(string:RequestQueryString, ParamName, Value)]====
+
+====[GetGUID GetGUID()]====
+
 =Library=
 
-[Common]
+====[Arrays]====
 
-[Db]
+====[Cache]====
 
-[Params]
+====[Cookie]====
 
-[Arrays]
+====[Session]====
 
-[String]
+====[Date]====
 
-[Upload]
+====[Debug]====
 
-[Page]
+====[String]====
 
-[File]
+====[Params]====
 
-[Debug]
+====[Page]====
 
-[Cookie]
+====[Db]====
 
-[Session]
+====[File]====
 
-[Date]
+====[Upload]====
 
 =Helper=
 
