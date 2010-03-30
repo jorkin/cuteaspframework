@@ -1,5 +1,7 @@
 #summary JSON操作类
 
+_使用方法：Casp.Json._
+
   * *[toResponse toResponse]* _(bool)是否在转换后输出对象_
 
   * *[escape escape(val)]* __
