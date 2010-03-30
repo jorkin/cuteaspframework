@@ -1,0 +1,23 @@
+#summary JSON操作类
+
+  * *[toResponse toResponse]* _(bool)是否在转换后输出对象_
+
+  * *[escape escape(val)]* __
+
+  * *[toJSON toJSON(Name, Val, nested)]* _把对象转成JSON对象_
+
+  {{{
+  'str = {
+  '  "a":1,
+  '  "b":{
+  '    "b1":2
+  '  }
+  '}
+
+  Casp.Json.toJSON(null,str,false) 
+  'output:{"a": 1,"b": {"b1": 2}}
+
+  Casp.Json.toJSON("root",str,false) 
+  'output:{"root": {"a": 1,"b": {"b1": 2}}}
+
+  }}}
