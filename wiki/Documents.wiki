@@ -2,23 +2,23 @@
 
 ====[echo echo(string)]====
 
-===[die die(string)]===
+====[die die(string)]====
 
-===[isset isset(object)]===
+====[isset isset(object)]====
 
-===[isNumber isNumber(object)]===
+====[isNumber isNumber(object)]====
 
-===[locationHref locationHref(url)]===
+====[locationHref locationHref(url)]====
 
-===[locationReferer locationReferer()]===
+====[locationReferer locationReferer()]====
 
-===[alertRedirect alertRedirect(string,url)]===
+====[alertRedirect alertRedirect(string,url)]====
 
-===[alertBack alertBack(string)]===
+====[alertBack alertBack(string)]====
 
-===[alertClose alertClose(string)]===
+====[alertClose alertClose(string)]====
 
-===[IIf IIf(flag,return1,return2)]===
+====[IIf IIf(flag,return1,return2)]====
 
 =Library=
 
