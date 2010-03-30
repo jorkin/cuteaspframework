@@ -1,0 +1,14 @@
+#summary 数据导出
+
+_使用方法：Casp.Export._
+
+  * _[Constructor(sTable,sFields,sWhere,sOrders,sAnother)]_ _等同于Excel_
+
+  * *[FileName]* _设置导出的文件名_
+
+  * *[Excel Excel(sql,fields)]* _导出Excel文件_
+
+  * *[Excel Txt(sql,fields)]* _导出Txt文件_
+
+
+
