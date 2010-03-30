@@ -1,7 +1,8 @@
 =Functions=
+
 [echo echo(string)]
 
-[die(string) die]
+[die die(string)]
 
 [isset isset(object)]
 
@@ -20,6 +21,7 @@
 [IIf IIf(flag,return1,return2)]
 
 =Library=
+
 [Common]
 
 [Db]
@@ -65,6 +67,3 @@
 [BEDcode]
 
 [Xml]
-
-[http://domain/page label]
-http://domain/page
