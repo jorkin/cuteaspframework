@@ -15,9 +15,9 @@
   '}
 
   Casp.Json.toJSON(null,str,false) 
-  'output:{"a": 1,"b": {"b1": 2}}
+  'output:{"a": 1,"b": {"b1": 2}}'
 
   Casp.Json.toJSON("root",str,false) 
-  'output:{"root": {"a": 1,"b": {"b1": 2}}}
+  'output:{"root": {"a": 1,"b": {"b1": 2}}}'
 
   }}}
