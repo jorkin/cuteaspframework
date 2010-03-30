@@ -79,7 +79,7 @@ _使用方法：Cas.类名_
 
 *[Arrays]* _数组类_
 
-  *[Max Max(arr)] _取最大值_
+  * [Max Max(arr)] _取最大值_
 
 *[Cache]* _缓存类_
 
