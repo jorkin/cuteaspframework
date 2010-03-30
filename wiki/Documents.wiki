@@ -79,29 +79,289 @@ _使用方法：Cas.类名_
 
 *[Arrays]* _数组类_
 
-  * [Max Max(arr)] _取最大值_
+	* [Max Max(arr)] _取最大值_
+
+	* [Min Min(arr)] _取最小值_
+
+	* [UnShift UnShift(arr,var)] _从前压入元素_
+
+	* [Shift Shift(arr)] _从前删除元素_
+
+	* [Push Push(arr,var)] _从后压入元素_
+
+	* [Pop Pop(arr)] _从后删除元素_
+
+	* [Strip Strip(str)] _去除多余逗号后转成数组_
+
+	* [Walk Walk(arr,callback)] _对数组内元素执行函数后返回新数组_
+
+	* [Splice Splice(arr,start,final)] _从一个数组中移除一个或多个元素_
+
+	* [Fill Fill(arr,index,value)] _在指定位置插入元素_
+
+	* [Unique Unique(arr)] _移除重复的元素_
+
+	* [Reverse Reverse(arr)] _数组反向_
+
+	* [Search Search(arr,value)] _搜索元素_
+
+	* [Rand Rand(arr,num)] _随机取元素_
+
+	* [Sort Sort(arr)] _顺序排序_
+
+	* [rSort rSort(arr)] _倒序排序_
+
+	* [Shuffle Shuffle(arr)] _随机排序_
+
+	* [ConvComma ConvComma(string)] _编码元素中的逗号_
+
+	* [ToString ToString(arr)] _数组转字符串_
+
+	* [ToArray ToArray(string)] _字符串转数组_
 
 *[Cache]* _缓存类_
 
+	* [Mark] _设置前缀_
+
+	* [Timeout] _设置超时时间_
+
+	* [Lock Lock()] __
+
+	* [UnLock UnLock()] __
+
+	* [Set Set(Key,Value,Expire)] _存缓存_
+
+	* [Get Get(Key)] _取缓存_
+
+	* [Remove Remove(Key)] _删除指定缓存_
+
+	* [RemoveAll RemoveAll()] _清空所有缓存_
+
+	* [Compare Compare(Key1, Key2)] _比较指定缓存_
+
 *[Cookie]* _Cookie类_
+
+	* [Mark] _设置前缀_
+
+	* [set Set(Key,Value,array:options)] _存Cookie_
+
+	* [get Get(Key)] _取Cookie_
+
+	* [Remove Remove(Key)] _删除指定Cookie_
+
+	* [RemoveAll RemoveAll()] _清空所有Cookie_
+
+	* [Compare Compare(Key1, Key2)] _比较指定Cookie_
 
 *[Session]* _Session类_
 
+	* [Mark] _设置前缀_
+
+	* [Timeout] _设置超时时间_
+
+	* [Set Set(Key,Value)] _存Session_
+
+	* [Get Get(Key)] _取Session_
+
+	* [Remove Remove(Key)] _删除指定Session_
+
+	* [RemoveAll RemoveAll()] _清空所有Session_
+
+	* [Compare Compare(Key1,Key2)] _比较指定Session_
+
 *[Date]* _时间类_
+
+	* [TimeZone] _设置时区_
+
+	* [ToGMTdate ToGMTdate(date)] _本地时间转GMT时间_
+
+	* [ToUnixEpoch ToUnixEpoch(date)] _获取时间戳_
+
+	* [FromUnixEpoch FromUnixEpoch(date)] _时间戳转本地时间_
+
+	* [Format Format(date,format)] _格式化时间_
+
+	* [Zodiac Zodiac(date)] _获取生肖_
+
+	* [Constellation Constellation(date)] _获取星座_
 
 *[Debug]* _Debug类_
 
+	* [Open Open()] _打开Debug_
+
+	* [Close Close()] _关闭Debug_
+
+	* [Add Add(var)] _添加监听_
+
+	* [Show Show()] _显示监听_
+
 *[String]* _字符串操作类_
+
+	* [Length Length(string)] _计算字符串长度_
+
+	* [Cut Cut(string,length,isEnd)] _截断字符串_
+
+	* [KeyWordLight KeyWordLight(string, regex)] _高亮字符串_
+
+	* [Validate Validate(string,type)] _正则验证字符串格式_
+
+	* [TextToHtml TextToHtml(string)] _文本转HTML_
+
+	* [HtmlToJs HtmlToJs(string)] _HTML格式化成JS_
+
+	* [StripHTML StripHTML(string)] _过滤HTML_
+
+	* [Replace Replace(string,regex,replacestring,isCase)] _正则替换_
+
+	* [Test Test(string,regex,isCase)] _正则匹配_
+
+	* [Trim Trim(string)] _去除前后空白_
+
+	* [LTrim LTrim(string)] _去除前置空白_
+
+	* [RTrim RTrim(string)] _去除后置空白_
 
 *[Params]* _字典类_
 
+	* [Close Close()] _释放对象_
+
 *[Page]* _分页类_
+
+	* [PageProcedure] _设置分页存储过程_
+
+	* [Conn] _设置数据库连接_
+
+	* [Size] _设置每页显示条数_
+
+	* [Page] _设置当前页码_
+
+	* [PageCount] _获取总页数_
+
+	* [RecordCount] _获取总条数_
+
+	* [GetSqlString] _显示最终查询Sql_
+
+	* [Header_a Header_a(Recordset,Table,Fields,Where,Group,Sort)] _简单分页函数_
+
+	* [Header_b Header_b(Recordset,Table,Fields,Where,Group,Sort)] _sql2000分页函数_
+
+	* [Header_c Header_c(Recordset,Table,Fields,Where,Group,Sort)] _sql2005分页函数_
+
+	* [Footer_a Footer_a(string,string type)] _分页标准页脚_
+
+	* [Footer_b Footer_b(string,string type)] _分页数字页脚_
 
 *[Db]* _数据库操作类_
 
+	* [Conn] _数据库连接对象_
+
+	* [ServerIp] _设置数据库IP_
+
+	* [ConnectionType] _设置数据库类型(MSSQL|ACCESS)_
+
+	* [Username] _设置连接用户名_
+
+	* [Password] _设置连接密码_
+
+	* [Open Open()] _连接数据库_
+
+	* [Close Close()] _释放连接_
+
+	* [CloseRs CloseRs(Recordset)] _释放指定数据集_
+
+	* [SetRs SetRs(Recordset, sql, CursorAndLockType)] _生成数据集(可设置可写)_
+
+	* [Exec Exec(Recordset, sql)] _执行Sql并生成数据集(只读)_
+
+	* [BeginTrans BeginTrans()] _打开事务_
+
+	* [RollBackTrans RollBackTrans()] _回滚事务_
+
+	* [CommitTrans CommitTrans()] _提交事务_
+
+	* [GetRowObject GetRowObject(Dictionary,Recordset|string)] _获取数据集并转成字典对象_
+
+	* [Insert Insert(Table,Params)] _插入数据_
+
+	* [Update Update(Table,(#)] _Params,Where) -- 更新数据(参数名前有#表示累加)_
+
+	* [ExecuteRecordSet ExecuteRecordSet(commandName,params)] _执行存储过程并返回数据集_
+
+	* [ExecuteScalar ExecuteScalar(commandName,params)] _执行存储过程并返回单行数据_
+
+	* [ExecuteReturnValue ExecuteReturnValue(commandName,params)] _执行存储过程并返回值_
+
+	* [ExecuteNonQuery ExecuteNonQuery(commandName,params)] _执行存储过程不返回内容_
+
+	* [ExecuteRecordsetAndValue ExecuteRecordsetAndValue(commandName,params)] _执行存储过程返回值并返回数据集_
+
 *[File]* _文件类_
 
+	* [FSO] _设置FSO组件名称_
+
+	* [Stream] _设置Stream组件名称_
+
+	* [Charset] _设置字符集_
+
+	* [GetFileTypeName GetFileTypeName(filename)] _获取文件类型_
+
+	* [CheckFileExt CheckFileExt(file,ext)] _检验文件类型_
+
+	* [FormatFileSize FormatFileSize(size,point)] _格式化文件大小_
+
+	* [GetFileSize GetFileSize(size)] _获取文件大小_
+
+	* [GetFolderSize GetFolderSize(size)] _获取文件夹大小_
+
+	* [IsFolderExists IsFolderExists(folderpath)] _检验文件夹是否存在_
+
+	* [IsFileExists IsFileExists(filepath)] _检验文件是否存在_
+
+	* [CreatePath CreatePath(folderpat)] _创建文件夹_
+
+	* [DelFolder DelFolder(folderpath)] _删除文件夹_
+
+	* [DelFile DelFile(filepath)] _删除文件_
+
+	* [LoadFile LoadFile(filepath)] _读取文件_
+
+	* [SaveFile SaveFile(filepath,content)] _保存文件_
+
+	* [CopyFolder CopyFolder(filepath1,filepath2)] _复制文件夹_
+
+	* [CopyFile CopyFile(filepath1,filepath2)] _复制文件_
+
+	* [LoadIncludeFiles LoadIncludeFiles(path,extlist[string])] _读取文件目录_
+
+	* [RemoveUtf8bom RemoveUtf8bom(filepath)] _删除UTF-8签名_
+
 *[Upload]* _上传类_
+
+	* [MaxSize] _设置单个文件最大上传大小_
+
+	* [TotalSize] _设置最大总上传大小_
+
+	* [Mode] _设置上传方式(1.aspupload;2.fso)_
+
+	* [SavePath] _设置上传路径_
+
+	* [Charset] _设置字符集_
+
+	* [AutoSave] _设置保存模式(0.自动取名并保存;1.取源文件名自动保存;2.Open之后用Save/GetData方法手动保存)_
+
+	* [FormItem] _保存Post表单中文本域名称的数组(下标从1开始)_
+
+	* [FileItem] _保存Post表单中文件域名称的数组(下标从1开始)_
+
+	* [Close Close()] _释放对象_
+
+	* [Open Open()] _打开对象，开始上传_
+
+	* [Save Save(Item, filepath)] _保存表单中 file 域上传的文件(0.自动取名;1.取源文件名;string.自定义文件名)_
+
+	* [GetData GetData()] _返回表单中 file 域上传的文件数据流_
+
+	* [Form Form(Item)] _返回表单中各类域提交(上传)的文本(文件)信息_
 
 
 =Helper=
