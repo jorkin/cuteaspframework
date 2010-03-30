@@ -121,6 +121,8 @@ _使用方法：Cas.类名_
 
 *[Cache]* _缓存类_
 
+	* _[Constructor Constructor(name)]_ _等同于Get_
+
 	* [Mark] _设置前缀_
 
 	* [Timeout] _设置超时时间_
@@ -141,6 +143,8 @@ _使用方法：Cas.类名_
 
 *[Cookie]* _Cookie类_
 
+	* _[Constructor Constructor(name)]_ _等同于Get_
+
 	* [Mark] _设置前缀_
 
 	* [set Set(Key,Value,array:options)] _存Cookie_
@@ -154,6 +158,8 @@ _使用方法：Cas.类名_
 	* [Compare Compare(Key1, Key2)] _比较指定Cookie_
 
 *[Session]* _Session类_
+
+	* _[Constructor Constructor(name)]_ _等同于Get_
 
 	* [Mark] _设置前缀_
 
@@ -222,6 +228,8 @@ _使用方法：Cas.类名_
 	* [RTrim RTrim(string)] _去除后置空白_
 
 *[Params]* _字典类_
+
+	* _[Constructor Constructor(object)]_ _实例化一个新的字典对象_
 
 	* [Close Close()] _释放对象_
 
