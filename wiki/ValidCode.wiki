@@ -1,5 +1,5 @@
 #summary 验证码
 
-  * [GetCode GetCode(sPath,lang)] _生成验证码图片_
+  * *[GetCode GetCode(sPath,lang)]* _生成验证码图片_
 
-  * [Check Check(InputCode)] _验证验证码_
+  * *[Check Check(InputCode)]* _验证验证码_
