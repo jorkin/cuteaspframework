@@ -1,5 +1,5 @@
 =Functions=
-[echo(string) echo]
+[echo echo(string)]
 
 [die]
 
