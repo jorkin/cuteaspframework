@@ -24,76 +24,76 @@
 
 =Common=
 
-*[ShowErr ShowErr(string)]* __
+*[ShowErr ShowErr(string)]* _显示错误信息_
 
-*[ShowException ShowException()]* __
+*[ShowException ShowException()]* _显示异常_
 
-*[CheckPostSource CheckPostSource()]* __
+*[CheckPostSource CheckPostSource()]* _检验来源地址_
 
-*[GetSystem GetSystem()]* __
+*[GetSystem GetSystem()]* _获取客户端操作系统版本_
 
-*[IsInstall IsInstall(object)]* __
+*[IsInstall IsInstall(object)]* _检查组件是否已经安装_
 
-*[NoBuffer NoBuffer()]* __
+*[NoBuffer NoBuffer()]* _禁用页面缓存_
 
-*[Rand Rand(min,max)]* __
+*[Rand Rand(min,max)]* _取随机数_
 
-*[RandStr RandStr(length)]* __
+*[RandStr RandStr(length)]* _取随机字符串_
 
-*[rq rq(RequestType,Name,dataType,Default)]* __
+*[rq rq(RequestType,Name,dataType,Default)]* _安全获取参数_
 
 *[Form Form(element)]* __
 
-*[Safe Safe(string)]* __
+*[Safe Safe(string)]* _过滤非法字符_
 
-*[CurrentURL CurrentURL()]* __
+*[CurrentURL CurrentURL()]* _获取当前URL_
 
-*[RefererURL RefererURL()]* __
+*[RefererURL RefererURL()]* _获取来源URL_
 
-*[GetIP GetIP()]* __
+*[GetIP GetIP()]* _获取IP_
 
-*[GetSelfName GetSelfName()]* __
+*[GetSelfName GetSelfName()]* _获取当前访问文件名_
 
-*[ReturnObj ReturnObj()]* __
+*[ReturnObj ReturnObj()]* _返回空对象_
 
-*[EncodeJP EncodeJP(string)]* __
+*[EncodeJP EncodeJP(string)]* _转换日文字符_
 
-*[HtmlEncode HtmlEncode(string)]* __
+*[HtmlEncode HtmlEncode(string)]* _HTML编码_
 
-*[HtmlDecode HtmlDecode(string)]* __
+*[HtmlDecode HtmlDecode(string)]* _HTML解码_
 
-*[UrlDecode UrlDecode(url)]* __
+*[UrlDecode UrlDecode(url)]* _URL解码_
 
-*[SetQueryString SetQueryString(string:RequestQueryString, ParamName, Value)]* __
+*[SetQueryString SetQueryString(string:RequestQueryString, ParamName, Value)]* _重置URL参数_
 
-*[GetGUID GetGUID()]* __
+*[GetGUID GetGUID()]* _生成GUID_
 
 
 =Library=
 
-*[Arrays]* __
+*[Arrays]* _数组类_
 
-*[Cache]* __
+*[Cache]* _缓存类_
 
-*[Cookie]* __
+*[Cookie]* _Cookie类_
 
-*[Session]* __
+*[Session]* _Session类_
 
-*[Date]* __
+*[Date]* _时间类_
 
-*[Debug]* __
+*[Debug]* _Debug类_
 
-*[String]* __
+*[String]* _字符串操作类_
 
-*[Params]* __
+*[Params]* _字典类_
 
-*[Page]* __
+*[Page]* _分页类_
 
-*[Db]* __
+*[Db]* _数据库操作类_
 
-*[File]* __
+*[File]* _文件类_
 
-*[Upload]* __
+*[Upload]* _上传类_
 
 
 =Helper=
