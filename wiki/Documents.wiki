@@ -22,7 +22,7 @@
 
 
 
-=[Common]=
+=Common=
 
 ====[ShowErr ShowErr(string)]====
 
