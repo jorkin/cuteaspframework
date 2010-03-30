@@ -2,118 +2,118 @@
 
 *[echo echo(string)]* _输出文本_
 
-*[die die(string)]*
+*[die die(string)]* _输出文本后结束_
 
-*[isset isset(object)]*
+*[isset isset(object)]* _判断对象是否为空_
 
-*[isNumber isNumber(object)]*
+*[isNumber isNumber(object)]* _判断对象是否为数字_
 
-*[locationHref locationHref(url)]*
+*[locationHref locationHref(url)]* _跳转页面_
 
-*[locationReferer locationReferer()]*
+*[locationReferer locationReferer()]* _返回来源页_
 
-*[alertRedirect alertRedirect(string,url)]*
+*[alertRedirect alertRedirect(string,url)]* _弹出信息后跳转_
 
-*[alertBack alertBack(string)]*
+*[alertBack alertBack(string)]* _弹出信息后返回_
 
-*[alertClose alertClose(string)]*
+*[alertClose alertClose(string)]* _弹出信息后关闭_
 
-*[IIf IIf(flag,return1,return2)]*
+*[IIf IIf(flag,return1,return2)]* _三元表达式_
 
 
 
 =Common=
 
-*[ShowErr ShowErr(string)]*
+*[ShowErr ShowErr(string)]* __
 
-*[ShowException ShowException()]*
+*[ShowException ShowException()]* __
 
-*[CheckPostSource CheckPostSource()]*
+*[CheckPostSource CheckPostSource()]* __
 
-*[GetSystem GetSystem()]*
+*[GetSystem GetSystem()]* __
 
-*[IsInstall IsInstall(object)]*
+*[IsInstall IsInstall(object)]* __
 
-*[NoBuffer NoBuffer()]*
+*[NoBuffer NoBuffer()]* __
 
-*[Rand Rand(min,max)]*
+*[Rand Rand(min,max)]* __
 
-*[RandStr RandStr(length)]*
+*[RandStr RandStr(length)]* __
 
-*[rq rq(RequestType,Name,dataType,Default)]*
+*[rq rq(RequestType,Name,dataType,Default)]* __
 
-*[Form Form(element)]*
+*[Form Form(element)]* __
 
-*[Safe Safe(string)]*
+*[Safe Safe(string)]* __
 
-*[CurrentURL CurrentURL()]*
+*[CurrentURL CurrentURL()]* __
 
-*[RefererURL RefererURL()]*
+*[RefererURL RefererURL()]* __
 
-*[GetIP GetIP()]*
+*[GetIP GetIP()]* __
 
-*[GetSelfName GetSelfName()]*
+*[GetSelfName GetSelfName()]* __
 
-*[ReturnObj ReturnObj()]*
+*[ReturnObj ReturnObj()]* __
 
-*[EncodeJP EncodeJP(string)]*
+*[EncodeJP EncodeJP(string)]* __
 
-*[HtmlEncode HtmlEncode(string)]*
+*[HtmlEncode HtmlEncode(string)]* __
 
-*[HtmlDecode HtmlDecode(string)]*
+*[HtmlDecode HtmlDecode(string)]* __
 
-*[UrlDecode UrlDecode(url)]*
+*[UrlDecode UrlDecode(url)]* __
 
-*[SetQueryString SetQueryString(string:RequestQueryString, ParamName, Value)]*
+*[SetQueryString SetQueryString(string:RequestQueryString, ParamName, Value)]* __
 
-*[GetGUID GetGUID()]*
+*[GetGUID GetGUID()]* __
 
 
 =Library=
 
-*[Arrays]*
+*[Arrays]* __
 
-*[Cache]*
+*[Cache]* __
 
-*[Cookie]*
+*[Cookie]* __
 
-*[Session]*
+*[Session]* __
 
-*[Date]*
+*[Date]* __
 
-*[Debug]*
+*[Debug]* __
 
-*[String]*
+*[String]* __
 
-*[Params]*
+*[Params]* __
 
-*[Page]*
+*[Page]* __
 
-*[Db]*
+*[Db]* __
 
-*[File]*
+*[File]* __
 
-*[Upload]*
+*[Upload]* __
 
 
 =Helper=
 
-*[SHA1]*
+*[SHA1]* __
 
-*[Md5]*
+*[Md5]* __
 
-*[Json]*
+*[Json]* __
 
-*[ValidCode]*
+*[ValidCode]* __
 
-*[Export]*
+*[Export]* __
 
-*[Email]*
+*[Email]* __
 
-*[InterFace]*
+*[InterFace]* __
 
-*[Des]*
+*[Des]* __
 
-*[BEDcode]*
+*[BEDcode]* __
 
 *[Xml]*
