@@ -1,0 +1,10 @@
+#summary DES加解密
+
+_使用方法：Casp.Des._
+
+
+  * *[Key]* _设置Key_
+
+  * *[encode encode(string, mode,iv)]* _加密_
+
+  * *[decode decode(string, mode,iv)]* _解密_
