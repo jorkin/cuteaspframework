@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#summary SHA1加密
 
 _使用方法：Casp.Sha1._
 
