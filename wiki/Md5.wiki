@@ -1,3 +1,5 @@
 #summary MD5加密类
 
+_使用方法：Casp.Md5._
+
   * *[Encode Encode(sMessage,mode:16|32)]* _加密_
