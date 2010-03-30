@@ -1,1 +1,1 @@
-#summary Casp.InterFace.
+#summary 使用方法：Casp.InterFace.
