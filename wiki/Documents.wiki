@@ -30,49 +30,49 @@ _使用方法：(直接使用)_
 
 _使用方法：Cas._
 
-*[ShowErr ShowErr(string)]* _显示错误信息_
+  * *[ShowErr ShowErr(string)]* _显示错误信息_
 
-*[ShowException ShowException()]* _显示异常_
+  * *[ShowException ShowException()]* _显示异常_
 
-*[CheckPostSource CheckPostSource()]* _检验来源地址_
+  * *[CheckPostSource CheckPostSource()]* _检验来源地址_
 
-*[GetSystem GetSystem()]* _获取客户端操作系统版本_
+  * *[GetSystem GetSystem()]* _获取客户端操作系统版本_
 
-*[IsInstall IsInstall(object)]* _检查组件是否已经安装_
+  * *[IsInstall IsInstall(object)]* _检查组件是否已经安装_
 
-*[NoBuffer NoBuffer()]* _禁用页面缓存_
+  * *[NoBuffer NoBuffer()]* _禁用页面缓存_
 
-*[Rand Rand(min,max)]* _取随机数_
+  * *[Rand Rand(min,max)]* _取随机数_
 
-*[RandStr RandStr(length)]* _取随机字符串_
+  * *[RandStr RandStr(length)]* _取随机字符串_
 
-*[rq rq(RequestType,Name,dataType,Default)]* _安全获取参数_
+  * *[rq rq(RequestType,Name,dataType,Default)]* _安全获取参数_
 
-*[Form Form(element)]* __
+  * *[Form Form(element)]* __
 
-*[Safe Safe(string)]* _过滤非法字符_
+  * *[Safe Safe(string)]* _过滤非法字符_
 
-*[CurrentURL CurrentURL()]* _获取当前URL_
+  * *[CurrentURL CurrentURL()]* _获取当前URL_
 
-*[RefererURL RefererURL()]* _获取来源URL_
+  * *[RefererURL RefererURL()]* _获取来源URL_
 
-*[GetIP GetIP()]* _获取IP_
+  * *[GetIP GetIP()]* _获取IP_
 
-*[GetSelfName GetSelfName()]* _获取当前访问文件名_
+  * *[GetSelfName GetSelfName()]* _获取当前访问文件名_
 
-*[ReturnObj ReturnObj()]* _返回空对象_
+  * *[ReturnObj ReturnObj()]* _返回空对象_
 
-*[EncodeJP EncodeJP(string)]* _转换日文字符_
+  * *[EncodeJP EncodeJP(string)]* _转换日文字符_
 
-*[HtmlEncode HtmlEncode(string)]* _HTML编码_
+  * *[HtmlEncode HtmlEncode(string)]* _HTML编码_
 
-*[HtmlDecode HtmlDecode(string)]* _HTML解码_
+  * *[HtmlDecode HtmlDecode(string)]* _HTML解码_
 
-*[UrlDecode UrlDecode(url)]* _URL解码_
+  * *[UrlDecode UrlDecode(url)]* _URL解码_
 
-*[SetQueryString SetQueryString(string:RequestQueryString, ParamName, Value)]* _重置URL参数_
+  * *[SetQueryString SetQueryString(string:RequestQueryString, ParamName, Value)]* _重置URL参数_
 
-*[GetGUID GetGUID()]* _生成GUID_
+  * *[GetGUID GetGUID()]* _生成GUID_
 
 
 =Library=
