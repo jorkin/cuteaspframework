@@ -1,119 +1,119 @@
 =Functions=
 
-*[echo echo(string)]* 输出文本
+*[echo echo(string)]* _输出文本_
 
-====[die die(string)]====
+*[die die(string)]*
 
-====[isset isset(object)]====
+*[isset isset(object)]*
 
-====[isNumber isNumber(object)]====
+*[isNumber isNumber(object)]*
 
-====[locationHref locationHref(url)]====
+*[locationHref locationHref(url)]*
 
-====[locationReferer locationReferer()]====
+*[locationReferer locationReferer()]*
 
-====[alertRedirect alertRedirect(string,url)]====
+*[alertRedirect alertRedirect(string,url)]*
 
-====[alertBack alertBack(string)]====
+*[alertBack alertBack(string)]*
 
-====[alertClose alertClose(string)]====
+*[alertClose alertClose(string)]*
 
-====[IIf IIf(flag,return1,return2)]====
+*[IIf IIf(flag,return1,return2)]*
 
 
 
 =Common=
 
-====[ShowErr ShowErr(string)]====
+*[ShowErr ShowErr(string)]*
 
-====[ShowException ShowException()]====
+*[ShowException ShowException()]*
 
-====[CheckPostSource CheckPostSource()]====
+*[CheckPostSource CheckPostSource()]*
 
-====[GetSystem GetSystem()]====
+*[GetSystem GetSystem()]*
 
-====[IsInstall IsInstall(object)]====
+*[IsInstall IsInstall(object)]*
 
-====[NoBuffer NoBuffer()]====
+*[NoBuffer NoBuffer()]*
 
-====[Rand Rand(min,max)]====
+*[Rand Rand(min,max)]*
 
-====[RandStr RandStr(length)]====
+*[RandStr RandStr(length)]*
 
-====[rq rq(RequestType,Name,dataType,Default)]====
+*[rq rq(RequestType,Name,dataType,Default)]*
 
-====[Form Form(element)]====
+*[Form Form(element)]*
 
-====[Safe Safe(string)]====
+*[Safe Safe(string)]*
 
-====[CurrentURL CurrentURL()]====
+*[CurrentURL CurrentURL()]*
 
-====[RefererURL RefererURL()]====
+*[RefererURL RefererURL()]*
 
-====[GetIP GetIP()]====
+*[GetIP GetIP()]*
 
-====[GetSelfName GetSelfName()]====
+*[GetSelfName GetSelfName()]*
 
-====[ReturnObj ReturnObj()]====
+*[ReturnObj ReturnObj()]*
 
-====[EncodeJP EncodeJP(string)]====
+*[EncodeJP EncodeJP(string)]*
 
-====[HtmlEncode HtmlEncode(string)]====
+*[HtmlEncode HtmlEncode(string)]*
 
-====[HtmlDecode HtmlDecode(string)]====
+*[HtmlDecode HtmlDecode(string)]*
 
-====[UrlDecode UrlDecode(url)]====
+*[UrlDecode UrlDecode(url)]*
 
-====[SetQueryString SetQueryString(string:RequestQueryString, ParamName, Value)]====
+*[SetQueryString SetQueryString(string:RequestQueryString, ParamName, Value)]*
 
-====[GetGUID GetGUID()]====
+*[GetGUID GetGUID()]*
 
 
 =Library=
 
-====[Arrays]====
+*[Arrays]*
 
-====[Cache]====
+*[Cache]*
 
-====[Cookie]====
+*[Cookie]*
 
-====[Session]====
+*[Session]*
 
-====[Date]====
+*[Date]*
 
-====[Debug]====
+*[Debug]*
 
-====[String]====
+*[String]*
 
-====[Params]====
+*[Params]*
 
-====[Page]====
+*[Page]*
 
-====[Db]====
+*[Db]*
 
-====[File]====
+*[File]*
 
-====[Upload]====
+*[Upload]*
 
 
 =Helper=
 
-[SHA1]
+*[SHA1]*
 
-[Md5]
+*[Md5]*
 
-[Json]
+*[Json]*
 
-[ValidCode]
+*[ValidCode]*
 
-[Export]
+*[Export]*
 
-[Email]
+*[Email]*
 
-[InterFace]
+*[InterFace]*
 
-[Des]
+*[Des]*
 
-[BEDcode]
+*[BEDcode]*
 
-[Xml]
+*[Xml]*
