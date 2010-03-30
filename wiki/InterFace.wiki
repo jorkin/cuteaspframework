@@ -1,1 +1,5 @@
-#summary 使用方法：Casp.InterFace.
+#summary 接口调用类
+
+_使用方法：Casp.InterFace._
+
+* [Stream] _设置Stream组件名称_
