@@ -3,3 +3,13 @@
 _使用方法：Casp.InterFace._
 
   * [Stream] _设置Stream组件名称_
+
+  * [PostHttpPage PostHttpPage(RefererUrl, PostUrl, PostData, DataType)] _POST方式获取数据_
+
+  * [SaveRemoteFile SaveRemoteFile(LocalFileName, RemoteFileUrl, Referer)] _保存远程的文件到本地_
+
+  * [GetHttpPage GetHttpPage(URL, Cset, iUserName , iPassword)] _GET方式获取数据_
+
+  * [GetBody GetBody(ConStr,StartStr,OverStr,IncluL,IncluR)] _截取字符串_
+
+  * [GetLinkArray GetLinkArray(ConStr,StartStr,OverStr,IncluL,IncluR)] _获取所有连接存为数组_
