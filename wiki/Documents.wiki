@@ -1,6 +1,8 @@
 =Functions=
 
-====[echo echo(string)]====撒旦
+====[echo echo(string)]====
+
+_输出文本_
 
 ====[die die(string)]====
 
