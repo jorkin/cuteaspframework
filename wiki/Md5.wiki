@@ -1,0 +1,3 @@
+#summary MD5加密类
+
+  * [Encode Encode(sMessage,mode[16|32])] _加密_
