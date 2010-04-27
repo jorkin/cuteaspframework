@@ -219,7 +219,7 @@ _使用方法：Cas.类名_
 
 	* *[StripHTML StripHTML(string)]* _过滤HTML_
 
-	* *[Replace Replace(string,regex,replacestring,isCase)]* _正则替换_
+	* *[RegexpReplace RegexpReplace(string,regex,replacestring,isCase)]* _正则替换_
 
 	* *[Test Test(string,regex,isCase)]* _正则匹配_
 
