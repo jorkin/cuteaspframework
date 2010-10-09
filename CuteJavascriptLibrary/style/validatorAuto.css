@@ -1,0 +1,57 @@
+.onShow{
+	background-color:transparent; 
+}
+.onFocus{
+	background-color:#E9F0FF; 
+}
+.onError
+{
+	background-color:#FFF2E9; 
+}
+.onCorrect,
+.onSuccess
+{
+	background-color:#E9FFEB; 
+}
+.onLoad
+{
+	background-color:#E9FFEB; 
+} 
+
+.formValidateTip
+{
+	background:transparent;
+	display:inline;
+	margin:0 10px;
+}
+.formValidateTip div{
+	font-size: 12px;
+	vertical-align:middle;
+	padding-right:10px;
+	padding-top:3px;
+	padding-bottom:3px;
+	line-height:1em;
+	display:inline-block;
+	*display:inline;
+	*zoom:1;
+}
+.validateTipIco {
+	background-image:url(../../i/public/ico_validate.gif);
+	background-position:0px 0px;
+	background-repeat:no-repeat;
+	height:16px;
+	width:16px;
+	vertical-align:middle;
+	margin-right:6px;
+	margin-left:6px;
+	display:inline-block;
+	*display:inline;
+	*zoom:1;
+}
+.onError .validateTipIco{
+	background-position: 0 -50px;
+}
+.onCorrect .validateTipIco,
+.onSuccess .validateTipIco{
+	background-position: 0 -100px;
+}
