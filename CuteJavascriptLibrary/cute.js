@@ -1,5 +1,6 @@
 ﻿/// <reference path="jquery-1.3.2-vsdoc2.js" />
 //基础框架
+(function(){
 var Cute = {
 	Config:{
 		siteUrl:"",
@@ -608,6 +609,170 @@ var Cute = {
 		}
 	}
 };
+Cute.Cookie = {
+    get: function(name){
+		var v = document.cookie.match('(?:^|;)\\s*' + name + '=([^;]*)');
+		return v ? decodeURIComponent(v[1]) : null;
+    },
+    set: function(name, value ,expires, path, domain){
+        var str = name + "=" + encodeURIComponent(value);
+		if (expires != null || expires != '') {
+			if (expires == 0) {expires = 100*365*24*60;}
+			var exp = new Date();
+			exp.setTime(exp.getTime() + expires*60*1000);
+			str += "; expires=" + exp.toGMTString();
+		}
+		if (path) {str += "; path=" + path;}
+		if (domain) {str += "; domain=" + domain;}
+		document.cookie = str;
+    },
+    del: function(name, path, domain){
+        document.cookie = name + "=" +
+			((path) ? "; path=" + path : "") +
+			((domain) ? "; domain=" + domain : "") +
+			"; expires=Thu, 01-Jan-70 00:00:01 GMT";
+    }
+};
+Cute.String = {
+	//去除空格
+	trim: function(str) {
+		return str.replace(/^\s+|\s+$/g, '');
+	},
+	//格式化HTML
+	escapeHTML: function(str) {
+		return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+	},
+	//反格式化HTML
+	unescapeHTML: function(str) {
+		return str.replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
+	},
+	// 取得字符的字节长度，汉字认为是两个字符
+	byteLength: function(str) {
+  		return str.replace(/[^\x00-\xff]/g,"**").length;
+	},
+	// 除去最后一个字符
+	delLast: function(str){
+		return str.substring(0, str.length - 1);
+	},
+	// String to Int
+	toInt: function(str) {
+		return Math.floor(str);
+	},
+	// 取左边多少字符，中文两个字节
+	left: function(str, n){
+        var s = str.replace(/\*/g, " ").replace(/[^\x00-\xff]/g, "**");
+		s = s.slice(0, n).replace(/\*\*/g, " ").replace(/\*/g, "").length;
+        return str.slice(0, s);
+    },
+    // 取右边多少字符，中文两个字节
+    right: function(str, n){
+		var len = str.length;
+		var s = str.replace(/\*/g, " ").replace(/[^\x00-\xff]/g, "**");
+		s = s.slice(s.length - n, s.length).replace(/\*\*/g, " ").replace(/\*/g, "").length;
+        return str.slice(len - s, len);
+    },
+    // 除去HTML标签
+    removeHTML: function(str){
+        return str.replace(/<\/?[^>]+>/gi, '');
+    },
+    //"<div>{0}</div>{1}".format(txt0,txt1);
+    format: function(){
+        var  str = arguments[0], args = [];
+		for (var i = 1, il = arguments.length; i < il; i++) {
+			args.push(arguments[i]);
+		}
+        return str.replace(/\{(\d+)\}/g, function(m, i){
+            return args[i];
+        });
+    },
+	// toString(16)
+	on16: function(str){
+		var a = [], i = 0;
+        for (; i < str.length ;) a[i] = ("00" + str.charCodeAt(i ++).toString(16)).slice(-4);
+        return "\\u" + a.join("\\u");
+	},
+	// unString(16)
+	un16: function(str){
+		return unescape(str.replace(/\\/g, "%"));
+	}
+};
+Cute.Array = {
+	//	判断是否包含某个值或者对象
+	include: function(arr, value) {
+		return this.index(arr, value) != -1;
+	},
+	//	判断一个对象在数组中的位置
+	index: function(arr, value) {
+		for (var i=0, il = arr.length; i < il; i++) {
+			if (arr[i] == value) return i;
+		}
+		return -1;
+	},
+	//	过滤重复项
+	unique: function(arr) {
+		if(arr.length && typeof (arr[0]) == 'object'){
+			var len = arr.length;
+			for (var i=0, il = len; i < il; i++) {
+				var it = arr[i];
+				for (var j = len - 1; j>i; j--) {
+					if (arr[j] == it) arr.splice(j, 1);
+				}
+			}
+			return arr;
+		} else {
+			var result = [], hash = {};
+			for(var i = 0, key; (key = arr[i]) != null; i++){
+				if(!hash[key]){
+					result.push(key);
+					hash[key] = true;
+				}
+			}
+			return result;
+		}
+	},
+	//移去某一项
+	remove: function(arr, o) {
+		if (typeof o == 'number' && !Cute.Array.include(arr, o)) {
+			arr.splice(o, 1);
+		} else {
+			var i=Cute.Array.index(arr, o);
+			arr.splice(i, 1);
+		}
+		return arr;
+	},
+	//取随机一项
+	random: function(arr){
+		var i = Math.round(Math.random() * (arr.length-1));
+		return arr[i];
+	},
+	//乱序
+	shuffle: function(arr){	
+		return arr.sort(function(a,b){
+			return Math.random()>.5 ? -1 : 1;
+		});
+	}
+};
+Cute.Date = {
+	// new Date().format('yyyy年MM月dd日');
+	format: function(date, f){
+        var o = {
+            "M+": date.getMonth() + 1,
+            "d+": date.getDate(),
+            "h+": date.getHours(),
+            "m+": date.getMinutes(),
+            "s+": date.getSeconds(),
+            "q+": Math.floor((date.getMonth() + 3) / 3),
+            "S": date.getMilliseconds()
+        };
+        if (/(y+)/.test(f))
+            f = f.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
+        for (var k in o)
+            if (new RegExp("(" + k + ")").test(f))
+                f = f.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
+        return f;
+    }
+};
+})();
 Cute.init();
 jQuery.extend({
 	out: function(el, name, func, canMore) {
@@ -771,75 +936,3 @@ jQuery.fn.extend({	//jQuery 扩展
 
 
 $.browser.msie6 = $.browser.msie && /MSIE 6\.0/i.test(window.navigator.userAgent) && !/MSIE 7\.0/i.test(window.navigator.userAgent);
-//函数扩展
-Function.prototype.bind = function() {	//绑定域
-	var method = this,
-	_this = arguments[0],
-	args = [];
-	for (var i = 1,
-	il = arguments.length; i < il; i++) {
-		args.push(arguments[i]);
-	}
-	return function() {
-		var thisArgs = args.concat();
-		for (var i = 0,
-		il = arguments.length; i < il; i++) {
-			thisArgs.push(arguments[i]);
-		}
-		return method.apply(_this, thisArgs);
-	};
-};
-Function.prototype.bindEvent = function() {	//绑定Event
-	var method = this,
-	_this = arguments[0],
-	args = [];
-	for (var i = 1,
-	il = arguments.length; i < il; i++) {
-		args.push(arguments[i]);
-	}
-	return function(e) {
-		var thisArgs = args.concat();
-		thisArgs.unshift(e || window.event);
-		return method.apply(_this, thisArgs);
-	};
-};
-
-//数组扩展
-Array.prototype.include = function(value) {		//是否包含
-	if(this.constructor != Array) return;
-	return this.index(value) != -1;
-};
-Array.prototype.index = function(value) {	//查找值索引
-	for (var i = 0,
-	il = this.length; i < il; i++) {
-		if (this[i] == value) return i;
-	}
-	return -1;
-};
-Array.prototype.unique = function() {	//删除重复
-	for (var i = 0; i < this.length; i++) {
-		var it = this[i];
-		for (var j = this.length - 1; j > i; j--) {
-			if (this[j] == it) this.splice(j, 1);
-		}
-	}
-	return this;
-};
-Array.prototype.remove = function(o) {	//删除元素
-	if (typeof o == 'number' && !this.include(o)) {
-		this.splice(o, 1);
-	} else {
-		var i = this.index(o);
-		this.splice(i, 1);
-	}
-	return this;
-};
-Array.prototype.random = function(){	//乱序
-	return arr.sort(function(a,b){
-		return Math.random()>.5 ? -1 : 1;
-	});
-};
-//字符串扩展
-String.prototype.trim = function() {		//去除前后空格
-	return $.trim(this);
-};
