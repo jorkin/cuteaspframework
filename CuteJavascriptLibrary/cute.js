@@ -82,7 +82,7 @@ var Cute = {
 			if(mod.status == 3) return;
 			if(requires && typeof requires == 'string'){
 				mod.status = 2;
-				this.include(requires, Como.Function.bind(this.reg, this, name, callback));
+				this.include(requires, Cute.Function.bind(this.reg, this, name, callback));
 			} else {
 				if(callback) callback();
 				mod.status = 3;
@@ -140,9 +140,9 @@ var Cute = {
 		},
 		_options: function(options){
 			if(options && options.done){
-				Como.Hook._resourceReady = true;
-				if(Como.Hook._loaded && !Como.Hook._included){
-						Como.Hook.run('onincludehooks');
+				Cute.Hook._resourceReady = true;
+				if(Cute.Hook._loaded && !Cute.Hook._included){
+						Cute.Hook.run('onincludehooks');
 				}
 			}
 		},
@@ -192,10 +192,10 @@ var Cute = {
 			return this;
 		},
 		success: function(name){
-			Como.Array.remove(this.names, name);
+			Cute.Array.remove(this.names, name);
 			if(this.names.length == 0){
 				window.setTimeout(this.callback, 0);
-				Como.Module._options(this.options);
+				Cute.Module._options(this.options);
 				return true;
 			}
 			return false;
@@ -609,6 +609,115 @@ var Cute = {
 		}
 	}
 };
+
+var Cute = window.Cute = {};
+Cute.Class = {
+	/*
+	*创建一个类，并执行构造函数
+	*/
+	create: function() {
+		var f = function() {
+			this.initialize.apply(this, arguments);
+		};
+		for (var i = 0, il = arguments.length, it; i<il; i++) {
+			it = arguments[i];
+			if (it == null) continue;
+			f.prototype = $.extend(f.prototype, it);
+		}
+		return f;
+	},
+	/*
+	 *继承一个类，暂不支持多重继承
+	 */
+	inherit: function(superC, opt){
+		function temp() {};
+		temp.prototype = superC.prototype;
+
+		var f = function(){
+			this.initialize.apply(this, arguments);
+		};
+
+		f.prototype = new temp();
+		f.prototype = $.extend(f.prototype, opt);
+		f.prototype.superClass_ = superC.prototype;
+		f.prototype.super_ = function(){
+			this.superClass_.initialize.apply(this, arguments);
+		};
+		return f;
+	}
+};
+Cute.Object = {
+	/*
+	 * 对象的完全克隆
+	 */
+	 clone: function(obj){
+		var con = obj.constructor, cloneObj = null;
+		if(con == Object){
+			cloneObj = new con();
+		} else if (con == Function){
+			return Cute.Function.clone(obj);
+		} else cloneObj = new con(obj.valueOf());
+
+		for(var it in obj){
+			if(cloneObj[it] != obj[it]){
+				if(typeof(obj[it]) != 'object'){
+					cloneObj[it] = obj[it];
+				} else {
+					cloneObj[it] = arguments.callee(obj[it])
+				}
+			}
+		}
+		cloneObj.toString = obj.toString;
+		cloneObj.valueOf = obj.valueOf;
+		return cloneObj;
+	 }
+};
+Cute.Function = {
+	timeout: function (fun, time) {
+		return setTimeout(fun, time);
+	},
+	interval: function (fun, time) {
+		return setInterval(fun, time);
+	},
+	//域绑定，可传参
+	bind: function(fun) {
+		var  _this = arguments[1], args = [];
+		for (var i = 2, il = arguments.length; i < il; i++) {
+			args.push(arguments[i]);
+		}
+		return function(){
+			var thisArgs =  args.concat();
+			for (var i=0, il = arguments.length; i < il; i++) {
+				thisArgs.push(arguments[i]);
+			}
+			return fun.apply(_this || this, thisArgs);
+		}
+	},
+	// 域绑定，可传事件
+	bindEvent: function(fun) {
+		var  _this = arguments[1], args = [];
+		for (var i = 2, il = arguments.length; i < il; i++) {
+			args.push(arguments[i]);
+		}
+		return function(e){
+			var thisArgs = args.concat();
+			thisArgs.unshift(e || window.event);
+			return fun.apply(_this || this, thisArgs);
+		}
+	},
+	clone: function(fun){
+		var clone = function(){
+			return fun.apply(this, arguments);	
+		};
+		clone.prototype = fun.prototype;
+		for(prototype in fun){
+			if(fun.hasOwnProperty(prototype) && prototype != 'prototype'){
+				clone[prototype] = fun[prototype];
+			}
+		}
+		return clone;
+	}
+};
 Cute.Cookie = {
     get: function(name){
 		var v = document.cookie.match('(?:^|;)\\s*' + name + '=([^;]*)');
@@ -772,6 +881,324 @@ Cute.Date = {
         return f;
     }
 };
+
+Cute.Pack = {
+	_packs: {},
+	_customUrls: {},
+	_urlLoads:{},
+	
+	include: function(names, callback, options){
+		callback = callback || function(){};
+		names = names.replace(/\s/g, '');
+		if(names == ''){
+			window.setTimeout(callback, 0);
+			this._options(options);
+			return;
+		}
+		var nameArr = names.split(','), pack, loads=[], requires = [];
+		for(var i = 0, il = nameArr.length; i< il; i++){
+			pack = this._getPack(nameArr[i]);
+			if(pack.status != 3){
+				if(pack.status == 0) loads.push(pack);
+				requires.push(pack);
+			}
+		}
+		if(requires.length == 0){
+			window.setTimeout(callback, 0);
+			this._options(options);
+			return;
+		}
+		var wait = new this.Wait(requires, callback, options);
+		for(var i = 0, il = requires.length; i < il; i++){
+			requires[i].waits.push(wait);
+		}
+		for(var i = 0, il = loads.length; i < il; i++){
+			this._loadPack(loads[i]);
+		}
+	},
+
+	reg: function(name, content, requires){
+		var pack = this._getPack(name);
+		if(pack.status == 3) return;
+		if(requires && typeof requires == 'string'){
+			pack.status = 2;
+			this.include(requires, Cute.Function.bind(this.reg, this, name, content));
+		} else {
+			if(content) content();
+			pack.status = 3;
+			$.each(pack.waits, function(it){
+				it.success(name)
+			});
+			pack.waits = [];
+		}
+	},
+	//自定义包的路径地址
+	url: function(names, url){
+		names = names.replace(/\s/g, '');
+		if(names == '') return;
+		if(url.indexOf('/') != 0 && url.indexOf('http://') != 0)
+				url = Cute._path + url;
+		var a = names.split(',');
+		Cute.Array.each(a, function(it){
+			Cute.Pack._customUrls[it] = url;
+		});
+	},
+
+	_getPack: function(name){
+		var p = this._packs[name];
+		if(!p){
+			p = {
+				name: name,
+				status: 0,	//0为初始化状态，为获取任何实体及依赖信息
+				waits: []		//关注池
+			};
+			if(this._customUrls[name]){
+				p.url = this._customUrls[name];
+			} else {
+				p.url = name;
+				if(name.indexOf('/') != 0 && name.indexOf('http://') !=0 ){
+					p.url = Cute._path + name;
+				}
+			}
+			this._packs[name] = p;
+		}
+		return p;
+	},
+
+	_loadPack: function(pack){
+		if(pack.status != 0) return;
+		pack.status = 1;
+		var url = pack.url;
+		if(!this._urlLoads[url]){
+			this._urlLoads[url] = 1;
+			if(/.css$/.test(url))
+				this._p_loadCSS(url);
+			else if(/.js$/.test(url))
+				this._p_loadJS(url);
+		} else if(this._urlLoads[url] == 2){
+			pack.status = 3;
+			$.each(pack.waits, function(it){
+				it.success(pack.name);
+			});
+			pack.waits = [];
+		}
+	},
+	_p_loadCSS: function(url){
+		var css = document.createElement('link');
+		css.setAttribute('type','text/css');
+		css.setAttribute('rel','stylesheet');
+		css.setAttribute('href',url);
+		$('head').append(css);
+		var onload = Cute.Function.bind(function(){
+			this._urlLoads[url] = 2;
+			for(var it in this._packs){
+				var pack = this._packs[it];
+				if(pack.url == url){
+					pack.status = 3;
+					$.each(pack.waits, function(it){
+						it.success(pack.name);
+					});
+					pack.waits = [];
+				}
+			}
+		}, this);
+		if($.browser.msie){
+			css.onreadystatechange = function(){
+				if(this.readyState=='loaded'||this.readyState=='complete'){
+					onload();
+				}
+			}
+		} else {
+			onload();
+		}
+	},
+
+	_p_loadJS: function(url){
+		$.getScript(url);
+	},
+
+	_options: function(options){
+		if(options && options.done){
+			Cute.Hook._resourceReady = true;
+			if(Cute.Hook._loaded && !Cute.Hook._included){
+					Cute.Hook.run('onincludehooks');
+			}
+		}
+	},
+
+	Wait: Cute.Class.create({
+		initialize: function(requires, callback, options){
+			this.names = [];
+			for(var i = 0, il = requires.length; i < il; i++){
+				this.names.push(requires[i].name);
+			}
+			this.callback = callback;
+			this.options = options;
+			return this;
+		},
+		success: function(name){
+			Cute.Array.remove(this.names, name);
+			if(this.names.length == 0){
+				window.setTimeout(this.callback, 0);
+				Cute.Pack._options(this.options);
+				return true;
+			}
+			return false;
+		}
+	})
+};
+Cute.Hook = {
+	_init: function(){
+		if(document.addEventListener){
+			if($.browser.safari){
+				var timeout = setInterval(Cute.Function.bind(function(){
+					if(/loaded|complete/.test(document.readyState)){
+						this._onloadHook();
+						clearTimeout(timeout);
+					}
+				}, this), 3);
+			} else {
+				document.addEventListener('DOMContentLoaded', Cute.Function.bind(function(){
+					this._onloadHook();
+				}, this), true);
+			}
+		} else {
+			var src = 'javascript: void(0)';
+			if(window.location.protocol == 'https:'){
+				src = '//:';
+			}
+			document.write('<script onreadystatechange="if (this.readyState==\'complete\') {this.parentNode.removeChild(this);Cute.Hook._onloadHook();}" defer="defer" ' + 'src="' + src + '"><\/script\>');
+		}
+		window.onload = Cute.Function.bind(function(){
+			this._onloadHook();
+			if(this._resourceReady){
+				this._included = true;
+				this.run('onincludehooks');
+			}
+		}, this);
+		window.onbeforeunload = Cute.Function.bind(function(){
+	        return this.run('onbeforeunloadhooks');
+		}, this);
+		window.onunload = Cute.Function.bind(function(){
+			this.run('onunloadhooks');
+		}, this);
+	},
+
+	_loaded: false,
+	_resourceReady: false,
+	_included: false,
+
+	_onloadHook: function(){
+		this.run('onloadhooks');
+		this._loaded = true;
+	},
+
+	run: function(hooks){
+		var isbeforeunload = hooks == 'onbeforeunloadhooks';
+		var warn = null;
+		do{
+			var _this = Cute.Hook;
+			var h = _this[hooks];
+			if(!isbeforeunload){
+				_this[hooks] = null;
+			}
+			if(!h){
+				break;
+			}
+			for(var i = 0; i < h.length; i++){
+				if(isbeforeunload){
+					warn = warn || h[i]();
+				} else {
+					h[i]();
+				}
+			}
+			if(isbeforeunload){
+				break;
+			}
+		} while(this[hooks]);
+		if(isbeforeunload && warn){
+			return warn;
+		}
+	},
+
+	add: function(hooks, handler){
+		(this[hooks] ? this[hooks] : (this[hooks] = [])).push(handler);
+	},
+
+	remove: function(hooks){
+		this[hooks] = [];
+	}
+};
+
+Cute.extend({
+	onloadHandler: function(handler){
+		Cute.Hook._loaded ? handler() : Cute.Hook.add('onloadhooks', handler);
+	},
+	onincludeHandler: function(handler){
+		(Cute.Hook._loaded && Cute.Hook._resourceReady) ? handler() : Cute.Hook.add('onincludehooks', handler);
+	},
+	onunloadHandler: function(handler){
+		Cute.Hook.add('onunloadhooks', handler);
+	},
+	onbeforeunloadHandler: function(handler){
+		Cute.Hook.add('onbeforeunloadhooks', handler);
+	},
+	wait: function(element, e, callback){
+		var fun;
+		if(typeof callback == 'string'){
+			fun = Cute.Function.bind(function(str, el, e){
+				if(str.indexOf('(') > 0) eval('('+ str +')');
+				else eval('('+ str +')')(el, e);
+			}, this, callback, element, e);
+		} else {
+			fun = Cute.Function.bind(callback, this, element, e);
+		}
+		if(Cute.Hook._loaded){
+			fun();
+		} else {
+			Cute.onincludeHandler(function(){
+				var type = (e || event).type;
+				if(element.tagName.toLowerCase() == 'a'){
+					var original_event = window.event;
+					window.event = e;
+					var ret_value = element.onclick.call(element, e);
+					window.event = original_event;
+					if (ret_value !== false && element.href) {
+	                    window.location.href = element.href;
+	                }
+				} else {
+					element[type]();
+				}
+			});
+		}
+		return false;
+	}
+});
+
+Cute.Hook._init();
+
+var ext = function(target, src, is){
+	if(!target) target = {};
+	for(var it in src){
+		if(is){
+			target[it] = Cute.Function.bind(function(){
+				var c = arguments[0], f = arguments[1];
+				var args = [this];
+				for (var i=2, il = arguments.length; i < il; i++) {
+					args.push(arguments[i]);
+				}
+				return c[f].apply(c, args);
+			}, null, src, it);
+		} else {
+			target[it] = src[it];
+		}
+	}
+};
+ext(window.Class = {}, Cute.Class, false);
+ext(Function.prototype, Cute.Function, true);
+ext(String.prototype, Cute.String, true);
+ext(Array.prototype, Cute.Array, true);
+ext(Date.prototype, Cute.Date, true);
 })();
 Cute.init();
 jQuery.extend({
