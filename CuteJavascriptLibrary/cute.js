@@ -8,7 +8,6 @@ var Cute = window.Cute = {
 		scriptPath: "scripts/",
 		debug: true
 	},
-	isReady: false,
 	init: function(){
 		this._module = {
 			"core.ui":{
@@ -40,12 +39,12 @@ var Cute = window.Cute = {
 		};
 		// 可以通过在 url 上加 ?cute-debug 来开启 debug 模式
 		if (window.location.search && window.location.search.indexOf('cute-debug') !== -1) {
-			this.Config.debug = true;
+			this.config.debug = true;
 		}
 		return this;
 	},
 	log: function(msg, src) {
-		if (this.Config.debug) {
+		if (this.config.debug) {
 			if (src) {
 				msg = src + ': ' + msg;
 			}
@@ -56,7 +55,7 @@ var Cute = window.Cute = {
 		return this;
 	},
 	error: function(msg) {
-		if (this.Config.debug) {
+		if (this.config.debug) {
 			throw msg;
 		}
 	},
