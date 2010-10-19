@@ -155,6 +155,25 @@ var Cute = window.Cute = {
 				pos.end = obj.selectionEnd;
 			}
 			return pos;
+		},
+		scrolling: function(obj,options, func) {
+			var defaults = { target: 1, timer: 1000, offset: 0 };
+			func = func || jQuery.noop;
+			var o = jQuery.extend(defaults, options || {});
+			this.each(function(i) {
+				switch (o.target) {
+					case 1:
+						var targetTop = jQuery(obj).offset().top + o.offset;
+						jQuery("html,body").animate({ scrollTop: targetTop }, o.timer, Cute.Function.bind(func,this));
+						break;
+					case 2:
+						var targetLeft = jQuery(obj).offset().left + o.offset;
+						jQuery("html,body").animate({ scrollLeft: targetLeft }, o.timer, Cute.Function.bind(func,this));
+						break;
+				}
+				return false;
+			});
+			return this;
 		}
 	},
 	params: {	//参数操作
@@ -848,41 +867,14 @@ Cute = jQuery.extend(Cute,{
 	}
 },true);
 
-Cute.Hook._init();
 
-var ext = function(target, src, is){
-	if(!target) target = {};
-	for(var it in src){
-		if(is){
-			target[it] = Cute.Function.bind(function(){
-				var c = arguments[0], f = arguments[1];
-				var args = [this];
-				for (var i=2, il = arguments.length; i < il; i++) {
-					args.push(arguments[i]);
-				}
-				return c[f].apply(c, args);
-			}, null, src, it);
-		} else {
-			target[it] = src[it];
-		}
-	}
-};
-ext(window.Class = {}, Cute.Class, false);
-ext(Function.prototype, Cute.Function, true);
-ext(String.prototype, Cute.String, true);
-ext(Array.prototype, Cute.Array, true);
-ext(Date.prototype, Cute.Date, true);
-})();
-Cute.init();
-
-
-jQuery.fn.extend({	//jQuery 扩展
-	drag: function(position, target, offset, func) {
+Cute.Widget = {
+	drag: function(obj,position, target, offset, func) {
 		func = func || jQuery.noop;
-		target = jQuery(target || this);
+		target = jQuery(target || obj);
 		position = position || window;
 		offset = offset || { x: 0, y: 0 };
-		return this.css("cursor", "move").bind("mousedown.drag", function(e) {
+		return obj.css("cursor", "move").bind("mousedown.drag", function(e) {
 			e.preventDefault();
 			e.stopPropagation();
 			//if (e.which && (e.which != 1)) return;
@@ -938,7 +930,39 @@ jQuery.fn.extend({	//jQuery 扩展
 				jQuery(this).unbind(".drag");
 			});
 		});
-	},
+	}
+};
+
+Cute.Hook._init();
+
+
+var ext = function(target, src, is){
+	if(!target) target = {};
+	for(var it in src){
+		if(is){
+			target[it] = Cute.Function.bind(function(){
+				var c = arguments[0], f = arguments[1];
+				var args = [this];
+				for (var i=2, il = arguments.length; i < il; i++) {
+					args.push(arguments[i]);
+				}
+				return c[f].apply(c, args);
+			}, null, src, it);
+		} else {
+			target[it] = src[it];
+		}
+	}
+};
+ext(window.Class = {}, Cute.Class, false);
+ext(Function.prototype, Cute.Function, true);
+ext(String.prototype, Cute.String, true);
+ext(Array.prototype, Cute.Array, true);
+ext(Date.prototype, Cute.Date, true);
+})();
+Cute.init();
+
+
+jQuery.fn.extend({	//jQuery 扩展
 	out: function(name, listener, canMore) {
 		return this.each(function() {
 			Cute.Event.out(this, name, listener, canMore);
@@ -949,24 +973,11 @@ jQuery.fn.extend({	//jQuery 扩展
 			Cute.Event.unout(this, name, listener);
 		});
 	},
+	drag: function(position, target, offset, func) {
+		Cute.Widget.drag(this,position, target, offset, func)
+	},
 	scrolling: function(options, func) {
-		var defaults = { target: 1, timer: 1000, offset: 0 };
-		func = func || jQuery.noop;
-		var o = jQuery.extend(defaults, options || {});
-		this.each(function(i) {
-			switch (o.target) {
-				case 1:
-					var targetTop = jQuery(this).offset().top + o.offset;
-					jQuery("html,body").animate({ scrollTop: targetTop }, o.timer, func.bind(this));
-					break;
-				case 2:
-					var targetLeft = jQuery(this).offset().left + o.offset;
-					jQuery("html,body").animate({ scrollLeft: targetLeft }, o.timer, func.bind(this));
-					break;
-			}
-			return false;
-		});
-		return this;
+		Cute.common.scrolling(this,options, func);
 	}
 });
 
