@@ -1,5 +1,5 @@
-Como.reg("core/template.js",
-	template: function(tplname, data, isCached) {	//Ä£°å
+Cute.Pack.reg("template.js",function(){
+	Cute.template = function(tplname, data, isCached) {	//æ¨¡æ¿
 		if (!this._templateCache) this._templateCache = {};
 		tplname = "_" + tplname.toUpperCase() + "_TPL_";
 		var func = this._templateCache[tplname];
@@ -19,3 +19,4 @@ Como.reg("core/template.js",
 		}
 		return func(data);
 	}
+});

@@ -1,6 +1,7 @@
-﻿/// <reference path="jquery-1.3.2-vsdoc2.js" />
+/// <reference path="jquery-1.3.2-vsdoc2.js" />
 //基础框架
 (function(){
+var $ = window.$ = jQuery;
 var Cute = window.Cute = {
 	config:{
 		siteUrl:"",
@@ -157,17 +158,17 @@ var Cute = window.Cute = {
 		},
 		scrolling: function(obj,options, func) {
 			var defaults = { target: 1, timer: 1000, offset: 0 };
-			func = func || jQuery.noop;
-			var o = jQuery.extend(defaults, options || {});
+			func = func || $.noop;
+			var o = $.extend(defaults, options || {});
 			this.each(function(i) {
 				switch (o.target) {
 					case 1:
-						var targetTop = jQuery(obj).offset().top + o.offset;
-						jQuery("html,body").animate({ scrollTop: targetTop }, o.timer, Cute.Function.bind(func,this));
+						var targetTop = $(obj).offset().top + o.offset;
+						$("html,body").animate({ scrollTop: targetTop }, o.timer, Cute.Function.bind(func,this));
 						break;
 					case 2:
-						var targetLeft = jQuery(obj).offset().left + o.offset;
-						jQuery("html,body").animate({ scrollLeft: targetLeft }, o.timer, Cute.Function.bind(func,this));
+						var targetLeft = $(obj).offset().left + o.offset;
+						$("html,body").animate({ scrollLeft: targetLeft }, o.timer, Cute.Function.bind(func,this));
 						break;
 				}
 				return false;
@@ -258,7 +259,7 @@ Cute.Class = {
 		for (var i = 0, il = arguments.length, it; i<il; i++) {
 			it = arguments[i];
 			if (it == null) continue;
-			f.prototype = jQuery.extend(f.prototype, it);
+			f.prototype = $.extend(f.prototype, it);
 		}
 		return f;
 	},
@@ -274,7 +275,7 @@ Cute.Class = {
 		};
 
 		f.prototype = new temp();
-		f.prototype = jQuery.extend(f.prototype, opt);
+		f.prototype = $.extend(f.prototype, opt);
 		f.prototype.superClass_ = superC.prototype;
 		f.prototype.super_ = function(){
 			this.superClass_.initialize.apply(this, arguments);
@@ -546,14 +547,14 @@ Cute.Event = {
 		};
 		var c = Cute.Function.bindEvent(callback, window);
         el._Event.out.push({name: name, fun: fun, efun: c});
-		jQuery.event.add(document, name, arr[i].efun);
+		$.event.add(document, name, arr[i].efun);
     },
     unout: function(el, name, fun){
     	if(el._Event && el._Event.out && el._Event.out.length){
     		var arr = el._Event.out;
     		for(var i = 0; i < arr.length ; i ++){
     			if(name == arr[i].name && fun == arr[i].fun){
-    				jQuery.event.remove(document.body, name, arr[i].efun);
+    				$.event.remove(document.body, name, arr[i].efun);
     				arr.splice(i, 1);
 					return;
     			}
@@ -582,6 +583,7 @@ Cute.Pack = {
 				requires.push(pack);
 			}
 		}
+		//Cute.log(requires);
 		if(requires.length == 0){
 			window.setTimeout(callback, 0);
 			this._options(options);
@@ -605,7 +607,7 @@ Cute.Pack = {
 		} else {
 			if(content) content();
 			pack.status = 3;
-			jQuery.each(pack.waits, function(it){
+			$.each(pack.waits, function(i,it){
 				it.success(name)
 			});
 			pack.waits = [];
@@ -616,9 +618,9 @@ Cute.Pack = {
 		names = names.replace(/\s/g, '');
 		if(names == '') return;
 		if(url.indexOf('/') != 0 && url.indexOf('http://') != 0)
-				url = Cute._path + url;
+			url = Cute.config.scriptPath + url;
 		var a = names.split(',');
-		Cute.Array.each(a, function(it){
+		$.each(a, function(i,it){
 			Cute.Pack._customUrls[it] = url;
 		});
 	},
@@ -636,7 +638,7 @@ Cute.Pack = {
 			} else {
 				p.url = name;
 				if(name.indexOf('/') != 0 && name.indexOf('http://') !=0 ){
-					p.url = Cute._path + name;
+					p.url = Cute.config.scriptPath + name;
 				}
 			}
 			this._packs[name] = p;
@@ -656,7 +658,7 @@ Cute.Pack = {
 				this._p_loadJS(url);
 		} else if(this._urlLoads[url] == 2){
 			pack.status = 3;
-			jQuery.each(pack.waits, function(it){
+			$.each(pack.waits, function(i,it){
 				it.success(pack.name);
 			});
 			pack.waits = [];
@@ -674,14 +676,14 @@ Cute.Pack = {
 				var pack = this._packs[it];
 				if(pack.url == url){
 					pack.status = 3;
-					jQuery.each(pack.waits, function(it){
+					$.each(pack.waits, function(i,it){
 						it.success(pack.name);
 					});
 					pack.waits = [];
 				}
 			}
 		}, this);
-		if(jQuery.browser.msie){
+		if($.browser.msie){
 			css.onreadystatechange = function(){
 				if(this.readyState=='loaded'||this.readyState=='complete'){
 					onload();
@@ -691,16 +693,21 @@ Cute.Pack = {
 			onload();
 		}
 	},
-
 	_p_loadJS: function(url){
-		jQuery.getScript(url);
+		$.ajax({
+			global: false,
+			cache: true,
+			ifModified: true,
+			dataType: "script",
+			scriptCharset: "utf-8",
+			url: url
+		});
 	},
-
 	_options: function(options){
 		if(options && options.done){
 			Cute.Hook._resourceReady = true;
 			if(Cute.Hook._loaded && !Cute.Hook._included){
-					Cute.Hook.run('onincludehooks');
+				Cute.Hook.run('onincludehooks');
 			}
 		}
 	},
@@ -729,7 +736,7 @@ Cute.Pack = {
 Cute.Hook = {
 	_init: function(){
 		if(document.addEventListener){
-			if(jQuery.browser.safari){
+			if($.browser.safari){
 				var timeout = setInterval(Cute.Function.bind(function(){
 					if(/loaded|complete/.test(document.readyState)){
 						this._onloadHook();
@@ -809,7 +816,7 @@ Cute.Hook = {
 	}
 };
 
-Cute = jQuery.extend(Cute,{
+Cute = $.extend(Cute,{
 	isUndefined: function(o){
 		return o === undefined;
 	},
@@ -821,7 +828,7 @@ Cute = jQuery.extend(Cute,{
 	},
 	isNumber: function(o) {
 		return typeof o === 'number' && isFinite(o);
-	}
+	},
 	onloadHandler: function(handler){
 		Cute.Hook._loaded ? handler() : Cute.Hook.add('onloadhooks', handler);
 	},
@@ -869,8 +876,8 @@ Cute = jQuery.extend(Cute,{
 
 Cute.Widget = {
 	drag: function(obj,position, target, offset, func) {
-		func = func || jQuery.noop;
-		target = jQuery(target || obj);
+		func = func || $.noop;
+		target = $(target || obj);
 		position = position || window;
 		offset = offset || { x: 0, y: 0 };
 		return obj.css("cursor", "move").bind("mousedown.drag", function(e) {
@@ -890,18 +897,18 @@ Cute.Widget = {
 			var width = target.outerWidth(),
 				height = target.outerHeight();
 			if (position === window) {
-				position = jQuery.browser.msie6 ? document.body : window;
-				var mainW = jQuery(position).width() - offset.x,
-					mainH = jQuery(position).height() - offset.y;
+				position = $.browser.msie6 ? document.body : window;
+				var mainW = $(position).width() - offset.x,
+					mainH = $(position).height() - offset.y;
 			} else {
-				var mainW = jQuery(position).outerWidth() - offset.x,
-					mainH = jQuery(position).outerHeight() - offset.y;
+				var mainW = $(position).outerWidth() - offset.x,
+					mainH = $(position).outerHeight() - offset.y;
 			}
 			target.posX = e.pageX - parseInt(_left);
 			target.posY = e.pageY - parseInt(_top);
 			if (target[0].setCapture) target[0].setCapture();
 			else if (window.captureEvents) window.captureEvents(Event.MOUSEMOVE | Event.MOUSEUP);
-			jQuery(document).unbind(".drag").bind("mousemove.drag", function(e) {
+			$(document).unbind(".drag").bind("mousemove.drag", function(e) {
 				var posX = e.pageX - target.posX,
 					posY = e.pageY - target.posY;
 				target.css({
@@ -926,7 +933,7 @@ Cute.Widget = {
 			}).bind("mouseup.drag", function(e) {
 				if (target[0].releaseCapture) target[0].releaseCapture();
 				else if (window.releaseEvents) window.releaseEvents(Event.MOUSEMOVE | Event.MOUSEUP);
-				jQuery(this).unbind(".drag");
+				$(this).unbind(".drag");
 			});
 		});
 	}
@@ -958,7 +965,6 @@ ext(String.prototype, Cute.String, true);
 ext(Array.prototype, Cute.Array, true);
 ext(Date.prototype, Cute.Date, true);
 })();
-Cute.init();
 
 
 jQuery.fn.extend({	//jQuery 扩展

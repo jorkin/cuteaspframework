@@ -1,6 +1,6 @@
 /**
- * Êı¾İÑÓ³Ù¼ÓÔØ×é¼ş
- * ĞŞ¸Ä×ÔKISSYµÄdatalazyload
+ * æ•°æ®å»¶è¿ŸåŠ è½½ç»„ä»¶
+ * ä¿®æ”¹è‡ªKISSYçš„datalazyload
  */
 Cute.reg('datalazyload', function(S, undefined) {
 
@@ -17,28 +17,28 @@ Cute.reg('datalazyload', function(S, undefined) {
         defaultConfig = {
 
             /**
-             * ÀÁ´¦ÀíÄ£Ê½
-             *   auto   - ×Ô¶¯»¯¡£html Êä³öÊ±£¬²»¶Ô img.src ×öÈÎºÎ´¦Àí
-             *   manual - Êä³ö html Ê±£¬ÒÑ¾­½«ĞèÒªÑÓ³Ù¼ÓÔØµÄÍ¼Æ¬µÄ src ÊôĞÔÌæ»»Îª IMG_SRC_DATA
-             * ×¢£º¶ÔÓÚ textarea Êı¾İ£¬Ö»ÓĞÊÖ¶¯Ä£Ê½
+             * æ‡’å¤„ç†æ¨¡å¼
+             *   auto   - è‡ªåŠ¨åŒ–ã€‚html è¾“å‡ºæ—¶ï¼Œä¸å¯¹ img.src åšä»»ä½•å¤„ç†
+             *   manual - è¾“å‡º html æ—¶ï¼Œå·²ç»å°†éœ€è¦å»¶è¿ŸåŠ è½½çš„å›¾ç‰‡çš„ src å±æ€§æ›¿æ¢ä¸º IMG_SRC_DATA
+             * æ³¨ï¼šå¯¹äº textarea æ•°æ®ï¼Œåªæœ‰æ‰‹åŠ¨æ¨¡å¼
              */
             mod: MANUAL,
 
             /**
-             * µ±Ç°ÊÓ´°ÍùÏÂ£¬diff px ÍâµÄ img/textarea ÑÓ³Ù¼ÓÔØ
-             * ÊÊµ±ÉèÖÃ´ËÖµ£¬¿ÉÒÔÈÃÓÃ»§ÔÚÍÏ¶¯Ê±¸Ğ¾õÊı¾İÒÑ¾­¼ÓÔØºÃ
-             * Ä¬ÈÏÎªµ±Ç°ÊÓ´°¸ß¶È£¨Á½ÆÁÒÔÍâµÄ²ÅÑÓ³Ù¼ÓÔØ£©
+             * å½“å‰è§†çª—å¾€ä¸‹ï¼Œdiff px å¤–çš„ img/textarea å»¶è¿ŸåŠ è½½
+             * é€‚å½“è®¾ç½®æ­¤å€¼ï¼Œå¯ä»¥è®©ç”¨æˆ·åœ¨æ‹–åŠ¨æ—¶æ„Ÿè§‰æ•°æ®å·²ç»åŠ è½½å¥½
+             * é»˜è®¤ä¸ºå½“å‰è§†çª—é«˜åº¦ï¼ˆä¸¤å±ä»¥å¤–çš„æ‰å»¶è¿ŸåŠ è½½ï¼‰
              */
             diff: DEFAULT,
 
             /**
-             * Í¼ÏñµÄÕ¼Î»Í¼£¬Ä¬ÈÏÎŞ
+             * å›¾åƒçš„å ä½å›¾ï¼Œé»˜è®¤æ— 
              */
             placeholder: NONE
         };
 
     /**
-     * ÑÓ³Ù¼ÓÔØ×é¼ş
+     * å»¶è¿ŸåŠ è½½ç»„ä»¶
      * @constructor
      */
     function DataLazyload(containers, config) {
@@ -49,49 +49,49 @@ Cute.reg('datalazyload', function(S, undefined) {
             return new DataLazyload(containers, config);
         }
 
-        // ÔÊĞí½ö´«µİ config Ò»¸ö²ÎÊı
+        // å…è®¸ä»…ä¼ é€’ config ä¸€ä¸ªå‚æ•°
         if (config === undefined) {
             config = containers;
             containers = [doc];
         }
 
-        // containers ÊÇÒ»¸ö HTMLElement Ê±
+        // containers æ˜¯ä¸€ä¸ª HTMLElement æ—¶
         if (!S.isArray(containers)) {
             containers = [S.get(containers) || doc];
         }
 
         /**
-         * Í¼Æ¬ËùÔÚÈİÆ÷£¨¿ÉÒÔ¶à¸ö£©£¬Ä¬ÈÏÎª [doc]
+         * å›¾ç‰‡æ‰€åœ¨å®¹å™¨ï¼ˆå¯ä»¥å¤šä¸ªï¼‰ï¼Œé»˜è®¤ä¸º [doc]
          * @type Array
          */
         self.containers = containers;
 
         /**
-         * ÅäÖÃ²ÎÊı
+         * é…ç½®å‚æ•°
          * @type Object
          */
         self.config = S.merge(defaultConfig, config);
 
         /**
-         * ĞèÒªÑÓ³ÙÏÂÔØµÄÍ¼Æ¬
+         * éœ€è¦å»¶è¿Ÿä¸‹è½½çš„å›¾ç‰‡
          * @type Array
          */
         //self.images
 
         /**
-         * ĞèÒªÑÓ³Ù´¦ÀíµÄ textarea
+         * éœ€è¦å»¶è¿Ÿå¤„ç†çš„ textarea
          * @type Array
          */
         //self.areaes
 
         /**
-         * ºÍÑÓ³ÙÏî°ó¶¨µÄ»Øµ÷º¯Êı
+         * å’Œå»¶è¿Ÿé¡¹ç»‘å®šçš„å›è°ƒå‡½æ•°
          * @type object
          */
         self.callbacks = {els: [], fns: []};
 
         /**
-         * ¿ªÊ¼ÑÓ³ÙµÄ Y ×ø±ê
+         * å¼€å§‹å»¶è¿Ÿçš„ Y åæ ‡
          * @type number
          */
         //self.threshold
@@ -102,7 +102,7 @@ Cute.reg('datalazyload', function(S, undefined) {
     S.augment(DataLazyload, {
 
         /**
-         * ³õÊ¼»¯
+         * åˆå§‹åŒ–
          * @protected
          */
         _init: function() {
@@ -114,7 +114,7 @@ Cute.reg('datalazyload', function(S, undefined) {
         },
 
         /**
-         * »ñÈ¡²¢³õÊ¼»¯ĞèÒªÑÓ³ÙµÄ images ºÍ areaes
+         * è·å–å¹¶åˆå§‹åŒ–éœ€è¦å»¶è¿Ÿçš„ images å’Œ areaes
          * @protected
          */
         _filterItems: function() {
@@ -145,7 +145,7 @@ Cute.reg('datalazyload', function(S, undefined) {
                 placeholder = self.config.placeholder,
                 isManualMod = self.config.mod === MANUAL;
 
-            // ÊÖ¹¤Ä£Ê½£¬Ö»´¦ÀíÓĞ data-src µÄÍ¼Æ¬
+            // æ‰‹å·¥æ¨¡å¼ï¼Œåªå¤„ç†æœ‰ data-src çš„å›¾ç‰‡
             if (isManualMod) {
                 if (dataSrc) {
                     if (placeholder !== NONE) {
@@ -154,9 +154,9 @@ Cute.reg('datalazyload', function(S, undefined) {
                     return true;
                 }
             }
-            // ×Ô¶¯Ä£Ê½£¬Ö»´¦Àí threshold ÍâÎŞ data-src µÄÍ¼Æ¬
+            // è‡ªåŠ¨æ¨¡å¼ï¼Œåªå¤„ç† threshold å¤–æ—  data-src çš„å›¾ç‰‡
             else {
-                // ×¢Òâ£ºÒÑÓĞ data-src µÄÏî£¬¿ÉÄÜÒÑÓĞÆäËüÊµÀı´¦Àí¹ı£¬²»ÓÃÔÙ´Î´¦Àí
+                // æ³¨æ„ï¼šå·²æœ‰ data-src çš„é¡¹ï¼Œå¯èƒ½å·²æœ‰å…¶å®ƒå®ä¾‹å¤„ç†è¿‡ï¼Œä¸ç”¨å†æ¬¡å¤„ç†
                 if (DOM.offset(img).top > threshold && !dataSrc) {
                     DOM.attr(img, IMG_SRC_DATA, img.src);
                     if (placeholder !== NONE) {
@@ -177,36 +177,36 @@ Cute.reg('datalazyload', function(S, undefined) {
         },
 
         /**
-         * ³õÊ¼»¯¼ÓÔØÊÂ¼ş
+         * åˆå§‹åŒ–åŠ è½½äº‹ä»¶
          * @protected
          */
         _initLoadEvent: function() {
             var timer, self = this;
 
-            // scroll ºÍ resize Ê±£¬¼ÓÔØÍ¼Æ¬
+            // scroll å’Œ resize æ—¶ï¼ŒåŠ è½½å›¾ç‰‡
             Event.on(win, SCROLL, loader);
             Event.on(win, RESIZE, function() {
                 self.threshold = self._getThreshold();
                 loader();
             });
 
-            // ĞèÒªÁ¢¼´¼ÓÔØÒ»´Î£¬ÒÔ±£Ö¤µÚÒ»ÆÁµÄÑÓ³ÙÏî¿É¼û
+            // éœ€è¦ç«‹å³åŠ è½½ä¸€æ¬¡ï¼Œä»¥ä¿è¯ç¬¬ä¸€å±çš„å»¶è¿Ÿé¡¹å¯è§
             if (self._getItemsLength()) {
                 S.ready(function() {
                     loadItems();
                 });
             }
 
-            // ¼ÓÔØº¯Êı
+            // åŠ è½½å‡½æ•°
             function loader() {
                 if (timer) return;
                 timer = S.later(function() {
                     loadItems();
                     timer = null;
-                }, 100); // 0.1s ÄÚ£¬ÓÃ»§¸Ğ¾õÁ÷³©
+                }, 100); // 0.1s å†…ï¼Œç”¨æˆ·æ„Ÿè§‰æµç•…
             }
 
-            // ¼ÓÔØÑÓ³ÙÏî
+            // åŠ è½½å»¶è¿Ÿé¡¹
             function loadItems() {
                 self._loadItems();
                 if (self._getItemsLength() === 0) {
@@ -217,7 +217,7 @@ Cute.reg('datalazyload', function(S, undefined) {
         },
 
         /**
-         * ¼ÓÔØÑÓ³ÙÏî
+         * åŠ è½½å»¶è¿Ÿé¡¹
          */
         _loadItems: function() {
             var self = this;
@@ -227,7 +227,7 @@ Cute.reg('datalazyload', function(S, undefined) {
         },
 
         /**
-         * ¼ÓÔØÍ¼Æ¬
+         * åŠ è½½å›¾ç‰‡
          * @protected
          */
         _loadImgs: function() {
@@ -236,7 +236,7 @@ Cute.reg('datalazyload', function(S, undefined) {
         },
 
         /**
-         * ¼à¿Ø¹ö¶¯£¬´¦ÀíÍ¼Æ¬
+         * ç›‘æ§æ»šåŠ¨ï¼Œå¤„ç†å›¾ç‰‡
          */
         _loadImg: function(img) {
             var self = this,
@@ -252,7 +252,7 @@ Cute.reg('datalazyload', function(S, undefined) {
         },
 
         /**
-         * ¼ÓÔØÍ¼Æ¬ src
+         * åŠ è½½å›¾ç‰‡ src
          * @static
          */
         _loadImgSrc: function(img, flag) {
@@ -266,7 +266,7 @@ Cute.reg('datalazyload', function(S, undefined) {
         },
 
         /**
-         * ¼ÓÔØ textarea Êı¾İ
+         * åŠ è½½ textarea æ•°æ®
          * @protected
          */
         _loadAreas: function() {
@@ -275,14 +275,14 @@ Cute.reg('datalazyload', function(S, undefined) {
         },
 
         /**
-         * ¼à¿Ø¹ö¶¯£¬´¦Àí textarea
+         * ç›‘æ§æ»šåŠ¨ï¼Œå¤„ç† textarea
          */
         _loadArea: function(area) {
             var self = this, top,
                 isHidden = DOM.css(area, DISPLAY) === NONE;
 
-            // ×¢£ºarea ¿ÉÄÜ´¦ÓÚ display: none ×´Ì¬£¬DOM.offset(area).top ·µ»Ø 0
-            // ÕâÖÖÇé¿öÏÂÓÃ area.parentNode µÄ Y ÖµÀ´Ìæ´ú
+            // æ³¨ï¼šarea å¯èƒ½å¤„äº display: none çŠ¶æ€ï¼ŒDOM.offset(area).top è¿”å› 0
+            // è¿™ç§æƒ…å†µä¸‹ç”¨ area.parentNode çš„ Y å€¼æ¥æ›¿ä»£
             top = DOM.offset(isHidden ? area.parentNode : area).top;
 
             if (top <= self.threshold + DOM.scrollTop()) {
@@ -293,14 +293,14 @@ Cute.reg('datalazyload', function(S, undefined) {
         },
 
         /**
-         * ´Ó textarea ÖĞ¼ÓÔØÊı¾İ
+         * ä» textarea ä¸­åŠ è½½æ•°æ®
          * @static
          */
         _loadAreaData: function(container, area) {
-            //chengyu ´ó·ùÖØ¹¹£¬Ê¹ÓÃÕıÔòÊ¶±ğ html ×Ö·û´®ÀïµÄ script£¬Ìá¸ßĞÔÄÜ
-            // ÎªÁËÍ¨ÓÃĞÔ£¬²»ÒªËÑË÷ container ÄÚµÄÈ«²¿ script dom ½ÚµãÖ´ĞĞ
+            //chengyu å¤§å¹…é‡æ„ï¼Œä½¿ç”¨æ­£åˆ™è¯†åˆ« html å­—ç¬¦ä¸²é‡Œçš„ scriptï¼Œæé«˜æ€§èƒ½
+            // ä¸ºäº†é€šç”¨æ€§ï¼Œä¸è¦æœç´¢ container å†…çš„å…¨éƒ¨ script dom èŠ‚ç‚¹æ‰§è¡Œ
 
-            // ²ÉÓÃÒş²Ø textarea µ«²»È¥³ı·½Ê½£¬È¥³ı»áÒı·¢ Chrome ÏÂ´íÂÒ
+            // é‡‡ç”¨éšè— textarea ä½†ä¸å»é™¤æ–¹å¼ï¼Œå»é™¤ä¼šå¼•å‘ Chrome ä¸‹é”™ä¹±
             area.style.display = NONE;
             area.className = ''; // clear hook
 
@@ -308,11 +308,11 @@ Cute.reg('datalazyload', function(S, undefined) {
             container.insertBefore(content, area);
             DOM.html(content, area.value, true);
 
-            //area.value = ''; // bug fix: ×¢ÊÍµô£¬²»ÄÜÇå¿Õ£¬·ñÔò F5 Ë¢ĞÂ£¬»á¶ªÄÚÈİ
+            //area.value = ''; // bug fix: æ³¨é‡Šæ‰ï¼Œä¸èƒ½æ¸…ç©ºï¼Œå¦åˆ™ F5 åˆ·æ–°ï¼Œä¼šä¸¢å†…å®¹
         },
 
         /**
-         * ´¥·¢»Øµ÷
+         * è§¦å‘å›è°ƒ
          */
         _fireCallbacks: function() {
             var self = this,
@@ -336,7 +336,7 @@ Cute.reg('datalazyload', function(S, undefined) {
         },
 
         /**
-         * Ìí¼Ó»Øµ÷º¯Êı¡£µ± el ¼´½«³öÏÖÔÚÊÓÍ¼ÖĞÊ±£¬´¥·¢ fn
+         * æ·»åŠ å›è°ƒå‡½æ•°ã€‚å½“ el å³å°†å‡ºç°åœ¨è§†å›¾ä¸­æ—¶ï¼Œè§¦å‘ fn
          */
         addCallback: function(el, fn) {
             var callbacks = this.callbacks;
@@ -349,19 +349,19 @@ Cute.reg('datalazyload', function(S, undefined) {
         },
 
         /**
-         * »ñÈ¡ãĞÖµ
+         * è·å–é˜ˆå€¼
          * @protected
          */
         _getThreshold: function() {
             var diff = this.config.diff,
                 vh = DOM['viewportHeight']();
 
-            if (diff === DEFAULT) return 2 * vh; // diff Ä¬ÈÏÎªµ±Ç°ÊÓ´°¸ß¶È£¨Á½ÆÁÒÔÍâµÄ²ÅÑÓ³Ù¼ÓÔØ£©
-            else return vh + (+diff); // ½« diff ×ª»»³ÉÊıÖµ
+            if (diff === DEFAULT) return 2 * vh; // diff é»˜è®¤ä¸ºå½“å‰è§†çª—é«˜åº¦ï¼ˆä¸¤å±ä»¥å¤–çš„æ‰å»¶è¿ŸåŠ è½½ï¼‰
+            else return vh + (+diff); // å°† diff è½¬æ¢æˆæ•°å€¼
         },
 
         /**
-         * »ñÈ¡µ±Ç°ÑÓ³ÙÏîµÄÊıÁ¿
+         * è·å–å½“å‰å»¶è¿Ÿé¡¹çš„æ•°é‡
          * @protected
          */
         _getItemsLength: function() {
@@ -370,22 +370,22 @@ Cute.reg('datalazyload', function(S, undefined) {
         },
 
         /**
-         * ¼ÓÔØ×Ô¶¨ÒåÑÓ³ÙÊı¾İ
+         * åŠ è½½è‡ªå®šä¹‰å»¶è¿Ÿæ•°æ®
          * @static
          */
         loadCustomLazyData: function(containers, type) {
             var self = this, area, imgs;
 
-            // Ö§³ÖÊı×é
+            // æ”¯æŒæ•°ç»„
             if (!S.isArray(containers)) {
                 containers = [S.get(containers)];
             }
 
-            // ±éÀú´¦Àí
+            // éå†å¤„ç†
             S.each(containers, function(container) {
                 switch (type) {
                     case 'img-src':
-                        if (container.nodeName === 'IMG') { // ±¾Éí¾ÍÊÇÍ¼Æ¬
+                        if (container.nodeName === 'IMG') { // æœ¬èº«å°±æ˜¯å›¾ç‰‡
                             imgs = [container];
                         } else {
                             imgs = S.query('img', container);
@@ -417,62 +417,62 @@ Cute.reg('datalazyload', function(S, undefined) {
 /**
  * NOTES:
  *
- * Ä£Ê½Îª auto Ê±£º
- *  1. ÔÚ Firefox ÏÂ·Ç³£ÍêÃÀ¡£½Å±¾ÔËĞĞÊ±£¬»¹Ã»ÓĞÈÎºÎÍ¼Æ¬¿ªÊ¼ÏÂÔØ£¬ÄÜÕæÕı×öµ½ÑÓ³Ù¼ÓÔØ¡£
- *  2. ÔÚ IE ÏÂ²»¾¡ÍêÃÀ¡£½Å±¾ÔËĞĞÊ±£¬ÓĞ²¿·ÖÍ¼Æ¬ÒÑ¾­Óë·şÎñÆ÷½¨Á¢Á´½Ó£¬Õâ²¿·Ö abort µô£¬
- *     ÔÙÔÚ¹ö¶¯Ê±ÑÓ³Ù¼ÓÔØ£¬·´¶øÔö¼ÓÁËÁ´½ÓÊı¡£
- *  3. ÔÚ Safari ºÍ Chrome ÏÂ£¬ÒòÎª webkit ÄÚºË bug£¬µ¼ÖÂÎŞ·¨ abort µôÏÂÔØ¡£¸Ã
- *     ½Å±¾ÍêÈ«ÎŞÓÃ¡£
- *  4. ÔÚ Opera ÏÂ£¬ºÍ Firefox Ò»ÖÂ£¬ÍêÃÀ¡£
- *  5. 2010-07-12: ·¢ÏÖÔÚ Firefox ÏÂ£¬Ò²ÓĞµ¼ÖÂ²¿·Ö Aborted Á´½Ó¡£
+ * æ¨¡å¼ä¸º auto æ—¶ï¼š
+ *  1. åœ¨ Firefox ä¸‹éå¸¸å®Œç¾ã€‚è„šæœ¬è¿è¡Œæ—¶ï¼Œè¿˜æ²¡æœ‰ä»»ä½•å›¾ç‰‡å¼€å§‹ä¸‹è½½ï¼Œèƒ½çœŸæ­£åšåˆ°å»¶è¿ŸåŠ è½½ã€‚
+ *  2. åœ¨ IE ä¸‹ä¸å°½å®Œç¾ã€‚è„šæœ¬è¿è¡Œæ—¶ï¼Œæœ‰éƒ¨åˆ†å›¾ç‰‡å·²ç»ä¸æœåŠ¡å™¨å»ºç«‹é“¾æ¥ï¼Œè¿™éƒ¨åˆ† abort æ‰ï¼Œ
+ *     å†åœ¨æ»šåŠ¨æ—¶å»¶è¿ŸåŠ è½½ï¼Œåè€Œå¢åŠ äº†é“¾æ¥æ•°ã€‚
+ *  3. åœ¨ Safari å’Œ Chrome ä¸‹ï¼Œå› ä¸º webkit å†…æ ¸ bugï¼Œå¯¼è‡´æ— æ³• abort æ‰ä¸‹è½½ã€‚è¯¥
+ *     è„šæœ¬å®Œå…¨æ— ç”¨ã€‚
+ *  4. åœ¨ Opera ä¸‹ï¼Œå’Œ Firefox ä¸€è‡´ï¼Œå®Œç¾ã€‚
+ *  5. 2010-07-12: å‘ç°åœ¨ Firefox ä¸‹ï¼Œä¹Ÿæœ‰å¯¼è‡´éƒ¨åˆ† Aborted é“¾æ¥ã€‚
  *
- * Ä£Ê½Îª manual Ê±£º£¨ÒªÑÓ³Ù¼ÓÔØµÄÍ¼Æ¬£¬src ÊôĞÔÌæ»»Îª data-lazyload-src, ²¢½« src µÄÖµ¸³Îª placeholder £©
- *  1. ÔÚÈÎºÎä¯ÀÀÆ÷ÏÂ¶¼¿ÉÒÔÍêÃÀÊµÏÖ¡£
- *  2. È±µãÊÇ²»½¥½øÔöÇ¿£¬ÎŞ JS Ê±£¬Í¼Æ¬²»ÄÜÕ¹Ê¾¡£
+ * æ¨¡å¼ä¸º manual æ—¶ï¼šï¼ˆè¦å»¶è¿ŸåŠ è½½çš„å›¾ç‰‡ï¼Œsrc å±æ€§æ›¿æ¢ä¸º data-lazyload-src, å¹¶å°† src çš„å€¼èµ‹ä¸º placeholder ï¼‰
+ *  1. åœ¨ä»»ä½•æµè§ˆå™¨ä¸‹éƒ½å¯ä»¥å®Œç¾å®ç°ã€‚
+ *  2. ç¼ºç‚¹æ˜¯ä¸æ¸è¿›å¢å¼ºï¼Œæ—  JS æ—¶ï¼Œå›¾ç‰‡ä¸èƒ½å±•ç¤ºã€‚
  *
- * È±µã£º
- *  1. ¶ÔÓÚ´ó²¿·ÖÇé¿öÏÂ£¬ĞèÒªÍÏ¶¯²é¿´ÄÚÈİµÄÒ³Ãæ£¨±ÈÈçËÑË÷½á¹ûÒ³£©£¬¿ìËÙ¹ö¶¯Ê±¼ÓÔØÓĞËğÓÃ
- *     »§ÌåÑé£¨ÓÃ»§ÆÚÍûËù¹ö¼´ËùµÃ£©£¬ÌØ±ğÊÇÍøËÙ²»ºÃÊ±¡£
- *  2. auto Ä£Ê½²»Ö§³Ö Webkit ÄÚºËä¯ÀÀÆ÷£»IE ÏÂ£¬ÓĞ¿ÉÄÜµ¼ÖÂ HTTP Á´½ÓÊıµÄÔö¼Ó¡£
+ * ç¼ºç‚¹ï¼š
+ *  1. å¯¹äºå¤§éƒ¨åˆ†æƒ…å†µä¸‹ï¼Œéœ€è¦æ‹–åŠ¨æŸ¥çœ‹å†…å®¹çš„é¡µé¢ï¼ˆæ¯”å¦‚æœç´¢ç»“æœé¡µï¼‰ï¼Œå¿«é€Ÿæ»šåŠ¨æ—¶åŠ è½½æœ‰æŸç”¨
+ *     æˆ·ä½“éªŒï¼ˆç”¨æˆ·æœŸæœ›æ‰€æ»šå³æ‰€å¾—ï¼‰ï¼Œç‰¹åˆ«æ˜¯ç½‘é€Ÿä¸å¥½æ—¶ã€‚
+ *  2. auto æ¨¡å¼ä¸æ”¯æŒ Webkit å†…æ ¸æµè§ˆå™¨ï¼›IE ä¸‹ï¼Œæœ‰å¯èƒ½å¯¼è‡´ HTTP é“¾æ¥æ•°çš„å¢åŠ ã€‚
  *
- * ÓÅµã£º
- *  1. ¿ÉÒÔºÜºÃµÄÌá¸ßÒ³Ãæ³õÊ¼¼ÓÔØËÙ¶È¡£
- *  2. µÚÒ»ÆÁ¾ÍÌø×ª£¬ÑÓ³Ù¼ÓÔØÍ¼Æ¬¿ÉÒÔ¼õÉÙÁ÷Á¿¡£
+ * ä¼˜ç‚¹ï¼š
+ *  1. å¯ä»¥å¾ˆå¥½çš„æé«˜é¡µé¢åˆå§‹åŠ è½½é€Ÿåº¦ã€‚
+ *  2. ç¬¬ä¸€å±å°±è·³è½¬ï¼Œå»¶è¿ŸåŠ è½½å›¾ç‰‡å¯ä»¥å‡å°‘æµé‡ã€‚
  *
- * ²Î¿¼×ÊÁÏ£º
- *  1. http://davidwalsh.name/lazyload MooTools µÄÍ¼Æ¬ÑÓ³Ù²å¼ş
- *  2. http://vip.qq.com/ Ä£°åÊä³öÊ±£¬¾ÍÌæ»»µôÍ¼Æ¬µÄ src
+ * å‚è€ƒèµ„æ–™ï¼š
+ *  1. http://davidwalsh.name/lazyload MooTools çš„å›¾ç‰‡å»¶è¿Ÿæ’ä»¶
+ *  2. http://vip.qq.com/ æ¨¡æ¿è¾“å‡ºæ—¶ï¼Œå°±æ›¿æ¢æ‰å›¾ç‰‡çš„ src
  *  3. http://www.appelsiini.net/projects/lazyload jQuery Lazyload
  *  4. http://www.dynamixlabs.com/2008/01/17/a-quick-look-add-a-loading-icon-to-your-larger-images/
  *  5. http://www.nczonline.net/blog/2009/11/30/empty-image-src-can-destroy-your-site/
  *
- * ÌØ±ğÒª×¢ÒâµÄ²âÊÔÓÃÀı:
- *  1. ³õÊ¼´°¿ÚºÜĞ¡£¬À­´ó´°¿ÚÊ±£¬Í¼Æ¬¼ÓÔØÕı³£
- *  2. Ò³ÃæÓĞ¹ö¶¯Î»ÖÃÊ±£¬Ë¢ĞÂÒ³Ãæ£¬Í¼Æ¬¼ÓÔØÕı³£
- *  3. ÊÖ¶¯Ä£Ê½£¬µÚÒ»ÆÁÓĞÑÓ³ÙÍ¼Æ¬Ê±£¬¼ÓÔØÕı³£
+ * ç‰¹åˆ«è¦æ³¨æ„çš„æµ‹è¯•ç”¨ä¾‹:
+ *  1. åˆå§‹çª—å£å¾ˆå°ï¼Œæ‹‰å¤§çª—å£æ—¶ï¼Œå›¾ç‰‡åŠ è½½æ­£å¸¸
+ *  2. é¡µé¢æœ‰æ»šåŠ¨ä½ç½®æ—¶ï¼Œåˆ·æ–°é¡µé¢ï¼Œå›¾ç‰‡åŠ è½½æ­£å¸¸
+ *  3. æ‰‹åŠ¨æ¨¡å¼ï¼Œç¬¬ä¸€å±æœ‰å»¶è¿Ÿå›¾ç‰‡æ—¶ï¼ŒåŠ è½½æ­£å¸¸
  *
- * 2009-12-17 ²¹³ä£º
- *  1. textarea ÑÓ³Ù¼ÓÔØÔ¼¶¨£ºÒ³ÃæÖĞĞèÒªÑÓ³ÙµÄ dom ½Úµã£¬·ÅÔÚ
+ * 2009-12-17 è¡¥å……ï¼š
+ *  1. textarea å»¶è¿ŸåŠ è½½çº¦å®šï¼šé¡µé¢ä¸­éœ€è¦å»¶è¿Ÿçš„ dom èŠ‚ç‚¹ï¼Œæ”¾åœ¨
  *       <textarea class='ks-datalazysrc invisible'>dom code</textarea>
- *     Àï¡£¿ÉÒÔÌí¼Ó hidden µÈ class, µ«½¨ÒéÓÃ invisible, ²¢Éè¶¨ height = 'Êµ¼Ê¸ß¶È'£¬ÕâÑù¿ÉÒÔ±£Ö¤
- *     ¹ö¶¯Ê±£¬diff ¸üÕæÊµÓĞĞ§¡£
- *     ×¢Òâ£ºtextarea ¼ÓÔØºó£¬»áÌæ»»µô¸¸ÈİÆ÷ÖĞµÄËùÓĞÄÚÈİ¡£
- *  2. ÑÓ³Ù callback Ô¼¶¨£ºdataLazyload.addCallback(el, fn) ±íÊ¾µ± el ¼´½«³öÏÖÊ±£¬´¥·¢ fn.
- *  3. ËùÓĞ²Ù×÷¶¼ÊÇ×î¶à´¥·¢Ò»´Î£¬±ÈÈç callback. À´»ØÍÏ¶¯¹ö¶¯ÌõÊ±£¬Ö»ÓĞ el µÚÒ»´Î³öÏÖÊ±»á´¥·¢ fn »Øµ÷¡£
+ *     é‡Œã€‚å¯ä»¥æ·»åŠ  hidden ç­‰ class, ä½†å»ºè®®ç”¨ invisible, å¹¶è®¾å®š height = 'å®é™…é«˜åº¦'ï¼Œè¿™æ ·å¯ä»¥ä¿è¯
+ *     æ»šåŠ¨æ—¶ï¼Œdiff æ›´çœŸå®æœ‰æ•ˆã€‚
+ *     æ³¨æ„ï¼štextarea åŠ è½½åï¼Œä¼šæ›¿æ¢æ‰çˆ¶å®¹å™¨ä¸­çš„æ‰€æœ‰å†…å®¹ã€‚
+ *  2. å»¶è¿Ÿ callback çº¦å®šï¼šdataLazyload.addCallback(el, fn) è¡¨ç¤ºå½“ el å³å°†å‡ºç°æ—¶ï¼Œè§¦å‘ fn.
+ *  3. æ‰€æœ‰æ“ä½œéƒ½æ˜¯æœ€å¤šè§¦å‘ä¸€æ¬¡ï¼Œæ¯”å¦‚ callback. æ¥å›æ‹–åŠ¨æ»šåŠ¨æ¡æ—¶ï¼Œåªæœ‰ el ç¬¬ä¸€æ¬¡å‡ºç°æ—¶ä¼šè§¦å‘ fn å›è°ƒã€‚
  */
 
 /**
  * zTODO:
- *   - [È¡Ïû] ±³¾°Í¼Æ¬µÄÑÓ³Ù¼ÓÔØ£¨¶ÔÓÚ css ÀïµÄ±³¾°Í¼Æ¬ºÍ sprite ºÜÄÑ´¦Àí£©
- *   - [È¡Ïû] ¼ÓÔØÊ±µÄ loading Í¼£¨¶ÔÓÚÎ´Éè¶¨´óĞ¡µÄÍ¼Æ¬£¬ºÜÄÑÍêÃÀ´¦Àí[²Î¿¼×ÊÁÏ 4]£©
+ *   - [å–æ¶ˆ] èƒŒæ™¯å›¾ç‰‡çš„å»¶è¿ŸåŠ è½½ï¼ˆå¯¹äº css é‡Œçš„èƒŒæ™¯å›¾ç‰‡å’Œ sprite å¾ˆéš¾å¤„ç†ï¼‰
+ *   - [å–æ¶ˆ] åŠ è½½æ—¶çš„ loading å›¾ï¼ˆå¯¹äºæœªè®¾å®šå¤§å°çš„å›¾ç‰‡ï¼Œå¾ˆéš¾å®Œç¾å¤„ç†[å‚è€ƒèµ„æ–™ 4]ï¼‰
  */
 
 /**
  * UPDATE LOG:
- *   - 2010-07-31 yubo IMG_SRC_DATA ÓÉ data-lazyload-src ¸üÃûÎª data-ks-lazyload + Ö§³Ö touch Éè±¸
- *   - 2010-07-10 chengyu ÖØ¹¹£¬Ê¹ÓÃÕıÔò±í´ïÊ½Ê¶±ğ html ÖĞµÄ½Å±¾£¬Ê¹ÓÃ EventTarget ×Ô¶¨ÒåÊÂ¼ş»úÖÆÀ´´¦Àí»Øµ÷
- *   - 2010-05-10 yubo ie6 ÏÂ£¬ÔÚ dom ready ºóÖ´ĞĞ£¬»áµ¼ÖÂ placeholder ÖØ¸´¼ÓÔØ£¬Îª±È±ÜÃâ´ËÎÊÌâ£¬Ä¬ÈÏÎª none, È¥µôÕ¼Î»Í¼
- *   - 2010-04-05 yubo ÖØ¹¹£¬Ê¹µÃ¶Ô YUI µÄÒÀÀµ½öÏŞÓÚ YDOM
- *   - 2009-12-17 yubo ½« imglazyload Éı¼¶Îª datalazyload, Ö§³Ö textarea ·½Ê½ÑÓ³ÙºÍÌØ¶¨ÔªËØ¼´½«³öÏÖÊ±µÄ»Øµ÷º¯Êı
+ *   - 2010-07-31 yubo IMG_SRC_DATA ç”± data-lazyload-src æ›´åä¸º data-ks-lazyload + æ”¯æŒ touch è®¾å¤‡
+ *   - 2010-07-10 chengyu é‡æ„ï¼Œä½¿ç”¨æ­£åˆ™è¡¨è¾¾å¼è¯†åˆ« html ä¸­çš„è„šæœ¬ï¼Œä½¿ç”¨ EventTarget è‡ªå®šä¹‰äº‹ä»¶æœºåˆ¶æ¥å¤„ç†å›è°ƒ
+ *   - 2010-05-10 yubo ie6 ä¸‹ï¼Œåœ¨ dom ready åæ‰§è¡Œï¼Œä¼šå¯¼è‡´ placeholder é‡å¤åŠ è½½ï¼Œä¸ºæ¯”é¿å…æ­¤é—®é¢˜ï¼Œé»˜è®¤ä¸º none, å»æ‰å ä½å›¾
+ *   - 2010-04-05 yubo é‡æ„ï¼Œä½¿å¾—å¯¹ YUI çš„ä¾èµ–ä»…é™äº YDOM
+ *   - 2009-12-17 yubo å°† imglazyload å‡çº§ä¸º datalazyload, æ”¯æŒ textarea æ–¹å¼å»¶è¿Ÿå’Œç‰¹å®šå…ƒç´ å³å°†å‡ºç°æ—¶çš„å›è°ƒå‡½æ•°
  */
 
