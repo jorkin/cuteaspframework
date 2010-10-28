@@ -1,7 +1,7 @@
 //·ÖÒ³¿Ø¼þ
 Cute.Pack.reg("ui/pager.js",function(){
-	Cute.pager = {
-		init: function(obj, options) {
+	Cute.ui.dialog = Cute.Class.create({
+		initialize: function(obj, options) {
 			this.element = $(obj);
 			this.opt = $.extend({
 				pageindex: 1,
@@ -13,10 +13,11 @@ Cute.Pack.reg("ui/pager.js",function(){
 				breakpage: 3,
 				ajaxload: false
 			}, options || {});
-			return Cute.register("pager");
+			this._init();
+			return this;
 		},
-		bind: function(obj, options) {
-			var _this = this.init(obj, options);
+		_init: function() {
+			var _this = this;
 			if (_this.opt.pageindex < 1) _this.opt.pageindex = 1;
 			if (_this.opt.totalcount > -1) {
 				_this.opt.pagecount = Math.ceil(_this.opt.totalcount / _this.opt.pagesize);
@@ -122,5 +123,5 @@ Cute.Pack.reg("ui/pager.js",function(){
 				pageindex: page
 			}));
 		}
-	}
-};
+	});
+});

@@ -4,27 +4,32 @@
 <meta charset="utf-8"/>
 <meta http-equiv="cache-control" content="no-cache">
 <title>Cute Core Test</title>
-<script src="jquery-1.4.2.js?sds"></script>
-<script src="cute.js?sdsda"></script>
+<script src="jquery-1.4.2.js"></script>
+<script src="cute.js"></script>
+<link href="http://beta.pao.sdo.com/c/public/ui.css" rel="stylesheet" />
+<link href="http://beta.pao.sdo.com/c/paopao/skin.css" rel="stylesheet"  />
+<link href="http://beta.pao.sdo.com/c/paopao/style.css" rel="stylesheet" type="text/css" />
+<link href="http://beta.pao.sdo.com/c/public/common.css" rel="stylesheet" />
+
 <script>
 Cute.config.scriptPath = "";
-Cute.Pack.url('ui/select.js','ui/select.js');
-Cute.Pack.url('core/template.js','core/template.js');
 </script>
 </head>
 <body>
-<select id="demo">
-<option>请选择..</option>
-<option value="1">1</option>
-<option value="21">21</option>
-<option value="31">31</option>
-</select>
+<br/>
+<br/>
+s<br/>
+s<br/>
+s<br/>
+s<br/>
+s<br/>
+<div id="pager"></div>
 </body>
 
 <script>
-Cute.Pack.include("ui/select.js",function(){
-	Cute.log("ui/select load complete!");
-	//Cute.ui.select("#demo");
+Cute.Pack.include("ui/pager.js",function(){
+	Cute.log("ui/pager load complete!");
+	var pager = new Cute.ui.pager("#pager");
 },{done: true});
 </script>
 </html>

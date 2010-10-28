@@ -1,6 +1,6 @@
 Cute.Pack.reg("ui/select.js",function(){
 	Cute.ui.select = Cute.Class.create({
-		initialize:function (obj) {
+		initialize: function(obj) {
 			var self = $(obj);
 			var box = $('<div class="dropselectbox" />').appendTo(self.hide().wrap('<div class="dropdown" />').parent());
 			$('<h4><span class="symbol arrow">▼</span><strong>' + self.children("option:selected").text() + '</strong></h4>').hover(function() {
@@ -13,14 +13,14 @@ Cute.Pack.reg("ui/select.js",function(){
 						option.hide();
 					});
 				});
-			}).click(function() {
+			}).click(function(e) {
 				option.toggle();
 			}).out("click", function() {
 				$(this).removeClass("hover");
 				option.hide();
 			}, true);
 			var option = $('<ul />').appendTo(box);
-			return this;
+			return option;
 		}
 	});
 });

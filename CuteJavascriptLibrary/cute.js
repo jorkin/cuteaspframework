@@ -194,7 +194,7 @@ var Cute = window.Cute = {
 		},
 		set: function(options) {
 			if (typeof this.list == "undefined") this.init();
-			this.list = $.extend(true, this.list, options || {});
+			$.extend(true, this.list, options || {});
 			return this;
 		},
 		serialize: function() {
@@ -245,7 +245,8 @@ var Cute = window.Cute = {
 		post: function(action, data, callback, cache, async, options) {
 			this.ajax("POST", action, data, callback, cache, async, options);
 		}
-	}
+	},
+	ui:{}
 };
 
 Cute.Class = {
@@ -259,7 +260,7 @@ Cute.Class = {
 		for (var i = 0, il = arguments.length, it; i<il; i++) {
 			it = arguments[i];
 			if (it == null) continue;
-			f.prototype = $.extend(f.prototype, it);
+			$.extend(f.prototype, it);
 		}
 		return f;
 	},
@@ -275,7 +276,7 @@ Cute.Class = {
 		};
 
 		f.prototype = new temp();
-		f.prototype = $.extend(f.prototype, opt);
+		$.extend(f.prototype, opt);
 		f.prototype.superClass_ = superC.prototype;
 		f.prototype.super_ = function(){
 			this.superClass_.initialize.apply(this, arguments);
@@ -519,39 +520,49 @@ Cute.Date = {
     }
 };
 Cute.Event = {
-    out: function(el, name, fun, one){
-        one = one || false;
-        if(!el._Event){
-			el._Event = {
-				out: []
-			};
-		}
-		var callback = function(e){
-			var ele = e.target || e.srcElement;
-			if(!ele) return;
-			var tag = ele[0];
-			var temp = false;
-			while(tag){
-				if(tag == el){
-					temp = true;
+    out: function(el, name, func, many){
+		var callback = function(e) {
+			var src = e.target || e.srcElement,
+				isIn = false;
+			while (src) {
+				if (src == el) {
+					isIn = true;
 					break;
 				}
-				tag = tag.parentNode;
+				src = src.parentNode;
 			}
-			if(!temp){
-				fun(e);
-				if(one){
-					Cute.Event.unout(el, name, fun);
+			if(!isIn){
+				func.call(el, e);
+				if (!many) {
+					jQuery.event.remove(document.body, name, c);
+					if (el._EVENT && el._EVENT.out && el._EVENT.out.length) {
+						var arr = el._EVENT.out;
+						for (var i = 0, il = arr.length; i < il; i++) {
+							if (arr[i].efunc == c && arr[i].name == name) {
+								arr.splice(i, 1);
+								return;
+							}
+						}
+					}
 				}
-			};
-		};
-		var c = Cute.Function.bindEvent(callback, window);
-        el._Event.out.push({name: name, fun: fun, efun: c});
-		$.event.add(document, name, arr[i].efun);
+			}
+		}
+		var c = callback.bindEvent(window);
+		if (!el._EVENT) {
+			el._EVENT = {
+				out: []
+			}
+		}
+		el._EVENT.out.push({
+			name: name,
+			func: func,
+			efunc: c
+		});
+		jQuery.event.add(document, name, c);
     },
     unout: function(el, name, fun){
-    	if(el._Event && el._Event.out && el._Event.out.length){
-    		var arr = el._Event.out;
+    	if(el._EVENT && el._EVENT.out && el._EVENT.out.length){
+    		var arr = el._EVENT.out;
     		for(var i = 0; i < arr.length ; i ++){
     			if(name == arr[i].name && fun == arr[i].fun){
     				$.event.remove(document.body, name, arr[i].efun);
@@ -696,7 +707,7 @@ Cute.Pack = {
 	_p_loadJS: function(url){
 		$.ajax({
 			global: false,
-			cache: true,
+			cache: Cute.config.debug ? false : true,
 			ifModified: true,
 			dataType: "script",
 			scriptCharset: "utf-8",
@@ -816,7 +827,7 @@ Cute.Hook = {
 	}
 };
 
-Cute = $.extend(Cute,{
+$.extend(Cute,{
 	isUndefined: function(o){
 		return o === undefined;
 	},
@@ -968,9 +979,9 @@ ext(Date.prototype, Cute.Date, true);
 
 
 jQuery.fn.extend({	//jQuery 扩展
-	out: function(name, listener, canMore) {
+	out: function(name, listener, many) {
 		return this.each(function() {
-			Cute.Event.out(this, name, listener, canMore);
+			Cute.Event.out(this, name, listener, many);
 		});
 	},
 	unout: function(name, listener) {
