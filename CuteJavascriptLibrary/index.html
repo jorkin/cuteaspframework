@@ -8,17 +8,23 @@
 <script src="cute.js?sdsda"></script>
 <script>
 Cute.config.scriptPath = "";
-Cute.Pack.url('template.js','core/template.js');
+Cute.Pack.url('ui/select.js','ui/select.js');
+Cute.Pack.url('core/template.js','core/template.js');
 </script>
 </head>
 <body>
+<select id="demo">
+<option>请选择..</option>
+<option value="1">1</option>
+<option value="21">21</option>
+<option value="31">31</option>
+</select>
 </body>
 
 <script>
-Cute.Pack.include("template.js",function(){
-	Cute.log("datalazyload load complete!");
-	var data = {item:12321312};
-	$(document.body).append(Cute.template("PHOTO_LIST",data));
+Cute.Pack.include("ui/select.js",function(){
+	Cute.log("ui/select load complete!");
+	//Cute.ui.select("#demo");
 },{done: true});
 </script>
 </html>
