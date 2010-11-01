@@ -183,7 +183,7 @@ var Cute = window.Cute = {
 				var _item = item.substring(1);
 				var _key = _item.split("=", 1)[0];
 				var _value = _item.replace(eval("/" + _key + "=/i"), "");
-				this.list[_key.toLowerCase()] = Cute.tools.string.decode(_value);
+				this.list[_key.toLowerCase()] = Cute.String.urldecode(_value);
 			} .bind(this));
 			return this;
 		},
@@ -205,7 +205,7 @@ var Cute = window.Cute = {
 			if (!item) return location.hash.substring(1);
 			var sValue = location.hash.match(new RegExp("[\#\&]" + item + "=([^\&]*)(\&?)", "i"));
 			sValue = sValue ? sValue[1] : "";
-			return sValue == location.hash.substring(1) ? "" : sValue == undefined ? location.hash.substring(1) : Cute.tools.string.decode(sValue);
+			return sValue == location.hash.substring(1) ? "" : sValue == undefined ? location.hash.substring(1) : Cute.String.urldecode(sValue);
 		}
 	},
 	api: {	//接口调用方法
@@ -385,6 +385,8 @@ Cute.String = {
 	trim: function(str) {
 		return str.replace(/^\s+|\s+$/g, '');
 	},
+	urldecode:decodeURIComponent,
+	urlencode:encodeURIComponent,
 	//格式化HTML
 	escapeHTML: function(str) {
 		return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');

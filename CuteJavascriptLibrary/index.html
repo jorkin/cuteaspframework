@@ -18,18 +18,46 @@ Cute.config.scriptPath = "";
 <body>
 <br/>
 <br/>
-s<br/>
-s<br/>
-s<br/>
-s<br/>
-s<br/>
-<div id="pager"></div>
+<dl id="tabs" class="tabs">
+	<dt>我的社团</dt>
+	<dd>
+	  <ul class="tabs_main">
+		<li class="curr"> <a href="index.html"><span>最新话题</span></a> </li>
+		<li class=" "> <a href="#@"><span>我参与的话题 </span></a> </li>
+		<li class=""> <a href="#@"><span>我回应的话题</span></a> </li>
+	  </ul>
+	</dd>
+  </dl>
+	<div class="tabs_content">
+		<ul class="list list_dongtai">
+			<li class="nodata">
+				还没有新鲜事发生！1
+			</li>
+		</ul>
+	</div>
+	<div class="tabs_content" style="display:none">
+		<ul class="list list_dongtai">
+			<li class="nodata">
+				还没有新鲜事发生！2
+			</li>
+		</ul>
+	</div>
+	<div class="tabs_content" style="display:none">
+		<ul class="list list_dongtai">
+			<li class="nodata">
+				还没有新鲜事发生！3
+			</li>
+		</ul>
+	</div>
 </body>
 
 <script>
-Cute.Pack.include("ui/pager.js",function(){
-	Cute.log("ui/pager load complete!");
-	var pager = new Cute.ui.pager("#pager");
+Cute.Pack.include("ui/tabs.js",function(){
+	Cute.log("ui/tabs load complete!");
+	var tabs = new Cute.ui.tabs({
+		element:"#tabs",
+		content:".tabs_content"
+	});
 },{done: true});
 </script>
 </html>

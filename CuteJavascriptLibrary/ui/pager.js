@@ -1,10 +1,10 @@
-//·ÖÒ³¿Ø¼ş
+//åˆ†é¡µæ§ä»¶
 Cute.Pack.reg("ui/pager.js",function(){
-	Cute.ui.dialog = Cute.Class.create({
+	Cute.ui.pager = Cute.Class.create({
 		initialize: function(obj, options) {
 			this.element = $(obj);
 			this.opt = $.extend({
-				pageindex: 1,
+				pageindex: 0,
 				pagesize: 10,
 				totalcount: -1,
 				type: "numeric", //text
@@ -36,24 +36,24 @@ Cute.Pack.reg("ui/pager.js",function(){
 				_html.push('<div class="pager ' + (_this.opt.type == "numeric" ? "pager_numeric" : "") + '">\n');
 			if (_this.opt.total) {
 				_html.push('<div class="p_options">');
-				_html.push('<span class="p_ptotal">' + _this.opt.pageindex + 'Ò³/' + _this.opt.pagecount + 'Ò³</span>\n');
-				_html.push('<span class="p_total">¹²' + _this.opt.totalcount + 'Ìõ</span>\n');
+				_html.push('<span class="p_ptotal">' + _this.opt.pageindex + 'é¡µ/' + _this.opt.pagecount + 'é¡µ</span>\n');
+				_html.push('<span class="p_total">å…±' + _this.opt.totalcount + 'æ¡</span>\n');
 				_html.push('</div>');
 			}
 			if (_this.opt.pagecount > 1) {
 				if (_this.opt.type == "text") {
 					if (_this.opt.pageindex > 1) {
-						if (_this.opt.pagecount < 9999) _html.push('<a class="p_start" href="' + _this._getUrl(1) + '">Ê×Ò³</a>\n');
-						_html.push('<a class="p_prev" href="' + _this._getUrl(_this.opt.pageindex - 1) + '">ÉÏÒ»Ò³</a>\n');
+						if (_this.opt.pagecount < 9999) _html.push('<a class="p_start" href="' + _this._getUrl(1) + '">é¦–é¡µ</a>\n');
+						_html.push('<a class="p_prev" href="' + _this._getUrl(_this.opt.pageindex - 1) + '">ä¸Šä¸€é¡µ</a>\n');
 					}
 					if (_this.opt.pageindex != _this.opt.pagecount) {
-						_html.push('<a class="p_next" href="' + _this._getUrl(_this.opt.pageindex + 1) + '">ÏÂÒ»Ò³</a>\n');
-						if (_this.opt.pagecount < 9999) _html.push('<a class="p_end" href="' + _this._getUrl(_this.opt.pagecount) + '">Î²Ò³</a>\n');
+						_html.push('<a class="p_next" href="' + _this._getUrl(_this.opt.pageindex + 1) + '">ä¸‹ä¸€é¡µ</a>\n');
+						if (_this.opt.pagecount < 9999) _html.push('<a class="p_end" href="' + _this._getUrl(_this.opt.pagecount) + '">å°¾é¡µ</a>\n');
 					}
 				}
 				if (_this.opt.type == "numeric") {
-					if (_this.opt.pageindex > 1) {	//µÚÒ»Ò³
-						_html.push('<a class="p_prev" href="' + _this._getUrl(_this.opt.pageindex - 1) + '">ÉÏÒ³</a>\n');
+					if (_this.opt.pageindex > 1) {	//ç¬¬ä¸€é¡µ
+						_html.push('<a class="p_prev" href="' + _this._getUrl(_this.opt.pageindex - 1) + '">ä¸Šé¡µ</a>\n');
 					}
 					var _page = [1, _this.opt.pagecount, _this.opt.pageindex, _this.opt.pageindex - 1, _this.opt.pageindex + 1];
 					_page = $.grep(_page, function(item, i) {
@@ -72,11 +72,11 @@ Cute.Pack.reg("ui/pager.js",function(){
 							_html.push('<strong>' + item + '</strong>\n');
 						} else {
 							if (item == 1) {
-								title = "Ê×Ò³";
+								title = "é¦–é¡µ";
 							} else if (item == _this.opt.pagecount) {
-								title = "Î²Ò³";
+								title = "å°¾é¡µ";
 							} else {
-								title = "µÚ" + item + "Ò³";
+								title = "ç¬¬" + item + "é¡µ";
 							}
 							if (_ellipsis[1] == false && this.opt.pageindex <= this.opt.pagecount - this.opt.breakpage && this.opt.pagecount == item) {
 								_html.push('<span>...</span>\n');
@@ -90,11 +90,11 @@ Cute.Pack.reg("ui/pager.js",function(){
 						}
 					} .bind(_this));
 					if (_this.opt.pageindex < _this.opt.pagecount) {
-						_html.push('<a class="p_next" href="' + _this._getUrl(_this.opt.pageindex + 1) + '">ÏÂÒ³</a>\n');
+						_html.push('<a class="p_next" href="' + _this._getUrl(_this.opt.pageindex + 1) + '">ä¸‹é¡µ</a>\n');
 					}
 				}
 				if (_this.opt.skip) {
-					_html.push('<div class="p_skip">Ìø×ªµ½:');
+					_html.push('<div class="p_skip">è·³è½¬åˆ°:');
 					_html.push('<input type="text" class="p_text" maxlength="8" onclick="this.select()" size="3" name="page" value="' + _this.opt.pageindex + '" />');
 					_html.push('<button class="p_btn" onclick="location.href=\'' + _this._getUrl() + '\'">GO</button>');
 					_html.push('</div>');
@@ -118,7 +118,7 @@ Cute.Pack.reg("ui/pager.js",function(){
 			return _url + location.hash;
 		},
 		goPageIndex: function(page) {
-			this.element.html("Êı¾İ¼ÓÔØÖĞ...");
+			this.element.html("æ•°æ®åŠ è½½ä¸­...");
 			this.bind(this.element, $.extend(this.opt, {
 				pageindex: page
 			}));
