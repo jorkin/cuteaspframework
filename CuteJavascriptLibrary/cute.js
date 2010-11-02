@@ -10,34 +10,6 @@ var Cute = window.Cute = {
 		debug: true
 	},
 	init: function(){
-		this._module = {
-			"core.ui":{
-				"name": "core.ui",
-				"path": "cute-ui"
-			},
-			"core.widget": {
-				"name":"core.widget",
-				"path":"widget"
-			},
-			"core.formvalidator": {
-				"name":"core.formValidator",
-				"path": "formValidator",
-				"csspath":"style/validatorAuto.css",
-				"requires":["core.formvalidatorregex"]
-			},
-			"core.formvalidatorregex": {
-				"name":"core.formvalidatorregex",
-				"path": "formValidatorRegex"
-			},
-			"tools.editor": {
-				"name":"tools.editor",
-				"path": "kindeditor"
-			},
-			"tools.flash": {
-				"name":"tools.flash",
-				"path": "swfobject_modified"
-			}
-		};
 		// 可以通过在 url 上加 ?cute-debug 来开启 debug 模式
 		if (window.location.search && window.location.search.indexOf('cute-debug') !== -1) {
 			this.config.debug = true;
@@ -176,77 +148,80 @@ var Cute = window.Cute = {
 			return this;
 		}
 	},
-	params: {	//参数操作
-		init: function() {
-			this.list = {};
-			$.each(location.search.match(/(?:[\?|\&])[^\=]+=[^\&|#|$]*/gi) || [], function(n, item) {
-				var _item = item.substring(1);
-				var _key = _item.split("=", 1)[0];
-				var _value = _item.replace(eval("/" + _key + "=/i"), "");
-				this.list[_key.toLowerCase()] = Cute.String.urldecode(_value);
-			} .bind(this));
-			return this;
-		},
-		get: function(item) {
-			if (typeof this.list == "undefined") this.init();
-			var _item = this.list[item.toLowerCase()];
-			return _item ? _item : "";
-		},
-		set: function(options) {
-			if (typeof this.list == "undefined") this.init();
-			$.extend(true, this.list, options || {});
-			return this;
-		},
-		serialize: function() {
-			if (typeof this.list == "undefined") this.init();
-			return $.param(this.list, true);
-		},
-		hashString: function(item) {
-			if (!item) return location.hash.substring(1);
-			var sValue = location.hash.match(new RegExp("[\#\&]" + item + "=([^\&]*)(\&?)", "i"));
-			sValue = sValue ? sValue[1] : "";
-			return sValue == location.hash.substring(1) ? "" : sValue == undefined ? location.hash.substring(1) : Cute.String.urldecode(sValue);
-		}
+	ui: {},
+	plugin: {}
+};
+
+Cute.Params = {	//参数操作
+	init: function() {
+		this.list = {};
+		$.each(location.search.match(/(?:[\?|\&])[^\=]+=[^\&|#|$]*/gi) || [], function(n, item) {
+			var _item = item.substring(1);
+			var _key = _item.split("=", 1)[0];
+			var _value = _item.replace(eval("/" + _key + "=/i"), "");
+			this.list[_key.toLowerCase()] = Cute.String.urldecode(_value);
+		} .bind(this));
+		return this;
 	},
-	api: {	//接口调用方法
-		ajax: function(type, action, data, callback, cache, async, options) {
-			if (action != undefined)
-				var url = Cute.SERVICEURL + "?a=" + action;
-			else
-				var url = location.pathname;
-			$.ajax($.extend({
-				url: url,
-				data: data,
-				async: typeof async != "undefined" ? async : true,
-				type: typeof type != "undefined" ? type : "GET",
-				//dataType: "text",
-				ifModified: false,
-				timeout: 8000,
-				traditional: false,
-				cache: typeof cache != "undefined" ? cache : true,
-				success: callback,
-				//				dataFilter: function(data) {
-				//					return eval("(" + data + ")");
-				//				},
-				error: function() {
-					if (async == false) {
-						Cute.dialog.alert(Cute.LANG.syserror);
-					}
-					$("#dialog_loading,#dialog_mask").remove();
-					return false;
-				},
-				beforeSend: function() {
+	get: function(item) {
+		if (typeof this.list == "undefined") this.init();
+		var _item = this.list[item.toLowerCase()];
+		return _item ? _item : "";
+	},
+	set: function(options) {
+		if (typeof this.list == "undefined") this.init();
+		$.extend(true, this.list, options || {});
+		return this;
+	},
+	serialize: function() {
+		if (typeof this.list == "undefined") this.init();
+		return $.param(this.list, true);
+	},
+	hashString: function(item) {
+		if (!item) return location.hash.substring(1);
+		var sValue = location.hash.match(new RegExp("[\#\&]" + item + "=([^\&]*)(\&?)", "i"));
+		sValue = sValue ? sValue[1] : "";
+		return sValue == location.hash.substring(1) ? "" : sValue == undefined ? location.hash.substring(1) : Cute.String.urldecode(sValue);
+	}
+};
+
+Cute.Api = {	//接口调用方法
+	ajax: function(type, action, data, callback, cache, async, options) {
+		if (action != undefined)
+			var url = Cute.SERVICEURL + "?a=" + action;
+		else
+			var url = location.pathname;
+		$.ajax($.extend({
+			url: url,
+			data: data,
+			async: typeof async != "undefined" ? async : true,
+			type: typeof type != "undefined" ? type : "GET",
+			//dataType: "text",
+			ifModified: false,
+			timeout: 8000,
+			traditional: false,
+			cache: typeof cache != "undefined" ? cache : true,
+			success: callback,
+			//				dataFilter: function(data) {
+			//					return eval("(" + data + ")");
+			//				},
+			error: function() {
+				if (async == false) {
+					Cute.dialog.alert(Cute.LANG.syserror);
 				}
-			}, options || {}));
-		},
-		get: function(action, data, callback, cache, async, options) {
-			this.ajax("GET", action, data, callback, cache, async, options);
-		},
-		post: function(action, data, callback, cache, async, options) {
-			this.ajax("POST", action, data, callback, cache, async, options);
-		}
+				$("#dialog_loading,#dialog_mask").remove();
+				return false;
+			},
+			beforeSend: function() {
+			}
+		}, options || {}));
 	},
-	ui:{}
+	get: function(action, data, callback, cache, async, options) {
+		this.ajax("GET", action, data, callback, cache, async, options);
+	},
+	post: function(action, data, callback, cache, async, options) {
+		this.ajax("POST", action, data, callback, cache, async, options);
+	}
 };
 
 Cute.Class = {

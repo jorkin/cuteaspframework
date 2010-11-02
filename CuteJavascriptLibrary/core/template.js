@@ -1,3 +1,4 @@
+//模板
 Cute.Pack.reg("core/template.js",function(){
 	Cute.template = function(tplname, data, isCached) {	//模板
 		if (!this._templateCache) this._templateCache = {};
