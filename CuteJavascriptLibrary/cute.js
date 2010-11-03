@@ -117,7 +117,7 @@ var Cute = window.Cute = {
 				range_all.moveToElementText(obj);
 				for (var sel_end = 0; range_all.compareEndPoints('StartToEnd', range) < 0; sel_end++)
 					range_all.moveStart('character', 1);
-				for (var i = 0; i <= sel_end; i++) {
+				for (var i = 0; i <= sel_end; i++) { 
 					if (obj.value.charAt(i) == '\n')
 						sel_end++;
 				}
