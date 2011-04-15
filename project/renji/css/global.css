@@ -1,0 +1,265 @@
+@charset "utf-8";
+.clearfix {   
+display: inline-block;   
+}
+.clearfix:after {   
+/*/*/content: "."; /* 兼容ie8 */  
+display: block;   
+height: 0;   
+clear: both;   
+visibility: hidden;   
+}
+/* Hides from IE-mac \*/  
+* html .clearfix {   
+height: 1%;
+}   
+.clearfix {   
+display: block;   
+}
+body{
+width:960px;
+background:#000000;
+margin:0 auto;
+font-size:12px;
+color:#e5b69d;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+a{font-size:12px;color:#9e0707;}
+a:hover{text-decoration:none;}
+a img{border:none;}
+
+table{
+width:100%;
+}
+
+table, table tr, table th, table td{
+line-height:18px;
+border:none;
+padding:0;
+margin:0o;
+}
+
+P{
+margin:0 0 22px 0;
+line-height:22px;
+}
+
+.language{
+text-align:right;
+padding-top:20px;
+}
+.language a{margin-left:6px;color:#f5881c;}
+
+h3{
+margin:0 0 20px 0;
+color:#9e0707;
+font-size:18px;
+}
+
+#wrap{padding:0 80px;}
+#contianer{padding:0 0 30px;}
+
+#footer_menu{
+margin-top:100px;
+}
+
+#footer_menu th{
+text-align:left;
+color:#777777;
+font-weight:normal;
+}
+
+#footer_menu td{
+color:#9e0707;
+padding-left:10px;
+}
+
+#footer{
+color:#777777;
+text-align:center;
+margin:80px 0 30px 0;
+}
+
+#footer a, #footer a:hover{color:#777777; text-decoration:underline;}
+
+/*分页控件*/
+#wrap .pagination{text-align:center;}
+#wrap .pagination span{color:#9e0707; margin-right:5px;}
+#wrap .pagination span a{text-decoration:underline;}
+/*End*/
+
+#content .content_right1 a{text-decoration:underline; color:#E5B69D;font-weight:bold;}
+
+/*引导页*/
+#into{
+background:#000000 url(into_bg.jpg) no-repeat;
+line-height:8px;
+}
+
+#into_wrap{
+text-align:center;
+padding-top:30px;
+}
+
+#into_nav{
+margin-top:30px;
+}
+
+#into_nav a{
+color:#ff7700;
+text-decoration:none;
+}
+
+#into_nav a.r{
+margin-right:50px;
+}
+
+#into_footer{
+color:#777777;
+margin:30px 0 70px 0;
+}
+
+#into_footer p {
+line-height:20px;
+margin:0;
+}
+
+#into_footer a, #into_footer a:hover{color:#777777; text-decoration:underline;}
+/*End*/
+
+
+/*各页面背景底*/
+#body #wrap{background:url(index_bg.jpg) no-repeat;}
+#body #contianer{background:url(index_bg2.jpg) no-repeat right bottom;}
+#body2 #wrap{background:url(artists_bg.jpg) no-repeat;}
+#body2 #wrap .single_content img{border:1px solid #ccc;}
+#body3 #wrap{background:url(studio_bg.jpg) no-repeat;}
+#body3 #contianer{background:url(studio_bg2.jpg) no-repeat right bottom;}
+#body4 #wrap{background:url(tattoos_bg.jpg) no-repeat;}
+#body4 #contianer{background:url(tattoos_bg2.jpg) no-repeat left bottom;}
+#body4 .logo1{text-align:left;}
+#body4 .main-menu1{text-align:left;}
+#body4 .main-menu1 a{margin-left:0;margin-right:22px;}
+#body5 #wrap{background:url(training_bg.jpg) no-repeat;}
+#body5 #contianer{background:url(training_bg2.jpg) no-repeat right bottom;}
+#body6 #wrap{background:url(contact_bg.jpg) no-repeat;}
+#body6 .content_left1{width:0px;}
+#body6 .content_right1{width:auto;float:none;}
+/*End*/
+
+
+/*页头导航及logo*/
+.logo1{text-align:right;margin-top:60px;}
+.main-menu1{text-align:right;margin-top:60px;}
+.main-menu1 a{margin-left:22px;}
+.logo2{text-align:left;margin-top:60px;}
+.main-menu2{text-align:left;margin-top:60px;}
+.main-menu2 a{margin-right:22px;}
+/*End*/
+
+#content{margin-top:80px;}
+
+.content_left1{width:272px;float:left;overflow:hidden;}
+.content_right1{width:440px;float:right;}
+
+.content_left2{width:390px;float:left;overflow:hidden;}
+.content_right2{width:340px;float:right;}
+
+#related_work{margin-bottom:120px;}
+.artist_title h3{float:left;text-align:center; margin:0 20px 50px 0;}
+.artist_title h3 a{font-size:14px;text-decoration:none;text-decoration:underline;font-size:12px;}
+.artist_title h3 a:hover{text-decoration:underline;}
+.artist_title h3 a img{width:90px;height:124px;display:block; border:1px solid #ccc; margin-bottom:5px;}
+
+.content_left3{width:200px;float:left;padding-top:120px;}
+.content_left3 span{display:block;margin-bottom:80px;}
+.content_left3 span a{color:#f88c22;font:14px bold; text-decoration:none;}
+.content_left3 span a:hover{text-decoration:underline;}
+.content_right3{width:500px;float:right;overflow:hidden;}
+.content_right3 .news_list p a{margin-right:10px;}
+.content_right3 .news_list p a img{max-width:498px; height:auto;}
+.content_right3 .single_content img{max-width:498px; height:auto;border:1px solid #CCC;}
+
+.content_left4{width:150px;float:left;}
+.content_left4 h3{margin-bottom:40px;}
+.content_left4 h3.top{margin:0px;}
+.content_left4 h3 a.curr{font-size:14px;color:#E70A0A;}
+.content_right4{width:580px;float:right;}
+
+.content5{width:502px;overflow:hidden;}
+.content5 img{width:500px; height:auto; border:1px solid #ccc;}
+
+.content_left6{width:320px;float:left;}
+.content_right6{width:420px;float:right;overflow:hidden;}
+
+.content_right3 .news_list img, .content_right3 .news_content img{border:1px solid #ccc;}
+
+.index_news{margin-top:60px;line-height:1.8em;text-align:center;}
+.index_news img{border:#cacaca 1px solid;margin-bottom:4px;width:270px;height:auto;}
+.index_news p{margin:0;}
+.index_more{text-align:right;margin-top:10px;}
+#content .content_right1 .index_works{text-align:right;padding-right:20px;}
+#content .content_right1 .index_works a{color:#9E0707;font-weight:normal;}
+
+.index_tattoos{margin-bottom:80px;}
+.works_list, .artist_tattoos ul{margin:0;padding:0}
+.works_list li, .artist_tattoos ul li{ float:left; list-style:none;}
+.works_list li a.worksimage, .artist_tattoos ul li a.worksimage{display:inline-block;*display:inline;zoom:1;border:1px solid #ccc;margin:0 15px 15px 0;}
+.works_list li a.worksimage:hover, .artist_tattoos ul li a.worksimage:hover{border-color:red;}
+.works_list li a.worksimage img, .artist_tattoos ul li a.worksimage img{border:none;width:70px; height:70px;}
+.artist_tattoos ul li a.end{margin-right:0px;}
+
+
+
+
+
+
+.links_image{width:500px; overflow:hidden; margin-bottom:30px;}
+.links_image ul{margin:0;padding:0;}
+.links_image ul li{float:left;margin:0 50px 45px 0;line-height:2em;list-style:none;}
+.links_image ul li a img{width:198px;height:89px; border:1px solid #ccc;}
+.links_text ul{margin:0;padding:0;}
+.links_text ul li{float:left;width:100px;margin:0 20px 15px 0;line-height:2em;list-style:none;}
+.links_text ul li a{color:#e5b69d;}
+
+
+.news_list{margin:30px 0 0;}
+table.table {
+clear:both;
+overflow: hidden;
+border-collapse: collapse;
+font-weight: 450;
+font-size:12px;
+}
+
+table.table tr td  {
+height:24px;
+padding:4px 6px 2px;
+}
+
+table.table tr th {
+height:24px;
+padding:0px 6px;
+color:#333;
+}
+
+table.table tr.hover {
+background:#DFE1F0;
+}
+
+tr.none {}
+
+td.odd {}
+
+td.even {
+background-color:#F9F9F9
+}
+
+table.table td.label {
+text-align:right;
+vertical-align:text-top;
+padding-top:5px;
+}
+.pageContorlB{ display:block;text-align:center;}
+.p_cur,.p_page{margin-right:4px;}

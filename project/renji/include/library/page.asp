@@ -9,7 +9,7 @@
 
 
 '**********
-'	Ê¾Àı
+'	ç¤ºä¾‹
 '**********
 
 'Dim Getdata
@@ -24,7 +24,7 @@
 'Tpub.page.Footer_a "",""
 
 '**********
-'	¹¹½¨Àà
+'	æ„å»ºç±»
 '**********
 
 Class Class_Page
@@ -39,10 +39,10 @@ Class Class_Page
 		PageProcedure = "PagingLarge"
 	End Sub
 	
-	'**********ÊôĞÔÉèÖÃ**************************
-	'Conn : Êı¾İ¿âÁ´½Ó¶ÔÏó
-	'Size : Ã¿Ò³ÏÔÊ¾
-	'Page : µ±Ç°Ò³Âë
+	'**********å±æ€§è®¾ç½®**************************
+	'Conn : æ•°æ®åº“é“¾æ¥å¯¹è±¡
+	'Size : æ¯é¡µæ˜¾ç¤º
+	'Page : å½“å‰é¡µç 
 	'**********
 	Public Property Let Conn(ByVal n)
 		Set i_conn = n
@@ -58,12 +58,12 @@ Class Class_Page
 		i_pNumber = CLng(n)
 	End Property
 	
-	'**********»ñÈ¡ÊôĞÔ**************************
-	'Size : Ã¿Ò³ÏÔÊ¾
-	'PageID : µ±Ç°Ò³Âë
-	'PageCount : ½á¹ûÒ³Êı
-	'RecordCount : ½á¹û¼ÇÂ¼×ÜÊı
-	'GetSqlString : »ñÈ¡SqlÓï¾ä
+	'**********è·å–å±æ€§**************************
+	'Size : æ¯é¡µæ˜¾ç¤º
+	'PageID : å½“å‰é¡µç 
+	'PageCount : ç»“æœé¡µæ•°
+	'RecordCount : ç»“æœè®°å½•æ€»æ•°
+	'GetSqlString : è·å–Sqlè¯­å¥
 	'**********
 	Public Property Get Size()
 		Size = i_pSize
@@ -85,8 +85,8 @@ Class Class_Page
 		GetSqlString = s_Sql
 	End Property
 
-	'**********·ÖÒ³Ä£°åTop£¨1£©******************
-	'Call Header_a(Obj,Êı¾İ±íÃû,Ö÷¼ü,²éÑ¯×Ö¶Î,²éÑ¯Ìõ¼ş,ÅÅĞò)
+	'**********åˆ†é¡µæ¨¡æ¿Topï¼ˆ1ï¼‰******************
+	'Call Header_a(Obj,æ•°æ®è¡¨å,ä¸»é”®,æŸ¥è¯¢å­—æ®µ,æŸ¥è¯¢æ¡ä»¶,æ’åº)
 	'**********
 	Sub Header_a(OutRs,ByVal sTable,ByVal sFields,ByVal sWhere,ByVal sGroup,ByVal sSort)
 		s_Sql  = "select count(1) from "&sTable
@@ -109,8 +109,8 @@ Class Class_Page
 		End If
 	End Sub
 	
-	'**********·ÖÒ³Ä£°åTop£¨2£©******************
-	'Call Header_b(Obj,Êı¾İ±íÃû,Ö÷¼ü,²éÑ¯×Ö¶Î,²éÑ¯Ìõ¼ş,ÅÅĞò)
+	'**********åˆ†é¡µæ¨¡æ¿Topï¼ˆ2ï¼‰******************
+	'Call Header_b(Obj,æ•°æ®è¡¨å,ä¸»é”®,æŸ¥è¯¢å­—æ®µ,æŸ¥è¯¢æ¡ä»¶,æ’åº)
 	'SQL Server 2000
 	'**********
 	Sub Header_b(OutRs,ByVal sTable,ByVal sFields,ByVal sWhere,ByVal sGroup,ByVal sSort)
@@ -148,8 +148,8 @@ Class Class_Page
 		If i_pNumber > i_pCount Then i_pNumber = i_pCount
 	End Sub
 
-	'**********·ÖÒ³Ä£°åTop£¨3£©******************
-	'Call Header_c(Obj,Êı¾İ±íÃû,²éÑ¯×Ö¶Î,²éÑ¯Ìõ¼ş,ÅÅĞò)
+	'**********åˆ†é¡µæ¨¡æ¿Topï¼ˆ3ï¼‰******************
+	'Call Header_c(Obj,æ•°æ®è¡¨å,æŸ¥è¯¢å­—æ®µ,æŸ¥è¯¢æ¡ä»¶,æ’åº)
 	'SQL Server 2005
 	'**********
 	Sub Header_c(OutRs,ByVal sTable,ByVal sFields,ByVal sWhere,ByVal sGroup,ByVal sSort)
@@ -187,30 +187,30 @@ Class Class_Page
 		If i_pNumber > i_pCount Then i_pNumber = i_pCount
 	End Sub
 
-	'**********·ÖÒ³Ä£°åEnd£¨1£©******************
-	'Footer_a(ºóĞø²ÎÊı,±íÏÖÀàĞÍ)
+	'**********åˆ†é¡µæ¨¡æ¿Endï¼ˆ1ï¼‰******************
+	'Footer_a(åç»­å‚æ•°,è¡¨ç°ç±»å‹)
 	'**********
 	Function Footer_a(ByVal str,ByVal p_Type)
 		If i_pCount <= 1 Then Exit Function
 		echo "<span class=""pageIntroA"">"
 		If i_rCount<>"" Then 
-			echo "×ÜÊı:<kbd class=""p_total"">"&i_rCount&"</kbd>/<kbd class=""p_ptotal"">"&i_pCount&"</kbd>Ò³ "&vbCrlf
+			echo "æ€»æ•°:<kbd class=""p_total"">"&i_rCount&"</kbd>/<kbd class=""p_ptotal"">"&i_pCount&"</kbd>é¡µ "&vbCrlf
 		End If
-		echo "Ã¿Ò³:<kbd class=""p_size"">"&i_pSize&"</kbd> "&vbCrlf
+		echo "æ¯é¡µ:<kbd class=""p_size"">"&i_pSize&"</kbd> "&vbCrlf
 		echo "</span>"
 		echo "<span class=""pageContorlA"">"
 		If i_pNumber<=1 Then
-			echo  "<a href=""javascript:void(0)"" class=""p_disabled"" disabled title=""ÒÑ¾­ÊÇµÚÒ»Ò³ÁË"">Ê×Ò³</a> <a href=""#;"" class=""p_disabled"" disabled>ÉÏÒ»Ò³</a> "
+			echo  "<a href=""javascript:void(0)"" class=""p_disabled"" disabled title=""å·²ç»æ˜¯ç¬¬ä¸€é¡µäº†"">é¦–é¡µ</a> <a href=""#;"" class=""p_disabled"" disabled>ä¸Šä¸€é¡µ</a> "
 		Else
-			echo "<a href=""?"&SetQueryString(Replace(Request.QueryString(),str,"",1,-1,1),"PageID",1)&str&""" class=""p_start"" title=""µÚÒ»Ò³"">Ê×Ò³</a> <a href=""?"&SetQueryString(Replace(Request.QueryString(),str,"",1,-1,1),"PageID",i_pNumber-1)&str&""" class=""p_pre"">ÉÏÒ»Ò³</a> "
+			echo "<a href=""?"&SetQueryString(Replace(Request.QueryString(),str,"",1,-1,1),"PageID",1)&str&""" class=""p_start"" title=""ç¬¬ä¸€é¡µ"">é¦–é¡µ</a> <a href=""?"&SetQueryString(Replace(Request.QueryString(),str,"",1,-1,1),"PageID",i_pNumber-1)&str&""" class=""p_pre"">ä¸Šä¸€é¡µ</a> "
 		End If
 		If i_pCount="" Then
-			echo "<a href=""?"&SetQueryString(Replace(Request.QueryString(),str,"",1,-1,1),"PageID",i_pNumber+1)&str&""" class=""p_next"">ÏÂÒ»Ò³</a>  <a href=""?"&SetQueryString(Replace(Request.QueryString(),str,"",1,-1,1),"PageID",9999999)&str&""" class=""p_end"">Î²Ò³</a> "
+			echo "<a href=""?"&SetQueryString(Replace(Request.QueryString(),str,"",1,-1,1),"PageID",i_pNumber+1)&str&""" class=""p_next"">ä¸‹ä¸€é¡µ</a>  <a href=""?"&SetQueryString(Replace(Request.QueryString(),str,"",1,-1,1),"PageID",9999999)&str&""" class=""p_end"">å°¾é¡µ</a> "
 		Else
 			If i_pNumber>=i_pCount Then
-				echo "<a href=""javascript:void(0)"" class=""p_disabled"" disabled>ÏÂÒ»Ò³</a> <a href=""#;"" class=""p_disabled"" disabled title=""ÒÑ¾­ÊÇ×îºóÒ»Ò³ÁË"">Î²Ò³</a>"
+				echo "<a href=""javascript:void(0)"" class=""p_disabled"" disabled>ä¸‹ä¸€é¡µ</a> <a href=""#;"" class=""p_disabled"" disabled title=""å·²ç»æ˜¯æœ€åä¸€é¡µäº†"">å°¾é¡µ</a>"
 			Else
-				echo "<a href=""?"&SetQueryString(Replace(Request.QueryString(),str,"",1,-1,1),"PageID",i_pNumber+1)&str&""" class=""p_next"">ÏÂÒ»Ò³</a> <a href=""?"&SetQueryString(Replace(Request.QueryString(),str,"",1,-1,1),"PageID",i_pCount)&str&""" class=""p_end"" title=""×îºóÒ»Ò³"">Î²Ò³</a>"
+				echo "<a href=""?"&SetQueryString(Replace(Request.QueryString(),str,"",1,-1,1),"PageID",i_pNumber+1)&str&""" class=""p_next"">ä¸‹ä¸€é¡µ</a> <a href=""?"&SetQueryString(Replace(Request.QueryString(),str,"",1,-1,1),"PageID",i_pCount)&str&""" class=""p_end"" title=""æœ€åä¸€é¡µ"">å°¾é¡µ</a>"
 			End If
 		End If
 		Call CommonFooterContorl(str,p_Type)
@@ -218,8 +218,8 @@ Class Class_Page
 	End Function
 	
 	
-	'**********·ÖÒ³Ä£°åEnd£¨2£©******************
-	'Footer_b(ºóĞø²ÎÊı,±íÏÖÀàĞÍ)
+	'**********åˆ†é¡µæ¨¡æ¿Endï¼ˆ2ï¼‰******************
+	'Footer_b(åç»­å‚æ•°,è¡¨ç°ç±»å‹)
 	'**********
 	Function Footer_b(ByVal str,ByVal p_Type)
 		Dim i, m
@@ -227,18 +227,18 @@ Class Class_Page
 		If i_pCount <= 1 Then Exit Function
 		echo "<span class=""pageIntroB"">"
 		If i_rCount <> "" Then
-			echo "×ÜÊı:<kbd class=""p_total"">"&i_rCount&"</kbd>/<kbd class=""p_ptotal"">"&i_pCount&"</kbd>Ò³ "
+			echo "æ€»æ•°:<kbd class=""p_total"">"&i_rCount&"</kbd>/<kbd class=""p_ptotal"">"&i_pCount&"</kbd>é¡µ "
 		End If
-		echo " Ã¿Ò³:<kbd class=""p_size"">"&i_pSize&"</kbd>"
+		echo " æ¯é¡µ:<kbd class=""p_size"">"&i_pSize&"</kbd>"
 		echo "</span>"
 		echo "<span class=""pageContorlB"">"
 		If i_pNumber = 1 Then 
-			echo " <a href=""javascript:void(0)"" class=""p_disabled"" disabled title=""ÒÑ¾­ÊÇµÚÒ»Ò³ÁË"">ÉÏÒ»Ò³</a>"
+			echo " <a href=""javascript:void(0)"" class=""p_disabled"" disabled title=""å·²ç»æ˜¯ç¬¬ä¸€é¡µäº†"">ä¸Šä¸€é¡µ</a>"
 		Else
-			echo " <a href=""?"&SetQueryString(Replace(Request.QueryString(),str,"",1,-1,1),"PageID",i_pNumber-1)&str&""" class=""p_pre"">ÉÏÒ»Ò³</a> "
+			echo " <a href=""?"&SetQueryString(Replace(Request.QueryString(),str,"",1,-1,1),"PageID",i_pNumber-1)&str&""" class=""p_pre"">ä¸Šä¸€é¡µ</a> "
 		End If
 		If i_pNumber > m - 4 Then 
-			echo " <a href=""?"&SetQueryString(Replace(Request.QueryString(),str,"",1,-1,1),"PageID",1)&str&""" class=""p_start"" title=""µÚÒ»Ò³"">1</a> "
+			echo " <a href=""?"&SetQueryString(Replace(Request.QueryString(),str,"",1,-1,1),"PageID",1)&str&""" class=""p_start"" title=""ç¬¬ä¸€é¡µ"">1</a> "
 			If i_pNumber > m - 3 Then echo " ... "
 		End If
 		For i = i_pNumber - m + 5 to i_pNumber + m - 1
@@ -254,37 +254,37 @@ Class Class_Page
 		Next
 		If i_pNumber < i_pCount - m + 5 Then
 			If i_pNumber < i_pCount - m + 4 Then echo " ... "
-			echo " <a href=""?"&SetQueryString(Replace(Request.QueryString(),str,"",1,-1,1),"PageID",i_pCount)&str&""" class=""p_end"" title=""×îºóÒ»Ò³"">"&i_pCount&"</a> "
+			echo " <a href=""?"&SetQueryString(Replace(Request.QueryString(),str,"",1,-1,1),"PageID",i_pCount)&str&""" class=""p_end"" title=""æœ€åä¸€é¡µ"">"&i_pCount&"</a> "
 		End If
 		If i_pNumber = i_pCount Then 
-			echo " <a href=""javascript:void(0)"" class=""p_disabled"" disabled title=""ÒÑ¾­ÊÇ×îºóÒ»Ò³ÁË"">ÏÂÒ»Ò³</a> "
+			echo " <a href=""javascript:void(0)"" class=""p_disabled"" disabled title=""å·²ç»æ˜¯æœ€åä¸€é¡µäº†"">ä¸‹ä¸€é¡µ</a> "
 		Else
-			echo " <a href=""?"&SetQueryString(Replace(Request.QueryString(),str,"",1,-1,1),"PageID",i_pNumber+1)&str&""" class=""p_next"">ÏÂÒ»Ò³</a> "
+			echo " <a href=""?"&SetQueryString(Replace(Request.QueryString(),str,"",1,-1,1),"PageID",i_pNumber+1)&str&""" class=""p_next"">ä¸‹ä¸€é¡µ</a> "
 		End If
 		Call CommonFooterContorl(str,p_Type)
 		echo "</span>"
 	End Function
 
 	'**********
-	'CommonFooterContorl(ºóĞø²ÎÊı,±íÏÖÀàĞÍ)
+	'CommonFooterContorl(åç»­å‚æ•°,è¡¨ç°ç±»å‹)
 	'**********
 	Private Sub CommonFooterContorl(str,p_Type)
 		Dim sQueryString
 		sQueryString = SetQueryString(Replace(Request.QueryString(),str,"",1,-1,1),"PageID","")
 		Select Case p_Type
 		Case "select"
-			echo "&nbsp;Ìø×ªµ½:<select name=""PageID"" onchange=""location.href='?"&sQueryString&IIf(sQueryString="","","&")&"PageID='+this.options[this.selectedIndex].value+'"&str&"'"" class=""p_select"">"&vbCrlf
+			echo "&nbsp;è·³è½¬åˆ°:<select name=""PageID"" onchange=""location.href='?"&sQueryString&IIf(sQueryString="","","&")&"PageID='+this.options[this.selectedIndex].value+'"&str&"'"" class=""p_select"">"&vbCrlf
 			Dim i
 			For i=1 to i_pCount
 				echo "<option value="""&i&""""
 				If i=PageID Then echo " selected"
-				echo ">µÚ"&i&"Ò³</option>"&vbCrlf
+				echo ">ç¬¬"&i&"é¡µ</option>"&vbCrlf
 			Next
 			echo "</select>"&vbCrlf
 		Case Else
 			Randomize
 			Dim sPageID : sPageID = "PageID" & Int(Rnd() * 10000000)
-			echo " Ìø×ªµ½:<input type=""text"" id="""&sPageID&""" name=""PageID"" onkeydown=""if(event.keyCode==13) document.getElementById('btn_"&sPageID&"').click();"" size=""3"" value="""&PageID&""" onclick=""this.select()"" maxlength=8 class=""p_text""> "&vbCrlf & _
+			echo " è·³è½¬åˆ°:<input type=""text"" id="""&sPageID&""" name=""PageID"" onkeydown=""if(event.keyCode==13) document.getElementById('btn_"&sPageID&"').click();"" size=""3"" value="""&PageID&""" onclick=""this.select()"" maxlength=8 class=""p_text""> "&vbCrlf & _
 			"<input type=""button"" value=""GO"" onclick=""location.href='?"&sQueryString&IIf(sQueryString="","","&")&"PageID='+document.getElementById('"&sPageID&"').value+'"&str&"'"" id=""btn_"&sPageID&""" class=""p_btn"">"
 		End Select
 	End Sub
@@ -296,7 +296,7 @@ Class Class_Page
 		s_Sql = "select " & sFields & " from " & sTable & sWhere & sGroup & " order by " & sSort
 	End Sub
 
-	Private Function regExpReplace(ByVal str,re,restr,isCase)	'ÄÚÈİ,ÕıÔò
+	Private Function regExpReplace(ByVal str,re,restr,isCase)	'å†…å®¹,æ­£åˆ™
 		If Len(str) > 0 Then
 			Dim Obj
 			Set Obj = New Regexp
@@ -315,8 +315,8 @@ Class Class_Page
 	End Sub
 
 	'**********
-	' º¯ÊıÃû: SetQueryString
-	' ×÷ÓÃ: ÖØÖÃ²ÎÊı
+	' å‡½æ•°å: SetQueryString
+	' ä½œç”¨: é‡ç½®å‚æ•°
 	'**********
 	Private Function SetQueryString(ByVal sQuery, ByVal Name,ByVal Value)
 		Dim Obj,i
@@ -352,9 +352,9 @@ Class Class_Page
 	End Function
 
 	'********** 
-	' º¯ÊıÃû: IIf
+	' å‡½æ•°å: IIf
 	' Param: str as a output string
-	' ×÷ÓÃ: ¸ù¾İÖµÅĞ¶Ï½á¹û
+	' ä½œç”¨: æ ¹æ®å€¼åˆ¤æ–­ç»“æœ
 	'********** 
 	Private Function IIf(var,return1,return2)
 		If var Then

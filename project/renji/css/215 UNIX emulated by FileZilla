@@ -1,0 +1,251 @@
+@charset "utf-8";
+.clearfix {   
+display: inline-block;   
+}
+.clearfix:after {   
+/*/*/content: "."; /* 兼容ie8 */  
+display: block;   
+height: 0;   
+clear: both;   
+visibility: hidden;   
+}
+/* Hides from IE-mac \*/  
+* html .clearfix {   
+height: 1%;
+}   
+.clearfix {   
+display: block;   
+}
+body{
+width:960px;
+background:#000000;
+margin:0 auto;
+font-size:12px;
+color:#e5b69d;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+a{
+font-size:12px;
+color:#9e0707;
+}
+a:hover{
+text-decoration:none;
+}
+a img{
+border:none;
+}
+
+table{
+width:100%;
+}
+
+table, table tr, table th, table td{
+line-height:18px;
+border:none;
+padding:0;
+margin:0o;
+}
+
+P{
+margin:0 0 22px 0;
+line-height:22px;
+}
+
+.language{
+text-align:right;
+padding-top:20px;
+}
+.language a{margin-left:6px;}
+
+h3{
+color:#9e0707;
+}
+
+#wrap{padding:0 80px;}
+#contianer{padding:0 0 30px;}
+
+#footer_menu{
+margin-top:100px;
+}
+
+#footer_menu th{
+text-align:left;
+color:#777777;
+font-weight:normal;
+}
+
+#footer_menu td{
+color:#9e0707;
+padding-left:10px;
+}
+
+#footer{
+color:#777777;
+text-align:center;
+margin:80px 0 30px 0;
+}
+
+
+
+
+
+
+/*引导页*/
+#into{
+background:#000000 url(into_bg.jpg) no-repeat;
+line-height:8px;
+}
+
+#into_wrap{
+text-align:center;
+padding-top:70px;
+}
+
+#into_nav{
+margin-top:50px;
+}
+
+#into_nav a{
+color:#ff7700;
+text-decoration:none;
+}
+
+#into_nav a.r{
+margin-right:50px;
+}
+
+#into_footer{
+color:#777777;
+margin:50px 0 70px 0;
+}
+/*End*/
+
+
+/*各页面背景底*/
+#body #wrap{background:url(index_bg.jpg) no-repeat;}
+#body #contianer{background:url(index_bg2.jpg) no-repeat right bottom;}
+
+#body2 #wrap{background:url(artists_bg.jpg) no-repeat;}
+
+#body3 #wrap{background:url(studio_bg.jpg) no-repeat;}
+#body3 #contianer{background:url(studio_bg2.jpg) no-repeat right bottom;}
+
+#body4 #wrap{background:url(tattoos_bg.jpg) no-repeat;}
+#body4 #contianer{background:url(tattoos_bg2.jpg) no-repeat left bottom;}
+#body4 .logo1{text-align:left;}
+#body4 .main-menu1{text-align:left;}
+#body4 .main-menu1 a{margin-left:0;margin-right:22px;}
+
+
+
+#body5 #wrap{background:url(training_bg.jpg) no-repeat;}
+#body5 #contianer{background:url(training_bg2.jpg) no-repeat right bottom;}
+
+#body6 #wrap{background:url(contact_bg.jpg) no-repeat;}
+#body6 .content_left1{width:0px;}
+#body6 .content_right1{width:auto;float:none;}
+
+#content .content_right1 a{text-decoration:underline; color:#E5B69D;font-weight:bold;}
+/*End*/
+
+
+/*页头导航及logo*/
+.logo1{text-align:right;margin-top:60px;}
+.main-menu1{text-align:right;margin-top:60px;}
+.main-menu1 a{margin-left:22px;}
+.logo2{text-align:left;margin-top:60px;}
+.main-menu2{text-align:left;margin-top:60px;}
+.main-menu2 a{margin-right:22px;}
+/*End*/
+
+#content{
+margin-top:80px;
+}
+
+.content_left1{width:272px;float:left;overflow:hidden;}
+.content_right1{width:440px;float:right;}
+
+.content_left2{width:400px;float:left;overflow:hidden;}
+.content_right2{width:320px;float:right;}
+
+.index_news{
+margin-top:60px;
+line-height:1.8em;
+text-align:center;
+}
+
+.index_news img{
+border:#cacaca 1px solid;
+margin-bottom:4px;
+}
+
+.index_news p{
+	margin:0;
+}
+
+.index_tattoos{margin-bottom:80px;}
+.works_list{margin:0;padding:0}
+.works_list li{ float:left; list-style:none;}
+.works_list li a.worksimage{display:inline-block;*display:inline;zoom:1;border:1px solid #CACACA;margin:0 15px 15px 0;}
+.works_list li a.worksimage:hover{border-color:red;}
+.works_list li a.worksimage img{border:none;width:70px; height:70px;}
+
+.tattoos_left h3{
+margin-bottom:40px;
+}
+
+.tattoos_left h3.top{
+margin:0px;
+}
+
+.tattoos_left h3 a.curr{font-size:14px;color:#E70A0A;}
+
+.tattoos_right{
+width:650px;
+float:right;
+}
+
+
+.links_text{margin:0;padding:0;}
+.links_text li{float:left;width:100px;margin-right:8px;line-height:2em;list-style:none;}
+.links_image{margin:0;padding:0;}
+.links_image li{float:left;width:150px;margin-right:8px;line-height:2em;list-style:none;}
+
+.news_list{margin:30px 0 0;}
+table.table {
+clear:both;
+overflow: hidden;
+border-collapse: collapse;
+font-weight: 450;
+font-size:12px;
+}
+
+table.table tr td  {
+height:24px;
+padding:4px 6px 2px;
+}
+
+table.table tr th {
+height:24px;
+padding:0px 6px;
+color:#333;
+}
+
+table.table tr.hover {
+background:#DFE1F0;
+}
+
+tr.none {}
+
+td.odd {}
+
+td.even {
+background-color:#F9F9F9
+}
+
+table.table td.label {
+text-align:right;
+vertical-align:text-top;
+padding-top:5px;
+}
