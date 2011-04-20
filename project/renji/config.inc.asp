@@ -11,6 +11,7 @@ Dim StartTime : StartTime = timer()
 <!--#include file="include/library/string.asp"-->
 <!--#include file="include/library/params.asp"-->
 <!--#include file="include/library/session.asp"-->
+<!--#include file="include/AppFunctions.asp"-->
 <%
 Casp.WebConfig("CodePage")		=	65001				'设置站点编码
 Casp.WebConfig("Charset")		=	"utf-8"		'设置站点字符集
@@ -23,6 +24,7 @@ Casp.WebConfig.Add "SiteUrl","http://localhost:9100"				'站点路径
 Casp.WebConfig.Add "UserFacePath","/attached/userface"				'头像路径
 Casp.WebConfig.Add "GuestbookPath","/attached/guestbook"				'留言图片路径
 Casp.WebConfig.Add "LinksPath","/attached/links"				'友情链接图片路径
+Casp.WebConfig.Add "AdvertPath","/attached/advert"				'友情链接图片路径
 Casp.WebConfig.Add "NewsPath","/attached/news"				'新闻图片路径
 Casp.WebConfig.Add "GuestbookSmallWidth",100				'留言缩略图宽度
 Casp.WebConfig.Add "GuestbookSmallHeight",100				'留言缩略图高度

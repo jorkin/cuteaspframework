@@ -8,32 +8,32 @@
 '**********
 
 '**********
-'	Ê¾Àı
+'	ç¤ºä¾‹
 '**********
 
 '**********
-'	¹¹½¨Àà
+'	æ„å»ºç±»
 '**********
 
 Class Class_File
-    Public FSO 'ÉèÖÃFSO×é¼şÃû³Æ
-    Public Stream 'ÉèÖÃStream×é¼şÃû³Æ
-    Public Charset 'ÉèÖÃ×Ö·û¼¯
+    Public FSO 'è®¾ç½®FSOç»„ä»¶åç§°
+    Public Stream 'è®¾ç½®Streamç»„ä»¶åç§°
+    Public Charset 'è®¾ç½®å­—ç¬¦é›†
 
     '**********
-    ' º¯ÊıÃû: class_Initialize
-    ' ×÷  ÓÃ: Constructor
+    ' å‡½æ•°å: class_Initialize
+    ' ä½œ  ç”¨: Constructor
     '**********
 
     Private Sub Class_Initialize()
-        Charset = "gb2312"
+        Charset = "utf-8"
         Stream = "ADODB.Stream"
         FSO = "Scripting.FileSystemObject"
     End Sub
 
     '**********
-    'º¯ÊıÃû£ºGetFileTypeName
-    '×÷  ÓÃ£º»ñÈ¡ÎÄ¼şÀ©Õ¹Ãû
+    'å‡½æ•°åï¼šGetFileTypeName
+    'ä½œ  ç”¨ï¼šè·å–æ–‡ä»¶æ‰©å±•å
     '**********
     Function GetFileTypeName(fName)
         Dim fileName
@@ -42,8 +42,8 @@ Class Class_File
     End Function
 
     '**********
-    'º¯ÊıÃû£ºCheckFileExt
-    '×÷  ÓÃ£º¼ìÑéÊÇ·ñºÏ·¨ÎÄ¼ş
+    'å‡½æ•°åï¼šCheckFileExt
+    'ä½œ  ç”¨ï¼šæ£€éªŒæ˜¯å¦åˆæ³•æ–‡ä»¶
     '**********
     Function CheckFileExt(sFile, ext)
         If Trim(ext) = "" And Trim(ext) <> "*" Then
@@ -61,7 +61,7 @@ Class Class_File
 
     '**********
     'FormatFileSize
-    '×÷  ÓÃ£º¸ñÊ½»¯ÎÄ¼şµÄ´óĞ¡
+    'ä½œ  ç”¨ï¼šæ ¼å¼åŒ–æ–‡ä»¶çš„å¤§å°
     '**********
     Function FormatFileSize(fs,float)
         Dim bUnit,kUnit, mUnit, gUnit
@@ -84,7 +84,7 @@ Class Class_File
 
     '**********
     'GetFileSize
-    '×÷  ÓÃ£º»ñÈ¡ÎÄ¼şµÄ´óĞ¡
+    'ä½œ  ç”¨ï¼šè·å–æ–‡ä»¶çš„å¤§å°
     '**********
     Function GetFileSize(fls)
         Dim fso, fdr, arr_fls, fsize, i, fl
@@ -105,7 +105,7 @@ Class Class_File
 
     '**********
     'GetFolderSize
-    '×÷  ÓÃ£º»ñÈ¡Ä¿Â¼µÄ´óĞ¡
+    'ä½œ  ç”¨ï¼šè·å–ç›®å½•çš„å¤§å°
     '**********
     Function GetFolderSize(fls)
         Dim fso, fdr, arr_fls, fsize, i, fl
@@ -125,45 +125,45 @@ Class Class_File
     End Function
 
     '**********
-    'º¯ÊıÃû£ºIsFolderExists
-    '×÷  ÓÃ£º¼ì²éÄ³Ò»Ä¿Â¼ÊÇ·ñ´æÔÚ
-    '²Î  Êı£ºFolderPath	----Ä¿Â¼
+    'å‡½æ•°åï¼šIsFolderExists
+    'ä½œ  ç”¨ï¼šæ£€æŸ¥æŸä¸€ç›®å½•æ˜¯å¦å­˜åœ¨
+    'å‚  æ•°ï¼šFolderPath	----ç›®å½•
     '**********
     Function IsFolderExists(FolderPath)
         Dim fso
         FolderPath = Server.MapPath(".")&"\"&FolderPath
         Set fso = Server.CreateObject(Me.FSO)
         If fso.FolderExists(FolderPath) Then
-            IsFolderExists = true '´æÔÚ
+            IsFolderExists = true 'å­˜åœ¨
         Else
-            IsFolderExists = false '²»´æÔÚ
+            IsFolderExists = false 'ä¸å­˜åœ¨
         End If
         Set fso = Nothing
     End Function
 
     '**********
-    'º¯ÊıÃû£ºIsFileExists
-    '×÷  ÓÃ£º¼ì²éÄ³Ò»ÎÄ¼şÊÇ·ñ´æÔÚ
-    '²Î  Êı£ºFilePath	----Ä¿Â¼
+    'å‡½æ•°åï¼šIsFileExists
+    'ä½œ  ç”¨ï¼šæ£€æŸ¥æŸä¸€æ–‡ä»¶æ˜¯å¦å­˜åœ¨
+    'å‚  æ•°ï¼šFilePath	----ç›®å½•
     '**********
     Function IsFileExists(FilePath)
         Dim fso
         FilePath = Server.MapPath(".")&"\"&FilePath
         Set fso = Server.CreateObject(Me.FSO)
         If fso.FileExists(FilePath) Then
-            IsFileExists = true '´æÔÚ
+            IsFileExists = true 'å­˜åœ¨
         Else
-            IsFileExists = false '²»´æÔÚ
+            IsFileExists = false 'ä¸å­˜åœ¨
         End If
         Set fso = Nothing
     End Function
 
     '**********
-    'º¯ÊıÃû£ºCreatePath
-    '×÷  ÓÃ£º´´½¨¶à¼¶Ä¿Â¼£¬¿ÉÒÔ´´½¨²»´æÔÚµÄ¸ùÄ¿Â¼
-    '²Î  Êı£ºÒª´´½¨µÄÄ¿Â¼Ãû³Æ£¬¿ÉÒÔÊÇ¶à¼¶
-    '·µ»ØÂß¼­Öµ£ºTrue³É¹¦£¬FalseÊ§°Ü
-    '´´½¨Ä¿Â¼µÄ¸ùÄ¿Â¼´Óµ±Ç°Ä¿Â¼¿ªÊ¼
+    'å‡½æ•°åï¼šCreatePath
+    'ä½œ  ç”¨ï¼šåˆ›å»ºå¤šçº§ç›®å½•ï¼Œå¯ä»¥åˆ›å»ºä¸å­˜åœ¨çš„æ ¹ç›®å½•
+    'å‚  æ•°ï¼šè¦åˆ›å»ºçš„ç›®å½•åç§°ï¼Œå¯ä»¥æ˜¯å¤šçº§
+    'è¿”å›é€»è¾‘å€¼ï¼šTrueæˆåŠŸï¼ŒFalseå¤±è´¥
+    'åˆ›å»ºç›®å½•çš„æ ¹ç›®å½•ä»å½“å‰ç›®å½•å¼€å§‹
     '**********
     Function CreatePath(CFolder)
         On Error Resume Next
@@ -201,9 +201,9 @@ Class Class_File
     End Function
 
     '**********
-    'º¯ÊıÃû£ºDelFolder
-    '×÷  ÓÃ£ºÉ¾³ıÄ¿Â¼
-    '²Î  Êı£ºÒªÉ¾³ıµÄÄ¿Â¼Ãû³Æ
+    'å‡½æ•°åï¼šDelFolder
+    'ä½œ  ç”¨ï¼šåˆ é™¤ç›®å½•
+    'å‚  æ•°ï¼šè¦åˆ é™¤çš„ç›®å½•åç§°
     '**********
     Function DelFolder(sPath)
         On Error Resume Next
@@ -230,9 +230,9 @@ Class Class_File
     End Function
 
     '**********
-    'º¯ÊıÃû£ºDelFile
-    '×÷  ÓÃ£ºÉ¾³ıÎÄ¼ş
-    '²Î  Êı£ºÒªÉ¾³ıµÄÎÄ¼şÃû³Æ(Ö§³ÖÒÔ|·Ö¸ôµÄÁĞ±í)
+    'å‡½æ•°åï¼šDelFile
+    'ä½œ  ç”¨ï¼šåˆ é™¤æ–‡ä»¶
+    'å‚  æ•°ï¼šè¦åˆ é™¤çš„æ–‡ä»¶åç§°(æ”¯æŒä»¥|åˆ†éš”çš„åˆ—è¡¨)
     '**********
     Function DelFile(sFiles)
         DelFile = true
@@ -252,9 +252,9 @@ Class Class_File
     End Function
 
     '**********
-    'º¯ÊıÃû£ºLoadFile
-    '×÷  ÓÃ£º¶ÁÈ¡ÎÄ¼ş
-    '²Î  Êı£ºFile	----ÎÄ¼şÂ·¾¶
+    'å‡½æ•°åï¼šLoadFile
+    'ä½œ  ç”¨ï¼šè¯»å–æ–‡ä»¶
+    'å‚  æ•°ï¼šFile	----æ–‡ä»¶è·¯å¾„
     '**********
     Function LoadFile(sFile)
         On Error Resume Next
@@ -288,10 +288,10 @@ Class Class_File
     End Function
 
     '**********
-    'º¯ÊıÃû£ºSaveFile
-    '×÷  ÓÃ£º±£´æÎÄ¼ş
-    '²Î  Êı£ºsFilePath	----ÎÄ¼şÂ·¾¶
-    '		 sPageContent --ÎÄ¼şÄÚÈİ
+    'å‡½æ•°åï¼šSaveFile
+    'ä½œ  ç”¨ï¼šä¿å­˜æ–‡ä»¶
+    'å‚  æ•°ï¼šsFilePath	----æ–‡ä»¶è·¯å¾„
+    '		 sPageContent --æ–‡ä»¶å†…å®¹
     '**********
     Function SaveFile(sFilePath, sPageContent)
         SaveFile = true
@@ -320,9 +320,9 @@ Class Class_File
     End Function
 
     '**********
-    '¸´ÖÆÄ¿Â¼ÏÂËùÓĞÎÄ¼ş
-    'sFolderPath:Ô´Ä¿Â¼
-    'dFolderPath:Ä¿±êÄ¿Â¼
+    'å¤åˆ¶ç›®å½•ä¸‹æ‰€æœ‰æ–‡ä»¶
+    'sFolderPath:æºç›®å½•
+    'dFolderPath:ç›®æ ‡ç›®å½•
     '**********
     Function CopyFolder(sFolderPath, dFolderPath)
         On Error Resume Next
@@ -337,9 +337,9 @@ Class Class_File
     End Function
 
     '**********
-    '¸´ÖÆÎÄ¼ş
-    'sFilePath:Ô´ÎÄ¼ş
-    'dFilePath:Ä¿ÎÄ¼ş
+    'å¤åˆ¶æ–‡ä»¶
+    'sFilePath:æºæ–‡ä»¶
+    'dFilePath:ç›®æ–‡ä»¶
     '**********
     Function CopyFile(sFilePath, dFilePath)
         On Error Resume Next
@@ -355,9 +355,9 @@ Class Class_File
     End Function
 
     '**********
-    '¼ÓÔØÖ¸¶¨Ä¿Â¼ÎÄ¼şÁĞ±í
-    'strDir:Ä¿Â¼
-    'strFileExt:ÎÄ¼şÀàĞÍ(ÒÔ|·Ö¸ô)
+    'åŠ è½½æŒ‡å®šç›®å½•æ–‡ä»¶åˆ—è¡¨
+    'strDir:ç›®å½•
+    'strFileExt:æ–‡ä»¶ç±»å‹(ä»¥|åˆ†éš”)
     '**********
     Function LoadIncludeFiles(strDir, strFileExt)
         Dim aryFileList()
@@ -378,8 +378,8 @@ Class Class_File
     End Function
 
     '**********
-    '¼ÓÔØÖ¸¶¨Ä¿Â¼×ÓÄ¿Â¼ÁĞ±í
-    'strDir:Ä¿Â¼
+    'åŠ è½½æŒ‡å®šç›®å½•å­ç›®å½•åˆ—è¡¨
+    'strDir:ç›®å½•
     '**********
     Function LoadIncludeFolder(strDir)
         Dim aryFileList()
@@ -398,8 +398,8 @@ Class Class_File
     End Function
 
     '**********
-    'È¥³ıutf-8Ç©Ãû
-    'sFilepath:ÎÄ¼şÂ·¾¶
+    'å»é™¤utf-8ç­¾å
+    'sFilepath:æ–‡ä»¶è·¯å¾„
     '**********
     Sub RemoveUtf8bom(sFilepath)
         On Error Resume Next

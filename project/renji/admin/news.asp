@@ -85,7 +85,11 @@ Sub ProcessList()
 				<%
 				Casp.db.Exec crs,"select * from Category order by sortid asc,id asc"
 				Do While Not crs.eof
-					echo "<a href=""news.asp?do=list&cid="&crs("id")&""" title="""&crs("ClassName_en")&""">"&crs("ClassName_cn")&"</a>&nbsp;|&nbsp;"
+					If request.querystring("lang")="en" Then
+						echo "<a href=""news.asp?do=list&cid="&crs("id")&""" title="""&crs("ClassName_cn")&""">"&crs("ClassName_en")&"</a>&nbsp;|&nbsp;"
+					Else
+						echo "<a href=""news.asp?do=list&cid="&crs("id")&""" title="""&crs("ClassName_en")&""">"&crs("ClassName_cn")&"</a>&nbsp;|&nbsp;"
+					End If
 					crs.MoveNext
 				Loop
 				crs.close

@@ -94,13 +94,12 @@ Class Class_Page
 		If sGroup <> "" Then s_Sql = s_Sql & " group by "&sGroup
 		i_rCount = i_conn.Execute(s_Sql)(0)
 		i_pCount = Abs(Int(-(i_rCount / i_pSize)))
+		If i_pCount = 0 Then i_pCount = 1
 		If i_pNumber > i_pCount Then i_pNumber = i_pCount
-
 		s_Sql = "select top "&i_pSize * Abs(i_pNumber)&" "&sFields&" from "&sTable
 		If sWhere <> "" Then s_Sql = s_Sql & " where "&sWhere
 		If sGroup <> "" Then s_Sql = s_Sql & " group by "&sGroup
 		If sSort <> "" Then s_Sql = s_Sql & " order by "&sSort
-
 		Set OutRs = Server.CreateObject("ADODB.Recordset")
 		OutRs.MaxRecords = i_pSize * Abs(i_pNumber)
 		OutRs.open s_Sql,i_conn,1,1

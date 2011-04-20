@@ -6,6 +6,9 @@ Function getLinksImage(id)
 	getLinksImage = Casp.WebConfig("SiteUrl") & Casp.WebConfig("LinksPath") & "/" & id & ".jpg"
 End Function
 
+Function getAdvertImage(id)
+	getAdvertImage = Casp.WebConfig("SiteUrl") & Casp.WebConfig("AdvertPath") & "/" & id & ".jpg"
+End Function
 Function getWorkSmallImage(id)
 	getWorkSmallImage = Casp.WebConfig("SiteUrl") & Casp.WebConfig("WorksPath") & "/" & id & "_small.jpg"
 End Function
@@ -31,15 +34,15 @@ Function MakePic(sourcpic,newwidth,newheight,destpic)
 	Set Jpeg = Server.CreateObject("Persits.Jpeg")
 	Jpeg.RegKey = "19851-45809-68580"
 	if Err then
-		die "´íÎó£º¿Õ¼äÃ»°²×°aspjpeg×é¼ş"
+		die "é”™è¯¯ï¼šç©ºé—´æ²¡å®‰è£…aspjpegç»„ä»¶"
 	end if
 	Jpeg.Quality = 60
 	Jpeg.Open Server.MapPath(sourcpic)
-	jpeg.PreserveAspectRatio = True 'µÈ±ÈËõ·Å
-	if jpeg.OriginalWidth/jpeg.OriginalHeight > newwidth/newheight then'Ì«±âÁË£¬Òª¼ôµô×óÓÒ²¿·Ö
+	jpeg.PreserveAspectRatio = True 'ç­‰æ¯”ç¼©æ”¾
+	if jpeg.OriginalWidth/jpeg.OriginalHeight > newwidth/newheight then'å¤ªæ‰äº†ï¼Œè¦å‰ªæ‰å·¦å³éƒ¨åˆ†
 		jpeg.Height = newheight
 		jpeg.crop CInt((jpeg.Width - newwidth)/2),0,CInt((jpeg.Width - newwidth)/2)+newwidth,newheight
-	else 'Ì«¸ßÁË£¬Òª¼ôµôÉÏÏÂ²¿·Ö
+	else 'å¤ªé«˜äº†ï¼Œè¦å‰ªæ‰ä¸Šä¸‹éƒ¨åˆ†
 		jpeg.Width = newwidth
 		jpeg.crop 0,CInt((jpeg.Height - newheight)/2),newwidth,CInt((jpeg.Height - newheight)/2)+newheight
 	end if
@@ -65,12 +68,12 @@ Function MakeGuestbookImage(ByVal id,ByVal Content)
 	MakeGuestbookImage = False
 '	If Content <> "" Then
 '		Set obj = New regexp
-'		obj.IgnoreCase = True ' ÉèÖÃÊÇ·ñÇø·Ö×Ö·û´óĞ¡Ğ´¡£ 
-'		obj.Global = True ' ÉèÖÃÈ«¾Ö¿ÉÓÃĞÔ¡£ 
+'		obj.IgnoreCase = True ' è®¾ç½®æ˜¯å¦åŒºåˆ†å­—ç¬¦å¤§å°å†™ã€‚ 
+'		obj.Global = True ' è®¾ç½®å…¨å±€å¯ç”¨æ€§ã€‚ 
 '		obj.Pattern = "http://(?:\w+\.)(?:\w+\.)?\w+(?:\.net|\.com|\.org|\.cn|\.cc|\.tv|[0-9]{1,3})(\S*\/)((\S)+(?:\.gif|\.jpg|\.jpeg|\.png|\.bmp))"
 '		Set Matches = obj.Execute(Content)
 '		Set obj = Nothing
-'		For Each Match in Matches ' ±éÀúÆ¥Åä¼¯ºÏ¡£ 
+'		For Each Match in Matches ' éå†åŒ¹é…é›†åˆã€‚ 
 '			Casp.File.CreatePath(Casp.WebConfig("SitePath") & Casp.WebConfig("GuestbookPath"))
 '			xFileType = LCase(Casp.File.GetFileTypeName(Match.Value))
 '			xFileName = Casp.WebConfig("SitePath") & Casp.WebConfig("GuestbookPath") & "/" & id &"_small.jpg"

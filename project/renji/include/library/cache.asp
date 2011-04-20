@@ -1,4 +1,4 @@
-<%
+ï»¿<%
 '**********
 '	class		: A Caching class
 '	File Name	: Cache.asp
@@ -9,16 +9,16 @@
 
 
 '**********
-'	Ê¾Àý
+'	ç¤ºä¾‹
 '**********
 
 '********** 
 
 '**********
-'	¹¹½¨Àà
+'	æž„å»ºç±»
 '**********
 Class Class_Cache
-	Public	Mark	'Ç°×º
+	Public	Mark	'å‰ç¼€
 
 	Private IExpires
 
@@ -27,7 +27,7 @@ Class Class_Cache
     End Property
 
     Private Property Let Timeout(Value)
-        IExpires = DateAdd("n", Value, Now)	'·ÖÖÓ
+        IExpires = DateAdd("n", Value, Now)	'åˆ†é’Ÿ
     End Property
 
     Private Property Get Timeout()
@@ -35,39 +35,39 @@ Class Class_Cache
     End Property
 
     '**********
-    ' º¯ÊýÃû: class_Initialize
-    ' ×÷  ÓÃ: Constructor
+    ' å‡½æ•°å: class_Initialize
+    ' ä½œ  ç”¨: Constructor
     '**********
 	Private Sub class_initialize()
 		Mark = "cute_"
     End Sub
 
     '**********
-    ' º¯ÊýÃû: class_Terminate
-    ' ×÷  ÓÃ: Deconstrutor
+    ' å‡½æ•°å: class_Terminate
+    ' ä½œ  ç”¨: Deconstrutor
     '**********
 	Private Sub class_Terminate()
     End Sub
 
     '**********
-    ' º¯ÊýÃû: lock
-    ' ×÷  ÓÃ: lock the applaction
+    ' å‡½æ•°å: lock
+    ' ä½œ  ç”¨: lock the applaction
     '**********
 	Sub Lock()
         Application.Lock()
     End Sub
 
     '**********
-    ' º¯ÊýÃû: UnLock
-    ' ×÷  ÓÃ: unLock the applaction
+    ' å‡½æ•°å: UnLock
+    ' ä½œ  ç”¨: unLock the applaction
     '**********
 	Sub UnLock()
         Application.unLock()
     End Sub
 
     '**********
-    ' º¯ÊýÃû: SetCache
-    ' ×÷  ÓÃ: Set a cache
+    ' å‡½æ•°å: SetCache
+    ' ä½œ  ç”¨: Set a cache
     '**********
 	Sub [Set](Key, Value, Expire)
         Expires = Expire
@@ -78,8 +78,8 @@ Class Class_Cache
     End Sub
 
     '**********
-    ' º¯ÊýÃû: Get
-    ' ×÷  ÓÃ: Get a cache
+    ' å‡½æ•°å: Get
+    ' ä½œ  ç”¨: Get a cache
     '**********
 	Function [Get](Key)
         Dim Expire
@@ -97,8 +97,8 @@ Class Class_Cache
     End Function
 
     '**********
-    ' º¯ÊýÃû: remove
-    ' ×÷  ÓÃ: remove a cache
+    ' å‡½æ•°å: remove
+    ' ä½œ  ç”¨: remove a cache
     '**********
 	Sub Remove(Key)
         Lock
@@ -108,8 +108,8 @@ Class Class_Cache
     End Sub
 
     '**********
-    ' º¯ÊýÃû: removeAll
-    ' ×÷  ÓÃ: remove all cache
+    ' å‡½æ•°å: removeAll
+    ' ä½œ  ç”¨: remove all cache
     '**********
 	Sub RemoveAll()
         Lock
@@ -118,8 +118,8 @@ Class Class_Cache
     End Sub
 
     '**********
-    ' º¯ÊýÃû: compare
-    ' ×÷  ÓÃ: Compare two caches
+    ' å‡½æ•°å: compare
+    ' ä½œ  ç”¨: Compare two caches
     '**********
 	Function Compare(Key1, Key2)
         Dim Cache1

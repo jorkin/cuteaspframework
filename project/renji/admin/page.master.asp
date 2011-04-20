@@ -102,6 +102,7 @@ Sub TopCode()
           <div class="sep">&nbsp;</div>
         </li>
         <li><a href="links.asp?do=list" class="nav">友情链接</a></li>
+        <li><a href="advert.asp?do=list" class="nav">轮播广告</a></li>
         <li>
           <div class="sep">&nbsp;</div>
         </li>

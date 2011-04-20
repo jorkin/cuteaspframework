@@ -178,7 +178,7 @@ End function
 '**********
 Function Form(element)
     On Error Resume Next
-    If InStr(LCase(Request.ServerVariables("Content_Type")), "multipart/Form-data") Then	'multipart/Form-data
+    If InStr(LCase(Request.ServerVariables("Content_Type")), "multipart/form-data") Then	'multipart/Form-data
         If IsObject(Casp.Upload) = False Then
     		If Err Then
 				die("no include upload class file")
