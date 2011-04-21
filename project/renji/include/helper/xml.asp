@@ -9,20 +9,20 @@
 
 
 '**********
-'	Ê¾Àı
+'	ç¤ºä¾‹
 '**********
 
 '********** 
 
 '**********
-'	¹¹½¨Àà
+'	æ„å»ºç±»
 '**********
 Class Class_XML
     Private fNode, fANode
     Private fErrInfo, fFileName, fOpen
     Public XmlDom
 
-    '¿ª´òÒ»¸öÒÑ¾­´æÔÚµÄXMLÎÄ¼ş,·µ»Ø´ò¿ª×´Ì¬
+    'å¼€æ‰“ä¸€ä¸ªå·²ç»å­˜åœ¨çš„XMLæ–‡ä»¶,è¿”å›æ‰“å¼€çŠ¶æ€
     Public Function Open(byVal XmlSourceFile)
         Open = false
         fErrInfo = ""
@@ -54,7 +54,7 @@ Class Class_XML
         End If
     End Function
 
-    '¹Ø±Õ
+    'å…³é—­
     Public Sub Close()
 		Set XmlDom = Nothing
         Set fNode = Nothing
@@ -65,7 +65,7 @@ Class Class_XML
         fopen = false
     End Sub
 
-    '¸øxmlÄÚÈİ
+    'ç»™xmlå†…å®¹
     Public Property Get XmlSource(byVal ElementOBJ)
         If fopen = false Then Exit Property
 
@@ -75,14 +75,14 @@ Class Class_XML
         XmlSource = ElementOBJ.xml
     End Property
 
-    '·µ»Ø½ÚµãµÄËõ½ø×Ö´®
+    'è¿”å›èŠ‚ç‚¹çš„ç¼©è¿›å­—ä¸²
     Private Property Get TabStr(byVal Node)
         TabStr = ""
         If Node Is Nothing Then Exit Property
         If Not Node.parentNode Is Nothing Then TabStr = "  "&TabStr(Node.parentNode)
     End Property
 
-    '·µ»ØÒ»¸ö×Ó½Úµã¶ÔÏó,ElementOBJÎª¸¸½Úµã,ChildNodeObjÒª²éÕÒµÄ½Úµã,IsAttributeNodeÖ¸³öÊÇ·ñÎªÊôĞÔ¶ÔÏó
+    'è¿”å›ä¸€ä¸ªå­èŠ‚ç‚¹å¯¹è±¡,ElementOBJä¸ºçˆ¶èŠ‚ç‚¹,ChildNodeObjè¦æŸ¥æ‰¾çš„èŠ‚ç‚¹,IsAttributeNodeæŒ‡å‡ºæ˜¯å¦ä¸ºå±æ€§å¯¹è±¡
     Public Property Get ChildNode(byVal ElementOBJ, byVal ChildNodeObj, byVal IsAttributeNode)
         Dim Element
         Set ChildNode = Nothing
@@ -122,8 +122,8 @@ Class Class_XML
         End If
     End Property
 
-    '½¨Á¢Ò»¸öXMLÎÄ¼ş£¬RootElementName£º¸ù½áµãÃû¡£XSLURL£ºÊ¹ÓÃXSLÑùÊ½µØÖ·
-    '·µ»Ø¸ù½áµã
+    'å»ºç«‹ä¸€ä¸ªXMLæ–‡ä»¶ï¼ŒRootElementNameï¼šæ ¹ç»“ç‚¹åã€‚XSLURLï¼šä½¿ç”¨XSLæ ·å¼åœ°å€
+    'è¿”å›æ ¹ç»“ç‚¹
     Public Function Create(byVal RootElementName, byVal XslUrl)
         Dim PINode, RootElement
 
@@ -148,10 +148,10 @@ Class Class_XML
         Set fNode = RootElement
     End Function
 
-    '²åÈëÔÚBefelementOBJÏÂÃæÒ»¸öÃûÎªElementName£¬ValueÎªElementTextµÄ×Ó½Úµã¡£
-    'IsFirst£ºÊÇ·ñ²åÔÚµÚÒ»¸öÎ»ÖÃ£»IsCDATA£ºËµÃ÷½ÚµãµÄÖµÊÇ·ñÊôÓÚCDATAÀàĞÍ
-    '²åÈë³É¹¦¾Í·µ»ØĞÂ²åÈëÕâ¸ö½Úµã
-    'BefelementOBJ¿ÉÒÔÊÇ¶ÔÏóÒ²¿ÉÒÔÊÇ½ÚµãÃû£¬Îª¿Õ¾ÍÈ¡µ±Ç°Ä¬ÈÏ¶ÔÏó
+    'æ’å…¥åœ¨BefelementOBJä¸‹é¢ä¸€ä¸ªåä¸ºElementNameï¼ŒValueä¸ºElementTextçš„å­èŠ‚ç‚¹ã€‚
+    'IsFirstï¼šæ˜¯å¦æ’åœ¨ç¬¬ä¸€ä¸ªä½ç½®ï¼›IsCDATAï¼šè¯´æ˜èŠ‚ç‚¹çš„å€¼æ˜¯å¦å±äºCDATAç±»å‹
+    'æ’å…¥æˆåŠŸå°±è¿”å›æ–°æ’å…¥è¿™ä¸ªèŠ‚ç‚¹
+    'BefelementOBJå¯ä»¥æ˜¯å¯¹è±¡ä¹Ÿå¯ä»¥æ˜¯èŠ‚ç‚¹åï¼Œä¸ºç©ºå°±å–å½“å‰é»˜è®¤å¯¹è±¡
     Public Function InsertElement(byVal BefelementOBJ, byVal ElementName, byVal ElementText, byVal IsFirst, byVal IsCDATA)
         Dim Element, TextSection, SpaceStr
         Set InsertElement = Nothing
@@ -179,10 +179,10 @@ Class Class_XML
         Set fNode = Element
     End Function
 
-    'ÔÚElementOBJ½ÚµãÉÏ²åÈë»òĞŞ¸ÄÃûÎªAttributeName£¬ÖµÎª£ºAttributeTextµÄÊôĞÔ
-    'Èç¹ûÒÑ¾­´æÔÚÃûÎªAttributeNameµÄÊôĞÔ¶ÔÏó£¬¾Í½øĞĞĞŞ¸Ä¡£
-    '·µ»Ø²åÈë»òĞŞ¸ÄÊôĞÔµÄNode
-    'ElementOBJ¿ÉÒÔÊÇElement¶ÔÏó»òÃû£¬Îª¿Õ¾ÍÈ¡µ±Ç°Ä¬ÈÏ¶ÔÏó
+    'åœ¨ElementOBJèŠ‚ç‚¹ä¸Šæ’å…¥æˆ–ä¿®æ”¹åä¸ºAttributeNameï¼Œå€¼ä¸ºï¼šAttributeTextçš„å±æ€§
+    'å¦‚æœå·²ç»å­˜åœ¨åä¸ºAttributeNameçš„å±æ€§å¯¹è±¡ï¼Œå°±è¿›è¡Œä¿®æ”¹ã€‚
+    'è¿”å›æ’å…¥æˆ–ä¿®æ”¹å±æ€§çš„Node
+    'ElementOBJå¯ä»¥æ˜¯Elementå¯¹è±¡æˆ–åï¼Œä¸ºç©ºå°±å–å½“å‰é»˜è®¤å¯¹è±¡
     Public Function SetAttributeNode(byVal ElementOBJ, byVal AttributeName, byVal AttributeText)
         Dim AttributeNode
         Set SetAttributeNode = Nothing
@@ -204,8 +204,8 @@ Class Class_XML
         Set SetAttributeNode = AttributeNode
     End Function
 
-    'ĞŞ¸ÄElementOBJ½ÚµãµÄTextÖµ£¬²¢·µ»ØÕâ¸ö½Úµã
-    'ElementOBJ¿ÉÒÔ¶ÔÏó»ò¶ÔÏóÃû£¬Îª¿Õ¾ÍÈ¡µ±Ç°Ä¬ÈÏ¶ÔÏó
+    'ä¿®æ”¹ElementOBJèŠ‚ç‚¹çš„Textå€¼ï¼Œå¹¶è¿”å›è¿™ä¸ªèŠ‚ç‚¹
+    'ElementOBJå¯ä»¥å¯¹è±¡æˆ–å¯¹è±¡åï¼Œä¸ºç©ºå°±å–å½“å‰é»˜è®¤å¯¹è±¡
     Public Function UpdateNodeText(byVal ElementOBJ, byVal NewElementText, byVal IsCDATA)
         Dim TextSection
 
@@ -230,8 +230,8 @@ Class Class_XML
         Set UpdateNodeText = ElementOBJ
     End Function
 
-    '¶ÁÈ¡Ò»¸öNodeOBJµÄ½ÚµãTextµÄÖµ
-    'NodeOBJ¿ÉÒÔÊÇ½Úµã¶ÔÏó»ò½ÚµãÃû£¬Îª¿Õ¾ÍÈ¡µ±Ç°Ä¬ÈÏfNode
+    'è¯»å–ä¸€ä¸ªNodeOBJçš„èŠ‚ç‚¹Textçš„å€¼
+    'NodeOBJå¯ä»¥æ˜¯èŠ‚ç‚¹å¯¹è±¡æˆ–èŠ‚ç‚¹åï¼Œä¸ºç©ºå°±å–å½“å‰é»˜è®¤fNode
     Public Function GetNodeText(byVal NodeOBJ)
         GetNodeText = ""
         If fopen = false Then Exit Function
@@ -247,7 +247,7 @@ Class Class_XML
         GetNodeText = NodeOBJ.text
     End Function
 
-    '·µ»Ø·ûºÏtestValueÌõ¼şµÄµÚÒ»¸öElementNode£¬Îª¿Õ¾ÍÈ¡µ±Ç°Ä¬ÈÏ¶ÔÏó
+    'è¿”å›ç¬¦åˆtestValueæ¡ä»¶çš„ç¬¬ä¸€ä¸ªElementNodeï¼Œä¸ºç©ºå°±å–å½“å‰é»˜è®¤å¯¹è±¡
     Public Function GetElementNode(byVal ElementName, byVal testValue)
         Dim Element, regEx, baseName
 
@@ -287,7 +287,7 @@ Class Class_XML
         End If
     End Function
 
-    'É¾³ıÒ»¸ö×Ó½Úµã
+    'åˆ é™¤ä¸€ä¸ªå­èŠ‚ç‚¹
     Public Function RemoveChild(byVal ElementOBJ)
         RemoveChild = false
         If Not fopen Then Exit Function
@@ -306,7 +306,7 @@ Class Class_XML
         End If
     End Function
 
-    'Çå¿ÕÒ»¸ö½ÚµãËùÓĞ×Ó½Úµã
+    'æ¸…ç©ºä¸€ä¸ªèŠ‚ç‚¹æ‰€æœ‰å­èŠ‚ç‚¹
     Public Function ClearNode(byVal ElementOBJ)
         Set ClearNode = Nothing
         If Not fopen Then Exit Function
@@ -321,7 +321,7 @@ Class Class_XML
         Set fNode = ElementOBJ
     End Function
 
-    'É¾³ı×Ó½ÚµãµÄÒ»¸öÊôĞÔ
+    'åˆ é™¤å­èŠ‚ç‚¹çš„ä¸€ä¸ªå±æ€§
     Public Function RemoveAttributeNode(byVal ElementOBJ, byVal AttributeOBJ)
         RemoveAttributeNode = false
         If Not fopen Then Exit Function
@@ -336,7 +336,7 @@ Class Class_XML
         End If
     End Function
 
-    '±£´æ´ò¿ª¹ıµÄÎÄ¼ş£¬Ö»Òª±£Ö¤FileName²»Îª¿Õ¾Í¿ÉÒÔÊµÏÖ±£´æ
+    'ä¿å­˜æ‰“å¼€è¿‡çš„æ–‡ä»¶ï¼Œåªè¦ä¿è¯FileNameä¸ä¸ºç©ºå°±å¯ä»¥å®ç°ä¿å­˜
     Public Function Save()
         On Error Resume Next
         Save = false
@@ -350,7 +350,7 @@ Class Class_XML
         End If
     End Function
 
-    'Áí´æÎªXMLÎÄ¼ş£¬Ö»Òª±£Ö¤FileName²»Îª¿Õ¾Í¿ÉÒÔÊµÏÖ±£´æ
+    'å¦å­˜ä¸ºXMLæ–‡ä»¶ï¼Œåªè¦ä¿è¯FileNameä¸ä¸ºç©ºå°±å¯ä»¥å®ç°ä¿å­˜
     Public Function SaveAs(SaveFileName)
         On Error Resume Next
         SaveAs = false
@@ -363,7 +363,7 @@ Class Class_XML
         End If
     End Function
 
-    '¼ì²é²¢´òÓ¡´íÎóĞÅÏ¢
+    'æ£€æŸ¥å¹¶æ‰“å°é”™è¯¯ä¿¡æ¯
     Private Function IsError()
         If XmlDom.ParseError.errorcode<>0 Then
             fErrInfo = "<h1>Error"&XmlDom.ParseError.errorcode&"</h1>"
@@ -378,7 +378,7 @@ Class Class_XML
         End If
     End Function
 
-    '¶ÁÈ¡×îºóµÄ´íÎóĞÅÏ¢
+    'è¯»å–æœ€åçš„é”™è¯¯ä¿¡æ¯
     Public Property Get ErrInfo
         ErrInfo = fErrInfo
     End Property

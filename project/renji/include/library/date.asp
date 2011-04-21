@@ -9,29 +9,29 @@
 
 
 '**********
-'	Ê¾Àı
+'	ç¤ºä¾‹
 '**********
 
 '**********
 
 '**********
-'	¹¹½¨Àà
+'	æ„å»ºç±»
 '**********
 
 Class Class_Date
     Public TimeZone
 
     '**********
-    ' º¯ÊıÃû: class_Initialize
-    ' ×÷  ÓÃ: Save the session
+    ' å‡½æ•°å: class_Initialize
+    ' ä½œ  ç”¨: Save the session
     '**********
     Private Sub class_initialize()
         TimeZone = 8
     End Sub
 
     '**********
-    ' º¯ÊıÃû: class_Terminate
-    ' ×÷  ÓÃ: Deconstrutor
+    ' å‡½æ•°å: class_Terminate
+    ' ä½œ  ç”¨: Deconstrutor
     '**********
     Private Sub class_Terminate()
     End Sub
@@ -41,9 +41,9 @@ Class Class_Date
     End Function
 
     '**********
-    ' º¯ÊıÃû: ToGMTdate
-    ' ²Î  Êı: sDate
-    ' ×÷  ÓÃ: ±¾µØÊ±¼ä×ªGMTÊ±¼ä
+    ' å‡½æ•°å: ToGMTdate
+    ' å‚  æ•°: sDate
+    ' ä½œ  ç”¨: æœ¬åœ°æ—¶é—´è½¬GMTæ—¶é—´
     '**********
     Function ToGMTdate(sDate)
         Dim dWeek, dMonth
@@ -60,28 +60,28 @@ Class Class_Date
     End Function
 
     '**********
-    ' º¯ÊıÃû: ToUnixEpoch
-    ' ²Î  Êı: sDate
-    ' ×÷  ÓÃ: »ñÈ¡Ê±¼ä´Á
+    ' å‡½æ•°å: ToUnixEpoch
+    ' å‚  æ•°: sDate
+    ' ä½œ  ç”¨: è·å–æ—¶é—´æˆ³
     '**********
     Function ToUnixEpoch(sDate)
         ToUnixEpoch = DateDiff("s", "1970-1-1 00:00:00", sDate) - getMistiming("1970-1-1 00:00:00")
     End Function
 
     '**********
-    ' º¯ÊıÃû: FromUnixEpoch
-    ' ²Î  Êı: iNumber	--  Ê±¼ä´Á
-    ' ×÷  ÓÃ: »ñÈ¡µ±µØÊ±¼ä
+    ' å‡½æ•°å: FromUnixEpoch
+    ' å‚  æ•°: iNumber	--  æ—¶é—´æˆ³
+    ' ä½œ  ç”¨: è·å–å½“åœ°æ—¶é—´
     '**********
     Function FromUnixEpoch(iNumber)
         FromUnixEpoch = DateAdd("s", iNumber + getMistiming("1970-1-1 00:00:00"), "1970-1-1 00:00:00")
     End Function
 
     '**********
-    ' º¯ÊıÃû: Format
-    ' ²Î  Êı: sDate		--  Ê±¼ä
-    ' ²Î  Êı: format	--  ¸ñÊ½»¯¸ñÊ½
-    ' ×÷  ÓÃ: ¸ñÊ½»¯Ê±¼ä
+    ' å‡½æ•°å: Format
+    ' å‚  æ•°: sDate		--  æ—¶é—´
+    ' å‚  æ•°: format	--  æ ¼å¼åŒ–æ ¼å¼
+    ' ä½œ  ç”¨: æ ¼å¼åŒ–æ—¶é—´
     '**********
    Function Format(sDate, formatstr)
 		Dim str
@@ -114,22 +114,22 @@ Class Class_Date
     End Function
 
     '**********
-    ' º¯ÊıÃû: Zodiac
-    ' ²Î  Êı: bYear as birthday year
-    ' ×÷  ÓÃ: ¼ÆËãËùÊôÉúĞ¤
+    ' å‡½æ•°å: Zodiac
+    ' å‚  æ•°: bYear as birthday year
+    ' ä½œ  ç”¨: è®¡ç®—æ‰€å±ç”Ÿè‚–
     '**********
     Function Zodiac(bYear)
         If bYear > 0 Then
             Dim ZodiacList
-            ZodiacList = Array("ºï", "¼¦", "¹·", "Öí", "Êó", "Å£", "»¢", "ÍÃ", "Áú", "Éß", "Âí", "Ñò")
+            ZodiacList = Array("çŒ´", "é¸¡", "ç‹—", "çŒª", "é¼ ", "ç‰›", "è™", "å…”", "é¾™", "è›‡", "é©¬", "ç¾Š")
             Zodiac = ZodiacList(bYear Mod 12)
         End If
     End Function
 
     '**********
-    ' º¯ÊıÃû: Constellation
-    ' ²Î  Êı: Birth as birthday
-    ' ×÷  ÓÃ: ¼ÆËãËùÊôÉúĞ¤
+    ' å‡½æ•°å: Constellation
+    ' å‚  æ•°: Birth as birthday
+    ' ä½œ  ç”¨: è®¡ç®—æ‰€å±ç”Ÿè‚–
     '**********
     Function Constellation(Birth)
         If Year(Birth) <1951 Or Year(Birth) > 2049 Then Exit Function
@@ -140,75 +140,75 @@ Class Class_Date
         Select Case BirthMonth
             Case 1
                 If BirthDay>= 21 Then
-                    tmp = tmp & "Ë®Æ¿"
+                    tmp = tmp & "æ°´ç“¶"
                 Else
-                    tmp = tmp & "Ä§ôÉ"
+                    tmp = tmp & "é­”ç¾¯"
                 End If
             Case 2
                 If BirthDay>= 20 Then
-                    tmp = tmp & "Ë«Óã"
+                    tmp = tmp & "åŒé±¼"
                 Else
-                    tmp = tmp & "Ë®Æ¿"
+                    tmp = tmp & "æ°´ç“¶"
                 End If
             Case 3
                 If BirthDay>= 21 Then
-                    tmp = tmp & "°×Ñò"
+                    tmp = tmp & "ç™½ç¾Š"
                 Else
-                    tmp = tmp & "Ë«Óã"
+                    tmp = tmp & "åŒé±¼"
                 End If
             Case 4
                 If BirthDay>= 21 Then
-                    tmp = tmp & "½ğÅ£"
+                    tmp = tmp & "é‡‘ç‰›"
                 Else
-                    tmp = tmp & "°×Ñò"
+                    tmp = tmp & "ç™½ç¾Š"
                 End If
             Case 5
                 If BirthDay>= 22 Then
-                    tmp = tmp & "Ë«×Ó"
+                    tmp = tmp & "åŒå­"
                 Else
-                    tmp = tmp & "½ğÅ£"
+                    tmp = tmp & "é‡‘ç‰›"
                 End If
             Case 6
                 If BirthDay>= 22 Then
-                    tmp = tmp & "¾ŞĞ·"
+                    tmp = tmp & "å·¨èŸ¹"
                 Else
-                    tmp = tmp & "Ë«×Ó"
+                    tmp = tmp & "åŒå­"
                 End If
             Case 7
                 If BirthDay>= 23 Then
-                    tmp = tmp & "Ê¨×Ó"
+                    tmp = tmp & "ç‹®å­"
                 Else
-                    tmp = tmp & "¾ŞĞ·"
+                    tmp = tmp & "å·¨èŸ¹"
                 End If
             Case 8
                 If BirthDay>= 24 Then
-                    tmp = tmp & "´¦Å®"
+                    tmp = tmp & "å¤„å¥³"
                 Else
-                    tmp = tmp & "Ê¨×Ó"
+                    tmp = tmp & "ç‹®å­"
                 End If
             Case 9
                 If BirthDay>= 24 Then
-                    tmp = tmp & "Ìì³Ó"
+                    tmp = tmp & "å¤©ç§¤"
                 Else
-                    tmp = tmp & "´¦Å®"
+                    tmp = tmp & "å¤„å¥³"
                 End If
             Case 10
                 If BirthDay>= 24 Then
-                    tmp = tmp & "ÌìĞ«"
+                    tmp = tmp & "å¤©è"
                 Else
-                    tmp = tmp & "Ìì³Ó"
+                    tmp = tmp & "å¤©ç§¤"
                 End If
             Case 11
                 If BirthDay>= 23 Then
-                    tmp = tmp & "ÉäÊÖ"
+                    tmp = tmp & "å°„æ‰‹"
                 Else
-                    tmp = tmp & "ÌìĞ«"
+                    tmp = tmp & "å¤©è"
                 End If
             Case 12
                 If BirthDay>= 22 Then
-                    tmp = tmp & "Ä§ôÉ"
+                    tmp = tmp & "é­”ç¾¯"
                 Else
-                    tmp = tmp & "ÉäÊÖ"
+                    tmp = tmp & "å°„æ‰‹"
                 End If
             Case Else
                 tmp = ""

@@ -9,16 +9,16 @@
 
 
 '**********
-'	Ê¾Àı
+'	ç¤ºä¾‹
 '**********
 
 '**********
-'	¹¹½¨Àà
+'	æ„å»ºç±»
 '**********
 Class Class_Params
  	'**********
-    ' º¯ÊıÃû: Contents
-    ' ×÷  ÓÃ: Get Params Value
+    ' å‡½æ•°å: Contents
+    ' ä½œ  ç”¨: Get Params Value
     '**********
     Public Default Property Get Constructor(OutParams)
 		Set OutParams = CreateObject("Scripting.Dictionary")
@@ -26,15 +26,15 @@ Class Class_Params
     End Property
 
 	'**********
-    ' º¯ÊıÃû: class_Initialize
-    ' ×÷  ÓÃ: Constructor
+    ' å‡½æ•°å: class_Initialize
+    ' ä½œ  ç”¨: Constructor
     '**********
 	Private Sub Class_Initialize()
     End Sub
 
 	'**********
-    ' º¯ÊıÃû: class_Initialize
-    ' ×÷  ÓÃ: Constructor
+    ' å‡½æ•°å: class_Initialize
+    ' ä½œ  ç”¨: Constructor
     '**********
 	Private Sub Class_Terminate()
     End Sub

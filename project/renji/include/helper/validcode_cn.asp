@@ -8,37 +8,37 @@
 '	Date		: 2008-5-17
 '**********
 Call Com_CreatValidCode("GetCode" & Trim(Request("s")))
-Rem Éú³ÉÑéÖ¤ÂëÍ¼Æ¬
+Rem ç”ŸæˆéªŒè¯ç å›¾ç‰‡
 
 Sub Com_CreatValidCode(pSN)
-    Const codeLen = 4'ÑéÖ¤ÂëÎ»Êı
-    Const cOdds = 4 'ÔÓµã³öÏÖµÄ»úÂÊ
-    Const dbtTimes = 1'¸ÉÈÅ´ÎÊı£¨°²È«¿¼ÂÇ£¬×îºÃ²»ÒªĞ¡ÓÚ2£©
+    Const codeLen = 4'éªŒè¯ç ä½æ•°
+    Const cOdds = 4 'æ‚ç‚¹å‡ºç°çš„æœºç‡
+    Const dbtTimes = 1'å¹²æ‰°æ¬¡æ•°ï¼ˆå®‰å…¨è€ƒè™‘ï¼Œæœ€å¥½ä¸è¦å°äº2ï¼‰
 
-    Const cAmount = 85 '×Ö¿âÊıÁ¿
-    Const cCode = "ºÃÒ»Â·Ñô¹â×ÓÎŞ¿ªÔÂÁËµÄ±ÈĞ¡É½¹ÅÌìÖĞÊ¯Í·¾®»ğ´óÎ÷Ä¾¿ªÈËÒ²Ò¶¾ÅÆßÁùÎåºÏÎÄÖ»¸öÓãÑò¹şÃ´µãËÄÉú¼ş¸ñ²»²½²¼¸÷ÄãÌïºìÀ¶À´ºÜ´ºÏÂ»­¾©×ó°Ù°×¶«¹Ø¹¤¹²×ã·½³ß²ÅÃÎ¼û²é×ÅÈ¥ÇøÇúÑ°Ôç¿ÉÉÏ·á°®ºÇÁõ"'×Ö¿â¶ÔÓ¦µÄ×Ö·û
-    Const UnitWidth = 28'×Ö¿í(ÒªÎª4µÄ±¶Êı)
-    Const UnitHeight = 28'×Ö¸ß
-    Const DotsLimit = 2'Ã¿´ÎÉ¾³ıÓĞĞ§µãµÄÉÏÏŞ(±ÜÃâÎŞ·¨ÈËÎªÊ¶±ğ)
-    Const tryCount = 2'±ÜÃâÉ¾³ıÓĞĞ§µã³¬¹ıÉÏÏŞµÄ³¢ÊÔ´ÎÊıÏŞÖÆ
+    Const cAmount = 85 'å­—åº“æ•°é‡
+    Const cCode = "å¥½ä¸€è·¯é˜³å…‰å­æ— å¼€æœˆäº†çš„æ¯”å°å±±å¤å¤©ä¸­çŸ³å¤´äº•ç«å¤§è¥¿æœ¨å¼€äººä¹Ÿå¶ä¹ä¸ƒå…­äº”åˆæ–‡åªä¸ªé±¼ç¾Šå“ˆä¹ˆç‚¹å››ç”Ÿä»¶æ ¼ä¸æ­¥å¸ƒå„ä½ ç”°çº¢è“æ¥å¾ˆæ˜¥ä¸‹ç”»äº¬å·¦ç™¾ç™½ä¸œå…³å·¥å…±è¶³æ–¹å°ºæ‰æ¢¦è§æŸ¥ç€å»åŒºæ›²å¯»æ—©å¯ä¸Šä¸°çˆ±å‘µåˆ˜"'å­—åº“å¯¹åº”çš„å­—ç¬¦
+    Const UnitWidth = 28'å­—å®½(è¦ä¸º4çš„å€æ•°)
+    Const UnitHeight = 28'å­—é«˜
+    Const DotsLimit = 2'æ¯æ¬¡åˆ é™¤æœ‰æ•ˆç‚¹çš„ä¸Šé™(é¿å…æ— æ³•äººä¸ºè¯†åˆ«)
+    Const tryCount = 2'é¿å…åˆ é™¤æœ‰æ•ˆç‚¹è¶…è¿‡ä¸Šé™çš„å°è¯•æ¬¡æ•°é™åˆ¶
 
     '-----------
 
     Randomize
     Dim i, ii, iii
 
-    ' ½ûÖ¹»º´æ
+    ' ç¦æ­¢ç¼“å­˜
     Response.Expires = -9999
     Response.AddHeader "Pragma", "no-cache"
     Response.AddHeader "cache-ctrol", "no-cache"
     Response.ContentType = "Image/BMP"
 
-    ' ÑÕÉ«µÄÊı¾İ(×Ö·û£¬±³¾°)
+    ' é¢œè‰²çš„æ•°æ®(å­—ç¬¦ï¼ŒèƒŒæ™¯)
     Dim vColorData(1)
-    vColorData(0) = ChrB(0) & ChrB(0) & ChrB(0) ' À¶0£¬ÂÌ0£¬ºì0£¨ºÚÉ«£©
-    vColorData(1) = ChrB(213) & ChrB(213) & ChrB(213) ' À¶250£¬ÂÌ236£¬ºì211£¨Ç³À¶É«£©
+    vColorData(0) = ChrB(0) & ChrB(0) & ChrB(0) ' è“0ï¼Œç»¿0ï¼Œçº¢0ï¼ˆé»‘è‰²ï¼‰
+    vColorData(1) = ChrB(213) & ChrB(213) & ChrB(213) ' è“250ï¼Œç»¿236ï¼Œçº¢211ï¼ˆæµ…è“è‰²ï¼‰
 
-    ' ×Ö·ûµÄÊı¾İ(¿ÉÒÔ×Ô¼ºĞŞ¸Ä£¬Èç¹ûĞŞ¸ÄÁË³ß´ç£¬¼ÇµÃ°ÑÇ°ÃæµÄÉè¶¨Ò²¸ÄÁË)
+    ' å­—ç¬¦çš„æ•°æ®(å¯ä»¥è‡ªå·±ä¿®æ”¹ï¼Œå¦‚æœä¿®æ”¹äº†å°ºå¯¸ï¼Œè®°å¾—æŠŠå‰é¢çš„è®¾å®šä¹Ÿæ”¹äº†)
     Dim vNumberData(85)
     vNumberData(0) = "1111111111111111111111111111111111101111111111111111111111111100011111000000000000111111110001111100000000000011111111001111111111111100001111111100111111111111100001111100000000001111111100011111110000000000011111100011111111111001111001111100011111111111100111100111110001111111111110011110011111100011111111111001111001111111001111111111001111001100000000000011111100111100110000000000000111110011110011100000000000111110001111001111111111001111111000111001111111111100011111110000100111111111110001111111100000111111111111000111111111100011111111111100011111111100000011111111110001111111100011000111111111000111111000011110110001111000111110000111111111000000000011111100111111111111000000111111111111111111111111001111111111111111111111111111111111111111111111111111111111111111"
     vNumberData(1) = "1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111000000000000000000000000111000000000000000000000000001110000000000000000000000001111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111"
@@ -128,7 +128,7 @@ Sub Com_CreatValidCode(pSN)
 
 
 
-    ' Ëæ»ú²úÉú×Ö·û
+    ' éšæœºäº§ç”Ÿå­—ç¬¦
     Dim vCodes
     ReDim vCode(codeLen -1)
     For i = 0 To codeLen -1
@@ -136,26 +136,26 @@ Sub Com_CreatValidCode(pSN)
         vCodes = vCodes & Mid(cCode, vCode(i) + 1, 1)
         vCode(i) = pcd_doubter(vNumberData(vCode(i)), UnitWidth, UnitHeight, DotsLimit, tryCount, dbtTimes)
     Next
-    Session(pSN) = vCodes '///////////¼ÇÂ¼ÈëSession
+    Session(pSN) = vCodes '///////////è®°å½•å…¥Session
 	
-    ' Êä³öÍ¼ÏñÎÄ¼şÍ·
+    ' è¾“å‡ºå›¾åƒæ–‡ä»¶å¤´
     Response.BinaryWrite ChrB(66) & ChrB(77) & Num2ChrB(54 + UnitWidth * UnitHeight * CodeLen * 3, 4) & ChrB(0) & ChrB(0) &_
     ChrB(0) & ChrB(0) & ChrB(54) & ChrB(0) & ChrB(0) & ChrB(0) & ChrB(40) & ChrB(0) &_
     ChrB(0) & ChrB(0) & Num2ChrB(UnitWidth * CodeLen, 4) & Num2ChrB(UnitHeight, 4) &_
     ChrB(1) & ChrB(0)
 
-    ' Êä³öÍ¼ÏñĞÅÏ¢Í·
+    ' è¾“å‡ºå›¾åƒä¿¡æ¯å¤´
     Response.BinaryWrite ChrB(24) & ChrB(0) & ChrB(0) & ChrB(0) & ChrB(0) & ChrB(0) & Num2ChrB(UnitWidth * UnitHeight * CodeLen * 3, 4) &_
     ChrB(18) & ChrB(11) & ChrB(0) & ChrB(0) & ChrB(18) & ChrB(11) &_
     ChrB(0) & ChrB(0) & ChrB(0) & ChrB(0) & ChrB(0) & ChrB(0) & ChrB(0) & ChrB(0) &_
     ChrB(0) & ChrB(0)
 
-    For i = UnitHeight -1 To 0 Step -1 ' Àú¾­ËùÓĞĞĞ
-        For ii = 0 To codeLen -1 ' Àú¾­ËùÓĞ×Ö
-            For iii = 1 To UnitWidth ' Àú¾­ËùÓĞÏñËØ
-                If Rnd * 99 + 1 >= cOdds Then' ÖğĞĞ¡¢Öğ×Ö¡¢ÖğÏñËØµØÊä³öÍ¼ÏñÊı¾İ
+    For i = UnitHeight -1 To 0 Step -1 ' å†ç»æ‰€æœ‰è¡Œ
+        For ii = 0 To codeLen -1 ' å†ç»æ‰€æœ‰å­—
+            For iii = 1 To UnitWidth ' å†ç»æ‰€æœ‰åƒç´ 
+                If Rnd * 99 + 1 >= cOdds Then' é€è¡Œã€é€å­—ã€é€åƒç´ åœ°è¾“å‡ºå›¾åƒæ•°æ®
                     Response.BinaryWrite vColorData(Mid(vCode(ii), i * UnitWidth + iii, 1))
-                Else ' Ëæ»úÉú³ÉÔÓµã
+                Else ' éšæœºç”Ÿæˆæ‚ç‚¹
                     Response.BinaryWrite vColorData(1 - CInt(Mid(vCode(ii), i * UnitWidth + iii, 1)))
                 End If
             Next
@@ -166,20 +166,20 @@ End Sub
 Function pcd_doubter(Str, UnitWidth, UnitHeight, DotsLimit, tryCount, dbtTimes)
     Randomize
     Dim x1, x2, y1, y2, xOffSet, yOffSet, direction, flag, rows, step, yu, yuStr, i, ii, iii, f1, f2
-    For f1 = 1 To dbtTimes'¸ÉÈÅ´ÎÊı
-        For f2 = 1 To tryCount'±ÜÃâÉ¾³ıÓĞĞ§µã³¬¹ıÉÏÏŞµÄ³¢ÊÔ´ÎÊıÏŞÖÆ
-            'Ëæ»úÈ·¶¨2¸ö¶Ëµã
+    For f1 = 1 To dbtTimes'å¹²æ‰°æ¬¡æ•°
+        For f2 = 1 To tryCount'é¿å…åˆ é™¤æœ‰æ•ˆç‚¹è¶…è¿‡ä¸Šé™çš„å°è¯•æ¬¡æ•°é™åˆ¶
+            'éšæœºç¡®å®š2ä¸ªç«¯ç‚¹
             x1 = Int(Rnd * UnitWidth)
             x2 = Int(Rnd * UnitWidth)
             y1 = Int(Rnd * UnitHeight)
             y2 = Int(Rnd * UnitHeight)
-            'x,yÎ»ÒÆÁ¿
+            'x,yä½ç§»é‡
             xOffSet = Abs(x2 - x1)
             yOffSet = Abs(y2 - y1)
-            If xOffSet >= yOffSet Then'ÒÔÎ»ÒÆÁ¿½Ï´ó·½×öºáÖá
+            If xOffSet >= yOffSet Then'ä»¥ä½ç§»é‡è¾ƒå¤§æ–¹åšæ¨ªè½´
                 direction = "x"
-                ReDim ary(xOffSet)'ÓÃÀ´¼ÇÂ¼Á¬Ïß¸÷µãyÖµ
-                'x2,y2´æ´¢xÖµ½Ï´óµÄµã
+                ReDim ary(xOffSet)'ç”¨æ¥è®°å½•è¿çº¿å„ç‚¹yå€¼
+                'x2,y2å­˜å‚¨xå€¼è¾ƒå¤§çš„ç‚¹
                 If x2 < x1 Then
                     i = x1
                     x1 = x2
@@ -188,24 +188,24 @@ Function pcd_doubter(Str, UnitWidth, UnitHeight, DotsLimit, tryCount, dbtTimes)
                     y1 = y2
                     y2 = i
                 End If
-                'ÅĞ¶Ï´Óx1->x2ÔÚ×İÖá·½ÏòÉÏÊÇÔöÊÇ¼õ
+                'åˆ¤æ–­ä»x1->x2åœ¨çºµè½´æ–¹å‘ä¸Šæ˜¯å¢æ˜¯å‡
                 If y2 >= y1 Then
                     flag = 1
                 Else
                     flag = -1
                 End If
-                'ÏÂÃæ¼ÆËãÁ¬ÏßÉÏµãµÄ·Ö²¼£¨ÏÈÊÇÆ½¾ù·ÖÅä¸÷ĞĞµÄµã£¬È»ºóËæ»ú·ÖÅäÊ£ÓàµÄµãµ½¸÷ĞĞ£©
-                rows = yOffSet + 1'ËùÕ¼ĞĞÊı
-                step = (xOffSet + 1) \ rows'¸÷ĞĞÆ½¾ù·ÖÅäµÄµã
-                yu = (xOffSet + 1) Mod rows'Ê£ÓàµÄµãÊı
-                ReDim ary2(rows -1)'ÓÃÀ´¼ÇÂ¼Ê£ÓàµãµÄËæ»ú·ÖÅä
+                'ä¸‹é¢è®¡ç®—è¿çº¿ä¸Šç‚¹çš„åˆ†å¸ƒï¼ˆå…ˆæ˜¯å¹³å‡åˆ†é…å„è¡Œçš„ç‚¹ï¼Œç„¶åéšæœºåˆ†é…å‰©ä½™çš„ç‚¹åˆ°å„è¡Œï¼‰
+                rows = yOffSet + 1'æ‰€å è¡Œæ•°
+                step = (xOffSet + 1) \ rows'å„è¡Œå¹³å‡åˆ†é…çš„ç‚¹
+                yu = (xOffSet + 1) Mod rows'å‰©ä½™çš„ç‚¹æ•°
+                ReDim ary2(rows -1)'ç”¨æ¥è®°å½•å‰©ä½™ç‚¹çš„éšæœºåˆ†é…
                 While yu > 0
                     i = Int(Rnd * rows)
-                    ary2(i) = ary2(i)&"."'±»·ÖÅäµ½µÄĞĞÔò¼ÓÒ»¸ö×Ö·û"."
+                    ary2(i) = ary2(i)&"."'è¢«åˆ†é…åˆ°çš„è¡Œåˆ™åŠ ä¸€ä¸ªå­—ç¬¦"."
                     yu = yu - 1
                 Wend
                 iii = 0
-                '½«Á¬ÏßµÄµãĞÅÏ¢¼ÇÂ¼µ½Êı×é
+                'å°†è¿çº¿çš„ç‚¹ä¿¡æ¯è®°å½•åˆ°æ•°ç»„
                 For i = 0 To rows -1
                     For ii = 1 To step + Len(ary2(i))
                         ary(iii) = y1 + i * flag
@@ -213,12 +213,12 @@ Function pcd_doubter(Str, UnitWidth, UnitHeight, DotsLimit, tryCount, dbtTimes)
                     Next
                 Next
                 ii = 0
-                'Í³¼ÆÁ¬ÏßÉÏÓĞĞ§µãµÄÊıÁ¿
+                'ç»Ÿè®¡è¿çº¿ä¸Šæœ‰æ•ˆç‚¹çš„æ•°é‡
                 For i = 0 To xOffSet
                     If pcd_getDot(x1 + i, ary(i), Str, UnitWidth) = "0" Then ii = ii + 1
                 Next
             Else
-                'ÕâÀïÊÇÒÔyÎªºáÖá£¬Ô­ÀíÓëxÊ±ÏàÍ¬
+                'è¿™é‡Œæ˜¯ä»¥yä¸ºæ¨ªè½´ï¼ŒåŸç†ä¸xæ—¶ç›¸åŒ
                 direction = "y"
                 ReDim ary(yOffSet)
                 If y2 < y1 Then
@@ -257,20 +257,20 @@ Function pcd_doubter(Str, UnitWidth, UnitHeight, DotsLimit, tryCount, dbtTimes)
                     If pcd_getDot(ary(i), y1 + i, Str, UnitWidth) = "0" Then ii = ii + 1
                 Next
             End If
-            'ÈçÎ´³¬¹ıÓĞĞ§µãÉÏÏŞÔòÌø³öÑ­»·£¬Ö´ĞĞ¸ÉÈÅ
+            'å¦‚æœªè¶…è¿‡æœ‰æ•ˆç‚¹ä¸Šé™åˆ™è·³å‡ºå¾ªç¯ï¼Œæ‰§è¡Œå¹²æ‰°
             If ii <= DotsLimit Then Exit For
         Next
 
         If direction = "x" Then
-            'Ëæ»úÈ·¶¨ÔÚ×İÖá·½ÏòÉÏ»òÏÂ½øĞĞÒÆ¶¯
+            'éšæœºç¡®å®šåœ¨çºµè½´æ–¹å‘ä¸Šæˆ–ä¸‹è¿›è¡Œç§»åŠ¨
             If Int(Rnd * 10) > 4 Then
-                '±äÁ¿Á¬ÏßÉÏµÄµã
+                'å˜é‡è¿çº¿ä¸Šçš„ç‚¹
                 For i = 0 To xOffSet
-                    '±éÀúÒÆ¶¯
+                    'éå†ç§»åŠ¨
                     For ii = ary(i) To 1 Step -1
                         Call pcd_setDot(x1 + i, ii, Str, pcd_getDot(x1 + i, ii -1, Str, UnitWidth), UnitWidth)
                     Next
-                    'Ìí²¹¿Õ°×
+                    'æ·»è¡¥ç©ºç™½
                     Call pcd_setDot(x1 + i, 0, Str, "1", UnitWidth)
                 Next
             Else
@@ -302,19 +302,19 @@ Function pcd_doubter(Str, UnitWidth, UnitHeight, DotsLimit, tryCount, dbtTimes)
     pcd_doubter = Str
 End Function
 
-Rem µÃµ½Ä³µãµÄ×Ö·û
+Rem å¾—åˆ°æŸç‚¹çš„å­—ç¬¦
 
 Function pcd_getDot(x, y, Str, UnitWidth)
     pcd_getDot = Mid(Str, x + 1 + y * UnitWidth, 1)
 End Function
 
-Rem ÉèÖÃÄ³µãµÄ×Ö·û
+Rem è®¾ç½®æŸç‚¹çš„å­—ç¬¦
 
 Sub pcd_setDot(x, y, ByRef Str, newDot, UnitWidth)
     Str = Left(Str, x + y * UnitWidth) & newDot & Right(Str, Len(Str) - x - y * UnitWidth -1)
 End Sub
 
-Rem ½«Êı×Ö×ªÎªbmpĞèÒªµÄ¸ñÊ½ lensÊÇÄ¿±ê×Ö½Ú³¤¶È
+Rem å°†æ•°å­—è½¬ä¸ºbmpéœ€è¦çš„æ ¼å¼ lensæ˜¯ç›®æ ‡å­—èŠ‚é•¿åº¦
 
 Function Num2ChrB(num, lens)
     Dim ret, i

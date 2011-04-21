@@ -9,20 +9,20 @@
 
 
 '**********
-'	Ê¾Àı
+'	ç¤ºä¾‹
 '**********
 
 '********** 
 
 '**********
-'	¹¹½¨Àà
+'	æ„å»ºç±»
 '**********
 
 Class Class_ValidCode
 	'**********
-	'º¯ÊıÃû£ºGetCode
-	'×÷  ÓÃ£º»ñÈ¡ÑéÖ¤ÂëÊäÈë¿ò¿Ø¼ş
-	'²ÎÊı:lang	-- en|cn|int
+	'å‡½æ•°åï¼šGetCode
+	'ä½œ  ç”¨ï¼šè·å–éªŒè¯ç è¾“å…¥æ¡†æ§ä»¶
+	'å‚æ•°:lang	-- en|cn|int
 	'**********
 	Sub GetCode(sPath,lang)
 		Dim tmpstr
@@ -32,8 +32,8 @@ Class Class_ValidCode
 	End Sub
 	
 	'**********
-	'º¯ÊıÃû£ºCodePass
-	'×÷  ÓÃ£º¼ì²éÑéÖ¤ÂëÊÇ·ñÕıÈ·
+	'å‡½æ•°åï¼šCodePass
+	'ä½œ  ç”¨ï¼šæ£€æŸ¥éªŒè¯ç æ˜¯å¦æ­£ç¡®
 	'**********
 	Function Check(ByVal CodeStr)
 		Dim codename

@@ -1,4 +1,4 @@
-<%
+ï»¿<%
 '**********
 '	class		: Wrapper Class
 '	File Name	: class.asp
@@ -9,10 +9,10 @@
 
 
 '**********
-'	Ê¾Àı
+'	ç¤ºä¾‹
 '**********
 '**********
-'	¹¹½¨Àà
+'	æ„å»ºç±»
 '**********
 Dim Casp
 Set Casp = New Class_Wrap
@@ -24,40 +24,40 @@ Class Class_Wrap
 
 	Public SHA1,Md5,Json,ValidCode,Export,Email,InterFace,DES,Xml,Ubb,Rss
 
-	Public WebConfig	'Õ¾µãÅäÖÃ
+	Public WebConfig	'ç«™ç‚¹é…ç½®
 
 	Private Sub Class_Initialize()
-		Set WebConfig		= Server.CreateObject("Scripting.Dictionary")	'³õÊ¼»¯Õ¾µãÅäÖÃ
+		Set WebConfig		= Server.CreateObject("Scripting.Dictionary")	'åˆå§‹åŒ–ç«™ç‚¹é…ç½®
 
-		WebConfig.Add "CodePage",	936				'³õÊ¼»¯Õ¾µã±àÂë
-		WebConfig.Add "Charset",	"gb2312"		'³õÊ¼»¯Õ¾µã×Ö·û¼¯
-		WebConfig.Add "FilterWord",	""				'³õÊ¼»¯¹ıÂË×Ö·û
+		WebConfig.Add "CodePage",	936				'åˆå§‹åŒ–ç«™ç‚¹ç¼–ç 
+		WebConfig.Add "Charset",	"gb2312"		'åˆå§‹åŒ–ç«™ç‚¹å­—ç¬¦é›†
+		WebConfig.Add "FilterWord",	""				'åˆå§‹åŒ–è¿‡æ»¤å­—ç¬¦
 
 		On Error Resume Next
-		Set Db				= New Class_Db				'Êı¾İ¿â²Ù×÷Àà
-		Set Cache			= New Class_Cache			'»º´æ²Ù×÷Àà
-		Set [String]		= New Class_String			'String²Ù×÷Àà
-		Set Params			= New Class_Params			'Dictionary¼ò»¯²Ù×÷Àà
-		Set Arrays			= New Class_Array			'Êı×é²Ù×÷Àà
-		Set Upload			= New Class_Upload			'ÉÏ´«Àà
-		Set Page			= New Class_Page			'·ÖÒ³Àà
-		Set File			= New Class_File			'ÎÄ¼ş²Ù×÷Àà
-		Set Debug			= New Class_Debug			'Debug¹¤¾ßÀà
-		Set Cookie			= New Class_Cookie			'Cookies²Ù×÷Àà
-		Set Session			= New Class_Session			'Session²Ù×÷Àà
-		Set [Date]			= New Class_Date			'Date²Ù×÷Àà
+		Set Db				= New Class_Db				'æ•°æ®åº“æ“ä½œç±»
+		Set Cache			= New Class_Cache			'ç¼“å­˜æ“ä½œç±»
+		Set [String]		= New Class_String			'Stringæ“ä½œç±»
+		Set Params			= New Class_Params			'Dictionaryç®€åŒ–æ“ä½œç±»
+		Set Arrays			= New Class_Array			'æ•°ç»„æ“ä½œç±»
+		Set Upload			= New Class_Upload			'ä¸Šä¼ ç±»
+		Set Page			= New Class_Page			'åˆ†é¡µç±»
+		Set File			= New Class_File			'æ–‡ä»¶æ“ä½œç±»
+		Set Debug			= New Class_Debug			'Debugå·¥å…·ç±»
+		Set Cookie			= New Class_Cookie			'Cookiesæ“ä½œç±»
+		Set Session			= New Class_Session			'Sessionæ“ä½œç±»
+		Set [Date]			= New Class_Date			'Dateæ“ä½œç±»
 
-		Set SHA1			= Class_SHA1()				'SHA1±àÂë
-		Set Md5				= New Class_Md5				'Md5¼ÓÃÜ
-		Set Json			= New Class_Json			'Json²Ù×÷Àà
-		Set ValidCode		= New Class_ValidCode		'ÑéÖ¤Âë
+		Set SHA1			= Class_SHA1()				'SHA1ç¼–ç 
+		Set Md5				= New Class_Md5				'Md5åŠ å¯†
+		Set Json			= New Class_Json			'Jsonæ“ä½œç±»
+		Set ValidCode		= New Class_ValidCode		'éªŒè¯ç 
 		Set Export			= New Class_Export			'Export Data
-		Set Email			= New Class_Email			'Email·¢ËÍÀà
-		Set InterFace		= New Class_InterFace		'Ô¶³Ì»ñÈ¡Àà
-		Set DES				= Class_DES()				'DSC¼ÓÃÜ½âÃÜÀà
-		Set Xml				= New Class_XML				'XML²Ù×÷Àà
-		Set Ubb				= New Class_Ubb				'UBB²Ù×÷Àà
-		Set Rss				= New Class_RSS				'RSS²Ù×÷Àà
+		Set Email			= New Class_Email			'Emailå‘é€ç±»
+		Set InterFace		= New Class_InterFace		'è¿œç¨‹è·å–ç±»
+		Set DES				= Class_DES()				'DSCåŠ å¯†è§£å¯†ç±»
+		Set Xml				= New Class_XML				'XMLæ“ä½œç±»
+		Set Ubb				= New Class_Ubb				'UBBæ“ä½œç±»
+		Set Rss				= New Class_RSS				'RSSæ“ä½œç±»
 		Err.Clear
 		On Error Goto 0
 	End Sub
@@ -98,5 +98,5 @@ Class Class_Wrap
 End Class
 %>
 <script language="vbscript" runat="server">
-	Set Casp = Nothing	'Ò³ÃæÖ´ĞĞÍê±Ïºó×Ô¶¯ÊÍ·Å¶ÔÏó
+	Set Casp = Nothing	'é¡µé¢æ‰§è¡Œå®Œæ¯•åè‡ªåŠ¨é‡Šæ”¾å¯¹è±¡
 </script>

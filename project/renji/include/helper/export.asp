@@ -9,18 +9,18 @@
 
 
 '**********
-'	Ê¾Àı
+'	ç¤ºä¾‹
 '**********
 
 '********** 
 
 '**********
-'	¹¹½¨Àà
+'	æ„å»ºç±»
 '**********
 
 Class Class_Export
 	Private s_table, s_fields, s_fieldnames,oConn
-	Public FileName		'ÉèÖÃÉú³ÉµÄÎÄ¼şÃû
+	Public FileName		'è®¾ç½®ç”Ÿæˆçš„æ–‡ä»¶å
 
 	Public Property Let Conn(connObj)
 		Set oConn = connObj

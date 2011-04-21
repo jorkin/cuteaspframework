@@ -7,22 +7,22 @@
 '	Date		: 2008-4-3
 '**********
 '**********
-'	Ê¾Àı
+'	ç¤ºä¾‹
 '**********
 
 '**********
-' º¯ÊıÃû: echo
-' ²Î  Êı: str as a output string
-' ×÷  ÓÃ: Print the value of a variable
+' å‡½æ•°å: echo
+' å‚  æ•°: str as a output string
+' ä½œ  ç”¨: Print the value of a variable
 '**********
 Sub echo(ByVal str)
     Response.Write str
 End Sub
 
 '********** 
-' º¯ÊıÃû: die
+' å‡½æ•°å: die
 ' Param: str as a output string
-' ×÷ÓÃ: Print the value of a variable and exit the procedure
+' ä½œç”¨: Print the value of a variable and exit the procedure
 '********** 
 Sub die(str)
 	echo(str)
@@ -33,9 +33,9 @@ Sub die(str)
 End Sub
 
 '**********
-' º¯ÊıÃû: isset
-' ²Î  Êı: Obj as a object
-' ×÷  ÓÃ: isNothing ¡ª Check if the object is nothing or null or undefined
+' å‡½æ•°å: isset
+' å‚  æ•°: Obj as a object
+' ä½œ  ç”¨: isNothing â€” Check if the object is nothing or null or undefined
 '**********
 Function isset(Obj)
     isset = true
@@ -63,8 +63,8 @@ Function isset(Obj)
 End Function
 
 '**********
-'º¯ÊıÃû£ºisNumber
-'×÷  ÓÃ£ºÅĞ¶ÏÊÇ·ñÊı×Ö
+'å‡½æ•°åï¼šisNumber
+'ä½œ  ç”¨ï¼šåˆ¤æ–­æ˜¯å¦æ•°å­—
 '**********
 Function isNumber(str)
 	isNumber = False
@@ -76,8 +76,8 @@ Function isNumber(str)
 End Function
 
 '**********
-'º¯ÊıÃû£ºlocationHref
-'×÷  ÓÃ£ºÒ³ÃæÌø×ª
+'å‡½æ•°åï¼šlocationHref
+'ä½œ  ç”¨ï¼šé¡µé¢è·³è½¬
 '**********
 Sub locationHref(url)
 	On Error Resume Next
@@ -88,8 +88,8 @@ Sub locationHref(url)
 End Sub
 
 '**********
-'º¯ÊıÃû£ºReferer
-'×÷  ÓÃ£º·µ»ØÉÏÒ³
+'å‡½æ•°åï¼šReferer
+'ä½œ  ç”¨ï¼šè¿”å›ä¸Šé¡µ
 '**********
 Sub locationReferer()
 	On Error Resume Next
@@ -100,8 +100,8 @@ Sub locationReferer()
 End Sub
 
 '**********
-'º¯ÊıÃû£ºAlertRedirect
-'×÷  ÓÃ£ºÏûÏ¢¿ò
+'å‡½æ•°åï¼šAlertRedirect
+'ä½œ  ç”¨ï¼šæ¶ˆæ¯æ¡†
 '**********
 Sub alertRedirect(msgstr,url)
 	On Error Resume Next
@@ -114,9 +114,9 @@ Sub alertRedirect(msgstr,url)
 End Sub
 
 '**********
-'º¯ÊıÃû£ºAlertBack
-'²Î  Êı£ºmsgstr	-- µ¯³öĞÅÏ¢
-'×÷  ÓÃ£ºÏûÏ¢¿ò
+'å‡½æ•°åï¼šAlertBack
+'å‚  æ•°ï¼šmsgstr	-- å¼¹å‡ºä¿¡æ¯
+'ä½œ  ç”¨ï¼šæ¶ˆæ¯æ¡†
 '**********
 Sub alertBack(msgstr)
 	On Error Resume Next
@@ -126,9 +126,9 @@ Sub alertBack(msgstr)
 End Sub
 
 '**********
-'º¯ÊıÃû£ºAlertClose
-'²Î  Êı£ºmsgstr	-- µ¯³öĞÅÏ¢
-'×÷  ÓÃ£ºÏûÏ¢¿òºó¹Ø±Õ´°¿Ú
+'å‡½æ•°åï¼šAlertClose
+'å‚  æ•°ï¼šmsgstr	-- å¼¹å‡ºä¿¡æ¯
+'ä½œ  ç”¨ï¼šæ¶ˆæ¯æ¡†åå…³é—­çª—å£
 '**********
 Sub alertClose(msgstr)
 	On Error Resume Next
@@ -138,8 +138,8 @@ Sub alertClose(msgstr)
 End Sub
 
 '********** 
-' º¯ÊıÃû: IIf
-' ×÷ÓÃ: ¸ù¾İÖµÅĞ¶Ï½á¹û
+' å‡½æ•°å: IIf
+' ä½œç”¨: æ ¹æ®å€¼åˆ¤æ–­ç»“æœ
 '********** 
 Function IIf(flag,return1,return2)
 	If flag Then
@@ -150,8 +150,8 @@ Function IIf(flag,return1,return2)
 End Function
 
 '********** 
-' ÀàÃû: ReAopResult
-' ×÷ÓÃ£º·µ»ØĞÅÏ¢´æ´¢¹¤¾ßÀà
+' ç±»å: ReAopResult
+' ä½œç”¨ï¼šè¿”å›ä¿¡æ¯å­˜å‚¨å·¥å…·ç±»
 '********** 
 Class ReAopResult
 	Public Code

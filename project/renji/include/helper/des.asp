@@ -9,7 +9,7 @@
 
 
 '**********
-'	Ê¾Àı
+'	ç¤ºä¾‹
 '**********
 %>
 <script language="javascript" runat="server">
@@ -340,19 +340,19 @@ function Class_DES(){
 			}
 			return out;
 		}
-		//ËüÒÔDESÎª»ù±¾Ä£¿é£¬Í¨¹ı×éºÏ·Ö×é·½·¨Éè¼Æ³ö·Ö×é¼ÓÃÜËã·¨£¬Æä¾ßÌåÊµÏÖÈçÏÂ£º
-		//ÉèEk()DESËã·¨µÄ¼ÓÃÜ
-		//ºÍDk()DESËã·¨µÄ½âÃÜ¹ı³Ì£¬K´ú±íDESËã·¨Ê¹ÓÃµÄÃÜÔ¿£¬P´ú±íÃ÷ÎÄ£¬C´ú±íÃÜ±í£¬ÕâÑù£¬
-		//3DES¼ÓÃÜ¹ı³ÌÎª£ºC=Ek3(Dk2(Ek1(P)))
-		//3DES½âÃÜ¹ı³ÌÎª£ºP=Dk1((EK2(Dk3(C)))
+		//å®ƒä»¥DESä¸ºåŸºæœ¬æ¨¡å—ï¼Œé€šè¿‡ç»„åˆåˆ†ç»„æ–¹æ³•è®¾è®¡å‡ºåˆ†ç»„åŠ å¯†ç®—æ³•ï¼Œå…¶å…·ä½“å®ç°å¦‚ä¸‹ï¼š
+		//è®¾Ek()DESç®—æ³•çš„åŠ å¯†
+		//å’ŒDk()DESç®—æ³•çš„è§£å¯†è¿‡ç¨‹ï¼ŒKä»£è¡¨DESç®—æ³•ä½¿ç”¨çš„å¯†é’¥ï¼ŒPä»£è¡¨æ˜æ–‡ï¼ŒCä»£è¡¨å¯†è¡¨ï¼Œè¿™æ ·ï¼Œ
+		//3DESåŠ å¯†è¿‡ç¨‹ä¸ºï¼šC=Ek3(Dk2(Ek1(P)))
+		//3DESè§£å¯†è¿‡ç¨‹ä¸ºï¼šP=Dk1((EK2(Dk3(C)))
 
 		this.Key = "";
-		//¼ÓÃÜ
+		//åŠ å¯†
 		this.encode = function(message, mode,iv){
 			var ciphertext = des (this.Key, message, 1, mode != undefined ? mode : 0, iv);
 			return stringToHex(ciphertext).substr(2);
 		}
-		//½âÃÜ
+		//è§£å¯†
 		this.decode = function(message, mode, iv){
 			if(message != "") message = hexToString(message);
 			var ciphertext = des (this.Key, message, 0, mode != undefined ? mode : 0, iv);

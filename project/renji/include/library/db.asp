@@ -9,19 +9,19 @@
 
 
 '**********
-'	Ê¾Àı
+'	ç¤ºä¾‹
 '**********
 
 '**********
-'	¹¹½¨Àà
+'	æ„å»ºç±»
 '**********
 Class Class_Db
     Private ConnStr, SqlLocalPath, rs
-    Public ServerIp		'Êı¾İ¿âÁ¬½ÓÖ÷»úÃû
-	Public ConnectionType	'Êı¾İ¿âÁ¬½ÓÀàĞÍ -- 1.ACCESS 2.MSSQL
-	Public Database		'Êı¾İ¿âÃû 
-	Public Username			'ÓÃ»§Ãû
-	Public Password			'ÃÜÂë
+    Public ServerIp		'æ•°æ®åº“è¿æ¥ä¸»æœºå
+	Public ConnectionType	'æ•°æ®åº“è¿æ¥ç±»å‹ -- 1.ACCESS 2.MSSQL
+	Public Database		'æ•°æ®åº“å 
+	Public Username			'ç”¨æˆ·å
+	Public Password			'å¯†ç 
     Public Conn
 
     Private Sub Class_Initialize()
@@ -37,8 +37,8 @@ Class Class_Db
     End Sub
 	
     '**********
-    ' ·½·¨Ãû: Open
-    ' ×÷  ÓÃ: ´ò¿ªÊı¾İ¿âÁ´½Ó
+    ' æ–¹æ³•å: Open
+    ' ä½œ  ç”¨: æ‰“å¼€æ•°æ®åº“é“¾æ¥
     '**********
     Sub Open()
 		On Error Resume Next
@@ -60,8 +60,8 @@ Class Class_Db
     End Sub
 
     '**********
-    ' ·½·¨Ãû: Close
-    ' ×÷  ÓÃ: ¹Ø±Õ²¢ÊÍ·ÅÊı¾İ¿âÁ´½Ó
+    ' æ–¹æ³•å: Close
+    ' ä½œ  ç”¨: å…³é—­å¹¶é‡Šæ”¾æ•°æ®åº“é“¾æ¥
     '**********
 	Sub Close()
         On Error Resume Next
@@ -72,9 +72,9 @@ Class Class_Db
 	End Sub
 	
     '**********
-    ' ·½·¨Ãû: CloseRs
-    ' ²Î  Êı: OutRs as recordset object
-    ' ×÷  ÓÃ: ¹Ø±Õ²¢ÊÍ·ÅÖ¸¶¨¶ÔÏó
+    ' æ–¹æ³•å: CloseRs
+    ' å‚  æ•°: OutRs as recordset object
+    ' ä½œ  ç”¨: å…³é—­å¹¶é‡Šæ”¾æŒ‡å®šå¯¹è±¡
     '**********
 	Sub CloseRs(OutRs)
 		If IsObject(OutRs) Then
@@ -91,10 +91,10 @@ Class Class_Db
     End Sub
 
     '**********
-    ' ·½·¨Ãû: Exec
-    ' ²Î  Êı: OutRs as recordset object
-    ' ²Î  Êı: sql as sql string
-    ' ×÷  ÓÃ: Ö´ĞĞsqlÓï¾ä£¬ÈôÊÇ²éÑ¯Óï¾äÔò½«½á¹û·µ»Ø¸øOutRs
+    ' æ–¹æ³•å: Exec
+    ' å‚  æ•°: OutRs as recordset object
+    ' å‚  æ•°: sql as sql string
+    ' ä½œ  ç”¨: æ‰§è¡Œsqlè¯­å¥ï¼Œè‹¥æ˜¯æŸ¥è¯¢è¯­å¥åˆ™å°†ç»“æœè¿”å›ç»™OutRs
     '**********
     Sub Exec(OutRs, sql)
         If InStr(UCase(sql), UCase("select"))>0 Then
@@ -107,33 +107,33 @@ Class Class_Db
 
 	
     '**********
-    ' ·½·¨Ãû: Close
-    ' ×÷  ÓÃ: ¿ªÊ¼ÊÂÎñ
+    ' æ–¹æ³•å: Close
+    ' ä½œ  ç”¨: å¼€å§‹äº‹åŠ¡
     '**********
 	Sub BeginTrans()
 		Me.Conn.BeginTrans()
 	End Sub
 	
     '**********
-    ' ·½·¨Ãû: Close
-    ' ×÷  ÓÃ: »Ø¹öÊÂÎñ
+    ' æ–¹æ³•å: Close
+    ' ä½œ  ç”¨: å›æ»šäº‹åŠ¡
     '**********
 	Sub RollBackTrans()
 		Me.Conn.RollBackTrans()
 	End Sub
 
     '**********
-    ' ·½·¨Ãû: Close
-    ' ×÷  ÓÃ: Ìá½»ÊÂÎñ
+    ' æ–¹æ³•å: Close
+    ' ä½œ  ç”¨: æäº¤äº‹åŠ¡
     '**********
 	Sub CommitTrans()
 		Me.Conn.CommitTrans()
 	End Sub
 
     '**********
-    ' ·½·¨Ãû: GetRecordObject
-    ' ²Î  Êı: source as sql string or recordset object
-    ' ×÷  ÓÃ: ½«Ò»Ìõ¼ÇÂ¼×ªÎªÒ»¸ö×Öµä¶ÔÏó
+    ' æ–¹æ³•å: GetRecordObject
+    ' å‚  æ•°: source as sql string or recordset object
+    ' ä½œ  ç”¨: å°†ä¸€æ¡è®°å½•è½¬ä¸ºä¸€ä¸ªå­—å…¸å¯¹è±¡
     '**********
 	Sub GetRowObject(obj,source)
 		Dim i, rs
@@ -152,10 +152,10 @@ Class Class_Db
 	End Sub
 
     '**********
-    ' ·½·¨Ãû: Insert
-    ' ²Î  Êı: Table as Data Table
-    ' ²Î  Êı: Params as Dictionary
-    ' ×÷  ÓÃ: ²åÈë¼ÇÂ¼
+    ' æ–¹æ³•å: Insert
+    ' å‚  æ•°: Table as Data Table
+    ' å‚  æ•°: Params as Dictionary
+    ' ä½œ  ç”¨: æ’å…¥è®°å½•
     '**********
 	Function Insert(Table,Params)
 		Dim sqlCmd, sqlCmd_a, sqlCmd_b, parameteres, oParams
@@ -188,11 +188,11 @@ Class Class_Db
 	End Function
 
     '**********
-    ' ·½·¨Ãû: Update
-    ' ²Î  Êı: Table as Data Table
-    ' ²Î  Êı: Params as Dictionary
-    ' ²Î  Êı: Where as Ìõ¼şÓï¾ä
-    ' ×÷  ÓÃ: ¸üĞÂ¼ÇÂ¼
+    ' æ–¹æ³•å: Update
+    ' å‚  æ•°: Table as Data Table
+    ' å‚  æ•°: Params as Dictionary
+    ' å‚  æ•°: Where as æ¡ä»¶è¯­å¥
+    ' ä½œ  ç”¨: æ›´æ–°è®°å½•
     '**********
 	Function Update(Table,Params,Where)
 		Dim sqlCmd, parameteres, oParams
@@ -229,14 +229,14 @@ Class Class_Db
 	End Function
 
 	'**********
-	' ¹¦ÄÜ	£º	Ö´ĞĞ´æ´¢¹ı³Ì²¢·µ»Ø¼ÇÂ¼¼¯
+	' åŠŸèƒ½	ï¼š	æ‰§è¡Œå­˜å‚¨è¿‡ç¨‹å¹¶è¿”å›è®°å½•é›†
 	'**********
 	Function ExecuteRecordSet(commandName , ByVal params)
 		Set ExecuteRecordSet = ExecuteSqlCommand(commandName , params , 2)
 	End Function
 	
 	'**********
-	' ¹¦ÄÜ	£º	Ö´ĞĞ´æ´¢¹ı³Ì²¢·µ»Ø¼ÇÂ¼¼¯µÚÒ»ĞĞµÚÒ»ÁĞ
+	' åŠŸèƒ½	ï¼š	æ‰§è¡Œå­˜å‚¨è¿‡ç¨‹å¹¶è¿”å›è®°å½•é›†ç¬¬ä¸€è¡Œç¬¬ä¸€åˆ—
 	'**********
 	Function ExecuteScalar(commandName , ByVal params)
 		Set rs = ExecuteSqlCommand(commandName , params , 2)
@@ -250,36 +250,36 @@ Class Class_Db
 	End Function
 	
 	'**********
-	' ¹¦ÄÜ	£º	Ö´ĞĞ´æ´¢¹ı³Ì²¢·µ»ØÒ»¸öÖµ
+	' åŠŸèƒ½	ï¼š	æ‰§è¡Œå­˜å‚¨è¿‡ç¨‹å¹¶è¿”å›ä¸€ä¸ªå€¼
 	'**********
 	Function ExecuteReturnValue(commandName , ByVal params)
 		ExecuteReturnValue = ExecuteSqlCommand(commandName , params , 1)
 	End Function
 	
 	'**********
-	' ¹¦ÄÜ	£º	Ö´ĞĞ´æ´¢¹ı³Ì²»·µ»ØÈÎºÎÄÚÈİ
+	' åŠŸèƒ½	ï¼š	æ‰§è¡Œå­˜å‚¨è¿‡ç¨‹ä¸è¿”å›ä»»ä½•å†…å®¹
 	'**********
 	Function ExecuteNonQuery(commandName , ByVal params)
 		ExecuteNonQuery = ExecuteSqlCommand(commandName , params , 0)
 	End Function
 	
 	'**********
-	' ¹¦ÄÜ	£º	Ö´ĞĞ´æ´¢¹ı³Ì²¢·µ»Ø¼ÇÂ¼¼¯ºÍÒ»¸öÖµ
+	' åŠŸèƒ½	ï¼š	æ‰§è¡Œå­˜å‚¨è¿‡ç¨‹å¹¶è¿”å›è®°å½•é›†å’Œä¸€ä¸ªå€¼
 	'**********
 	Function ExecuteRecordsetAndValue(commandName , ByVal params)
 		ExecuteRecordsetAndValue = ExecuteSqlCommand(commandName , params , 3)
 	End Function
 	
 	'**********
-	' ¹¦ÄÜ	£º	Ö´ĞĞ´æ´¢¹ı³Ì
+	' åŠŸèƒ½	ï¼š	æ‰§è¡Œå­˜å‚¨è¿‡ç¨‹
 	'**********
-	' commandName		´æ´¢¹ı³ÌÃû³Æ
-	' params			²ÎÊı¼¯ºÏ£¬±ØĞëÊ¹ÓÃ Scripting.Dictionary ¶ÔÏó¶¨Òå
-	' returnMode		·µ»ØÄ£Ê½
-	'					0	²»·µ»ØÈÎºÎ²ÎÊı»ò¶ÔÏó
-	'					1	Ö´ĞĞºóµÃµ½·µ»ØÖµ
-	'					2	Ö´ĞĞºóµÃµ½¼ÇÂ¼¼¯
-	'					3	Ö´ĞĞºóµÃµ½·µ»ØÖµºÍ¼ÇÂ¼¼¯
+	' commandName		å­˜å‚¨è¿‡ç¨‹åç§°
+	' params			å‚æ•°é›†åˆï¼Œå¿…é¡»ä½¿ç”¨ Scripting.Dictionary å¯¹è±¡å®šä¹‰
+	' returnMode		è¿”å›æ¨¡å¼
+	'					0	ä¸è¿”å›ä»»ä½•å‚æ•°æˆ–å¯¹è±¡
+	'					1	æ‰§è¡Œåå¾—åˆ°è¿”å›å€¼
+	'					2	æ‰§è¡Œåå¾—åˆ°è®°å½•é›†
+	'					3	æ‰§è¡Œåå¾—åˆ°è¿”å›å€¼å’Œè®°å½•é›†
 	'**********
 	Private Function ExecuteSqlCommand(commandName , ByVal params , returnMode)
 		Dim cmd : Set cmd = Server.CreateObject("ADODB.Command")
@@ -312,11 +312,11 @@ Class Class_Db
 		End If
 	
 		Select Case returnMode
-			' Ö´ĞĞºóµÃµ½·µ»ØÖµ
+			' æ‰§è¡Œåå¾—åˆ°è¿”å›å€¼
 			Case 1
 				Call cmd.Execute(, , 128)
 				ExecuteSqlCommand = cmd("@ReturnValue").Value
-				' Ö´ĞĞºóµÃµ½¼ÇÂ¼¼¯
+				' æ‰§è¡Œåå¾—åˆ°è®°å½•é›†
 			Case 2
 				Set ExecuteSqlCommand = cmd.Execute()
 			Case 3
@@ -326,7 +326,7 @@ Class Class_Db
 				Call RSReturn.Open(RSStream)
 
 				ExecuteSqlCommand = Array(RSReturn, cmd("@ReturnValue").Value)
-				' Ä¬ÈÏ·½Ê½£¬²»·µ»ØÈÎºÎ²ÎÊı»ò¶ÔÏó
+				' é»˜è®¤æ–¹å¼ï¼Œä¸è¿”å›ä»»ä½•å‚æ•°æˆ–å¯¹è±¡
 			Case Else
 				Call cmd.Execute(ExecuteSqlCommand, , 128)
 		End Select

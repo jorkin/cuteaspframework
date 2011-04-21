@@ -42,7 +42,7 @@ Class Class_JSON
     ''                    RFC4627#2.5 - http://www.ietf.org/rfc/rfc4627.txt?number=4627
     '' @PARAM:            val [string]: value which should be escaped
     '' @RETURN:            [string] JSON valid string
-    '' asc 函数被替换成ascw函数以便支持中文
+    '' asc 鍑芥暟琚浛鎹㈡垚ascw鍑芥暟浠ヤ究鏀寔涓枃
     '******************************************************************************************
     Public Function escape(Val)
         Dim cDoubleQuote, cRevSolidus, cSolidus

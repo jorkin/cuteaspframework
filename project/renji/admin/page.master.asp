@@ -119,20 +119,6 @@ Sub TopCode()
         <li><a href="category.asp?do=list" class="nav">信息类别</a></li>
       </ul>
 	</li>
-    <li class="top"><a href="single.asp?m=training" class="top">纹身培训</a></li>
-    <li class="top"><a href="javascript:;" class="top">相关商品</a>
-      <ul>
-        <li><a href="single.asp?m=goods_tools" class="nav">机器</a></li>
-        <li><a href="single.asp?m=books" class="nav">书籍</a></li>
-        <li><a href="single.asp?m=t_shirt" class="nav">T恤</a></li>
-      </ul>
-    </li>
-    <li class="top"><a href="javascript:;" class="top">纹身师</a>
-      <ul>
-        <li><a href="artist.asp?do=list" class="nav">纹身师列表</a></li>
-        <li><a href="artist.asp?do=edit" class="nav">添加纹身师</a></li>
-      </ul>
-    </li>
   </ul>
 </div>
 <%

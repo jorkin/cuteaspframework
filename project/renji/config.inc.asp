@@ -50,6 +50,8 @@ Casp.Cookie.Mark = "cute_"		'设置Cookie名称前缀
 Casp.Cache.Mark = "cute_"		'设置缓存名称前缀
 Casp.Ubb.Mode = 0				'使用基本UBB
 Casp.Date.TimeZone = 8			'设置所在时区
+Casp.Upload.Mode	= 1
+Casp.Upload.Charset	= "utf-8"		'设置站点字符集
 On Error Goto 0
 
 Sub Finish()

@@ -9,11 +9,11 @@
 
 
 '**********
-'	Ê¾Àı
+'	ç¤ºä¾‹
 '**********
 
 '**********
-'	¹¹½¨Àà
+'	æ„å»ºç±»
 '**********
 Class Class_Debug
 
@@ -23,16 +23,16 @@ Class Class_Debug
     Private objStorage
 
     '**********
-    ' ·½·¨Ãû: Open
-    ' ×÷  ÓÃ: ´ò¿ªDebug
+    ' æ–¹æ³•å: Open
+    ' ä½œ  ç”¨: æ‰“å¼€Debug
     '**********
     Sub Open()
         blnEnabled = true
     End Sub
 
     '**********
-    ' ·½·¨Ãû: Close
-    ' ×÷  ÓÃ: Í£Ö¹Debug
+    ' æ–¹æ³•å: Close
+    ' ä½œ  ç”¨: åœæ­¢Debug
     '**********
     Sub Close()
         blnEnabled = false
@@ -44,8 +44,8 @@ Class Class_Debug
     End Sub
 
     '**********
-    ' ·½·¨Ãû: Add
-    ' ×÷  ÓÃ: Ìí¼Ó¼àÌı±äÁ¿
+    ' æ–¹æ³•å: Add
+    ' ä½œ  ç”¨: æ·»åŠ ç›‘å¬å˜é‡
     '**********
     Sub Add(label)
         If blnEnabled Then
@@ -55,8 +55,8 @@ Class Class_Debug
 
 
     '**********
-    ' ·½·¨Ãû: Show
-    ' ×÷  ÓÃ: ÏÔÊ¾½á¹û
+    ' æ–¹æ³•å: Show
+    ' ä½œ  ç”¨: æ˜¾ç¤ºç»“æœ
     '**********
     Sub Show()
         dteFinishTime = Now()

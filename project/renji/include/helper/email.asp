@@ -9,13 +9,13 @@
 
 
 '**********
-'	Ê¾Àı
+'	ç¤ºä¾‹
 '**********
 
 '********** 
 
 '**********
-'	¹¹½¨Àà
+'	æ„å»ºç±»
 '**********
 Class Class_Email
 	Public Charset,MailServer
@@ -26,36 +26,36 @@ Class Class_Email
 	End Sub
 
 	'**********
-	'º¯ÊıÃû£ºSend
-	'×÷  ÓÃ£ºÓÃjMail×é¼ş·¢ËÍÓÊ¼ş
-	'²Î  Êı£ºMailtoEmails ----	ÊÕĞÅÈË(xxx@gmail.com|°Ö°Ö    or      Array("xxx@gmail.com|°Ö°Ö","yyy@gmail.com|ÂèÂè"))
-	'        Subject       -----Ö÷Ìâ
-	'        TemplateFile  -----Ä£°åÎÄ¼şÂ·¾¶
-	'        Params		   -----Ìæ»»²ÎÊı
-	'        FromName      -----·¢ĞÅÈËĞÕÃû
-	'        MailFrom      -----·¢ĞÅÈËµØÖ·
-	'        UserName      -----·¢ĞÅÈËÕÊºÅ
-	'        Password      -----·¢ĞÅÈËÃÜÂë
-	'        Priority      -----ĞÅ¼şÓÅÏÈ¼¶£¨1Îª¼Ó¼±£¬3ÎªÆÕÍ¨£¬5ÎªµÍ¼¶£©
-	'·µ»ØÖµ£ºArray(ÊÇ·ñ³É¹¦,ÌáÊ¾ĞÅÏ¢)
+	'å‡½æ•°åï¼šSend
+	'ä½œ  ç”¨ï¼šç”¨jMailç»„ä»¶å‘é€é‚®ä»¶
+	'å‚  æ•°ï¼šMailtoEmails ----	æ”¶ä¿¡äºº(xxx@gmail.com|çˆ¸çˆ¸    or      Array("xxx@gmail.com|çˆ¸çˆ¸","yyy@gmail.com|å¦ˆå¦ˆ"))
+	'        Subject       -----ä¸»é¢˜
+	'        TemplateFile  -----æ¨¡æ¿æ–‡ä»¶è·¯å¾„
+	'        Params		   -----æ›¿æ¢å‚æ•°
+	'        FromName      -----å‘ä¿¡äººå§“å
+	'        MailFrom      -----å‘ä¿¡äººåœ°å€
+	'        UserName      -----å‘ä¿¡äººå¸å·
+	'        Password      -----å‘ä¿¡äººå¯†ç 
+	'        Priority      -----ä¿¡ä»¶ä¼˜å…ˆçº§ï¼ˆ1ä¸ºåŠ æ€¥ï¼Œ3ä¸ºæ™®é€šï¼Œ5ä¸ºä½çº§ï¼‰
+	'è¿”å›å€¼ï¼šArray(æ˜¯å¦æˆåŠŸ,æç¤ºä¿¡æ¯)
 	'**********
 	Public Function Send(MailtoEmails, Subject, TemplateFile, Params, FromName, FromMail, UserName, Password, Priority)
 		If IsObjInstalled("jMail.Message") Then
 			On Error Resume Next
 		Else
-			Send = Array(False,"Î´ÕÒµ½ JMail ×é¼ş")
+			Send = Array(False,"æœªæ‰¾åˆ° JMail ç»„ä»¶")
 			Exit Function
 		End If
 		If Priority = "" Or IsNull(Priority) Then Priority = 3
 
 		Dim jMail : Set jMail = Server.CreateObject("jMail.Message")
 		jMail.Silent = False
-		jMail.Charset = Me.Charset							'ÓÊ¼ş±àÂë
-		jMail.ContentType = "text/html"					'ÓÊ¼şÕıÎÄ¸ñÊ½
-		jMail.From = FromMail							'·¢ĞÅÈËEmail
-		jMail.FromName = FromName						'·¢ĞÅÈËĞÕÃû
+		jMail.Charset = Me.Charset							'é‚®ä»¶ç¼–ç 
+		jMail.ContentType = "text/html"					'é‚®ä»¶æ­£æ–‡æ ¼å¼
+		jMail.From = FromMail							'å‘ä¿¡äººEmail
+		jMail.FromName = FromName						'å‘ä¿¡äººå§“å
 		jMail.ReplyTo = FromMail						
-		jMail.AppendBodyFromFile TemplateFile			'ÄÚÈİÄ£°å
+		jMail.AppendBodyFromFile TemplateFile			'å†…å®¹æ¨¡æ¿
 		Dim iParamName
 		If Not IsNull(Params) Then
 			For Each iParamName In Params
@@ -69,7 +69,7 @@ Class Class_Email
 			For i = 0 to UBound(MailtoEmails)
 				aMailtoEmail = Split(MailtoEmails(i),"|")
 				If UBound(aMailtoEmail) > 0 Then
-					jMail.AddRecipient aMailtoEmail(0),aMailtoEmail(1)						'ÊÕĞÅÈË
+					jMail.AddRecipient aMailtoEmail(0),aMailtoEmail(1)						'æ”¶ä¿¡äºº
 				Else
 					jMail.AddRecipient aMailtoEmail(0),Left(aMailtoEmail(0),InStr(aMailtoEmail(0),"@")-1)
 				End If
@@ -77,18 +77,18 @@ Class Class_Email
 		Else
 			aMailtoEmail = Split(MailtoEmails,"|")
 			If UBound(aMailtoEmail) > 0 Then
-				jMail.AddRecipient aMailtoEmail(0),aMailtoEmail(1)						'ÊÕĞÅÈË
+				jMail.AddRecipient aMailtoEmail(0),aMailtoEmail(1)						'æ”¶ä¿¡äºº
 			Else
 				jMail.AddRecipient aMailtoEmail(0),Left(aMailtoEmail(0),InStr(aMailtoEmail(0),"@")-1)
 			End If
 		End If
-		jMail.Subject = Subject							'Ö÷Ìâ
-		jMail.Priority = Priority						'ÓÊ¼şµÈ¼¶£¬1Îª¼Ó¼±£¬3ÎªÆÕÍ¨£¬5ÎªµÍ¼¶
+		jMail.Subject = Subject							'ä¸»é¢˜
+		jMail.Priority = Priority						'é‚®ä»¶ç­‰çº§ï¼Œ1ä¸ºåŠ æ€¥ï¼Œ3ä¸ºæ™®é€šï¼Œ5ä¸ºä½çº§
 
-		'Èç¹û·şÎñÆ÷ĞèÒªSMTPÉí·İÑéÖ¤Ôò»¹ĞèÖ¸¶¨ÒÔÏÂ²ÎÊı
-		jMail.MailDomain =	Right(FromMail,InStr(FromMail,"@"))				'ÓòÃû£¨Èç¹ûÓÃ¡°name@domain.com¡±ÕâÑùµÄÓÃ»§ÃûµÇÂ¼Ê±£¬ÇëÖ¸Ã÷domain.com
-		jMail.MailServerUserName = UserName			'µÇÂ¼ÓÃ»§Ãû
-		jMail.MailServerPassWord = Password			'µÇÂ¼ÃÜÂë
+		'å¦‚æœæœåŠ¡å™¨éœ€è¦SMTPèº«ä»½éªŒè¯åˆ™è¿˜éœ€æŒ‡å®šä»¥ä¸‹å‚æ•°
+		jMail.MailDomain =	Right(FromMail,InStr(FromMail,"@"))				'åŸŸåï¼ˆå¦‚æœç”¨â€œname@domain.comâ€è¿™æ ·çš„ç”¨æˆ·åç™»å½•æ—¶ï¼Œè¯·æŒ‡æ˜domain.com
+		jMail.MailServerUserName = UserName			'ç™»å½•ç”¨æˆ·å
+		jMail.MailServerPassWord = Password			'ç™»å½•å¯†ç 
 
 		jMail.Send Me.MailServer
 		Send = jMail.ErrorMessage
@@ -104,11 +104,11 @@ Class Class_Email
 	End Function
 
 	'**********
-	'º¯ÊıÃû£ºIsObjInstalled
-	'×÷  ÓÃ£º¼ì²é×é¼şÊÇ·ñÒÑ¾­°²×°
-	'²Î  Êı£ºstrClassString ----×é¼şÃû
-	'·µ»ØÖµ£ºTrue  ----ÒÑ¾­°²×°
-	'       False ----Ã»ÓĞ°²×°
+	'å‡½æ•°åï¼šIsObjInstalled
+	'ä½œ  ç”¨ï¼šæ£€æŸ¥ç»„ä»¶æ˜¯å¦å·²ç»å®‰è£…
+	'å‚  æ•°ï¼šstrClassString ----ç»„ä»¶å
+	'è¿”å›å€¼ï¼šTrue  ----å·²ç»å®‰è£…
+	'       False ----æ²¡æœ‰å®‰è£…
 	'**********
 	Private Function IsObjInstalled(strClassString)
 		IsObjInstalled = False

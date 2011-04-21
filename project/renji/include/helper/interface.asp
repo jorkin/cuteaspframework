@@ -9,37 +9,37 @@
 
 
 '**********
-'	Ê¾Àı
+'	ç¤ºä¾‹
 '**********
 
 '********** 
 
 '**********
-'	¹¹½¨Àà
+'	æ„å»ºç±»
 '**********
 Class Class_Interface
 	Private s_stm
 		
-	'ÉèÖÃStream×é¼şÃû³Æ
+	'è®¾ç½®Streamç»„ä»¶åç§°
 	Public Property Let Stream(str)
 		s_stm = str
 	End Property
 
 	'**********
-    ' º¯ÊıÃû: class_Initialize
-    ' ×÷  ÓÃ: Constructor
+    ' å‡½æ•°å: class_Initialize
+    ' ä½œ  ç”¨: Constructor
     '**********
 	Private Sub Class_Initialize()
 		s_stm = "ADODB.Stream"
     End Sub
 	
     '**********
-    'º¯ÊıÃû£ºPostHttpPage
-	'²Î  Êı£ºRefererUrl	---- ·µ»ØÒ³Ãæ
-	'		 PostUrl	---- »ñÈ¡µØÖ·
-	'		 PostData	---- ·¢ËÍ²ÎÊı
-	'		 DataType	---- ±àÂëÀàĞÍ
-    '×÷  ÓÃ£ºµÇÂ¼
+    'å‡½æ•°åï¼šPostHttpPage
+	'å‚  æ•°ï¼šRefererUrl	---- è¿”å›é¡µé¢
+	'		 PostUrl	---- è·å–åœ°å€
+	'		 PostData	---- å‘é€å‚æ•°
+	'		 DataType	---- ç¼–ç ç±»å‹
+    'ä½œ  ç”¨ï¼šç™»å½•
     '**********
     Function PostHttpPage(RefererUrl, PostUrl, PostData, DataType)
         Dim xmlHttp, RetStr
@@ -65,11 +65,11 @@ Class Class_Interface
     End Function
 
     '**********
-    '¹ı³ÌÃû£ºSaveRemoteFile
-    '×÷  ÓÃ£º±£´æÔ¶³ÌµÄÎÄ¼şµ½±¾µØ
-    '²Î  Êı£ºLocalFileName ------ ±¾µØÎÄ¼şÃû
-    '²Î  Êı£ºRemoteFileUrl ------ Ô¶³ÌÎÄ¼şURL
-    '²Î  Êı£ºReferer ------ Ô¶³Ìµ÷ÓÃÎÄ¼ş£¨¶Ô¸¶·À²É¼¯µÄ£¬ÓÃÄÚÈİÒ³µØÖ·£¬Ã»ÓĞ·ÀµÄÁô¿Õ£©
+    'è¿‡ç¨‹åï¼šSaveRemoteFile
+    'ä½œ  ç”¨ï¼šä¿å­˜è¿œç¨‹çš„æ–‡ä»¶åˆ°æœ¬åœ°
+    'å‚  æ•°ï¼šLocalFileName ------ æœ¬åœ°æ–‡ä»¶å
+    'å‚  æ•°ï¼šRemoteFileUrl ------ è¿œç¨‹æ–‡ä»¶URL
+    'å‚  æ•°ï¼šReferer ------ è¿œç¨‹è°ƒç”¨æ–‡ä»¶ï¼ˆå¯¹ä»˜é˜²é‡‡é›†çš„ï¼Œç”¨å†…å®¹é¡µåœ°å€ï¼Œæ²¡æœ‰é˜²çš„ç•™ç©ºï¼‰
     '**********
     Function SaveRemoteFile(LocalFileName, RemoteFileUrl, Referer)
 		SaveRemoteFile = False
@@ -107,9 +107,9 @@ Class Class_Interface
     End Function
 
     '**********
-    'º¯ÊıÃû£ºGetHttpPage
-    '×÷  ÓÃ£º»ñÈ¡ÍøÒ³Ô´Âë
-    '²Î  Êı£ºHttpUrl ------ÍøÒ³µØÖ·,Cset ±àÂë
+    'å‡½æ•°åï¼šGetHttpPage
+    'ä½œ  ç”¨ï¼šè·å–ç½‘é¡µæºç 
+    'å‚  æ•°ï¼šHttpUrl ------ç½‘é¡µåœ°å€,Cset ç¼–ç 
     '**********
     Function GetHttpPage(URL, Cset, iUserName , iPassword)
         Dim xmlHttp
@@ -133,10 +133,10 @@ Class Class_Interface
     End Function
 
     '**********
-    'º¯ÊıÃû£ºBytesToBstr
-    '×÷  ÓÃ£º½«»ñÈ¡µÄÔ´Âë×ª»»ÎªÖĞÎÄ
-    '²Î  Êı£ºBody ------Òª×ª»»µÄ±äÁ¿
-    '²Î  Êı£ºCset ------Òª×ª»»µÄÀàĞÍ
+    'å‡½æ•°åï¼šBytesToBstr
+    'ä½œ  ç”¨ï¼šå°†è·å–çš„æºç è½¬æ¢ä¸ºä¸­æ–‡
+    'å‚  æ•°ï¼šBody ------è¦è½¬æ¢çš„å˜é‡
+    'å‚  æ•°ï¼šCset ------è¦è½¬æ¢çš„ç±»å‹
     '**********
     Private Function BytesToBstr(Body, Cset)
         Dim Objstream
@@ -156,13 +156,13 @@ Class Class_Interface
     End Function
 	
 	'**********
-	'º¯ÊıÃû£ºGetBody
-	'×÷  ÓÃ£º½ØÈ¡×Ö·û´®
-	'²Î  Êı£ºConStr ------½«Òª½ØÈ¡µÄ×Ö·û´®
-	'²Î  Êı£ºStartStr ------¿ªÊ¼×Ö·û´®
-	'²Î  Êı£ºOverStr ------½áÊø×Ö·û´®
-	'²Î  Êı£ºIncluL ------ÊÇ·ñ°üº¬StartStr
-	'²Î  Êı£ºIncluR ------ÊÇ·ñ°üº¬OverStr
+	'å‡½æ•°åï¼šGetBody
+	'ä½œ  ç”¨ï¼šæˆªå–å­—ç¬¦ä¸²
+	'å‚  æ•°ï¼šConStr ------å°†è¦æˆªå–çš„å­—ç¬¦ä¸²
+	'å‚  æ•°ï¼šStartStr ------å¼€å§‹å­—ç¬¦ä¸²
+	'å‚  æ•°ï¼šOverStr ------ç»“æŸå­—ç¬¦ä¸²
+	'å‚  æ•°ï¼šIncluL ------æ˜¯å¦åŒ…å«StartStr
+	'å‚  æ•°ï¼šIncluR ------æ˜¯å¦åŒ…å«OverStr
 	'**********
 	Function GetBody(ConStr,StartStr,OverStr,IncluL,IncluR)
 	   If ConStr = "$False$" or ConStr = "" or IsNull(ConStr) = True Or StartStr = "" or IsNull(StartStr) = True Or OverStr = "" or IsNull(OverStr) = True Then
@@ -197,13 +197,13 @@ Class Class_Interface
 
 
 	'**********
-	'º¯ÊıÃû£ºGetLinkArray
-	'×÷  ÓÃ£ºÌáÈ¡Á´½ÓµØÖ·£¬ÒÔ$Array$·Ö¸ô
-	'²Î  Êı£ºConStr ------ÌáÈ¡µØÖ·µÄÔ­×Ö·û
-	'²Î  Êı£ºStartStr ------¿ªÊ¼×Ö·û´®
-	'²Î  Êı£ºOverStr ------½áÊø×Ö·û´®
-	'²Î  Êı£ºIncluL ------ÊÇ·ñ°üº¬StartStr
-	'²Î  Êı£ºIncluR ------ÊÇ·ñ°üº¬OverStr
+	'å‡½æ•°åï¼šGetLinkArray
+	'ä½œ  ç”¨ï¼šæå–é“¾æ¥åœ°å€ï¼Œä»¥$Array$åˆ†éš”
+	'å‚  æ•°ï¼šConStr ------æå–åœ°å€çš„åŸå­—ç¬¦
+	'å‚  æ•°ï¼šStartStr ------å¼€å§‹å­—ç¬¦ä¸²
+	'å‚  æ•°ï¼šOverStr ------ç»“æŸå­—ç¬¦ä¸²
+	'å‚  æ•°ï¼šIncluL ------æ˜¯å¦åŒ…å«StartStr
+	'å‚  æ•°ï¼šIncluR ------æ˜¯å¦åŒ…å«OverStr
 	'**********
 	Function GetLinkArray(ConStr,StartStr,OverStr,IncluL,IncluR)
 	   If ConStr = "$False$" or ConStr = "" Or IsNull(ConStr) = True or StartStr = "" Or OverStr = "" or  IsNull(StartStr) = True Or IsNull(OverStr) = True Then

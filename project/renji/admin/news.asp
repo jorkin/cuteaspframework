@@ -29,8 +29,10 @@ Case "save"
 	Casp.file.CreatePath(Casp.WebConfig("SitePath")&Casp.WebConfig("NewsPath"))
 	xId = Casp.rq(3,"id",0,0)
 	xIsDisplay = Casp.rq(3,"IsDisplay",0,0)
+	xCategoryId = Casp.rq(3,"CategoryId",0,0)
 	xTitle = Casp.rq(3,"Title",1,"")
 	If xTitle = "" Then alertBack "必须填写信息标题"
+	If xCategoryId = 0 Then alertBack "必须选择类别"
 	xSortId = Casp.rq(3,"sortid",0,0)
 	xContent = Casp.rq(3,"Content",1,"")
 	xLanguage = Casp.rq(3,"Language",1,"")
@@ -43,6 +45,7 @@ Case "save"
 	End If
 	rs("IsDisplay") = xIsDisplay
 	rs("Title") = xTitle
+	rs("CategoryId") = xCategoryId
 	rs("Content") = xContent
 	rs("SortID") = xSortId
 	rs("Language") = xLanguage

@@ -9,7 +9,7 @@
 
 
 '**********
-'	Ê¾Àý
+'	ç¤ºä¾‹
 '**********
 %>
 <script language="javascript" runat="server">

@@ -9,39 +9,39 @@
 
 
 '**********
-'	Ê¾Àı
+'	ç¤ºä¾‹
 '**********
 
 '********** 
 
 '**********
-'	¹¹½¨Àà
+'	æ„å»ºç±»
 '**********
 Class Class_Cookie
-	Public	Mark	'Ç°×º
+	Public	Mark	'å‰ç¼€
 
     Public Default Property Get Constructor(Value)
         Constructor = [Get](Value)
     End Property
 
     '**********
-    ' º¯ÊıÃû: class_Initialize
-    ' ×÷  ÓÃ: Save the session
+    ' å‡½æ•°å: class_Initialize
+    ' ä½œ  ç”¨: Save the session
     '**********
 	Private Sub class_initialize()
 		Mark = "cute_"
     End Sub
 
     '**********
-    ' º¯ÊıÃû: class_Terminate
-    ' ×÷  ÓÃ: Deconstrutor
+    ' å‡½æ•°å: class_Terminate
+    ' ä½œ  ç”¨: Deconstrutor
     '**********
 	Private Sub class_Terminate()
     End Sub
 
     '**********
-    ' º¯ÊıÃû: Set
-    ' ×÷  ÓÃ: Add a cookie
+    ' å‡½æ•°å: Set
+    ' ä½œ  ç”¨: Add a cookie
     '**********
 	Sub [Set](Key, Value, Options)
         Response.Cookies(Me.Mark & Key) = Value
@@ -58,32 +58,32 @@ Class Class_Cookie
     End Sub
 
     '**********
-    ' º¯ÊıÃû: Get
-    ' ×÷  ÓÃ: Get a cookies
+    ' å‡½æ•°å: Get
+    ' ä½œ  ç”¨: Get a cookies
     '**********
 	Function [Get](Key)
         [Get] = Request.Cookies(Me.Mark & Key)
     End Function
 
     '**********
-    ' º¯ÊıÃû: remove
-    ' ×÷  ÓÃ: Remove a cookie
+    ' å‡½æ•°å: remove
+    ' ä½œ  ç”¨: Remove a cookie
     '**********
 	Sub Remove(Key)
          Response.Cookies(Me.Mark & Key) = Empty
     End Sub
 
     '**********
-    ' º¯ÊıÃû: removeAll
-    ' ×÷  ÓÃ: Remove all cookies
+    ' å‡½æ•°å: removeAll
+    ' ä½œ  ç”¨: Remove all cookies
     '**********
 	Sub RemoveAll()
         Clear()
     End Sub
 
     '**********
-    ' º¯ÊıÃû: Clear
-    ' ×÷  ÓÃ: Remove all cookies
+    ' å‡½æ•°å: Clear
+    ' ä½œ  ç”¨: Remove all cookies
     '**********
 	Private Sub Clear()
         Dim iCookie
@@ -93,8 +93,8 @@ Class Class_Cookie
     End Sub
 
     '**********
-    ' º¯ÊıÃû: compare
-    ' ×÷  ÓÃ: Compare two cookie
+    ' å‡½æ•°å: compare
+    ' ä½œ  ç”¨: Compare two cookie
     '**********
 	Function Compare(Key1, Key2)
         Dim Cache1
