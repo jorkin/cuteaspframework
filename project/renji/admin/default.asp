@@ -1,7 +1,11 @@
 <!--#include file="page.master.asp"-->
+<!--#include file="../include/helper/validcode.asp"-->
 <!--#include file="../include/helper/md5.asp"-->
 <%
 If Request("action") = "login" Then
+	If Casp.validcode.Check(Casp.rq(3,"validcode",1,"")) = False Then
+		alertBack "验证码错误"
+	End If
 	Casp.db.Exec rs,"select * from Manager where username='"&Casp.rq(3,"username",1,"")&"' and password='"&Casp.md5.encode(Casp.rq(3,"password",1,""),16)&"'"
 	If rs.eof Then
 		alertBack("输入有误，请重新尝试！")
@@ -28,6 +32,10 @@ End If
       <tr>
         <td class="login_form">密码:</td>
         <td><input type="password" size="40" id="password" name="password" value="" class="input" maxlength="50" /></td>
+      </tr>
+      <tr>
+        <td class="login_form">验证码:</td>
+        <td><input type="text" size="5" id="validcode" name="validcode" value="" class="input" maxlength="5" /><%=Casp.validcode.GetCode("../","int")%></td>
       </tr>
       <tr>
         <td></td>

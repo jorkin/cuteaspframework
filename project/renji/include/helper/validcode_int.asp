@@ -7,7 +7,7 @@
 '	Date		: 2008-5-17
 '**********
 
-' ç¦æ­¢ç¼“å­˜
+' ½ûÖ¹»º´æ
 Response.Buffer = True 
 Response.Expires = -9999
 Response.AddHeader "Pragma","no-cache"
@@ -16,28 +16,28 @@ Response.ContentType = "Image/BMP"
 Response.ExpiresAbsolute = Now() - 1 
 Response.CacheControl = "no-cache" 
 
-Rem è®¾ç½®éƒ¨åˆ†
+Rem ÉèÖÃ²¿·Ö
 
-Const nSaturation = 90					' è‰²å½©é¥±å’Œåº¦
-Const nBlankNoisyDotOdds = 0.0  ' ç©ºç™½å¤„å™ªç‚¹ç‡
-Const nColorNoisyDotOdds = 0.0 	' æœ‰è‰²å¤„å™ªç‚¹ç‡
-Const nNoisyLineCount = 1				' å™ªéŸ³çº¿æ¡æ•°
-Const nCharMin = 4							' äº§ç”Ÿçš„æœ€å°å­—ç¬¦ä¸ªæ•°
-Const nCharMax = 4							' äº§ç”Ÿçš„æœ€å¤§å­—ç¬¦ä¸ªæ•°
-Const nSpaceX = 2								' å·¦å³ä¸¤è¾¹çš„ç©ºç™½å®½åº¦
-Const nSpaceY = 1								' ä¸Šä¸‹ä¸¤è¾¹çš„ç©ºç™½å®½åº¦
-Const nImgWidth = 60						' æ•°æ®åŒºå®½åº¦
-Const nImgHeight = 16						' æ•°æ®åŒºé«˜åº¦
-Const nCharWidthRandom = 16			' å­—ç¬¦å®½åº¦éšæœºé‡
-Const nCharHeightRandom = 16		' å­—ç¬¦é«˜åº¦éšæœºé‡
-Const nPositionXRandom = 5			' æ¨ªå‘ä½ç½®éšæœºé‡
-Const nPositionYRandom = 5			' çºµå‘ä½ç½®éšæœºé‡
-Const nAngleRandom = 6         	' ç¬”ç”»è§’åº¦éšæœºé‡
-Const nLengthRandom = 6        	' ç¬”ç”»é•¿åº¦éšæœºé‡(ç™¾åˆ†æ¯”)
-Const nColorHue = -2						' æ˜¾ç¤ºéªŒè¯ç çš„è‰²è°ƒ(-1è¡¨ç¤ºéšæœºè‰²è°ƒ, -2è¡¨ç¤ºç°åº¦è‰²è°ƒ)
+Const nSaturation = 90					' É«²Ê±¥ºÍ¶È
+Const nBlankNoisyDotOdds = 0.0  ' ¿Õ°×´¦ÔëµãÂÊ
+Const nColorNoisyDotOdds = 0.0 	' ÓĞÉ«´¦ÔëµãÂÊ
+Const nNoisyLineCount = 1				' ÔëÒôÏßÌõÊı
+Const nCharMin = 4							' ²úÉúµÄ×îĞ¡×Ö·û¸öÊı
+Const nCharMax = 4							' ²úÉúµÄ×î´ó×Ö·û¸öÊı
+Const nSpaceX = 2								' ×óÓÒÁ½±ßµÄ¿Õ°×¿í¶È
+Const nSpaceY = 1								' ÉÏÏÂÁ½±ßµÄ¿Õ°×¿í¶È
+Const nImgWidth = 60						' Êı¾İÇø¿í¶È
+Const nImgHeight = 16						' Êı¾İÇø¸ß¶È
+Const nCharWidthRandom = 16			' ×Ö·û¿í¶ÈËæ»úÁ¿
+Const nCharHeightRandom = 16		' ×Ö·û¸ß¶ÈËæ»úÁ¿
+Const nPositionXRandom = 5			' ºáÏòÎ»ÖÃËæ»úÁ¿
+Const nPositionYRandom = 5			' ×İÏòÎ»ÖÃËæ»úÁ¿
+Const nAngleRandom = 6         	' ±Ê»­½Ç¶ÈËæ»úÁ¿
+Const nLengthRandom = 6        	' ±Ê»­³¤¶ÈËæ»úÁ¿(°Ù·Ö±È)
+Const nColorHue = -2						' ÏÔÊ¾ÑéÖ¤ÂëµÄÉ«µ÷(-1±íÊ¾Ëæ»úÉ«µ÷, -2±íÊ¾»Ò¶ÈÉ«µ÷)
 Const cCharSet = "0123456789"
-                                ' æ„æˆéªŒè¯ç çš„å­—ç¬¦é›†
-                                ' å¦‚æœæ‰©å……äº†ä¸‹è¾¹çš„å­—æ¯çŸ¢é‡åº“ï¼Œåˆ™å¯ä»¥ç›¸åº”æ‰©å……è¿™ä¸ªå­—ç¬¦é›†
+                                ' ¹¹³ÉÑéÖ¤ÂëµÄ×Ö·û¼¯
+                                ' Èç¹ûÀ©³äÁËÏÂ±ßµÄ×ÖÄ¸Ê¸Á¿¿â£¬Ôò¿ÉÒÔÏàÓ¦À©³äÕâ¸ö×Ö·û¼¯
 Randomize
 
 Dim Buf(), DigtalStr
@@ -50,17 +50,17 @@ PicHeight = nImgHeight + 2 * nSpaceY
 Call CreatValidCode("GetCode" & Trim(Request("s")))
 
 Sub CDGen_Reset()
-	' å¤ä½çŸ¢é‡ç¬”å’Œç¯å¢ƒå˜é‡
+	' ¸´Î»Ê¸Á¿±ÊºÍ»·¾³±äÁ¿
 	LineCount = 0
 	CursorX = 0
 	CursorY = 0
-	' åˆå§‹çš„å…‰ç¬”æ–¹å‘æ˜¯å‚ç›´å‘ä¸‹
+	' ³õÊ¼µÄ¹â±Ê·½ÏòÊÇ´¹Ö±ÏòÏÂ
 	DirX = 0
 	DirY = 1
 End Sub
 
 Sub CDGen_Clear()
-	' æ¸…ç©ºä½å›¾é˜µåˆ—
+	' Çå¿ÕÎ»Í¼ÕóÁĞ
 	Dim i, j
 	ReDim Buf(PicHeight - 1, PicWidth - 1)
 
@@ -72,12 +72,12 @@ Sub CDGen_Clear()
 End Sub
 
 Sub CDGen_PSet(X, Y)
-	' åœ¨ä½å›¾é˜µåˆ—ä¸Šç”»ç‚¹
+	' ÔÚÎ»Í¼ÕóÁĞÉÏ»­µã
 	If X >= 0 And X < PicWidth And Y >= 0 And Y < PicHeight Then Buf(Y, X) = 1
 End Sub
 
 Sub CDGen_Line(X1, Y1, X2, Y2)
-	' åœ¨ä½å›¾é˜µåˆ—ä¸Šç”»çº¿
+	' ÔÚÎ»Í¼ÕóÁĞÉÏ»­Ïß
 	Dim DX, DY, DeltaT, i
 
 	DX = X2 - X1
@@ -93,7 +93,7 @@ Sub CDGen_Line(X1, Y1, X2, Y2)
 End Sub
 
 Sub CDGen_FowardDraw(nLength)
-	' æŒ‰å½“å‰å…‰ç¬”æ–¹å‘ç»˜åˆ¶æŒ‡å®šé•¿åº¦å¹¶ç§»åŠ¨å…‰ç¬”ï¼Œæ­£æ•°è¡¨ç¤ºä»å·¦å‘å³/ä»ä¸Šå‘ä¸‹ç»˜åˆ¶ï¼Œè´Ÿæ•°è¡¨ç¤ºä»å³å‘å·¦/ä»ä¸‹å‘ä¸Šç»˜åˆ¶
+	' °´µ±Ç°¹â±Ê·½Ïò»æÖÆÖ¸¶¨³¤¶È²¢ÒÆ¶¯¹â±Ê£¬ÕıÊı±íÊ¾´Ó×óÏòÓÒ/´ÓÉÏÏòÏÂ»æÖÆ£¬¸ºÊı±íÊ¾´ÓÓÒÏò×ó/´ÓÏÂÏòÉÏ»æÖÆ
 	nLength = nLength * (1 + (Rnd * 2 - 1) * nLengthRandom / 100)
 	ReDim Preserve Lines(3, LineCount)
 	Lines(0, LineCount) = CursorX
@@ -106,7 +106,7 @@ Sub CDGen_FowardDraw(nLength)
 End Sub
 
 Sub CDGen_SetDirection(nAngle)
-	' æŒ‰æŒ‡å®šè§’åº¦è®¾å®šç”»ç¬”æ–¹å‘, æ­£æ•°è¡¨ç¤ºç›¸å¯¹å½“å‰æ–¹å‘é¡ºæ—¶é’ˆæ”¹å˜æ–¹å‘ï¼Œè´Ÿæ•°è¡¨ç¤ºç›¸å¯¹å½“å‰æ–¹å‘é€†æ—¶é’ˆæ”¹å˜æ–¹å‘
+	' °´Ö¸¶¨½Ç¶ÈÉè¶¨»­±Ê·½Ïò, ÕıÊı±íÊ¾Ïà¶Ôµ±Ç°·½ÏòË³Ê±Õë¸Ä±ä·½Ïò£¬¸ºÊı±íÊ¾Ïà¶Ôµ±Ç°·½ÏòÄæÊ±Õë¸Ä±ä·½Ïò
 	Dim DX, DY
 
 	nAngle = (nAngle + (Rnd * 2 - 1) * nAngleRandom) / 180 * 3.1415926
@@ -117,7 +117,7 @@ Sub CDGen_SetDirection(nAngle)
 End Sub
 
 Sub CDGen_MoveToMiddle(nActionIndex, nPercent)
-	' å°†ç”»ç¬”å…‰æ ‡ç§»åŠ¨åˆ°æŒ‡å®šåŠ¨ä½œçš„ä¸­é—´ç‚¹ä¸Šï¼ŒnPercentä¸ºä¸­é—´ä½ç½®çš„ç™¾åˆ†æ¯”
+	' ½«»­±Ê¹â±êÒÆ¶¯µ½Ö¸¶¨¶¯×÷µÄÖĞ¼äµãÉÏ£¬nPercentÎªÖĞ¼äÎ»ÖÃµÄ°Ù·Ö±È
 	Dim DeltaX, DeltaY
 
 	DeltaX = Lines(2, nActionIndex) - Lines(0, nActionIndex)
@@ -127,13 +127,13 @@ Sub CDGen_MoveToMiddle(nActionIndex, nPercent)
 End Sub
 
 Sub CDGen_MoveCursor(nActionIndex)
-	' å°†ç”»ç¬”å…‰æ ‡ç§»åŠ¨åˆ°æŒ‡å®šåŠ¨ä½œçš„èµ·å§‹ç‚¹ä¸Š
+	' ½«»­±Ê¹â±êÒÆ¶¯µ½Ö¸¶¨¶¯×÷µÄÆğÊ¼µãÉÏ
 	CursorX = Lines(0, nActionIndex)
 	CursorY = Lines(1, nActionIndex)
 End Sub
 
 Sub CDGen_Close(nActionIndex)
-	' å°†å½“å‰å…‰ç¬”ä½ç½®ä¸æŒ‡å®šåŠ¨ä½œçš„èµ·å§‹ç‚¹é—­åˆå¹¶ç§»åŠ¨å…‰ç¬”
+	' ½«µ±Ç°¹â±ÊÎ»ÖÃÓëÖ¸¶¨¶¯×÷µÄÆğÊ¼µã±ÕºÏ²¢ÒÆ¶¯¹â±Ê
 	ReDim Preserve Lines(3, LineCount)
 	Lines(0, LineCount) = CursorX
 	Lines(1, LineCount) = CursorY
@@ -145,7 +145,7 @@ Sub CDGen_Close(nActionIndex)
 End Sub
 
 Sub CDGen_CloseToMiddle(nActionIndex, nPercent)
-	' å°†å½“å‰å…‰ç¬”ä½ç½®ä¸æŒ‡å®šåŠ¨ä½œçš„ä¸­é—´ç‚¹é—­åˆå¹¶ç§»åŠ¨å…‰ç¬”ï¼ŒnPercentä¸ºä¸­é—´ä½ç½®çš„ç™¾åˆ†æ¯”
+	' ½«µ±Ç°¹â±ÊÎ»ÖÃÓëÖ¸¶¨¶¯×÷µÄÖĞ¼äµã±ÕºÏ²¢ÒÆ¶¯¹â±Ê£¬nPercentÎªÖĞ¼äÎ»ÖÃµÄ°Ù·Ö±È
 	Dim DeltaX, DeltaY
 
 	ReDim Preserve Lines(3, LineCount)
@@ -161,7 +161,7 @@ Sub CDGen_CloseToMiddle(nActionIndex, nPercent)
 End Sub
 
 Sub CDGen_Flush(X0, Y0)
-	' æŒ‰ç…§å½“å‰çš„ç”»ç¬”åŠ¨ä½œåºåˆ—ç»˜åˆ¶ä½å›¾ç‚¹é˜µ
+	' °´ÕÕµ±Ç°µÄ»­±Ê¶¯×÷ĞòÁĞ»æÖÆÎ»Í¼µãÕó
 	Dim MaxX, MinX, MaxY, MinY
 	Dim DeltaX, DeltaY, StepX, StepY, OffsetX, OffsetY
 	Dim i
@@ -204,179 +204,179 @@ Sub CDGen_Flush(X0, Y0)
 End Sub
 
 Sub CDGen_Char(cChar, X0, Y0)
-	' åœ¨æŒ‡å®šåæ ‡å¤„ç”ŸæˆæŒ‡å®šå­—ç¬¦çš„ä½å›¾é˜µåˆ—
+	' ÔÚÖ¸¶¨×ø±ê´¦Éú³ÉÖ¸¶¨×Ö·ûµÄÎ»Í¼ÕóÁĞ
 	CDGen_Reset
 	Select Case cChar
 	Case "0"
-		CDGen_SetDirection -60                            ' é€†æ—¶é’ˆ60åº¦(ç›¸å¯¹äºå‚ç›´çº¿)
-		CDGen_FowardDraw -0.7                             ' åæ–¹å‘ç»˜åˆ¶0.7ä¸ªå•ä½
-		CDGen_SetDirection -60                            ' é€†æ—¶é’ˆ60åº¦
-		CDGen_FowardDraw -0.7                             ' åæ–¹å‘ç»˜åˆ¶0.7ä¸ªå•ä½
-		CDGen_SetDirection 120                            ' é¡ºæ—¶é’ˆ120åº¦
-		CDGen_FowardDraw 1.5                              ' ç»˜åˆ¶1.5ä¸ªå•ä½
-		CDGen_SetDirection -60                            ' é€†æ—¶é’ˆ60åº¦
-		CDGen_FowardDraw 0.7                              ' ç»˜åˆ¶0.7ä¸ªå•ä½
-		CDGen_SetDirection -60                            ' é¡ºæ—¶é’ˆ120åº¦
-		CDGen_FowardDraw 0.7                              ' ç»˜åˆ¶0.7ä¸ªå•ä½
-		CDGen_Close 0                                     ' å°é—­å½“å‰ç¬”ä¸ç¬¬0ç¬”(0å¼€å§‹)
+		CDGen_SetDirection -60                            ' ÄæÊ±Õë60¶È(Ïà¶ÔÓÚ´¹Ö±Ïß)
+		CDGen_FowardDraw -0.7                             ' ·´·½Ïò»æÖÆ0.7¸öµ¥Î»
+		CDGen_SetDirection -60                            ' ÄæÊ±Õë60¶È
+		CDGen_FowardDraw -0.7                             ' ·´·½Ïò»æÖÆ0.7¸öµ¥Î»
+		CDGen_SetDirection 120                            ' Ë³Ê±Õë120¶È
+		CDGen_FowardDraw 1.5                              ' »æÖÆ1.5¸öµ¥Î»
+		CDGen_SetDirection -60                            ' ÄæÊ±Õë60¶È
+		CDGen_FowardDraw 0.7                              ' »æÖÆ0.7¸öµ¥Î»
+		CDGen_SetDirection -60                            ' Ë³Ê±Õë120¶È
+		CDGen_FowardDraw 0.7                              ' »æÖÆ0.7¸öµ¥Î»
+		CDGen_Close 0                                     ' ·â±Õµ±Ç°±ÊÓëµÚ0±Ê(0¿ªÊ¼)
 	Case "1"
-		CDGen_SetDirection -90                            ' é€†æ—¶é’ˆ90åº¦(ç›¸å¯¹äºå‚ç›´çº¿)
-		CDGen_FowardDraw 0.5                              ' ç»˜åˆ¶0.5ä¸ªå•ä½
-		CDGen_MoveToMiddle 0, 50                          ' ç§»åŠ¨ç”»ç¬”çš„ä½ç½®åˆ°ç¬¬0ç¬”(0å¼€å§‹)çš„50%å¤„
-		CDGen_SetDirection 90                             ' é€†æ—¶é’ˆ90åº¦
-		CDGen_FowardDraw -1.4                             ' åæ–¹å‘ç»˜åˆ¶1.4ä¸ªå•ä½
-		CDGen_SetDirection 30                             ' é€†æ—¶é’ˆ30åº¦
-		CDGen_FowardDraw 0.4                              ' ç»˜åˆ¶0.4ä¸ªå•ä½
+		CDGen_SetDirection -90                            ' ÄæÊ±Õë90¶È(Ïà¶ÔÓÚ´¹Ö±Ïß)
+		CDGen_FowardDraw 0.5                              ' »æÖÆ0.5¸öµ¥Î»
+		CDGen_MoveToMiddle 0, 50                          ' ÒÆ¶¯»­±ÊµÄÎ»ÖÃµ½µÚ0±Ê(0¿ªÊ¼)µÄ50%´¦
+		CDGen_SetDirection 90                             ' ÄæÊ±Õë90¶È
+		CDGen_FowardDraw -1.4                             ' ·´·½Ïò»æÖÆ1.4¸öµ¥Î»
+		CDGen_SetDirection 30                             ' ÄæÊ±Õë30¶È
+		CDGen_FowardDraw 0.4                              ' »æÖÆ0.4¸öµ¥Î»
 	Case "2"
-		CDGen_SetDirection 45                             ' é¡ºæ—¶é’ˆ45åº¦(ç›¸å¯¹äºå‚ç›´çº¿)
-		CDGen_FowardDraw -0.7                             ' åæ–¹å‘ç»˜åˆ¶0.7ä¸ªå•ä½
-		CDGen_SetDirection -120                           ' é€†æ—¶é’ˆ120åº¦
-		CDGen_FowardDraw 0.4                              ' ç»˜åˆ¶0.4ä¸ªå•ä½
-		CDGen_SetDirection 60                             ' é¡ºæ—¶é’ˆ60åº¦
-		CDGen_FowardDraw 0.6                              ' ç»˜åˆ¶0.6ä¸ªå•ä½
-		CDGen_SetDirection 60                             ' é¡ºæ—¶é’ˆ60åº¦
-		CDGen_FowardDraw 1.6                              ' ç»˜åˆ¶1.6ä¸ªå•ä½
-		CDGen_SetDirection -135                           ' é€†æ—¶é’ˆ135åº¦
-		CDGen_FowardDraw 1.0                              ' ç»˜åˆ¶1.0ä¸ªå•ä½
+		CDGen_SetDirection 45                             ' Ë³Ê±Õë45¶È(Ïà¶ÔÓÚ´¹Ö±Ïß)
+		CDGen_FowardDraw -0.7                             ' ·´·½Ïò»æÖÆ0.7¸öµ¥Î»
+		CDGen_SetDirection -120                           ' ÄæÊ±Õë120¶È
+		CDGen_FowardDraw 0.4                              ' »æÖÆ0.4¸öµ¥Î»
+		CDGen_SetDirection 60                             ' Ë³Ê±Õë60¶È
+		CDGen_FowardDraw 0.6                              ' »æÖÆ0.6¸öµ¥Î»
+		CDGen_SetDirection 60                             ' Ë³Ê±Õë60¶È
+		CDGen_FowardDraw 1.6                              ' »æÖÆ1.6¸öµ¥Î»
+		CDGen_SetDirection -135                           ' ÄæÊ±Õë135¶È
+		CDGen_FowardDraw 1.0                              ' »æÖÆ1.0¸öµ¥Î»
 	Case "3"
-		CDGen_SetDirection -90                            ' é€†æ—¶é’ˆ90åº¦(ç›¸å¯¹äºå‚ç›´çº¿)
-		CDGen_FowardDraw 0.8                              ' ç»˜åˆ¶0.8ä¸ªå•ä½
-		CDGen_SetDirection 135                            ' é¡ºæ—¶é’ˆ135åº¦
-		CDGen_FowardDraw 0.8                              ' ç»˜åˆ¶0.8ä¸ªå•ä½
-		CDGen_SetDirection -120                           ' é€†æ—¶é’ˆ120åº¦
-		CDGen_FowardDraw 0.6                              ' ç»˜åˆ¶0.6ä¸ªå•ä½
-		CDGen_SetDirection 80                             ' é¡ºæ—¶é’ˆ80åº¦
-		CDGen_FowardDraw 0.5                              ' ç»˜åˆ¶0.5ä¸ªå•ä½
-		CDGen_SetDirection 60                             ' é¡ºæ—¶é’ˆ60åº¦
-		CDGen_FowardDraw 0.5                              ' ç»˜åˆ¶0.5ä¸ªå•ä½
-		CDGen_SetDirection 60                             ' é¡ºæ—¶é’ˆ60åº¦
-		CDGen_FowardDraw 0.5                              ' ç»˜åˆ¶0.5ä¸ªå•ä½
+		CDGen_SetDirection -90                            ' ÄæÊ±Õë90¶È(Ïà¶ÔÓÚ´¹Ö±Ïß)
+		CDGen_FowardDraw 0.8                              ' »æÖÆ0.8¸öµ¥Î»
+		CDGen_SetDirection 135                            ' Ë³Ê±Õë135¶È
+		CDGen_FowardDraw 0.8                              ' »æÖÆ0.8¸öµ¥Î»
+		CDGen_SetDirection -120                           ' ÄæÊ±Õë120¶È
+		CDGen_FowardDraw 0.6                              ' »æÖÆ0.6¸öµ¥Î»
+		CDGen_SetDirection 80                             ' Ë³Ê±Õë80¶È
+		CDGen_FowardDraw 0.5                              ' »æÖÆ0.5¸öµ¥Î»
+		CDGen_SetDirection 60                             ' Ë³Ê±Õë60¶È
+		CDGen_FowardDraw 0.5                              ' »æÖÆ0.5¸öµ¥Î»
+		CDGen_SetDirection 60                             ' Ë³Ê±Õë60¶È
+		CDGen_FowardDraw 0.5                              ' »æÖÆ0.5¸öµ¥Î»
 	Case "4"
-		CDGen_SetDirection 20                             ' é¡ºæ—¶é’ˆ20åº¦(ç›¸å¯¹äºå‚ç›´çº¿)
-		CDGen_FowardDraw 0.8                              ' ç»˜åˆ¶0.8ä¸ªå•ä½
-		CDGen_SetDirection -110                           ' é€†æ—¶é’ˆ110åº¦
-		CDGen_FowardDraw 1.2                              ' ç»˜åˆ¶1.2ä¸ªå•ä½
-		CDGen_MoveToMiddle 1, 60                          ' ç§»åŠ¨ç”»ç¬”çš„ä½ç½®åˆ°ç¬¬1ç¬”(0å¼€å§‹)çš„60%å¤„
-		CDGen_SetDirection 90                             ' é¡ºæ—¶é’ˆ90åº¦
-		CDGen_FowardDraw 0.7                              ' ç»˜åˆ¶0.7ä¸ªå•ä½
-		CDGen_MoveCursor 2                                ' ç§»åŠ¨ç”»ç¬”åˆ°ç¬¬2ç¬”(0å¼€å§‹)çš„å¼€å§‹å¤„
-		CDGen_FowardDraw -1.5                             ' åæ–¹å‘ç»˜åˆ¶1.5ä¸ªå•ä½
+		CDGen_SetDirection 20                             ' Ë³Ê±Õë20¶È(Ïà¶ÔÓÚ´¹Ö±Ïß)
+		CDGen_FowardDraw 0.8                              ' »æÖÆ0.8¸öµ¥Î»
+		CDGen_SetDirection -110                           ' ÄæÊ±Õë110¶È
+		CDGen_FowardDraw 1.2                              ' »æÖÆ1.2¸öµ¥Î»
+		CDGen_MoveToMiddle 1, 60                          ' ÒÆ¶¯»­±ÊµÄÎ»ÖÃµ½µÚ1±Ê(0¿ªÊ¼)µÄ60%´¦
+		CDGen_SetDirection 90                             ' Ë³Ê±Õë90¶È
+		CDGen_FowardDraw 0.7                              ' »æÖÆ0.7¸öµ¥Î»
+		CDGen_MoveCursor 2                                ' ÒÆ¶¯»­±Êµ½µÚ2±Ê(0¿ªÊ¼)µÄ¿ªÊ¼´¦
+		CDGen_FowardDraw -1.5                             ' ·´·½Ïò»æÖÆ1.5¸öµ¥Î»
 	Case "5"
-		CDGen_SetDirection 90                             ' é¡ºæ—¶é’ˆ90åº¦(ç›¸å¯¹äºå‚ç›´çº¿)
-		CDGen_FowardDraw 1.0                              ' ç»˜åˆ¶1.0ä¸ªå•ä½
-		CDGen_SetDirection -90                            ' é€†æ—¶é’ˆ90åº¦
-		CDGen_FowardDraw 0.8                              ' ç»˜åˆ¶0.8ä¸ªå•ä½
-		CDGen_SetDirection -90                            ' é€†æ—¶é’ˆ90åº¦
-		CDGen_FowardDraw 0.8                              ' ç»˜åˆ¶0.8ä¸ªå•ä½
-		CDGen_SetDirection 30                             ' é¡ºæ—¶é’ˆ30åº¦
-		CDGen_FowardDraw 0.4                              ' ç»˜åˆ¶0.4ä¸ªå•ä½
-		CDGen_SetDirection 60                             ' é¡ºæ—¶é’ˆ60åº¦
-		CDGen_FowardDraw 0.4                              ' ç»˜åˆ¶0.4ä¸ªå•ä½
-		CDGen_SetDirection 30                             ' é¡ºæ—¶é’ˆ30åº¦
-		CDGen_FowardDraw 0.5                              ' ç»˜åˆ¶0.5ä¸ªå•ä½
-		CDGen_SetDirection 60                             ' é¡ºæ—¶é’ˆ60åº¦
-		CDGen_FowardDraw 0.8                              ' ç»˜åˆ¶0.8ä¸ªå•ä½
+		CDGen_SetDirection 90                             ' Ë³Ê±Õë90¶È(Ïà¶ÔÓÚ´¹Ö±Ïß)
+		CDGen_FowardDraw 1.0                              ' »æÖÆ1.0¸öµ¥Î»
+		CDGen_SetDirection -90                            ' ÄæÊ±Õë90¶È
+		CDGen_FowardDraw 0.8                              ' »æÖÆ0.8¸öµ¥Î»
+		CDGen_SetDirection -90                            ' ÄæÊ±Õë90¶È
+		CDGen_FowardDraw 0.8                              ' »æÖÆ0.8¸öµ¥Î»
+		CDGen_SetDirection 30                             ' Ë³Ê±Õë30¶È
+		CDGen_FowardDraw 0.4                              ' »æÖÆ0.4¸öµ¥Î»
+		CDGen_SetDirection 60                             ' Ë³Ê±Õë60¶È
+		CDGen_FowardDraw 0.4                              ' »æÖÆ0.4¸öµ¥Î»
+		CDGen_SetDirection 30                             ' Ë³Ê±Õë30¶È
+		CDGen_FowardDraw 0.5                              ' »æÖÆ0.5¸öµ¥Î»
+		CDGen_SetDirection 60                             ' Ë³Ê±Õë60¶È
+		CDGen_FowardDraw 0.8                              ' »æÖÆ0.8¸öµ¥Î»
 	Case "6"
-		CDGen_SetDirection -60                            ' é€†æ—¶é’ˆ60åº¦(ç›¸å¯¹äºå‚ç›´çº¿)
-		CDGen_FowardDraw -0.7                             ' åæ–¹å‘ç»˜åˆ¶0.7ä¸ªå•ä½
-		CDGen_SetDirection -60                            ' é€†æ—¶é’ˆ60åº¦
-		CDGen_FowardDraw -0.7                             ' åæ–¹å‘ç»˜åˆ¶0.7ä¸ªå•ä½
-		CDGen_SetDirection 120                            ' é¡ºæ—¶é’ˆ120åº¦
-		CDGen_FowardDraw 1.5                              ' ç»˜åˆ¶1.5ä¸ªå•ä½
-		CDGen_SetDirection 120                            ' é¡ºæ—¶é’ˆ120åº¦
-		CDGen_FowardDraw -0.7                             ' åæ–¹å‘ç»˜åˆ¶0.7ä¸ªå•ä½
-		CDGen_SetDirection 120                            ' é¡ºæ—¶é’ˆ120åº¦
-		CDGen_FowardDraw 0.7                              ' ç»˜åˆ¶0.7ä¸ªå•ä½
-		CDGen_SetDirection 120                            ' é¡ºæ—¶é’ˆ120åº¦
-		CDGen_FowardDraw -0.7                             ' åæ–¹å‘ç»˜åˆ¶0.7ä¸ªå•ä½
-		CDGen_SetDirection 120                            ' é¡ºæ—¶é’ˆ120åº¦
-		CDGen_FowardDraw 0.5                              ' ç»˜åˆ¶0.5ä¸ªå•ä½
-		CDGen_CloseToMiddle 2, 50                         ' å°†å½“å‰ç”»ç¬”ä½ç½®ä¸ç¬¬2ç¬”(0å¼€å§‹)çš„50%å¤„å°é—­
+		CDGen_SetDirection -60                            ' ÄæÊ±Õë60¶È(Ïà¶ÔÓÚ´¹Ö±Ïß)
+		CDGen_FowardDraw -0.7                             ' ·´·½Ïò»æÖÆ0.7¸öµ¥Î»
+		CDGen_SetDirection -60                            ' ÄæÊ±Õë60¶È
+		CDGen_FowardDraw -0.7                             ' ·´·½Ïò»æÖÆ0.7¸öµ¥Î»
+		CDGen_SetDirection 120                            ' Ë³Ê±Õë120¶È
+		CDGen_FowardDraw 1.5                              ' »æÖÆ1.5¸öµ¥Î»
+		CDGen_SetDirection 120                            ' Ë³Ê±Õë120¶È
+		CDGen_FowardDraw -0.7                             ' ·´·½Ïò»æÖÆ0.7¸öµ¥Î»
+		CDGen_SetDirection 120                            ' Ë³Ê±Õë120¶È
+		CDGen_FowardDraw 0.7                              ' »æÖÆ0.7¸öµ¥Î»
+		CDGen_SetDirection 120                            ' Ë³Ê±Õë120¶È
+		CDGen_FowardDraw -0.7                             ' ·´·½Ïò»æÖÆ0.7¸öµ¥Î»
+		CDGen_SetDirection 120                            ' Ë³Ê±Õë120¶È
+		CDGen_FowardDraw 0.5                              ' »æÖÆ0.5¸öµ¥Î»
+		CDGen_CloseToMiddle 2, 50                         ' ½«µ±Ç°»­±ÊÎ»ÖÃÓëµÚ2±Ê(0¿ªÊ¼)µÄ50%´¦·â±Õ
 	Case "7"
-		CDGen_SetDirection 180                            ' é¡ºæ—¶é’ˆ180åº¦(ç›¸å¯¹äºå‚ç›´çº¿)
-		CDGen_FowardDraw 0.3                              ' ç»˜åˆ¶0.3ä¸ªå•ä½
-		CDGen_SetDirection 90                             ' é¡ºæ—¶é’ˆ90åº¦
-		CDGen_FowardDraw 0.9                              ' ç»˜åˆ¶0.9ä¸ªå•ä½
-		CDGen_SetDirection 120                            ' é¡ºæ—¶é’ˆ120åº¦
-		CDGen_FowardDraw 1.3                              ' ç»˜åˆ¶1.3ä¸ªå•ä½
+		CDGen_SetDirection 180                            ' Ë³Ê±Õë180¶È(Ïà¶ÔÓÚ´¹Ö±Ïß)
+		CDGen_FowardDraw 0.3                              ' »æÖÆ0.3¸öµ¥Î»
+		CDGen_SetDirection 90                             ' Ë³Ê±Õë90¶È
+		CDGen_FowardDraw 0.9                              ' »æÖÆ0.9¸öµ¥Î»
+		CDGen_SetDirection 120                            ' Ë³Ê±Õë120¶È
+		CDGen_FowardDraw 1.3                              ' »æÖÆ1.3¸öµ¥Î»
 	Case "8"
-		CDGen_SetDirection -60                            ' é€†æ—¶é’ˆ60åº¦(ç›¸å¯¹äºå‚ç›´çº¿)
-		CDGen_FowardDraw -0.8                             ' åæ–¹å‘ç»˜åˆ¶0.8ä¸ªå•ä½
-		CDGen_SetDirection -60                            ' é€†æ—¶é’ˆ60åº¦
-		CDGen_FowardDraw -0.8                             ' åæ–¹å‘ç»˜åˆ¶0.8ä¸ªå•ä½
-		CDGen_SetDirection 120                            ' é¡ºæ—¶é’ˆ120åº¦
-		CDGen_FowardDraw 0.8                              ' ç»˜åˆ¶0.8ä¸ªå•ä½
-		CDGen_SetDirection 110                            ' é¡ºæ—¶é’ˆ110åº¦
-		CDGen_FowardDraw -1.5                             ' åæ–¹å‘ç»˜åˆ¶1.5ä¸ªå•ä½
-		CDGen_SetDirection -110                           ' é€†æ—¶é’ˆ110åº¦
-		CDGen_FowardDraw 0.9                              ' ç»˜åˆ¶0.9ä¸ªå•ä½
-		CDGen_SetDirection 60                             ' é¡ºæ—¶é’ˆ60åº¦
-		CDGen_FowardDraw 0.8                              ' ç»˜åˆ¶0.8ä¸ªå•ä½
-		CDGen_SetDirection 60                             ' é¡ºæ—¶é’ˆ60åº¦
-		CDGen_FowardDraw 0.8                              ' ç»˜åˆ¶0.8ä¸ªå•ä½
-		CDGen_SetDirection 60                             ' é¡ºæ—¶é’ˆ60åº¦
-		CDGen_FowardDraw 0.9                              ' ç»˜åˆ¶0.9ä¸ªå•ä½
-		CDGen_SetDirection 70                             ' é¡ºæ—¶é’ˆ70åº¦
-		CDGen_FowardDraw 1.5	                            ' ç»˜åˆ¶1.5ä¸ªå•ä½
-		CDGen_Close 0                                     ' å°é—­å½“å‰ç¬”ä¸ç¬¬0ç¬”(0å¼€å§‹)
+		CDGen_SetDirection -60                            ' ÄæÊ±Õë60¶È(Ïà¶ÔÓÚ´¹Ö±Ïß)
+		CDGen_FowardDraw -0.8                             ' ·´·½Ïò»æÖÆ0.8¸öµ¥Î»
+		CDGen_SetDirection -60                            ' ÄæÊ±Õë60¶È
+		CDGen_FowardDraw -0.8                             ' ·´·½Ïò»æÖÆ0.8¸öµ¥Î»
+		CDGen_SetDirection 120                            ' Ë³Ê±Õë120¶È
+		CDGen_FowardDraw 0.8                              ' »æÖÆ0.8¸öµ¥Î»
+		CDGen_SetDirection 110                            ' Ë³Ê±Õë110¶È
+		CDGen_FowardDraw -1.5                             ' ·´·½Ïò»æÖÆ1.5¸öµ¥Î»
+		CDGen_SetDirection -110                           ' ÄæÊ±Õë110¶È
+		CDGen_FowardDraw 0.9                              ' »æÖÆ0.9¸öµ¥Î»
+		CDGen_SetDirection 60                             ' Ë³Ê±Õë60¶È
+		CDGen_FowardDraw 0.8                              ' »æÖÆ0.8¸öµ¥Î»
+		CDGen_SetDirection 60                             ' Ë³Ê±Õë60¶È
+		CDGen_FowardDraw 0.8                              ' »æÖÆ0.8¸öµ¥Î»
+		CDGen_SetDirection 60                             ' Ë³Ê±Õë60¶È
+		CDGen_FowardDraw 0.9                              ' »æÖÆ0.9¸öµ¥Î»
+		CDGen_SetDirection 70                             ' Ë³Ê±Õë70¶È
+		CDGen_FowardDraw 1.5	                            ' »æÖÆ1.5¸öµ¥Î»
+		CDGen_Close 0                                     ' ·â±Õµ±Ç°±ÊÓëµÚ0±Ê(0¿ªÊ¼)
 	Case "9"
-		CDGen_SetDirection 120                            ' é€†æ—¶é’ˆ60åº¦(ç›¸å¯¹äºå‚ç›´çº¿)
-		CDGen_FowardDraw -0.7                             ' åæ–¹å‘ç»˜åˆ¶0.7ä¸ªå•ä½
-		CDGen_SetDirection -60                            ' é€†æ—¶é’ˆ60åº¦
-		CDGen_FowardDraw -0.7                             ' åæ–¹å‘ç»˜åˆ¶0.7ä¸ªå•ä½
-		CDGen_SetDirection -60                            ' é¡ºæ—¶é’ˆ120åº¦
-		CDGen_FowardDraw -1.5                              ' ç»˜åˆ¶1.5ä¸ªå•ä½
-		CDGen_SetDirection -60                            ' é¡ºæ—¶é’ˆ120åº¦
-		CDGen_FowardDraw -0.7                             ' åæ–¹å‘ç»˜åˆ¶0.7ä¸ªå•ä½
-		CDGen_SetDirection -60                            ' é¡ºæ—¶é’ˆ120åº¦
-		CDGen_FowardDraw -0.7                              ' ç»˜åˆ¶0.7ä¸ªå•ä½
-		CDGen_SetDirection 120                            ' é¡ºæ—¶é’ˆ120åº¦
-		CDGen_FowardDraw 0.7                             ' åæ–¹å‘ç»˜åˆ¶0.7ä¸ªå•ä½
-		CDGen_SetDirection -60                            ' é¡ºæ—¶é’ˆ120åº¦
-		CDGen_FowardDraw 0.5                              ' ç»˜åˆ¶0.5ä¸ªå•ä½
-		CDGen_CloseToMiddle 2, 50                         ' å°†å½“å‰ç”»ç¬”ä½ç½®ä¸ç¬¬2ç¬”(0å¼€å§‹)çš„50%å¤„å°é—­
-	' ä»¥ä¸‹ä¸ºå­—æ¯çš„çŸ¢é‡åŠ¨ä½œï¼Œæœ‰å…´è¶£çš„å¯ä»¥ç»§ç»­
+		CDGen_SetDirection 120                            ' ÄæÊ±Õë60¶È(Ïà¶ÔÓÚ´¹Ö±Ïß)
+		CDGen_FowardDraw -0.7                             ' ·´·½Ïò»æÖÆ0.7¸öµ¥Î»
+		CDGen_SetDirection -60                            ' ÄæÊ±Õë60¶È
+		CDGen_FowardDraw -0.7                             ' ·´·½Ïò»æÖÆ0.7¸öµ¥Î»
+		CDGen_SetDirection -60                            ' Ë³Ê±Õë120¶È
+		CDGen_FowardDraw -1.5                              ' »æÖÆ1.5¸öµ¥Î»
+		CDGen_SetDirection -60                            ' Ë³Ê±Õë120¶È
+		CDGen_FowardDraw -0.7                             ' ·´·½Ïò»æÖÆ0.7¸öµ¥Î»
+		CDGen_SetDirection -60                            ' Ë³Ê±Õë120¶È
+		CDGen_FowardDraw -0.7                              ' »æÖÆ0.7¸öµ¥Î»
+		CDGen_SetDirection 120                            ' Ë³Ê±Õë120¶È
+		CDGen_FowardDraw 0.7                             ' ·´·½Ïò»æÖÆ0.7¸öµ¥Î»
+		CDGen_SetDirection -60                            ' Ë³Ê±Õë120¶È
+		CDGen_FowardDraw 0.5                              ' »æÖÆ0.5¸öµ¥Î»
+		CDGen_CloseToMiddle 2, 50                         ' ½«µ±Ç°»­±ÊÎ»ÖÃÓëµÚ2±Ê(0¿ªÊ¼)µÄ50%´¦·â±Õ
+	' ÒÔÏÂÎª×ÖÄ¸µÄÊ¸Á¿¶¯×÷£¬ÓĞĞËÈ¤µÄ¿ÉÒÔ¼ÌĞø
 	Case "A"
-		CDGen_SetDirection -(Rnd * 20 + 150)              ' é€†æ—¶é’ˆ150-170åº¦(ç›¸å¯¹äºå‚ç›´çº¿)
-		CDGen_FowardDraw Rnd * 0.2 + 1.1                  ' ç»˜åˆ¶1.1-1.3ä¸ªå•ä½
-		CDGen_SetDirection Rnd * 20 + 140                 ' é¡ºæ—¶é’ˆ140-160åº¦
-		CDGen_FowardDraw Rnd * 0.2 + 1.1                  ' ç»˜åˆ¶1.1-1.3ä¸ªå•ä½
-		CDGen_MoveToMiddle 0, 30                          ' ç§»åŠ¨ç”»ç¬”çš„ä½ç½®åˆ°ç¬¬1ç¬”(0å¼€å§‹)çš„30%å¤„
-		CDGen_CloseToMiddle 1, 70                         ' å°†å½“å‰ç”»ç¬”ä½ç½®ä¸ç¬¬1ç¬”(0å¼€å§‹)çš„70%å¤„å°é—­
+		CDGen_SetDirection -(Rnd * 20 + 150)              ' ÄæÊ±Õë150-170¶È(Ïà¶ÔÓÚ´¹Ö±Ïß)
+		CDGen_FowardDraw Rnd * 0.2 + 1.1                  ' »æÖÆ1.1-1.3¸öµ¥Î»
+		CDGen_SetDirection Rnd * 20 + 140                 ' Ë³Ê±Õë140-160¶È
+		CDGen_FowardDraw Rnd * 0.2 + 1.1                  ' »æÖÆ1.1-1.3¸öµ¥Î»
+		CDGen_MoveToMiddle 0, 30                          ' ÒÆ¶¯»­±ÊµÄÎ»ÖÃµ½µÚ1±Ê(0¿ªÊ¼)µÄ30%´¦
+		CDGen_CloseToMiddle 1, 70                         ' ½«µ±Ç°»­±ÊÎ»ÖÃÓëµÚ1±Ê(0¿ªÊ¼)µÄ70%´¦·â±Õ
 	Case "B"
-		CDGen_SetDirection -(Rnd * 20 + 50)               ' é€†æ—¶é’ˆ50-70åº¦(ç›¸å¯¹äºå‚ç›´çº¿)
-		CDGen_FowardDraw Rnd * 0.4 + 0.8                  ' ç»˜åˆ¶0.8-1.2ä¸ªå•ä½
-		CDGen_SetDirection Rnd * 20 + 110                 ' é¡ºæ—¶é’ˆ110-130åº¦
-		CDGen_FowardDraw Rnd * 0.2 + 0.6                  ' ç»˜åˆ¶0.6-0.8ä¸ªå•ä½
-		CDGen_SetDirection -(Rnd * 20 + 110)              ' é€†æ—¶é’ˆ110-130åº¦
-		CDGen_FowardDraw Rnd * 0.2 + 0.6                  ' ç»˜åˆ¶0.6-0.8ä¸ªå•ä½
-		CDGen_SetDirection Rnd * 20 + 110                 ' é¡ºæ—¶é’ˆ110-130åº¦
-		CDGen_FowardDraw Rnd * 0.4 + 0.8                  ' ç»˜åˆ¶0.8-1.2ä¸ªå•ä½
-		CDGen_Close 0                                     ' å°é—­å½“å‰ç¬”ä¸ç¬¬1ç¬”(0å¼€å§‹)
+		CDGen_SetDirection -(Rnd * 20 + 50)               ' ÄæÊ±Õë50-70¶È(Ïà¶ÔÓÚ´¹Ö±Ïß)
+		CDGen_FowardDraw Rnd * 0.4 + 0.8                  ' »æÖÆ0.8-1.2¸öµ¥Î»
+		CDGen_SetDirection Rnd * 20 + 110                 ' Ë³Ê±Õë110-130¶È
+		CDGen_FowardDraw Rnd * 0.2 + 0.6                  ' »æÖÆ0.6-0.8¸öµ¥Î»
+		CDGen_SetDirection -(Rnd * 20 + 110)              ' ÄæÊ±Õë110-130¶È
+		CDGen_FowardDraw Rnd * 0.2 + 0.6                  ' »æÖÆ0.6-0.8¸öµ¥Î»
+		CDGen_SetDirection Rnd * 20 + 110                 ' Ë³Ê±Õë110-130¶È
+		CDGen_FowardDraw Rnd * 0.4 + 0.8                  ' »æÖÆ0.8-1.2¸öµ¥Î»
+		CDGen_Close 0                                     ' ·â±Õµ±Ç°±ÊÓëµÚ1±Ê(0¿ªÊ¼)
 	Case "C"
-		CDGen_SetDirection -60                            ' é€†æ—¶é’ˆ60åº¦(ç›¸å¯¹äºå‚ç›´çº¿)
-		CDGen_FowardDraw -0.7                             ' åæ–¹å‘ç»˜åˆ¶0.7ä¸ªå•ä½
-		CDGen_SetDirection -60                            ' é€†æ—¶é’ˆ60åº¦
-		CDGen_FowardDraw -0.7                             ' åæ–¹å‘ç»˜åˆ¶0.7ä¸ªå•ä½
-		CDGen_SetDirection 120                            ' é¡ºæ—¶é’ˆ120åº¦
-		CDGen_FowardDraw 1.5                              ' ç»˜åˆ¶1.5ä¸ªå•ä½
-		CDGen_SetDirection 120                            ' é¡ºæ—¶é’ˆ120åº¦
-		CDGen_FowardDraw -0.7                             ' åæ–¹å‘ç»˜åˆ¶0.7ä¸ªå•ä½
-		CDGen_SetDirection 120                            ' é¡ºæ—¶é’ˆ120åº¦
-		CDGen_FowardDraw 0.7                              ' ç»˜åˆ¶0.7ä¸ªå•ä½
+		CDGen_SetDirection -60                            ' ÄæÊ±Õë60¶È(Ïà¶ÔÓÚ´¹Ö±Ïß)
+		CDGen_FowardDraw -0.7                             ' ·´·½Ïò»æÖÆ0.7¸öµ¥Î»
+		CDGen_SetDirection -60                            ' ÄæÊ±Õë60¶È
+		CDGen_FowardDraw -0.7                             ' ·´·½Ïò»æÖÆ0.7¸öµ¥Î»
+		CDGen_SetDirection 120                            ' Ë³Ê±Õë120¶È
+		CDGen_FowardDraw 1.5                              ' »æÖÆ1.5¸öµ¥Î»
+		CDGen_SetDirection 120                            ' Ë³Ê±Õë120¶È
+		CDGen_FowardDraw -0.7                             ' ·´·½Ïò»æÖÆ0.7¸öµ¥Î»
+		CDGen_SetDirection 120                            ' Ë³Ê±Õë120¶È
+		CDGen_FowardDraw 0.7                              ' »æÖÆ0.7¸öµ¥Î»
 	End Select
 	CDGen_Flush X0, Y0
 End Sub
 
 Sub CDGen_Blur()
-	' å¯¹äº§ç”Ÿçš„ä½å›¾è¿›è¡ŒæŸ”åŒ–å¤„ç†
+	' ¶Ô²úÉúµÄÎ»Í¼½øĞĞÈá»¯´¦Àí
 	Dim i, j
 
 	For j = 1 To PicHeight - 2
 		For i = 1 To PicWidth - 2
 			If Buf(j, i) = 0 Then
 				If ((Buf(j, i - 1) Or Buf(j + 1, i)) And 1) <> 0 Then
-					' å¦‚æœå½“å‰ç‚¹æ˜¯ç©ºç™½ç‚¹ï¼Œä¸”ä¸Šä¸‹å·¦å³å››ä¸ªç‚¹ä¸­æœ‰ä¸€ä¸ªç‚¹æ˜¯æœ‰è‰²ç‚¹ï¼Œåˆ™è¯¥ç‚¹åšæŸ”åŒ–å¤„ç†
+					' Èç¹ûµ±Ç°µãÊÇ¿Õ°×µã£¬ÇÒÉÏÏÂ×óÓÒËÄ¸öµãÖĞÓĞÒ»¸öµãÊÇÓĞÉ«µã£¬Ôò¸Ãµã×öÈá»¯´¦Àí
 					Buf(j, i) = 2
 				End If
 			End If
@@ -392,7 +392,7 @@ Sub CDGen_NoisyLine()
 End Sub
 
 Sub CDGen_NoisyDot()
-	' å¯¹äº§ç”Ÿçš„ä½å›¾è¿›è¡Œå™ªç‚¹å¤„ç†
+	' ¶Ô²úÉúµÄÎ»Í¼½øĞĞÔëµã´¦Àí
 	Dim i, j, NoisyDot, CurDot
 
 	For j = 0 To PicHeight - 1
@@ -415,7 +415,7 @@ Sub CDGen_NoisyDot()
 End Sub
 
 Sub CDGen()
-	' ç”Ÿæˆä½å›¾é˜µåˆ—
+	' Éú³ÉÎ»Í¼ÕóÁĞ
 	Dim i, Ch, w, x, y
 
 	DigtalStr = ""
@@ -439,7 +439,7 @@ Sub CDGen()
 End Sub
 
 Function HSBToRGB(vH, vS, vB)
-	' å°†é¢œè‰²å€¼ç”±HSBè½¬æ¢ä¸ºRGB
+	' ½«ÑÕÉ«ÖµÓÉHSB×ª»»ÎªRGB
 	Dim aRGB(3), RGB1st, RGB2nd, RGB3rd
 	Dim nH, nS, nB
 	Dim lH, nF, nP, nQ, nT
@@ -502,19 +502,19 @@ Sub CreatValidCode(pSN)
 	Dim i, j, CurColorHue
 
 	CDGen
-	Session(pSN) = DigtalStr	'è®°å½•å…¥Session
+	Session(pSN) = DigtalStr	'¼ÇÂ¼ÈëSession
 	
 	Dim FileSize, PicDataSize
 	PicDataSize = PicWidth * PicHeight * 3
 	FileSize = PicDataSize + 54
 
-	' è¾“å‡ºBMPæ–‡ä»¶ä¿¡æ¯å¤´
+	' Êä³öBMPÎÄ¼şĞÅÏ¢Í·
 	Response.BinaryWrite ChrB(66) & ChrB(77) & ChrB(FileSize Mod 256) & ChrB((FileSize \ 256) Mod 256) & ChrB((FileSize \ 256 \ 256) Mod 256) & ChrB(FileSize \ 256 \ 256 \ 256) & ChrB(0) & ChrB(0) & ChrB(0) & ChrB(0) & ChrB(54) & ChrB(0) & ChrB(0) & ChrB(0)
 
-	' è¾“å‡ºBMPä½å›¾ä¿¡æ¯å¤´
+	' Êä³öBMPÎ»Í¼ĞÅÏ¢Í·
 	Response.BinaryWrite ChrB(40) & ChrB(0) & ChrB(0) & ChrB(0) & ChrB(PicWidth Mod 256) & ChrB((PicWidth \ 256) Mod 256) & ChrB((PicWidth \ 256 \ 256) Mod 256) & ChrB(PicWidth \ 256 \ 256 \ 256) & ChrB(PicHeight Mod 256) & ChrB((PicHeight \ 256) Mod 256) & ChrB((PicHeight \ 256 \ 256) Mod 256) & ChrB(PicHeight \ 256 \ 256 \ 256) & ChrB(1) & ChrB(0) & ChrB(24) & ChrB(0) & ChrB(0) & ChrB(0) & ChrB(0) & ChrB(0) & ChrB(PicDataSize Mod 256) & ChrB((PicDataSize \ 256) Mod 256) & ChrB((PicDataSize \ 256 \ 256) Mod 256) & ChrB(PicDataSize \ 256 \ 256 \ 256) & ChrB(18) & ChrB(11) & ChrB(0) & ChrB(0) & ChrB(18) & ChrB(11) & ChrB(0) & ChrB(0) & ChrB(0) & ChrB(0) & ChrB(0) & ChrB(0) & ChrB(0) & ChrB(0) & ChrB(0) & ChrB(0)
 
-	' é€ç‚¹è¾“å‡ºä½å›¾é˜µåˆ—
+	' ÖğµãÊä³öÎ»Í¼ÕóÁĞ
 	If nColorHue = -1 Then
 		CurColorHue = Int(Rnd * 360)
 	ElseIf nColorHue <> -2 Then

@@ -34,7 +34,7 @@ Case "save"
 	If xTitle = "" Then alertBack "必须填写信息标题"
 	If xCategoryId = 0 Then alertBack "必须选择类别"
 	xSortId = Casp.rq(3,"sortid",0,0)
-	xContent = Casp.rq(3,"Content",1,"")
+	xContent = Casp.Form("Content")
 	xLanguage = Casp.rq(3,"Language",1,"")
 	If xId = 0 Then
 		Casp.db.setRs rs,"select Top 1 * from News",3
@@ -67,11 +67,15 @@ End Select
 Sub ProcessList()
 	Casp.page.Conn = Casp.db.conn
 	Casp.page.PageID = Trim(Request("PageID"))
-	Casp.page.Size = 10
+	Casp.page.Size = 25
+	xCategoryId = Casp.rq(1,"cid",0,0)
+	If xCategoryId <> 0 Then
+		sWhere = " and CategoryId = " & xCategoryId
+	End If
 	If request.querystring("lang")="en" Then
-		Casp.page.Header_a rs,"News a inner join Category b on b.id=a.CategoryID","a.*,b.ClassName_cn,b.ClassName_en","a.[language]='en'","","a.sortid desc,a.id desc"
+		Casp.page.Header_a rs,"News a inner join Category b on b.id=a.CategoryID","a.*,b.ClassName_cn,b.ClassName_en","a.[language]='en' "&sWhere&"","","a.sortid desc,a.id desc"
 	Else
-		Casp.page.Header_a rs,"News a inner join Category b on b.id=a.CategoryID","a.*,b.ClassName_cn,b.ClassName_en","a.[language]='cn'","","a.sortid desc,a.id desc"
+		Casp.page.Header_a rs,"News a inner join Category b on b.id=a.CategoryID","a.*,b.ClassName_cn,b.ClassName_en","a.[language]='cn' "&sWhere&"","","a.sortid desc,a.id desc"
 	End If
 %>
 <div id="inner">
@@ -118,7 +122,14 @@ Sub ProcessList()
 					<tr>
 						<td><input type="checkbox" name="id" value="<%=rs("id")%>" />
 							<%=rs("id")%></td>
-						<td><%=rs("ClassName_cn")%>(<%=rs("ClassName_en")%>)</td>
+						<td>
+						<%
+						If request.querystring("lang")="en" Then
+							echo rs("ClassName_en")
+						Else
+							echo rs("ClassName_cn")
+						End If
+						%></td>
 						<td><%=rs("Title")%></td>
 						<td><%=IIF(rs("IsDisplay"),"√","×")%></td>
 						<td><a href="?do=edit&id=<%=rs("id")%>" class="comm">编辑</a>&nbsp;&nbsp;<a href="?do=delete&id=<%=rs("id")%>"  onClick="javascript:return confirm('真的要删除吗?')"  class="comm">删除</a></td>
@@ -163,7 +174,7 @@ Sub ProcessEdit()
 							<select name="categoryid">
 								<option value="">请选择类别..</option>
 								<%
-								Casp.db.Exec rs,"select * from Category order by sortid desc,id desc"
+								Casp.db.Exec rs,"select * from Category order by sortid asc,id asc"
 								Do While Not rs.eof
 									If xId = 0 Then
 										echo "<option value="""&rs("id")&""">"&rs("ClassName_cn")&"("&rs("ClassName_en")&")</option>"

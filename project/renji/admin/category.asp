@@ -18,6 +18,8 @@ Case "edit"
 Case "save"
 	xClassname_cn = Casp.rq(3,"classname_cn",1,"")
 	xClassname_en = Casp.rq(3,"classname_en",1,"")
+	xUrl_en = Casp.rq(3,"Url_en",1,"")
+	xUrl_cn = Casp.rq(3,"Url_cn",1,"")
 	If xClassname_cn = "" Or xClassname_en = "" Then alertBack "必须填写类别名称"
 	xSortId = Casp.rq(3,"sortid",0,0)
 	If xId = 0 Then
@@ -30,6 +32,8 @@ Case "save"
 	rs("classname_cn") = xClassname_cn
 	rs("classname_en") = xClassname_en
 	rs("SortID") = xSortId
+	rs("url_en") = xUrl_en
+	rs("url_cn") = xUrl_cn
 	rs.update
 	xId = rs("id")
 	Casp.db.CloseRs rs
@@ -37,7 +41,7 @@ Case "save"
 End Select
 
 Sub ProcessList()
-	Casp.db.Exec rs,"select * from Category order by sortid desc,id asc"
+	Casp.db.Exec rs,"select * from Category order by sortid asc,id asc"
 %>
 <div id="inner">
 	<div id="title"><a class="title" href="Main.asp"><%=Casp.WebConfig("SiteTitle")%></a>&nbsp;-&nbsp;类别列表</div>
@@ -109,6 +113,10 @@ Sub ProcessEdit()
 								<td class="label" width="100">名称</td>
 								<td><input type="text" name="classname_cn" class="text" id="classname_cn" value="<%If xId<>0 Then echo oCategory("classname_cn")%>" /></td>
 							</tr>
+							<tr class="">
+								<td class="label" width="100">跳转地址</td>
+								<td><input type="text" name="url_cn" class="text" id="url_cn" value="<%If xId<>0 Then echo oCategory("url_cn")%>" /></td>
+							</tr>
 							<tr class="none">
 								<td class="label"></td>
 								<td><input type="submit" class="button" value="保存" name="submit" id="submit"></td>
@@ -122,6 +130,10 @@ Sub ProcessEdit()
 							<tr class="">
 								<td class="label" width="100">Name</td>
 								<td><input type="text" name="classname_en" class="text" id="classname_en" value="<%If xId<>0 Then echo oCategory("classname_en")%>" /></td>
+							</tr>
+							<tr class="">
+								<td class="label" width="100">Redirect Url</td>
+								<td><input type="text" name="url_en" class="text" id="url_en" value="<%If xId<>0 Then echo oCategory("url_en")%>" /></td>
 							</tr>
 							<tr class="none">
 								<td class="label"></td>

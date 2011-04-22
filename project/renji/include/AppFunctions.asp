@@ -98,4 +98,14 @@ Function getSingleModule(module)
 		If getSingleModule.Exists("Content"&Lang) Then getSingleModule.Item("Content"&Lang) = Casp.HtmlDecode(getSingleModule.Item("Content"&Lang))
 	End If
 End Function
+
+Function getClassName(cid,slang)
+	If cid = 0 Then
+		getClassName = ""
+	Else
+		Casp.db.Exec rs,"select * from Category where id="&cid
+		getClassName = rs("ClassName"&slang)
+		Casp.db.closeRs rs
+	End if
+End Function
 %>

@@ -43,11 +43,12 @@ Sub Header()
 	<title><%=PageTitle&Casp.WebConfig("SiteTitle")%></title>
 	<meta http-equiv="Pragma" content="no-cache" />
 	<meta name="description" content="<%=PageDescription%>" />
-	<link rel="stylesheet" type="text/css" href="/css/global.css" />
-	<link rel="stylesheet" type="text/css" href="/css/colorbox.css" />
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-	<script type="text/javascript" src="/js/jquery.colorbox-min.js"></script>
-	<script type="text/javascript" src="/fckeditor/fckeditor.js"></script>
+	<link href="/css/style.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="../js/jquery-1.5.1.min.js"></script>
+	<script type="text/javascript" src="../js/kindeditor-min.js"></script>
+	<script type="text/javascript" src="../js/cute.js"></script>
+	<script type="text/javascript" src="../js/core/form.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
 	<!--[if lte IE 6]>
 	<script type="text/javascript" src="/js/unitpngfix.js"></script>
 	<![endif]-->
@@ -75,103 +76,22 @@ Sub Header()
 	});
 	</script>
 </head>
-<body id="<%=PageBody%>">
-<div id="contianer">
-	<div id="wrap">
+<body class="<%=PageBody%>">
+<div class="wrap">
+	<div class="container">
 <%
 End Sub
 
 '底部
 Sub Footer()
 %>
-        <table id="footer_menu">
-            <tr>
-                <th width="80">纹身师</th>
-                <td>
-                    <%
-					Casp.db.Exec rs,"select * from Artist order by sortid desc,id desc"
-					Do While Not rs.eof
-						echo "<a href=""/artist/"&rs("id")&""">"&rs("NickName"&Lang)&"</a>"
-						rs.MoveNext
-						If Not rs.eof Then echo " | "
-					Loop
-					Casp.db.closeRs rs
-					%>
-                </td>
-            </tr>
-            <tr>
-                <th>纹身工作室</th>
-                <td>
-                    <a href="/about_us_single">工作室简介</a>&nbsp;|&nbsp;
-                    <a href="/news">工作室动态</a>&nbsp;|&nbsp;
-                    <a href="/report.asp">媒体报道</a>&nbsp;|&nbsp;
-                    <a href="/links">友情链接</a>
-                </td>
-            </tr>
-            <tr>
-                <th>纹身作品</th>
-                <td>
-                    <%
-					Casp.db.Exec rs,"select * from Category order by sortid desc,id desc"
-					Do While Not rs.eof
-						echo "<a href=""/works/c"&rs("id")&""">"&rs("ClassName"&Lang)&"</a>"
-						rs.MoveNext
-						If Not rs.eof Then echo " | "
-					Loop
-					Casp.db.closeRs rs
-					%>
-                </td>
-            </tr>
-            <tr>
-                <th>纹身商品</th>
-                <td>
-                    <a href="/goods_tools_single">纹身机器</a>&nbsp;|&nbsp;
-                    <a href="/books_single">纹身书籍</a>&nbsp;|&nbsp;
-                    <a href="/t_shirt_single">纹身T恤</a>
-                </td>
-            </tr>
-            <tr>
-                <th>纹身培训</th>
-                <td>
-                    <a href="/training_single">纹身培训</a>
-                </td>
-            </tr>
-            <tr>
-                <th>联系方式</th>
-                <td>
-                    <a href="/contact_us_single">纹身预约</a>
-                </td>
-            </tr>
-            <tr>
-                <th>语言</th>
-                <td>
-                    <a href="/en">English</a>&nbsp;|&nbsp;
-                    <a href="/">中文版</a>
-                </td>
-            </tr>
-        </table>
+		<div class="footer">
+			<div class="footer_inner">
+				<p class="f_company">2011 上海交通大学医学院麻醉与危重病医学系</p>
+				<p class="f_address">地址：上海市东方路  电话：12345678</p>
+			</div>
+		</div>
 	</div>
-    <div id="footer">
-		上海市黄浦区广西北路252号百米香榭商业街1楼137室<br />
-		252 North Guangxi Road, Huangpu District, Shanghai, 1st Floor, Room 137<br />
-		Tel:86-21-63518781 86-13818264589&nbsp;&nbsp;QQ:837591770&nbsp;&nbsp;MSN:duzewu@hotmail.com&nbsp;&nbsp;Email:billdutattoo@163.com<br />
-		Copyright @ 2010 上海天尊堂纹身馆&nbsp;&nbsp;版权所有&nbsp;&nbsp;不得转载&nbsp;&nbsp;<a href="http://www.miibeian.gov.cn/" target="_blank">沪ICP备10209632号</a>&nbsp;&nbsp;<script src="http://s4.cnzz.com/stat.php?id=2136599&web_id=2136599" language="JavaScript"></script>
-    </div>
-    <div style="display:none;">
-        <script type="text/javascript">
-        
-          var _gaq = _gaq || [];
-          _gaq.push(['_setAccount', 'UA-17091308-1']);
-          _gaq.push(['_trackPageview']);
-        
-          (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-          })();
-        
-        </script>
-    </div>
 </div>
 </body>
 </html>
@@ -181,21 +101,34 @@ End Sub
 Sub TopCode()
 	Call Header()
 %>
-        <div class="language">
-            <a href="<%=Casp.WebConfig("SiteUrl")%>/en">English</a>
-            <a href="<%=Casp.WebConfig("SiteUrl")%>/index.asp">中文版</a>
-        </div>
-        <div class="logo1">
-            <a href="/" title="<%=Casp.WebConfig("SiteTitle")%>"><img src="/css/logo.png" /></a>
-        </div>
-        <div class="main-menu1">
-            <a href="/artist" title="纹身师"><img src="/css/artists.png" alt="纹身师" /></a>
-            <a href="/about_us_single" title="纹身工作室"><img src="/css/studio.png" alt="纹身工作室" /></a>
-            <a href="/works" title="纹身作品"><img src="/css/tattos.png" alt="纹身作品" /></a>
-            <a href="/goods_tools_single" title="纹身商品"><img src="/css/stuffs.png" alt="纹身商品" /></a>
-            <a href="/training_single" title="纹身培训"><img src="/css/training.png" alt="纹身培训" /></a>
-            <a href="/contact_us_single" title="联系我们"><img src="/css/contactus.png" alt="联系我们" /></a>
-        </div>
+		<div class="header">
+			<div class="logo">
+				<a href="" title="首页"></a>
+			</div>
+			<div class="top_nav">
+				<ul>
+					<li><a href="">English</a></li>
+					<li><a href="about.asp">关于我们</a></li>
+					<li><a href="sitemap.asp">网站地图</a></li>
+				</ul>
+			</div>
+			<div class="top_banner">
+				<a href=""></a>
+			</div>
+			<ul class="main_menus">
+				<li><a href="/">首　页</a></li>
+                <%
+				Casp.db.Exec rs,"select * from Category order by sortid asc,id asc"
+				Do While Not rs.eof
+				%>
+				<li><a href="list.asp?cid=<%=rs("id")%>"><%=rs("ClassName_"&Mid(Lang,2,Len(Lang)))%></a></li>
+				<%
+					rs.MoveNext
+				Loop
+				rs.close
+				%>
+			</ul>
+		</div>
 <%
 End Sub
 %>

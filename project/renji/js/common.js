@@ -122,17 +122,21 @@ var SNS = {
 				imageUploadJson: '/js/editor/asp/upload_json.asp',
 				htmlTags: {
 					font: ['color', 'size', 'face', '.background-color'],
-					span: [],
-					a: ['href', 'target'],
+					span: ['style'],
+					a: ['href', 'target', 'style'],
 					embed: ['src', 'width', 'height', 'type', 'loop', 'autostart', 'quality', 'align', 'allowscriptaccess', '/'],
-					img: ['src', 'width', 'height', 'border', 'alt', 'title', 'align', 'class', '/'],
+					img: ['src', 'width', 'height', 'border', 'alt', 'title', 'align', 'class', '/', 'style'],
 					hr: ['/'],
 					br: ['/'],
 					'p,ol,ul,li,blockquote,h1,h2,h3,h4,h5,h6': []
 				},
-				items: ['fontname', 'fontsize', '|', 'textcolor', 'bgcolor', 'bold', 'italic', 'underline',
-					'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-					'insertunorderedlist', '|', 'emoticons', 'image', 'media', 'link']
+				items: ['source', '|', 'fullscreen', 'undo', 'redo', 'print', 'cut', 'copy', 'paste',
+						'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+						'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+						'superscript', '|', 'selectall', '-',
+						'title', 'fontname', 'fontsize', '|', 'textcolor', 'bgcolor', 'bold',
+						'italic', 'underline', 'strikethrough', 'removeformat', '|', 'image',
+						'flash', 'media', 'advtable', 'hr', 'emoticons', 'link', 'unlink']
 			}, options || {}));
 			KE.create(el);
 		}
