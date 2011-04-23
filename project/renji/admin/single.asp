@@ -5,8 +5,8 @@ xDo = LCase(Casp.rq(1,"do",1,""))
 Casp.db.GetRowObject oSingle,"select Top 1 * from SinglePage where ModuleName='"&xModule&"'"
 If isset(oSingle) = False Then ShowError(Array("没有找到相应的模块"))
 If xDo = "save" Then
-	xContent_cn = Reuqest("Content_cn")
-	xContent_en = Reuqest(3,"Content_en")
+	xContent_cn = Request("Content_cn")
+	xContent_en = Request("Content_en")
 	Casp.db.setRs rs,"select Top 1 * from SinglePage where ModuleName='"&xModule&"'",3
 	If rs.eof Then ShowError(Array("参数错误，请返回重试！"))
 	rs("Content_cn") = xContent_cn

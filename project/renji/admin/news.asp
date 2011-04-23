@@ -89,18 +89,6 @@ Sub ProcessList()
         <dd>
 		<form action="?do=delete" method="post" name="myform">
 			<div class="active">
-				<%
-				Casp.db.Exec crs,"select * from Category order by sortid asc,id asc"
-				Do While Not crs.eof
-					If request.querystring("lang")="en" Then
-						echo "<a href=""news.asp?do=list&cid="&crs("id")&""" title="""&crs("ClassName_cn")&""">"&crs("ClassName_en")&"</a>&nbsp;|&nbsp;"
-					Else
-						echo "<a href=""news.asp?do=list&cid="&crs("id")&""" title="""&crs("ClassName_en")&""">"&crs("ClassName_cn")&"</a>&nbsp;|&nbsp;"
-					End If
-					crs.MoveNext
-				Loop
-				crs.close
-				%>
 			</div>
 			<div class="active">
 				<%If request.querystring("lang")="en" Then%>
@@ -130,7 +118,7 @@ Sub ProcessList()
 							echo rs("ClassName_cn")
 						End If
 						%></td>
-						<td><%=rs("Title")%></td>
+						<td><a href="../show.asp?id=<%=rs("id")%>" target="_blank"><%=rs("Title")%></a></td>
 						<td><%=IIF(rs("IsDisplay"),"√","×")%></td>
 						<td><a href="?do=edit&id=<%=rs("id")%>" class="comm">编辑</a>&nbsp;&nbsp;<a href="?do=delete&id=<%=rs("id")%>"  onClick="javascript:return confirm('真的要删除吗?')"  class="comm">删除</a></td>
 					</tr>
@@ -190,7 +178,7 @@ Sub ProcessEdit()
 					</tr>
 					<tr class="">
 						<td class="label">标题</td>
-						<td><input type="text" name="title" class="text" id="title" value="<%If xId<>0 Then echo oNews("title")%>" /></td>
+						<td><input type="text" name="title" class="text" id="title" value="<%If xId<>0 Then echo oNews("title")%>" size="40" /></td>
 					</tr>
 					<tr>
 						<td class="label">排序(OrderID)</td>

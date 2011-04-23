@@ -13,7 +13,6 @@ Call TopCode()
 				<h3 class="title">特色教学</h3>
 			</div>
 			<div class="m_body">
-				<a href=""><img src="" /></a>
 			</div>
 		</div>
 		<ul class="lite index_lite lite_cols2">
@@ -146,3 +145,22 @@ Call TopCode()
 		</select>
 	</div>
 </div>
+<script>
+$(function(){
+	SNS.common.blockSlide({
+		width: 575, 	//宽度
+		height: 380, 	//高度
+		data: [<%
+			Casp.db.Exec rs,"select * from Advert order by sortid asc,id desc"
+			Do While Not rs.eof
+				echo "{href:"""&rs("url")&""",image:"""&rs("image")&""",title:"""&rs("title")&"""}"
+				rs.MoveNext
+				If Not rs.eof Then echo ","
+			Loop
+			rs.close
+		%>], 	//广告列表，例：[{href:"",image:"",title:""}]
+		interval: 5, //轮播间隔
+		styleurl: ""	//特殊样式URL
+	});
+});
+</script>

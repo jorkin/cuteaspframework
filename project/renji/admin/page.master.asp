@@ -113,12 +113,33 @@ Sub TopCode()
         <li><a href="default.asp?action=logout" class="nav">登出</a></li>
       </ul>
     </li>
-    <li class="top"><a href="news.asp?do=list" class="top">信息列表</a>
+    <li class="top"><a href="javascript:;" class="top">文章管理</a>
       <ul>
-        <li><a href="news.asp?do=list" class="nav">信息列表</a></li>
-        <li><a href="category.asp?do=list" class="nav">信息类别</a></li>
+		<%
+		Casp.db.Exec rs,"select * from Category order by sortid asc,id asc"
+		Do While Not rs.eof
+			echo "<li><a href=""news.asp?do=list&cid="&rs("id")&""" class=""nav"" title="""&rs("ClassName_en")&""">"&rs("ClassName_cn")&"</a></li>"
+			rs.MoveNext
+		Loop
+		Casp.db.closeRs rs
+		%>
+        <li>
+          <div class="sep">&nbsp;</div>
+        </li>
+        <li><a href="news.asp?do=list" class="nav">全部列表</a></li>
+        <li>
+          <div class="sep">&nbsp;</div>
+        </li>
+        <li><a href="page.asp?do=list" class="nav">额外单页管理</a></li>
       </ul>
 	</li>
+    <li class="top"><a href="javascript:;" class="top">栏目类别</a>
+      <ul>
+        <li><a href="category.asp?do=edit" class="nav">添加类别</a></li>
+        <li><a href="category.asp?do=list" class="nav">栏目管理</a></li>
+      </ul>
+	</li>
+    <li class="top"><a href="guestbook.asp" class="top">答疑台</a></li>
   </ul>
 </div>
 <%

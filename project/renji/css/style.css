@@ -405,6 +405,10 @@ ul.category_lite li.curr a.title:hover{text-decoration:none;}
 .article_title{font-size:18px;font-weight:bold;text-align:center;margin-bottom:20px;} 
 .article_content{font-size:13px;line-height:1.8;margin-bottom:10px;}
 
+.article_content table{border-collapse:separate;}
+.article_content table td,
+.article_content table th{border-collapse:separate;padding:2px 4px;}
+
 
 /* list style */
 .article_list_wrap{clear:both;margin:0 40px 10px;}
