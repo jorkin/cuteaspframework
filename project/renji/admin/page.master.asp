@@ -113,7 +113,13 @@ Sub TopCode()
         <li><a href="default.asp?action=logout" class="nav">登出</a></li>
       </ul>
     </li>
-    <li class="top"><a href="javascript:;" class="top">文章管理</a>
+    <li class="top"><a href="javascript:;" class="top">公告管理</a>
+      <ul>
+        <li><a href="announce.asp?do=edit" class="nav">添加公告</a></li>
+        <li><a href="announce.asp?do=list" class="nav">公告管理</a></li>
+      </ul>
+	</li>
+    <li class="top"><a href="javascript:;" class="top">信息管理</a>
       <ul>
 		<%
 		Casp.db.Exec rs,"select * from Category order by sortid asc,id asc"

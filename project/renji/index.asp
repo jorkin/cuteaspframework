@@ -49,21 +49,21 @@ Call TopCode()
 				<div class="m_header_tr"></div>
 				<h3 class="title">网站公告</h3>
 				<div class="options">
-					<a href="" class="more">more..</a>
+					<a href="announce_list.asp" class="more">more..</a>
 				</div>
 			</div>
 			<div class="m_body">
 				<ul class="lite">
-					<li><a href="">2010粘度麻醉与危重病系工作会议召开</a></li>
-					<li><a href="">2010粘度麻醉与危重病系工作会议召开</a></li>
-					<li><a href="">2010粘度麻醉与危重病系工作会议召开</a></li>
-					<li><a href="">2010粘度麻醉与危重病系工作会议召开</a></li>
-					<li><a href="">2010粘度麻醉与危重病系工作会议召开</a></li>
-					<li><a href="">2010粘度麻醉与危重病系工作会议召开</a></li>
-					<li><a href="">2010粘度麻醉与危重病系工作会议召开</a></li>
-					<li><a href="">2010粘度麻醉与危重病系工作会议召开</a></li>
-					<li><a href="">2010粘度麻醉与危重病系工作会议召开</a></li>
-					<li><a href="">2010粘度麻醉与危重病系工作会议召开</a></li>
+					<%
+					Casp.db.Exec rs,"select Top 8 * from Announce where [language]='"&Replace(Lang,"_","")&"' order by sortid desc,id desc"
+					Do While Not rs.eof
+					%>
+					<li><a href="announce.asp?id=<%=rs("id")%>" target="_blank"><%=rs("Title")%></a></li>
+					<%
+						rs.MoveNext
+					Loop
+					rs.close
+					%>
 				</ul>
 			</div>
 		</div>

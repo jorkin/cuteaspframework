@@ -24,6 +24,7 @@ Case "save"
 	xId = Casp.rq(3,"id",1,0)
 	xTitle = Casp.rq(3,"Title",1,"")
 	xUrl = Casp.rq(3,"Url",1,"")
+	alertBack xUrl
 	xSortId = Casp.rq(3,"sortid",0,0)
 	If xId = 0 Then
 		Casp.db.setRs rs,"select Top 1 * from Advert",3

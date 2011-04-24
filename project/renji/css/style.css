@@ -339,6 +339,7 @@ a:hover{color:#ff6600;text-decoration:underline;cursor:pointer;}
 .container{width:1000px;margin:0 auto;}
 .header{}
 .index_body .header{background:url(top_banner.jpg) no-repeat;}
+.page_full_body .header,
 .page_body .header{background:url(top_banner2.jpg) no-repeat;}
 
 .logo a{display: block;float: left;height: 70px;margin-left: 18px;margin-top: 10px;width: 400px;margin-bottom:7px;}
@@ -389,9 +390,9 @@ ul.group_lite li .lite_image .title{font-size:14px;}
 .category_box .category_header{background:url(bg_category_title.png) top center no-repeat; height:74px;}
 .category_box .category_header .title{ padding:16px 0 0 28px; font-size:21px;line-height: 1.2;font-weight:bold;}
 .category_box .category_header em{ padding-left:65px;color:#88673E; font-size:11px;}
-.category_box .category_body{}
+.category_box .category_body{padding:8px 7px 0 6px;zoom:1;_padding-right:10px;_padding_left:4px;}
 
-ul.category_lite{margin:0 7px;}
+ul.category_lite{}
 ul.category_lite li{margin-bottom:4px;}
 ul.category_lite li a.title{border:1px solid #D9D0BF;background:url(bg_gray.png) repeat-x;display:block; height:38px; line-height:38px;font-size:14px;padding-left:25px;}
 ul.category_lite li a.title:hover{color:#000;}
@@ -415,3 +416,18 @@ ul.category_lite li.curr a.title:hover{text-decoration:none;}
 .article_lite{}
 .article_lite li{margin-left:20px;list-style:disc;line-height:2;}
 .article_lite li a.title{margin-right:1em;font-size:13px;}
+
+
+
+ul.gb_list{}
+ul.gb_list li.item{ margin-bottom:10px; padding-bottom:20px; border-bottom:1px dashed #666;}
+ul.gb_list li.item .list_info em.date{float:right;}
+ul.gb_list li.item p{display:block;}
+ul.gb_list li.item p.reply_content{background:#fff; padding:10px;margin:10px 0 0;position:relative; border:1px solid #ccc;zoom:1;color:blue;}
+ul.gb_list li.item p.reply_content .layer_arrow{left:50px;}
+ul.gb_list li.item p label{display:inline-block;zoom:1; width:70px; color:#DE3535;}
+ul.gb_list li.item p.reply_content label{color:blue;}
+
+
+.lite_parent li{font-size:16px;padding-bottom:10px;}
+ul.lite_child li{margin-left:20px; list-style:disc; font-size:12px;padding-bottom:0px;}

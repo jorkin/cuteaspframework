@@ -56,12 +56,6 @@ Sub Header()
 	<link rel="icon" href="/favicon.ico" type="image/x-icon" />
 	<script type="text/javascript">
 	$(function(){
-		$(".worksimage").colorbox({
-			slideshow:true,
-			maxWidth:800,
-			maxHeight:620,
-			slideshowSpeed:10000
-		});
 		$("textarea.fckeditor").hide(0,function(){
 			var oFCKeditor = new FCKeditor($(this).attr("id"));
 			oFCKeditor.Config['ToolbarStartExpanded'] = false ;
