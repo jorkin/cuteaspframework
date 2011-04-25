@@ -145,6 +145,12 @@ Sub TopCode()
         <li><a href="category.asp?do=list" class="nav">栏目管理</a></li>
       </ul>
 	</li>
+    <li class="top"><a href="javascript:;" class="top">教师管理</a>
+      <ul>
+        <li><a href="teacher.asp?do=edit" class="nav">添加教师</a></li>
+        <li><a href="teacher.asp?do=list" class="nav">教师列表</a></li>
+      </ul>
+	</li>
     <li class="top"><a href="guestbook.asp" class="top">答疑台</a></li>
   </ul>
 </div>

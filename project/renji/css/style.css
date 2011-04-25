@@ -369,13 +369,13 @@ ul.index_lite li div.options{padding:0;}
 .group_wrap .group_l_arrow a{display:inline-block;zoom:1;width:10px;height:10px;margin-top:80px;background:url(i_arrow.gif) no-repeat;margin-left:4px;}
 .group_wrap .group_r_arrow{float:right;width:18px;height:215px;text-align:right;}
 .group_wrap .group_r_arrow a{display:inline-block;zoom:1;width:10px;height:10px;margin-top:80px;background:url(i_arrow.gif) -10px 0 no-repeat;margin-right:4px;}
-.group_wrap .group_inner{float:left;height:215px;width:922px;overflow:hidden;}
+.group_wrap .group_inner{float:left;height:215px;width:922px;overflow:hidden;position:relative;}
 
-ul.group_lite{height:215px;width:9999px;}
+ul.group_lite{height:215px;position:absolute;}
 ul.group_lite li{float:left;display:inline; margin-right:12px;margin-bottom:10px;width:140px;overflow:hidden;}
 ul.group_lite li .lite_image .image_link{display:inline-block;zoom:1;padding:4px;border:1px solid #ccc;margin:0;overflow:hidden;}
 ul.group_lite li .lite_image .image_link:hover{border-color:#333;}
-ul.group_lite li .lite_image .image_link img{float:left;}
+ul.group_lite li .lite_image .image_link img{float:left;width:130px;height:160px;}
 ul.group_lite li .lite_image .title{font-size:14px;}
 
 .links{padding:10px 0 20px;text-align:right; }
@@ -431,3 +431,6 @@ ul.gb_list li.item p.reply_content label{color:blue;}
 
 .lite_parent li{font-size:16px;padding-bottom:10px;}
 ul.lite_child li{margin-left:20px; list-style:disc; font-size:12px;padding-bottom:0px;}
+
+
+.teacher_face{text-align:center;margin-bottom:20px;}

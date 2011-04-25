@@ -1,6 +1,6 @@
 <%
-Function getArtistImage(id)
-	getArtistImage = Casp.WebConfig("SiteUrl") & Casp.WebConfig("UserFacePath") & "/" & id & ".jpg"
+Function getTeacherImage(id)
+	getTeacherImage = Casp.WebConfig("SiteUrl") & Casp.WebConfig("UserFacePath") & "/" & id & ".jpg"
 End Function
 Function getLinksImage(id)
 	getLinksImage = Casp.WebConfig("SiteUrl") & Casp.WebConfig("LinksPath") & "/" & id & ".jpg"

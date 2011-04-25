@@ -120,28 +120,39 @@ Call TopCode()
 		<div class="m_body">
 			<div class="group_wrap">
 				<div class="group_l_arrow">
-					<a href=""></a>
+					<a href="javascript:;" rel="0"></a>
 				</div>
 				<div class="group_inner">
 					<ul class="lite group_lite">
-						<li><div class="lite_image"><a href="" class="image_link"><img src="css/temp.jpg" /></a><p><a href="" class="title">教授顾问：朱也森</a></p></div></li>
-						<li><div class="lite_image"><a href="" class="image_link"><img src="css/temp.jpg" /></a><p><a href="" class="title">教授顾问：朱也森</a></p></div></li>
-						<li><div class="lite_image"><a href="" class="image_link"><img src="css/temp.jpg" /></a><p><a href="" class="title">教授顾问：朱也森</a></p></div></li>
-						<li><div class="lite_image"><a href="" class="image_link"><img src="css/temp.jpg" /></a><p><a href="" class="title">教授顾问：朱也森</a></p></div></li>
-						<li><div class="lite_image"><a href="" class="image_link"><img src="css/temp.jpg" /></a><p><a href="" class="title">教授顾问：朱也森</a></p></div></li>
-						<li><div class="lite_image"><a href="" class="image_link"><img src="css/temp.jpg" /></a><p><a href="" class="title">教授顾问：朱也森</a></p></div></li>
-						<li><div class="lite_image"><a href="" class="image_link"><img src="css/temp.jpg" /></a><p><a href="" class="title">教授顾问：朱也森</a></p></div></li>
+						<%
+						Casp.db.Exec rs,"select * from Teacher order by sortid asc,id asc"
+						Do While Not rs.eof
+						%>
+						<li><div class="lite_image"><a href="<%=rs("Url"&Lang)%>" class="image_link"><img src="<%=getTeacherImage(rs("id"))%>" /></a><p><a href="<%=rs("Url"&Lang)%>" class="title"><%=rs("NickName"&Lang)%></a></p></div></li>
+						<%
+							rs.MoveNext
+						Loop
+						rs.close
+						%>
 					</ul>	
 				</div>
 				<div class="group_r_arrow">
-					<a href=""></a>
+					<a href="javascript:;" rel="1"></a>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="links">
-		<select class="select">
-			<option>相关链接</option>
+		<select class="select" id="linkChange">
+			<option value="">相关链接</option>
+			<%
+			Casp.db.Exec rs,"select * from links order by sortid desc,id desc"
+			Do While Not rs.eof
+				echo "<option value="""&rs("LinkUrl")&""" title="""&rs("LinkUrl")&""">"&rs("Title")&"</option>"
+				rs.MoveNext
+			Loop
+			rs.close
+			%>
 		</select>
 	</div>
 </div>
@@ -161,6 +172,40 @@ $(function(){
 		%>], 	//广告列表，例：[{href:"",image:"",title:""}]
 		interval: 5, //轮播间隔
 		styleurl: ""	//特殊样式URL
+	});
+	$("#linkChange").change(function(){
+		var  url = $(this).val();
+		if (url)
+		{
+			location.href = url;
+		}
+	});
+	var obj = $(".group_lite");
+	var item = $("li",obj);
+	obj.width(item.outerWidth(true) * item.length);
+	$(".group_l_arrow a,.group_r_arrow a").one("click",function(){
+		var cb = arguments.callee;
+		var self = this;
+		var offsetX = item.outerWidth(true) * (item.length > 5 ? 5 : item.length);
+		if (this.rel == 1)
+		{
+			if(Math.abs(obj.position().left - offsetX) >= obj.innerWidth()){
+				offsetX = 0-obj.innerWidth() + offsetX;
+			}else{
+				offsetX = '-=' + offsetX;
+			}
+		}else{
+			if(obj.position().left + offsetX >= 0){
+				offsetX = 0;
+			}else{
+				offsetX = '+='+ offsetX;
+			}
+		}
+		obj.animate({
+			left: offsetX
+		},800, function(){
+			$(self).one("click",jQuery.proxy(cb,self));
+		});
 	});
 });
 </script>

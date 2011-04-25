@@ -26,6 +26,8 @@ Case "save"
 	If rs.eof Then ShowError(Array("参数错误，请返回重试！"))
 	If xReplyContent = "" Then 
 		rs("IsRead") = 0
+	Else
+		rs("IsRead") = 1
 	End If
 	rs("ReplyContent") = xReplyContent
 	rs.update
