@@ -151,6 +151,12 @@ Sub TopCode()
         <li><a href="teacher.asp?do=list" class="nav">教师列表</a></li>
       </ul>
 	</li>
+    <li class="top"><a href="javascript:;" class="top">自测试卷</a>
+      <ul>
+        <li><a href="pager.asp?do=edit" class="nav">添加试卷</a></li>
+        <li><a href="pager.asp?do=list" class="nav">试卷管理</a></li>
+      </ul>
+	</li>
     <li class="top"><a href="guestbook.asp" class="top">答疑台</a></li>
   </ul>
 </div>
