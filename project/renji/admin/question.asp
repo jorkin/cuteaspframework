@@ -27,9 +27,9 @@ Case "edit"
 	ProcessEdit()
 Case "save"
 	xId = Casp.rq(3,"id",0,0)
-	xTitle = Casp.rq(3,"Title",1,"")
-	If xTitle = "" Then alertBack "必须填写题目标题"
-	xLanguage = Casp.rq(3,"Language",1,"")
+	xQuestion = Casp.rq(3,"Question",1,"")
+	If xQuestion = "" Then alertBack "必须填写题目标题"
+	xSortId = Casp.rq(3,"SortId",0,0)
 	If xId = 0 Then
 		Casp.db.setRs rs,"select Top 1 * from Question",3
 		rs.addnew
@@ -37,12 +37,15 @@ Case "save"
 		Casp.db.setRs rs,"select Top 1 * from Question where Id="&xId&"",3
 		If rs.eof Then ShowError(Array("参数错误，请返回重试！"))
 	End If
-	rs("Title") = xTitle
-	rs("Language") = xLanguage
+	rs("Pid") = xPid
+	rs("Question") = xQuestion
+	rs("Result") = xResult
+	rs("SortId") = xSortId
+	rs("Qtype") = xQtype
 	rs.update
 	newId = rs("id")
 	Casp.db.CloseRs rs
-	alertRedirect "更新成功！",IIF(xId=0,"Question.asp?do=list&lang="&Request.QueryString("lang"),Casp.refererUrl)
+	alertRedirect "更新成功！",IIF(xId=0,"Question.asp?do=list&pid="&xPid,Casp.refererUrl)
 End Select
 
 Sub ProcessList()
@@ -60,7 +63,7 @@ Sub ProcessList()
 				<h2 class="title"><%=oPager("Title")%></h2>
 			</div>
 			<div class="active">
-				<div class="btn_o"><div class="btn_i"><a href="Question.asp?do=edit&lang=cn">添加题目</a></div></div>
+				<div class="btn_o"><div class="btn_i"><a href="Question.asp?do=edit&pid=<%=xpid%>">添加题目</a></div></div>
 			</div>
 			<table width="100%" cellspacing="0" cellpadding="0" border="0" class="table">
 				<tbody>
@@ -89,7 +92,7 @@ Sub ProcessList()
 						<td><input type="checkbox" name="id" value="<%=rs("id")%>" />
 							<%=rs("id")%></td>
 						<td><%=IIF(rs("qtype")=1,"多选","单选")%></td>
-						<td><%=rs("Title")%></td>
+						<td><%=rs("Question")%></td>
 						<td><%=result_str%></td>
 						<td><a href="?do=edit&id=<%=rs("id")%>" class="comm">编辑</a>&nbsp;&nbsp;<a href="?do=delete&id=<%=rs("id")%>"  onClick="javascript:return confirm('真的要删除吗?')"  class="comm">删除</a></td>
 					</tr>
@@ -120,7 +123,7 @@ Sub ProcessEdit()
 		<%=IIF(isset(oQuestion),"编辑","添加")%>&nbsp;<%If isset(oQuestion) Then echo oQuestion("Title") Else echo "题目"%>
 	</div>
 	<div id="main">
-		<form action="?do=save" method="post" name="myform" enctype="multipart/form-data">
+		<form action="?do=save" method="post" name="myform">
 			<table width="100%" cellspacing="0" cellpadding="0" border="0" class="table">
 				<tbody>
 					<tr class="">
@@ -128,8 +131,37 @@ Sub ProcessEdit()
 						<td><input type="text" name="question" class="text" id="question" value="<%If xId<>0 Then echo oQuestion("question")%>" size="40" /></td>
 					</tr>
 					<tr class="">
-						<td class="label" width="100">排序</td>
-						<td><input type="text" name="sortid" class="text" id="sortid" value="<%If xId<>0 Then echo oQuestion("sortid")%>" size="40" /></td>
+						<td class="label" width="100">类型</td>
+						<td>
+						<select class="select" name="qtype">
+							<option class="0">单选题</option>
+							<option class="1" <%If xId <> 0 Then echo IIF(oQuestion("qtype")=1,"selected","")%>>多选题</option>
+						</select>
+						</td>
+					</tr>
+					<tr class="">
+						<td class="label">答案</td>
+						<td><input type="text" name="result" class="text" id="result" value="<%If xId<>0 Then echo oQuestion("result")%>" size="10" /> 以逗号","分隔</td>
+					</tr>
+					<tr class="">
+						<td class="label">排序</td>
+						<td><input type="text" name="sortid" class="text" id="sortid" value="<%If xId<>0 Then echo oQuestion("sortid")%>" size="2" /> 从小到大排序</td>
+					</tr>
+					<tr>
+						<td colspan="2" style="height:1px; border-top:1px solid #ccc;"></td>
+					</tr>
+					<tr>
+						<td class="label">选项：</td>
+						<td>
+							<ul class="lite">
+								<li><input type="text" class="text" name="q_option" size="30" /> <input type="text" class="text" name="q_sortid" value="0" size="4" ></li>
+								<li><input type="text" class="text" name="q_option" size="30" /> <input type="text" class="text" name="q_sortid" value="0" size="4" ></li>
+								<li><input type="text" class="text" name="q_option" size="30" /> <input type="text" class="text" name="q_sortid" value="0" size="4" ></li>
+								<li><input type="text" class="text" name="q_option" size="30" /> <input type="text" class="text" name="q_sortid" value="0" size="4" ></li>
+								<li><input type="text" class="text" name="q_option" size="30" /> <input type="text" class="text" name="q_sortid" value="0" size="4" ></li>
+								<li><input type="text" class="text" name="q_option" size="30" /> <input type="text" class="text" name="q_sortid" value="0" size="4" ></li>
+							</ul>
+						</td>
 					</tr>
 					<tr class="none">
 						<td class="label"></td>
@@ -138,6 +170,7 @@ Sub ProcessEdit()
 				</tbody>
 			</table>
 			<input type="hidden" value="<%=xId%>" name="id" id="id">
+			<input type="hidden" value="<%=xPid%>" name="pid" id="pid">
 			<input type="hidden" value="save" name="do">
 			<input type="hidden" value="yes" name="save" id="save">
 		</form>
