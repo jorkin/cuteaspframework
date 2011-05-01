@@ -48,7 +48,7 @@ Case "save"
 End Select
 
 Sub ProcessList()
-	Casp.db.Exec rs,"select * from Advert order by sortid desc,id asc"
+	Casp.db.Exec rs,"select * from Advert order by sortid desc,id desc"
 %>
 <div id="inner">
 	<div id="title"><a class="title" href="Main.asp"><%=Casp.WebConfig("SiteTitle")%></a>&nbsp;-&nbsp;轮播广告列表</div>
@@ -115,7 +115,7 @@ Sub ProcessEdit()
 					</tr>
 					<tr>
 						<td class="label" width="70">排序(OrderID)</td>
-						<td><input type="text" name="sortid" class="text" id="sortid" value="<%If xId<>0 Then echo oAdvert("sortid")%>" /></td>
+						<td><input type="text" name="sortid" class="text" id="sortid" value="<%If xId<>0 Then echo oAdvert("sortid")%>" /> 从大到小</td>
 					</tr>
 					<tr class="none">
 						<td class="label"></td>

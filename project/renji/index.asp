@@ -146,7 +146,7 @@ Call TopCode()
 		<select class="select" id="linkChange">
 			<option value="">相关链接</option>
 			<%
-			Casp.db.Exec rs,"select * from links order by sortid desc,id desc"
+			Casp.db.Exec rs,"select * from links order by sortid desc,id asc"
 			Do While Not rs.eof
 				echo "<option value="""&rs("LinkUrl")&""" title="""&rs("LinkUrl")&""">"&rs("Title")&"</option>"
 				rs.MoveNext
@@ -162,7 +162,7 @@ $(function(){
 		width: 575, 	//宽度
 		height: 380, 	//高度
 		data: [<%
-			Casp.db.Exec rs,"select * from Advert order by sortid asc,id desc"
+			Casp.db.Exec rs,"select * from Advert order by sortid desc,id desc"
 			Do While Not rs.eof
 				echo "{href:"""&rs("url")&""",image:"""&rs("image")&""",title:"""&rs("title")&"""}"
 				rs.MoveNext

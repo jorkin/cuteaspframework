@@ -582,6 +582,8 @@ border-bottom: 1px solid #666;
 div.active {
 font-size:12px;
 padding:1px 10px;
+overflow:hidden;
+zoom:1;
 }
 
 a.bt, a.bt:visited, a.bt:active {
@@ -750,3 +752,10 @@ ul.lite li div.options{float:right;padding-top:5px;padding-right:5px;}
 ul.lite li div.options a.i_remove{width:13px;height:12px;display:inline-block;_display:inline;_zoom:1;overflow:hidden;background:url(closeBtn.gif) no-repeat;text-decoration:none;}
 ul.lite li .lite_info{overflow:hidden;zoom:1; line-height:1.5em; }
 ul.lite .meta,ul.lite .meta a{color:#888;}
+
+select.q_result{color:#888;}
+select.red{color:red;}
+option.red{color:red;}
+option.gray{color:#888;}
+
+ul.lite_option li{list-style:upper-alpha; margin-left:20px;}

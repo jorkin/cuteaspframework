@@ -101,9 +101,10 @@ Sub ProcessList()
 				<tbody>
 					<tr class="none">
 						<th width="50"><input type="checkbox" class="checkall" rel="input:checkbox[name=id]" /> ID</th>
-						<th width="180">类别</th>
-						<th width="200">标题</th>
+						<th width="100">类别</th>
+						<th width="250">标题</th>
 						<th width="80">是否首页显示</th>
+						<th width="50">排序ID</th>
 						<th>&nbsp;</th>
 					</tr>
 					<%Do While Not rs.eof%>
@@ -120,6 +121,7 @@ Sub ProcessList()
 						%></td>
 						<td><a href="../show.asp?id=<%=rs("id")%>" target="_blank"><%=rs("Title")%></a></td>
 						<td><%=IIF(rs("IsDisplay"),"√","×")%></td>
+						<td><%=rs("sortid")%></td>
 						<td><a href="?do=edit&id=<%=rs("id")%>" class="comm">编辑</a>&nbsp;&nbsp;<a href="?do=delete&id=<%=rs("id")%>"  onClick="javascript:return confirm('真的要删除吗?')"  class="comm">删除</a></td>
 					</tr>
 					<%
@@ -182,7 +184,7 @@ Sub ProcessEdit()
 					</tr>
 					<tr>
 						<td class="label">排序(OrderID)</td>
-						<td><input type="text" name="sortid" class="text" id="sortid" value="<%If xId<>0 Then echo oNews("sortid")%>" /></td>
+						<td><input type="text" name="sortid" class="text" id="sortid" value="<%If xId<>0 Then echo oNews("sortid")%>" /> 从大到小</td>
 					</tr>
 					<tr>
 						<td class="label">首页显示?</td>

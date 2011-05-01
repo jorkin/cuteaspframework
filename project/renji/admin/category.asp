@@ -101,7 +101,7 @@ Sub ProcessEdit()
 					<tbody>
 						<tr>
 							<td class="label" width="100">排序(OrderID)</td>
-							<td><input type="text" name="sortid" class="text" id="sortid" value="<%If xId<>0 Then echo oCategory("sortid")%>" /></td>
+							<td><input type="text" name="sortid" class="text" id="sortid" value="<%If xId<>0 Then echo oCategory("sortid")%>" /> 从小到大</td>
 						</tr>
 					</tbody>
 				</table>

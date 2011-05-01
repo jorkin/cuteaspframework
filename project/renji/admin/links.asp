@@ -121,7 +121,7 @@ Sub ProcessEdit()
 					</tr>
 					<tr>
 						<td class="label" width="70">排序(OrderID)</td>
-						<td><input type="text" name="sortid" class="text" id="sortid" value="<%If xId<>0 Then echo oLinks("sortid")%>" /></td>
+						<td><input type="text" name="sortid" class="text" id="sortid" value="<%If xId<>0 Then echo oLinks("sortid")%>" /> 从大到小</td>
 					</tr>
 					<tr class="none">
 						<td class="label"></td>

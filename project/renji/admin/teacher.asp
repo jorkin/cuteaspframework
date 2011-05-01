@@ -54,7 +54,7 @@ Case "save"
 End Select
 
 Sub ProcessList()
-	Casp.db.Exec rs,"select * from Teacher order by sortid desc,id desc"
+	Casp.db.Exec rs,"select * from Teacher order by sortid asc,id desc"
 %>
 <div id="inner">
 	<div id="title"><a class="title" href="Main.asp"><%=Casp.WebConfig("SiteTitle")%></a>&nbsp;-&nbsp;教师列表</div>
@@ -69,6 +69,7 @@ Sub ProcessList()
 						<th width="50"><input type="checkbox" class="checkall" rel="input:checkbox[name=id]" /> ID</th>
 						<th width="60">头像</th>
 						<th width="200">头衔/姓名</th>
+						<th width="60">排序ID</th>
 						<th>&nbsp;</th>
 					</tr>
 					<%Do While Not rs.eof%>
@@ -77,6 +78,7 @@ Sub ProcessList()
 							<%=rs("id")%></td>
 						<td><a href="?do=edit&id=<%=rs("id")%>" class="title" title="<%=rs("NickName_cn")%>(<%=rs("NickName_en")%>)"><img src="<%=getTeacherImage(rs("id"))%>" width="48" /></a></td>
 						<td><a href="?do=edit&id=<%=rs("id")%>" class="title" title="<%=rs("NickName_cn")%>(<%=rs("NickName_en")%>)"><%=rs("NickName_cn")%>(<%=rs("NickName_en")%>)</a></td>
+						<td><%=rs("sortId")%></td>
 						<td><a href="?do=edit&id=<%=rs("id")%>" class="comm">编辑</a>&nbsp;&nbsp;<a href="?do=delete&id=<%=rs("id")%>"  onClick="javascript:return confirm('真的要删除吗?')"  class="comm">删除</a></td>
 					</tr>
 					<%
@@ -117,7 +119,7 @@ Sub ProcessEdit()
 						</tr>
 						<tr>
 							<td class="label">排序(OrderID)</td>
-							<td><input type="text" name="sortid" class="text" id="sortid" value="<%If xId<>0 Then echo oTeacher("sortid")%>" /></td>
+							<td><input type="text" name="sortid" class="text" id="sortid" value="<%If xId<>0 Then echo oTeacher("sortid")%>" /> 从小到大</td>
 						</tr>
 					</tbody>
 				</table>

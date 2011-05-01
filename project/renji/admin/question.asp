@@ -1,6 +1,4 @@
 <!--#include file="page.master.asp"-->
-<!--#include file="../include/library/upload.asp"-->
-<!--#include file="../include/library/file.asp"-->
 <!--#include file="../include/library/page.asp"-->
 <%
 xDo = LCase(Casp.rq(1,"do",1,"list"))
@@ -27,9 +25,25 @@ Case "edit"
 	ProcessEdit()
 Case "save"
 	xId = Casp.rq(3,"id",0,0)
+	xQtype = Casp.rq(3,"qtype",0,0)
 	xQuestion = Casp.rq(3,"Question",1,"")
 	If xQuestion = "" Then alertBack "必须填写题目标题"
 	xSortId = Casp.rq(3,"SortId",0,0)
+
+	aQId = Split(Replace(Casp.rq(3,"q_id",1,"")," ",""),",")
+	aQ_option = Split(Replace(Casp.rq(3,"q_option",1,"")," ",""),",")
+	aQ_sortid = Split(Replace(Casp.rq(3,"q_sortid",1,"")," ",""),",")
+	aQ_result = Split(Replace(Casp.rq(3,"q_result",1,"")," ",""),",")
+
+	If UBound(aQ_option) < 2 Then
+		alertBack "至少需要两个选项！"
+	End If
+
+	If Casp.Arrays.Search(aQ_result,1) = False Then
+		alertBack "没有一个正确答案？"
+	End If
+
+
 	If xId = 0 Then
 		Casp.db.setRs rs,"select Top 1 * from Question",3
 		rs.addnew
@@ -39,11 +53,29 @@ Case "save"
 	End If
 	rs("Pid") = xPid
 	rs("Question") = xQuestion
-	rs("Result") = xResult
 	rs("SortId") = xSortId
 	rs("Qtype") = xQtype
 	rs.update
 	newId = rs("id")
+	Dim aResult
+	aResult = Array()
+	For i = 0 To  UBound(aQ_option)
+		If aQ_option(i) <> "" Then
+			If aQId(i) = 0 Then
+				Casp.db.setRs rs1,"select Top 1 * from Options",3
+				rs1.addnew
+			Else
+				Casp.db.setRs rs1,"select Top 1 * from Options where Id="&aQId(i)&"",3
+				If rs1.eof Then ShowError(Array("参数错误，请返回重试！"))
+			End If
+			rs1("Qid") = newId
+			rs1("option") = aQ_option(i)
+			rs1("sortId") = aQ_sortid(i)
+			rs1("isresult") = aQ_result(i)
+			rs1.update
+			Casp.db.CloseRs rs1
+		End If
+	Next
 	Casp.db.CloseRs rs
 	alertRedirect "更新成功！",IIF(xId=0,"Question.asp?do=list&pid="&xPid,Casp.refererUrl)
 End Select
@@ -51,8 +83,8 @@ End Select
 Sub ProcessList()
 	Casp.page.Conn = Casp.db.conn
 	Casp.page.PageID = Trim(Request("PageID"))
-	Casp.page.Size = 25
-	Casp.page.Header_a rs,"Question","*","pid="&xPid&"","","id desc"
+	Casp.page.Size = 50
+	Casp.page.Header_a rs,"Question","*","pid="&xPid&"","","sortid asc,id asc"
 %>
 <div id="inner">
 	<div id="title"><a class="title" href="Main.asp"><%=Casp.WebConfig("SiteTitle")%></a>&nbsp;-&nbsp;<a href="pager.asp?do=list">试卷管理</a>&nbsp;-&nbsp;<%=oPager("Title")%>&nbsp;-&nbsp;题目列表</div>
@@ -71,30 +103,19 @@ Sub ProcessList()
 						<th width="50"><input type="checkbox" class="checkall" rel="input:checkbox[name=id]" /> ID</th>
 						<th width="60">类型</th>
 						<th width="280">题目</th>
-						<th width="100">答案</th>
+						<th width="50">排序ID</th>
 						<th>&nbsp;</th>
 					</tr>
 					<%
-					
 					Do While Not rs.eof
-						If rs("result") <> "" Then
-							On Error Resume Next
-							Casp.db.Exec rs1,"select id from options (nolock) where id in ("&rs("result")&")"
-							If not rs1.eof Then
-								result_str = rs1.GetString(,,"",",","")
-							End If
-							rs1.close
-							Err.clear
-							On Error Goto 0
-						End If
 					%>
 					<tr>
 						<td><input type="checkbox" name="id" value="<%=rs("id")%>" />
 							<%=rs("id")%></td>
 						<td><%=IIF(rs("qtype")=1,"多选","单选")%></td>
 						<td><%=rs("Question")%></td>
-						<td><%=result_str%></td>
-						<td><a href="?do=edit&id=<%=rs("id")%>" class="comm">编辑</a>&nbsp;&nbsp;<a href="?do=delete&id=<%=rs("id")%>"  onClick="javascript:return confirm('真的要删除吗?')"  class="comm">删除</a></td>
+						<td><%=rs("sortid")%></td>
+						<td><a href="?do=edit&pid=<%=rs("pid")%>&id=<%=rs("id")%>" class="comm">编辑</a>&nbsp;&nbsp;<a href="?do=delete&id=<%=rs("id")%>"  onClick="javascript:return confirm('真的要删除吗?')"  class="comm">删除</a></td>
 					</tr>
 					<%
 						rs.MoveNext
@@ -119,8 +140,8 @@ End Sub
 Sub ProcessEdit()
 %>
 <div id="inner">
-	<div id="title"><a class="title" href="Main.asp"><%=Casp.WebConfig("SiteTitle")%></a>&nbsp;-&nbsp;<a href="Question.asp">题目管理</a>&nbsp;-&nbsp;
-		<%=IIF(isset(oQuestion),"编辑","添加")%>&nbsp;<%If isset(oQuestion) Then echo oQuestion("Title") Else echo "题目"%>
+	<div id="title"><a class="title" href="Main.asp"><%=Casp.WebConfig("SiteTitle")%></a>&nbsp;-&nbsp;<a href="pager.asp?do=list">试卷管理</a>&nbsp;-&nbsp;<a href="question.asp?do=list&pid=<%=xPid%>"><%=oPager("Title")%></a>&nbsp;-&nbsp;
+		<%=IIF(isset(oQuestion),"编辑","添加")%>&nbsp;<%If isset(oQuestion) Then echo oQuestion("question") Else echo "题目"%>
 	</div>
 	<div id="main">
 		<form action="?do=save" method="post" name="myform">
@@ -134,18 +155,14 @@ Sub ProcessEdit()
 						<td class="label" width="100">类型</td>
 						<td>
 						<select class="select" name="qtype">
-							<option class="0">单选题</option>
-							<option class="1" <%If xId <> 0 Then echo IIF(oQuestion("qtype")=1,"selected","")%>>多选题</option>
+							<option value="0">单选题</option>
+							<option value="1" <%If xId <> 0 Then echo IIF(oQuestion("qtype")=1,"selected","")%>>多选题</option>
 						</select>
 						</td>
 					</tr>
 					<tr class="">
-						<td class="label">答案</td>
-						<td><input type="text" name="result" class="text" id="result" value="<%If xId<>0 Then echo oQuestion("result")%>" size="10" /> 以逗号","分隔</td>
-					</tr>
-					<tr class="">
 						<td class="label">排序</td>
-						<td><input type="text" name="sortid" class="text" id="sortid" value="<%If xId<>0 Then echo oQuestion("sortid")%>" size="2" /> 从小到大排序</td>
+						<td><input type="text" name="sortid" class="text" id="sortid" value="<%If xId<>0 Then echo oQuestion("sortid") Else echo "0"%>" size="2" /> 从小到大排序</td>
 					</tr>
 					<tr>
 						<td colspan="2" style="height:1px; border-top:1px solid #ccc;"></td>
@@ -153,13 +170,39 @@ Sub ProcessEdit()
 					<tr>
 						<td class="label">选项：</td>
 						<td>
-							<ul class="lite">
-								<li><input type="text" class="text" name="q_option" size="30" /> <input type="text" class="text" name="q_sortid" value="0" size="4" ></li>
-								<li><input type="text" class="text" name="q_option" size="30" /> <input type="text" class="text" name="q_sortid" value="0" size="4" ></li>
-								<li><input type="text" class="text" name="q_option" size="30" /> <input type="text" class="text" name="q_sortid" value="0" size="4" ></li>
-								<li><input type="text" class="text" name="q_option" size="30" /> <input type="text" class="text" name="q_sortid" value="0" size="4" ></li>
-								<li><input type="text" class="text" name="q_option" size="30" /> <input type="text" class="text" name="q_sortid" value="0" size="4" ></li>
-								<li><input type="text" class="text" name="q_option" size="30" /> <input type="text" class="text" name="q_sortid" value="0" size="4" ></li>
+							<ul class="lite lite_option">
+								<%
+								Dim m
+								m = 6
+								If xId <> 0 Then
+									Casp.db.Exec rs1,"select * from Options where qid="&xId&" order by sortid asc,id asc"
+									Do While Not rs1.eof
+								%>
+								<li>
+									
+									<input type="hidden" value="<%=rs1("id")%>" name="q_id">
+									<input type="text" class="text" name="q_option" size="30" value="<%=rs1("option")%>" /> 
+									排序:<input type="text" class="text" name="q_sortid" value="<%=rs1("sortid")%>" size="4" > 
+									<select class="select q_result" name="q_result"><option value="0" class="gray">非正确选项</option><option value="1" class="red" <%=IIF(rs1("isresult"),"selected","")%>>正确选项</option></select>
+								</li>
+								<%
+										m = m - 1
+										rs1.MoveNext
+									Loop
+									rs1.close
+									Set rs1 = Nothing
+								End If
+								For i = 1 To m
+								%>
+								<li>
+									<input type="hidden" value="0" name="q_id">
+									<input type="text" class="text" name="q_option" size="30" /> 
+									排序:<input type="text" class="text" name="q_sortid" value="0" size="4" > 
+									<select class="select q_result" name="q_result"><option value="0" class="gray">非正确选项</option><option value="1" class="red">正确选项</option></select>
+								</li>
+								<%
+								Next
+								%>
 							</ul>
 						</td>
 					</tr>
@@ -176,6 +219,15 @@ Sub ProcessEdit()
 		</form>
 	</div>
 </div>
+<script>
+$("select[name=q_result]").change(function(){
+	if($("option:selected",this).hasClass("red")){
+		$(this).addClass("red");
+	}else{
+		$(this).removeClass("red");
+	}
+}).change();
+</script>
 <%
 End Sub
 
