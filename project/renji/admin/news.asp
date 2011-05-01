@@ -151,7 +151,7 @@ Sub ProcessEdit()
 		<%=IIF(isset(oNews),"编辑","添加")%>&nbsp;<%If isset(oNews) Then echo oNews("Title") Else echo "信息"%>
 	</div>
 	<div id="main">
-		<form action="?do=save" method="post" name="myform" enctype="multipart/form-data">
+		<form action="?do=save" method="post" name="myform">
 			<table width="100%" cellspacing="0" cellpadding="0" border="0" class="table">
 				<tbody>
 					<tr class="">

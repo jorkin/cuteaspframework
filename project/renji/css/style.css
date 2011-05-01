@@ -153,6 +153,7 @@ input.cancel:hover{background-position:-100px -350px}
 .m_footer_br{float:right}
 
 /* table */
+table.list{border-collapse:collapse;}
 table.list th{background:url(yellow_moudel_head_bg.gif) repeat-x;color:#8e1717;font-weight:700;line-height:23px;padding:3px 4px;}
 table.list tbody td{border-bottom:1px #e2e2e2 dashed;line-height:23px;padding:3px 4px;}
 table.list thead{background-color:#f0f0f0}
@@ -406,7 +407,7 @@ ul.category_lite li.curr a.title:hover{text-decoration:none;}
 .article_title{font-size:18px;font-weight:bold;text-align:center;margin-bottom:20px;} 
 .article_content{font-size:13px;line-height:1.8;margin-bottom:10px;}
 
-.article_content table{border-collapse:separate;}
+.article_content table{/*border-collapse:separate;*/}
 .article_content table td,
 .article_content table th{border-collapse:separate;padding:2px 4px;}
 
@@ -434,3 +435,13 @@ ul.lite_child li{margin-left:20px; list-style:disc; font-size:12px;padding-botto
 
 
 .teacher_face{text-align:center;margin-bottom:20px;}
+
+
+
+ul.list_question li.item{}
+ul.list_question li.item h3.title{font-weight:bold;font-size:14px;}
+ul.lite_option li{margin-left:10px;}
+
+.form_submit{text-align:center; margin:10px auto;}
+b.right{color:#FDA4AC;font-weight:bold;display: inline;}
+b.wrong{color:red;font-weight:bold;display: inline;}
